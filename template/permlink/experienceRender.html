@@ -1,0 +1,37 @@
+{%load i18n%}
+{%for experienceSlot in experienceSlotList reversed %}
+<span>
+<table >
+	<TR>
+		<TD class="sec_titles">{%trans "Data de Início"%}</TD>
+		<TD class="field" > <div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.init_date}}</div>            
+		</TD>
+	</TR>
+	<TR>
+		<TD class="sec_titles">{%trans "Data de Conclusão"%}</TD>
+		<TD class="field" > <div class="view_field" style="visibility:visible; display:inline">{{experienceSlot.final_date}}</div>  
+		</TD>
+	</TR>
+	<TR >
+		<Td class="sec_titles">{%trans "Nome e Endereço da Entidade Empregadora"%}</Td>
+		<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.company}}</div>
+		</Td>
+	</TR> 
+	<TR >
+		<Td class="sec_titles">{%trans "Tipo de Empresas ou Sector"%}</Td>
+	<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.business_area}}</div>
+	</Td>
+	</TR>
+	<TR >
+		<Td class="sec_titles">{%trans "Função / Cargo Ocupado"%}</Td>
+		<Td class="field" >	<div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.position}}</div>
+	</Td>
+	</TR> 
+	<TR >
+	<Td class="sec_titles" valign="top" >{%trans "Principais Actividades ou Responsabilidades"%}</Td>
+	<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.description}}</div>
+	</Td
+	></TR> 
+</table>
+</span>
+{%endfor%}

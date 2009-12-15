@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-12-12 18:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:42
+msgid "English"
+msgstr ""
+
+#: settings.py:43
+msgid "Português"
+msgstr ""
+
+#: settings.py:44
+msgid "Français"
+msgstr ""
+
+#: settings.py:45
+msgid "Deutsche"
+msgstr ""
+
+#: cvtype/html.py:211
+msgid "actualizou o seu curriculo em"
+msgstr ""
+
+#: fbconnect/fb.py:71 form/action.py:60 form/action.py:94 form/action.py:129
+#: form/action.py:171 form/action.py:206 form/action.py:241 form/action.py:274
+#: form/action.py:315 form/action.py:366 form/action.py:372 form/action.py:419
+#: form/action.py:425 form/action.py:471 form/action.py:477 form/render.py:64
+#: form/render.py:103 form/render.py:143
+msgid "não autorizado"
+msgstr ""
+
+#: form/action.py:53 form/action.py:87 form/action.py:122
+msgid "registo apagado"
+msgstr ""
+
+#: form/action.py:164 form/action.py:199 form/action.py:234 form/action.py:268
+#: form/action.py:308
+msgid "registo guardado"
+msgstr ""
+
+#: form/action.py:347 form/action.py:361 form/action.py:400 form/action.py:414
+#: form/action.py:452 form/action.py:466
+msgid "registo movido"
+msgstr ""
+
+#: form/render.py:56 form/render.py:95 form/render.py:135
+msgid "registo adicionado"
+msgstr ""
+
+#: template/home.html:5 template/home.html.py:57
+#: template/permlink/render.html:5
+msgid "O meu curriculo"
+msgstr ""
+
+#: template/home.html:52
+msgid "Associar ao Facebook"
+msgstr ""
+
+#: template/home.html:56
+msgid "Publicar no Facebook"
+msgstr ""
+
+#: template/home.html:56
+msgid "Publicar no twitter"
+msgstr ""
+
+#: template/home.html:88 template/permlink/render.html:46
+msgid "Curriculum Vitae"
+msgstr ""
+
+#: template/home.html:89
+msgid "clique aqui para fazer download do curriculo"
+msgstr ""
+
+#: template/home.html:102 template/permlink/render.html:60
+msgid "Informação Pessoal"
+msgstr ""
+
+#: template/home.html:109 template/home.html.py:278
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "editar"
+msgstr ""
+
+#: template/home.html:110 template/home.html.py:279
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "guardar"
+msgstr ""
+
+#: template/home.html:111 template/home.html.py:280
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "cancelar"
+msgstr ""
+
+#: template/home.html:115 template/permlink/render.html:66
+msgid "Nome"
+msgstr ""
+
+#: template/home.html:122 template/permlink/render.html:73
+msgid "Data de Nascimento"
+msgstr ""
+
+#: template/home.html:127 template/formtemplates/educationInit.html:15
+#: template/formtemplates/educationInit.html:20
+#: template/formtemplates/educationtemplate.html:13
+#: template/formtemplates/educationtemplate.html:18
+#: template/formtemplates/experienceInit.html:15
+#: template/formtemplates/experienceInit.html:21
+#: template/formtemplates/experiencetemplate.html:13
+#: template/formtemplates/experiencetemplate.html:19
+msgid "Apagar Data"
+msgstr ""
+
+#: template/home.html:133 template/permlink/render.html:82
+msgid "Morada"
+msgstr ""
+
+#: template/home.html:140 template/permlink/render.html:90
+msgid "Código Postal"
+msgstr ""
+
+#: template/home.html:146 template/permlink/render.html:97
+msgid "Localidade"
+msgstr ""
+
+#: template/home.html:152 template/permlink/render.html:104
+msgid "País"
+msgstr ""
+
+#: template/home.html:158 template/permlink/render.html:112
+msgid "Telefone"
+msgstr ""
+
+#: template/home.html:164 template/permlink/render.html:119
+msgid "Telemóvel"
+msgstr ""
+
+#: template/home.html:170 template/permlink/render.html:126
+msgid "Fax"
+msgstr ""
+
+#: template/home.html:176 template/permlink/render.html:133
+msgid "Email"
+msgstr ""
+
+#: template/home.html:182 template/permlink/render.html:140
+msgid "Nacionalidade"
+msgstr ""
+
+#: template/home.html:188 template/permlink/render.html:147
+msgid "Sexo"
+msgstr ""
+
+#: template/home.html:193 template/home.html.py:195 template/home.html:199
+#: template/home.html.py:206
+msgid "Feminino"
+msgstr ""
+
+#: template/home.html:194 template/home.html.py:200 template/home.html:201
+#: template/home.html.py:207
+msgid "Masculino"
+msgstr ""
+
+#: template/home.html:215 template/permlink/render.html:154
+msgid "Língua Materna"
+msgstr ""
+
+#: template/home.html:221 template/permlink/render.html:161
+msgid "Emprego Pretendido"
+msgstr ""
+
+#: template/home.html:221 template/permlink/render.html:161
+msgid "Área Funcional"
+msgstr ""
+
+#: template/home.html:233 template/permlink/render.html:175
+msgid "Experiência Profissional"
+msgstr ""
+
+#: template/home.html:234 template/home.html.py:246 template/home.html:258
+msgid "novo item"
+msgstr ""
+
+#: template/home.html:245 template/permlink/render.html:187
+msgid "Educação e Formação"
+msgstr ""
+
+#: template/home.html:257 template/permlink/render.html:199
+msgid "Outras Línguas"
+msgstr ""
+
+#: template/home.html:271 template/permlink/render.html:213
+msgid "Aptidões e Competências Pessoais"
+msgstr ""
+
+#: template/home.html:285 template/permlink/render.html:226
+msgid "Aptidões e Competências Sociais"
+msgstr ""
+
+#: template/home.html:290 template/permlink/render.html:233
+msgid "Aptidões e Competências de Organização"
+msgstr ""
+
+#: template/home.html:295 template/permlink/render.html:240
+msgid "Aptidões e Competências Técnicas"
+msgstr ""
+
+#: template/home.html:300 template/permlink/render.html:247
+msgid "Aptidões e Competências Informáticas"
+msgstr ""
+
+#: template/home.html:305 template/permlink/render.html:254
+msgid "Aptidões Artísticas"
+msgstr ""
+
+#: template/home.html:310 template/permlink/render.html:261
+msgid "Outras Aptidões e Competências"
+msgstr ""
+
+#: template/home.html:315 template/permlink/render.html:268
+msgid "Cartas de Condução"
+msgstr ""
+
+#: template/home.html:320 template/permlink/render.html:275
+msgid "Informação Adicional"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "apagar"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "mover para cima"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:9
+#: template/formtemplates/educationtemplate.html:7
+#: template/formtemplates/experienceInit.html:9
+#: template/formtemplates/experiencetemplate.html:6
+#: template/formtemplates/languageInit.html:10
+#: template/formtemplates/languagetemplate.html:6
+msgid "mover para baixo"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:13
+#: template/formtemplates/educationtemplate.html:12
+#: template/formtemplates/experienceInit.html:13
+#: template/formtemplates/experiencetemplate.html:11
+#: template/permlink/educationRender.html:8
+#: template/permlink/experienceRender.html:6
+msgid "Data de Início"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:19
+#: template/formtemplates/educationtemplate.html:17
+#: template/formtemplates/experienceInit.html:19
+#: template/formtemplates/experiencetemplate.html:18
+#: template/permlink/educationRender.html:13
+#: template/permlink/experienceRender.html:11
+msgid "Data de Conclusão"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:24
+#: template/formtemplates/educationtemplate.html:22
+#: template/permlink/educationRender.html:18
+msgid "Nome e Tipo de Organização de Ensino ou Formação"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:30
+#: template/formtemplates/educationtemplate.html:28
+#: template/permlink/educationRender.html:24
+msgid "Designação da Qualificação Obtida"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:35
+#: template/formtemplates/educationtemplate.html:33
+#: template/permlink/educationRender.html:29
+msgid "Área de Estudos / Curso"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:40
+#: template/formtemplates/educationtemplate.html:38
+#: template/permlink/educationRender.html:34
+msgid "Principais Disciplinas ou Competências Profissionais"
+msgstr ""
+
+#: template/formtemplates/educationInit.html:44
+#: template/formtemplates/educationtemplate.html:43
+#: template/permlink/educationRender.html:39
+msgid "Classificação Final Obtida"
+msgstr ""
+
+#: template/formtemplates/experienceInit.html:25
+#: template/formtemplates/experiencetemplate.html:24
+#: template/permlink/experienceRender.html:16
+msgid "Nome e Endereço da Entidade Empregadora"
+msgstr ""
+
+#: template/formtemplates/experienceInit.html:30
+#: template/formtemplates/experiencetemplate.html:29
+#: template/permlink/experienceRender.html:21
+msgid "Tipo de Empresas ou Sector"
+msgstr ""
+
+#: template/formtemplates/experienceInit.html:35
+#: template/formtemplates/experiencetemplate.html:35
+#: template/permlink/experienceRender.html:26
+msgid "Função / Cargo Ocupado"
+msgstr ""
+
+#: template/formtemplates/experienceInit.html:41
+#: template/formtemplates/experiencetemplate.html:41
+#: template/permlink/experienceRender.html:31
+msgid "Principais Actividades ou Responsabilidades"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:15
+#: template/permlink/languageRender.html:7
+msgid "Línguas"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:22
+#: template/formtemplates/languagetemplate.html:15
+#: template/permlink/languageRender.html:13
+msgid "Compreensão Oral"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:26
+#: template/formtemplates/languageInit.html:30
+#: template/formtemplates/languageInit.html:33
+#: template/formtemplates/languageInit.html:40
+#: template/formtemplates/languageInit.html:54
+#: template/formtemplates/languageInit.html:58
+#: template/formtemplates/languageInit.html:61
+#: template/formtemplates/languageInit.html:68
+#: template/formtemplates/languageInit.html:82
+#: template/formtemplates/languageInit.html:86
+#: template/formtemplates/languageInit.html:89
+#: template/formtemplates/languageInit.html:96
+#: template/formtemplates/languageInit.html:110
+#: template/formtemplates/languageInit.html:114
+#: template/formtemplates/languageInit.html:117
+#: template/formtemplates/languageInit.html:124
+#: template/formtemplates/languageInit.html:138
+#: template/formtemplates/languageInit.html:142
+#: template/formtemplates/languageInit.html:145
+#: template/formtemplates/languageInit.html:152
+#: template/formtemplates/languagetemplate.html:17
+#: template/formtemplates/languagetemplate.html:27
+#: template/formtemplates/languagetemplate.html:37
+#: template/formtemplates/languagetemplate.html:47
+#: template/formtemplates/languagetemplate.html:57
+msgid "Bom"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:27
+#: template/formtemplates/languageInit.html:34
+#: template/formtemplates/languageInit.html:37
+#: template/formtemplates/languageInit.html:41
+#: template/formtemplates/languageInit.html:55
+#: template/formtemplates/languageInit.html:62
+#: template/formtemplates/languageInit.html:65
+#: template/formtemplates/languageInit.html:69
+#: template/formtemplates/languageInit.html:83
+#: template/formtemplates/languageInit.html:90
+#: template/formtemplates/languageInit.html:93
+#: template/formtemplates/languageInit.html:97
+#: template/formtemplates/languageInit.html:111
+#: template/formtemplates/languageInit.html:118
+#: template/formtemplates/languageInit.html:121
+#: template/formtemplates/languageInit.html:125
+#: template/formtemplates/languageInit.html:139
+#: template/formtemplates/languageInit.html:146
+#: template/formtemplates/languageInit.html:149
+#: template/formtemplates/languageInit.html:153
+#: template/formtemplates/languagetemplate.html:18
+#: template/formtemplates/languagetemplate.html:28
+#: template/formtemplates/languagetemplate.html:38
+#: template/formtemplates/languagetemplate.html:48
+#: template/formtemplates/languagetemplate.html:58
+msgid "Mediano"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:28
+#: template/formtemplates/languageInit.html:35
+#: template/formtemplates/languageInit.html:42
+#: template/formtemplates/languageInit.html:44
+#: template/formtemplates/languageInit.html:56
+#: template/formtemplates/languageInit.html:63
+#: template/formtemplates/languageInit.html:70
+#: template/formtemplates/languageInit.html:72
+#: template/formtemplates/languageInit.html:84
+#: template/formtemplates/languageInit.html:91
+#: template/formtemplates/languageInit.html:98
+#: template/formtemplates/languageInit.html:100
+#: template/formtemplates/languageInit.html:112
+#: template/formtemplates/languageInit.html:119
+#: template/formtemplates/languageInit.html:126
+#: template/formtemplates/languageInit.html:128
+#: template/formtemplates/languageInit.html:140
+#: template/formtemplates/languageInit.html:147
+#: template/formtemplates/languageInit.html:154
+#: template/formtemplates/languageInit.html:156
+#: template/formtemplates/languagetemplate.html:19
+#: template/formtemplates/languagetemplate.html:29
+#: template/formtemplates/languagetemplate.html:39
+#: template/formtemplates/languagetemplate.html:49
+#: template/formtemplates/languagetemplate.html:59
+msgid "Básico"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:50
+#: template/formtemplates/languagetemplate.html:24
+#: template/permlink/languageRender.html:18
+msgid "Compreensão Escrita"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:78
+#: template/formtemplates/languagetemplate.html:34
+#: template/permlink/languageRender.html:23
+msgid "Interacção Oral"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:106
+#: template/formtemplates/languagetemplate.html:44
+#: template/permlink/languageRender.html:28
+msgid "Produção Oral"
+msgstr ""
+
+#: template/formtemplates/languageInit.html:134
+#: template/formtemplates/languagetemplate.html:54
+#: template/permlink/languageRender.html:33
+msgid "Produção Escrita"
+msgstr ""
+
+#: template/formtemplates/languagetemplate.html:10
+msgid "Língua"
+msgstr ""
