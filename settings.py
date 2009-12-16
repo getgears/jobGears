@@ -2,6 +2,7 @@
 # Django settings for jobgears project.
 
 
+
 # This should never be set as True in production!
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
