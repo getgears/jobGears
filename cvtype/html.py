@@ -17,24 +17,23 @@ from random import choice
 #getPersonalInfo method returns a personalInfo dictionary
 def getPersonalInfo(request):
 
-
     try:    
         request.session['init']
         personalInfo = {}
-        personalInfo['name'] = request.session[sessionid]['personal'].get('name','')
-        personalInfo['birthdate'] =  request.session[sessionid]['personal'].get('birthdate','')
-        personalInfo['address'] = request.session[sessionid]['personal'].get('address','')
-        personalInfo['postal_code'] = request.session[sessionid]['personal'].get('postal_code','')
-        personalInfo['city'] = request.session[sessionid]['personal'].get('city','')
-        personalInfo['country'] = request.session[sessionid]['personal'].get('country','')
-        personalInfo['phone'] = request.session[sessionid]['personal'].get('phone','')
-        personalInfo['cell_phone'] =  request.session[sessionid]['personal'].get('cell_phone','')
-        personalInfo['fax'] = request.session[sessionid]['personal'].get('fax','')
-        personalInfo['email'] = request.session[sessionid]['personal'].get('email','')
-        personalInfo['nationality'] = request.session[sessionid]['personal'].get('nationality','')
-        personalInfo['gender'] = request.session[sessionid]['personal'].get('gender','')
-        personalInfo['home_language']=request.session[sessionid]['personal'].get('home_language','')
-        personalInfo['desired_employment'] = request.session[sessionid]['personal'].get('desired_employment','')
+        personalInfo['name'] = request.session['personal'].get('name','')
+        personalInfo['birthdate'] =  request.session['personal'].get('birthdate','')
+        personalInfo['address'] = request.session['personal'].get('address','')
+        personalInfo['postal_code'] = request.session['personal'].get('postal_code','')
+        personalInfo['city'] = request.session['personal'].get('city','')
+        personalInfo['country'] = request.session['personal'].get('country','')
+        personalInfo['phone'] = request.session['personal'].get('phone','')
+        personalInfo['cell_phone'] =  request.session['personal'].get('cell_phone','')
+        personalInfo['fax'] = request.session['personal'].get('fax','')
+        personalInfo['email'] = request.session['personal'].get('email','')
+        personalInfo['nationality'] = request.session['personal'].get('nationality','')
+        personalInfo['gender'] = request.session['personal'].get('gender','')
+        personalInfo['home_language']=request.session['personal'].get('home_language','')
+        personalInfo['desired_employment'] = request.session['personal'].get('desired_employment','')
 
         return personalInfo
 
@@ -51,14 +50,14 @@ def getPersonalSkills(request):
     try:
         request.session['init']
         personalSkills = {}
-        personalSkills['social_skills']=request.session[sessionid]['skills'].get('social_skills','')
-        personalSkills['organization_skills']=request.session[sessionid]['skills'].get('organization_skills','')
-        personalSkills['technical_skills'] = request.session[sessionid]['skills'].get('technical_skills','')
-        personalSkills['informatic_skills'] = request.session[sessionid]['skills'].get('informatic_skills','')
-        personalSkills['artistic_skills'] = request.session[sessionid]['skills'].get('artistic_skills','')
-        personalSkills['other_skills'] = request.session[sessionid]['skills'].get('other_skills','')
-        personalSkills['driving_licence'] = request.session[sessionid]['skills'].get('driving_licence','')
-        personalSkills['aditionalinfo'] = request.session[sessionid]['skills'].get('aditionalinfo','')
+        personalSkills['social_skills']=request.session['skills'].get('social_skills','')
+        personalSkills['organization_skills']=request.session['skills'].get('organization_skills','')
+        personalSkills['technical_skills'] = request.session['skills'].get('technical_skills','')
+        personalSkills['informatic_skills'] = request.session['skills'].get('informatic_skills','')
+        personalSkills['artistic_skills'] = request.session['skills'].get('artistic_skills','')
+        personalSkills['other_skills'] = request.session['skills'].get('other_skills','')
+        personalSkills['driving_licence'] = request.session['skills'].get('driving_licence','')
+        personalSkills['aditionalinfo'] = request.session['skills'].get('aditionalinfo','')
 
         return personalSkills
 
@@ -109,7 +108,7 @@ def getEducationSlotList(request):
 
     try:    
         request.session['init']
-        sessionAux = request.session[sessionid]
+        sessionAux = request.session
         c = 1
         id = 2 + len(sessionAux['experience'])
         educationSlotList = []
@@ -140,7 +139,7 @@ def getExperienceSlotList(request):
 
     try:
         request.session['init']
-        sessionAux = request.session[sessionid]
+        sessionAux = request.session
         c = 1
         id = 2
         experienceSlotList = []
@@ -168,7 +167,6 @@ def getExperienceSlotList(request):
 # getUserLanguage returns the language ID stored on user's session
 def getUserLanguage(request):
 
-
     try:
         return request.session['user_language']
 
@@ -176,13 +174,20 @@ def getUserLanguage(request):
         return 'en-us,en;'
 
 
-def _generate_filename(length=10, chars=string.letters + string.digits):
-        return '%s.htm' % (''.join([choice(chars) for i in range(length)]),)
+def _generate_filename(request,length=10, chars=string.letters + string.digits):
+    file_name = '%s.htm' % (''.join([choice(chars) for i in range(length)]),)
+    try:
+        request.session['file_name'] = file_name
+    except KeyError:
+        request.session['file_name'] = {}
+        request.session['file_name'] = file_name        
+
+    return file_name
+
 
 
 # jobgearsHome View renders the main homepage home.html
 def generateHtml(request):
-
 
     try:
         request.session['init']
@@ -193,16 +198,18 @@ def generateHtml(request):
         educationSlotList = getEducationSlotList(request)
         languageSlotList = getLanguageSlotList(request)
        
-
         url = settings.ROOT_URL
  
         # Load template and render content
         template = get_template('permlink/render.html')
         output = template.render(Context(locals()))
         
-        file_name = _generate_filename()
-        file_path = '%s/%s' % (settings.STATIC_DOC_ROOT,file_name,)
-        
+        try:
+            file_name = request.session['file_name']
+        except KeyError:
+            file_name = _generate_filename(request)
+
+        file_path = '%s/%s' % (settings.STATIC_DOC_ROOT,file_name,) 
         file = open(file_path, 'w')
         file.write(output.encode('utf-8'))
         file.close()
@@ -213,10 +220,9 @@ def generateHtml(request):
         response['href'] =  '%s' % (settings.ROOT_URL, )
         response['jobgearscv'] = '%s/p/%s' % (settings.ROOT_URL, file_name,)
         response['type'] = "image"
-
-
+        
         return HttpResponse(simplejson.dumps(response))
-    #else:
+
     except KeyError:
         return None
     

@@ -4,7 +4,9 @@ from django.conf import settings
 
 
 # app imports
-from jobgears.fbconnect import fb
+from jobgears.apis.facebook import fb
+from jobgears.apis.twitter import twitter_connect
+
 from jobgears.cvtype import pdf,html
 from jobgears.form import render,action
 from jobgears.views import *
@@ -17,11 +19,19 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    # set users language
+    (r'^setuserlanguage/$',setUserLanguage),
+
+    # root URL 
+    (r'^$',jobgearsHome),
+
+
     # URL config for administration portal
     (r'^admin/(.*)',admin.site.root),
 
-
+    ####################################################################
     # form API for form actions		
+    ####################################################################
     #Generate new Forms#
     (r'^geteducationform/$',render.educationForm),
     (r'^getexperienceform/$',render.experienceForm),
@@ -45,26 +55,38 @@ urlpatterns = patterns('',
     (r'^moveexperienceform/$',action.moveExperienceForm),
     (r'^movelanguageform/$',action.moveLanguageForm),
 
-    # set users language
-    (r'^setuserlanguage/$',setUserLanguage),
 
-    # root URL 
-    (r'^$',jobgearsHome),
+
+
 	
-    # printing types
+    ###################################################################
+    #   printing types
+    ###################################################################
+    #   generate pdf File
     (r'^getmypdfcurriculum/$',pdf.getpdf),
-
-    # generate HTML File
+    #   generate HTML File
     (r'^generatepermlink/$',html.generateHtml),
 
 
-    # facebook related Views
+    ###################################################################
+    #   facebook related Views
+    ###################################################################
     # nedded link for faceBook connect
-    (r'^/xd_receiver.htm$',fb.fbConnect),
-    # permalink view for public Link generation
-    (r'^user/(?P<user>\d+)/$',fb.fbGetPermanentLink),    
+    (r'^xd_receiver.htm$',fb.fbConnect),
     # facebook UID storage
     (r'^setfbuid/$',fb.fbSetUID),
+
+
+
+    ###################################################################
+    #   API related Views
+    ###################################################################
+    (r'^twitterauth/$',twitter_connect.auth),
+
+
+
+
+
 
 
 

@@ -126,10 +126,12 @@ INSTALLED_APPS = (
 )
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://andrefsp.servehttp.com/'
+ROOT_URL = 'http://andrefsp.servehttp.com'
 
 # MEMCACHE 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
+
 
 ##############################################################
 #       Session Settings
@@ -139,6 +141,8 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # SESSION_COOKIE_NAME
 SESSION_COOKIE_NAME = "jobgearsid"
+
+
 
 ##############################################################
 #       Settings for staticgenerator Module
