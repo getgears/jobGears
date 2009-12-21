@@ -16,8 +16,8 @@ MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'      # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'jobgears'     # Or path to database file if using sqlite3.
-DATABASE_USER = 'root'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'andrefsp'         # Not used with sqlite3.
+DATABASE_USER = 'jobgears'             # Not used with sqlite3.
+DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -38,7 +38,7 @@ LANGUAGE_COOKIE_NAME = 'locale'
 # gettext settings for translation
 ugettext = lambda s: s
 LOCALE_PATHS = (
-    '/home/andrefsp/jobgears/locale',
+    '/home/ricardo/jobgears/locale',
 )
 
 LANGUAGES = (
@@ -55,7 +55,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # static files root directory
-STATIC_DOC_ROOT = '/home/andrefsp/jobgears/static/'
+STATIC_DOC_ROOT = '/home/ricardo/jobgears/static/'
 
 
 # Absolute path to the directory that holds media.
@@ -103,28 +103,21 @@ ROOT_URLCONF = 'jobgears.urls'
 
 
 TEMPLATE_DIRS = (
-    '/home/andrefsp/jobgears/template',
+    '/home/ricardo/jobgears/template',
     # Don't forget to use absolute paths, not relative paths.
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    
-    # JOBGEARS APPs 
     # app for jobgears models
     'jobgears.jobgearsdata',
     # app for jobgears forms control
     'jobgears.form',
     # app for jobgears curriculum printing
-    'jobgears.cvtype'
+    'jobgears.publisher'
 )
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://andrefsp.servehttp.com'
+ROOT_URL = 'http://ricardo.servehttp.com'
 
 # MEMCACHE 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
@@ -138,6 +131,6 @@ CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # SESSION_COOKIE_NAME
-SESSION_COOKIE_NAME = "jobgearsid"
+SESSION_COOKIE_NAME = "sid"
 
 
