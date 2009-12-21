@@ -23,8 +23,6 @@ from django.utils.translation import ugettext as _
 # import for JSON Objects
 import simplejson
 
-# import for Django Cache API
-from django.core.cache import cache
 
 
 #################################################################################
@@ -53,17 +51,13 @@ def educationForm(request):
 
         response = {}
         if request.GET['sendform']=='1':                                 
-            if cache.get('educationform'):
-                return cache.get('educationform')
-            else:
-                temp = get_template('formtemplates/educationtemplate.html')
-                context = template.Context()
-                html = temp.render(context)
-                response['Html'] = html
-                response['Slot'] = slot
-                response['Content'] = _("registo adicionado")
-                response['Report'] = 1
-                cache.set('educationform',response,60)
+            temp = get_template('formtemplates/educationtemplate.html')
+            context = template.Context()
+            html = temp.render(context)
+            response['Html'] = html
+            response['Slot'] = slot
+            response['Content'] = _("registo adicionado")
+            response['Report'] = 1
         
         elif request.GET['sendform']=='0':
             response['Slot'] = slot                                 

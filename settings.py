@@ -96,8 +96,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # Middleware Class for StaticGenerator
-    #'staticgenerator.middleware.StaticGeneratorMiddleware',
 )
 
 
@@ -143,17 +141,3 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_COOKIE_NAME = "jobgearsid"
 
 
-
-##############################################################
-#       Settings for staticgenerator Module
-#############################################################
-# WEB ROOT 
-#WEB_ROOT = '/home/andrefsp/jobgears'
-
-#Static generator URL
-"""STATIC_GENERATOR_URLS = (
-    (r'^$'),
-    (r'^geteducationform/$'),
-    (r'^getexperienceform/$'),
-    (r'^getlanguageform/$'), 
-)"""
