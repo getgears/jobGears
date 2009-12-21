@@ -65,7 +65,7 @@ urlpatterns = patterns('',
     #   generate pdf File
     (r'^getmypdfcurriculum/$',pdf.getpdf),
     #   generate HTML File
-    (r'^generatepermlink/$',html.generateHtml),
+    #(r'^generatepermlink/$',html.generateHtml),
 
 
     ###################################################################
@@ -75,14 +75,18 @@ urlpatterns = patterns('',
     (r'^xd_receiver.htm$',fb.fbConnect),
     # facebook UID storage
     (r'^setfbuid/$',fb.fbSetUID),
-
+    (r'^publishfb/$',fb.fb_publish_cv),
 
 
     ###################################################################
     #   API related Views
     ###################################################################
-    (r'^twitterauth/$',twitter_connect.auth),
-
+    # first request on an update
+    (r'^twitterauth/$',twitter_connect.update_status),
+    # twitter update request
+    (r'^twittersendstatus/$',twitter_connect.send_status_to_twitter),
+    # Twitter callback URL
+    (r'^twitterconnected/$',twitter_connect.connected),
 
 
 

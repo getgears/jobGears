@@ -51,7 +51,8 @@ function fbLoggedIn()
 function fbStreamPublish()
 {
     var ajax  = getAjax()
-    var url = "./generatepermlink/"
+    //var url = "./generatepermlink/"
+    var url = "./publishfb/"
 
     ajax.onreadystatechange = function ()
     {

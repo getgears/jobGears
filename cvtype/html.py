@@ -188,7 +188,6 @@ def _generate_filename(request,length=10, chars=string.letters + string.digits):
 
 # jobgearsHome View renders the main homepage home.html
 def generateHtml(request):
-
     try:
         request.session['init']
         userLanguage = getUserLanguage(request)
@@ -197,9 +196,7 @@ def generateHtml(request):
         experienceSlotList = getExperienceSlotList(request)
         educationSlotList = getEducationSlotList(request)
         languageSlotList = getLanguageSlotList(request)
-       
-        url = settings.ROOT_URL
- 
+        
         # Load template and render content
         template = get_template('permlink/render.html')
         output = template.render(Context(locals()))
@@ -213,15 +210,8 @@ def generateHtml(request):
         file = open(file_path, 'w')
         file.write(output.encode('utf-8'))
         file.close()
-
-        response = {}
-        response['message'] = _("actualizou o seu curriculo em")
-        response['src'] = '%s/images/gears3.png' % (settings.ROOT_URL)
-        response['href'] =  '%s' % (settings.ROOT_URL, )
-        response['jobgearscv'] = '%s/p/%s' % (settings.ROOT_URL, file_name,)
-        response['type'] = "image"
         
-        return HttpResponse(simplejson.dumps(response))
+        return file_name
 
     except KeyError:
         return None
