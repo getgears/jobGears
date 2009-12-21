@@ -161,19 +161,23 @@ def update_status(request):
         return HttpResponse(simplejson.dumps(response))
 
 
+#access_token = request.session['access_token']
+#token = oauth.OAuthToken.from_string(access_token)
+
 
 def send_status_to_twitter(request):
     try:
-        access_token = request.session['access_token']
-        token = oauth.OAuthToken.from_string(access_token)   
-        if is_authenticated(token):
+        access_token = oauth.OAuthToken.from_string(request.session['access_token'])   
+        if is_authenticated(access_token):
             twitter_status = {}
             twitter_status['status'] = urllib.quote(request.GET['status'])
-            oauth_request = oauth.OAuthRequest.from_consumer_and_token(consumer,token=access_token,http_method='POST',http_url=TWITTER_STATUS_UPDATE,parameters=twitter_status,)
-            return HttpResponse('ok')
+            oauth_request = oauth.OAuthRequest.from_consumer_and_token(consumer,token=access_token,http_method='POST',http_url=TWITTER_STATUS_UPDATE,parameters={'status':'andre'},)
+            oauth_request.sign_request(signature_method, consumer, None)
+
+            return HttpResponse(1)
+        
         else:
             return HttpResponse('fail')
-
 
     except KeyError:
         return HttpResponse('fail')
