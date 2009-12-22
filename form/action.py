@@ -31,8 +31,7 @@ import simplejson
 def deleteEducationForm(request):
 
     try:
-        request.session['init']
-        slot = request.GET['slot']
+        slot = request.POST['slot']
         sessionAux = request.session['education']
 
         c = int(slot)
@@ -63,8 +62,7 @@ def deleteEducationForm(request):
 def deleteLanguageForm(request):
 
     try:
-        request.session['init']
-        slot = request.GET['slot']
+        slot = request.POST['slot']
         sessionAux = request.session['language']
 
         c = int(slot)
@@ -96,8 +94,7 @@ def deleteLanguageForm(request):
 def deleteExperienceForm(request):
 
     try:
-        request.session['init']
-        slot = request.GET['slot']
+        slot = request.POST['slot']
         sessionAux = request.session['experience']
 
         c = int(slot)

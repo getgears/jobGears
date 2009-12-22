@@ -2,7 +2,6 @@
 # Organization: getGears
 #                   jobgears project -- http://jobgears.net
 # Date: November 2009
-#
 # Develper:  André da Palma, IT Engineer
 
 
@@ -34,6 +33,12 @@ import simplejson
 def educationForm(request):
 
     try:
+        if request.POST['sendform']!='1' and request.POST['sendform']!='0':
+            response = {}
+            response['Content'] = _("não autorizado")
+            response['Report'] = 0                              
+            return HttpResponse(response) 
+
         sessionAux = request.session['education']	
         slot = str(len(sessionAux) + 1)
  
@@ -52,7 +57,7 @@ def educationForm(request):
         request.session['updated'] = True
 
         response = {}
-        if request.GET['sendform']=='1':                                 
+        if request.POST['sendform']=='1':                                 
             temp = get_template('formtemplates/educationtemplate.html')
             context = template.Context()
             html = temp.render(context)
@@ -61,15 +66,10 @@ def educationForm(request):
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
         
-        elif request.GET['sendform']=='0':
+        elif request.POST['sendform']=='0':
             response['Slot'] = slot                                 
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
-        
-        else:
-            response = {}
-            response['Content'] = _("não autorizado")
-            response['Report'] = 0                               
 
         return HttpResponse(simplejson.dumps(response))
 
@@ -85,6 +85,13 @@ def educationForm(request):
 def experienceForm(request):
 
     try:
+        if request.POST['sendform'] != '1' and request.POST['sendform']!='0':
+            response = {}
+            response['Content'] = _("não autorizado")
+            response['Report'] = 0                              
+            return HttpResponse(response) 
+
+
         sessionAux = request.session['experience']
         slot = str(len(sessionAux) + 1)
 
@@ -102,7 +109,7 @@ def experienceForm(request):
         request.session['updated'] = True
 
         response = {}
-        if request.GET['sendform']=='1':                                 
+        if request.POST['sendform']=='1':                                 
             temp = get_template('formtemplates/experiencetemplate.html')
             context = template.Context()
             html = temp.render(context)
@@ -111,16 +118,11 @@ def experienceForm(request):
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
         
-        elif request.GET['sendform']=='0':
+        elif request.POST['sendform']=='0':
             response['Slot'] = slot                                 
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
         
-        else:
-            response = {}
-            response['Html'] = ''
-            response['Content'] = _("não autorizado")
-            response['Report'] = 0
         
         return HttpResponse(simplejson.dumps(response))
 
@@ -136,7 +138,12 @@ def experienceForm(request):
 def languageForm(request):
 
     try:
-        request.session['init']
+        if request.POST['sendform']!='1' and request.POST['sendform']!='0':
+            response = {}
+            response['Content'] = _("não autorizado")
+            response['Report'] = 0                              
+            return HttpResponse(response) 
+
         sessionAux = request.session['language']
         slot = str(len(sessionAux) + 1)
 
@@ -154,7 +161,7 @@ def languageForm(request):
         request.session['updated'] = True
  
         response = {}                 
-        if request.GET['sendform']=='1':                                 
+        if request.POST['sendform']=='1':                                 
             temp = get_template('formtemplates/languagetemplate.html')
             context = template.Context()
             html = temp.render(context)
@@ -163,16 +170,10 @@ def languageForm(request):
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
         
-        elif request.GET['sendform']=='0':
+        elif request.POST['sendform']=='0':
             response['Slot'] = slot                                 
             response['Content'] = _("registo adicionado")
             response['Report'] = 1
-        
-        else:
-            response = {}
-            response['Html'] = ''
-            response['Content'] = _("não autorizado")
-            response['Report'] = 0                               
 
         return HttpResponse(simplejson.dumps(response)) 
 
