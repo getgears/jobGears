@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>:: jobgears  ::</title>
+	<script src="https://rpxnow.com/openid/v2/widget" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		  RPXNOW.overlay = true;
+		  RPXNOW.language_preference = 'en';
+	</script>
+
+
+</head>
+<body>
+
+	{%if status%}
+        <p>OK! Now you ready!!!
+
+            <br><br>You have been authenticated via <strong>{{openid.providerName}}</strong> with the name <strong>{{openid.name}}</strong>{%if openid.verifiedEmail%} and the email <strong>{{openid.verifiedEmail}}</strong>{%endif%}.
+            <br>Now everything is set to and you can <a href="../">create your resume</a>. 
+        </p>
+	{%endif%}
+
+	{%if not status%}
+	    <p>It seems that you had a problem during your login, perhaps you want to <a class="rpxnow" onclick="return false;" href="https://jobgears.rpxnow.com/openid/v2/signin?token_url=http://dev.getgears.com:8000/signin/">try again</a>.</p>
+	{%endif%}
+
+
+</body>
+</html>

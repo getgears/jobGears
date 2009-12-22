@@ -1,0 +1,48 @@
+{%load i18n%}
+{%for experienceSlot in experienceSlotList reversed %}
+<span>
+<FORM id="{{experienceSlot.id}}" slot="{{experienceSlot.slot}}">
+<table >
+	<TR >
+		<Td class="sec_titles"></Td>
+		<Td>
+		<SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:edit({{experienceSlot.id}},"experience")>{%trans "editar"%}</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:erase({{experienceSlot.id}},"experience")>{%trans "apagar"%}</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href=javascript:move({{experienceSlot.id}},"experience","up")><img src="images/arrow_up.gif" title='{%trans "mover para cima"%}'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href=javascript:move({{experienceSlot.id}},"experience","down")><img src="images/arrow_down.gif" title='{%trans "mover para baixo"%}'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden;" ><A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:save({{experienceSlot.id}},"experience")>{%trans "guardar"%}</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style=visibility:hidden;><A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:cancel({{experienceSlot.id}},"experience")>{%trans "cancelar"%}</A></SPAN>
+		</Td>
+	</TR>
+	<TR>
+		<TD class="sec_titles">{%trans "Data de Início"%}</TD>
+		<TD class="field" > 
+			<input style="visibility:hidden; display:none " size=10 maxlength=10 name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="{{experienceSlot.init_date}}" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById({{experienceSlot.id}}).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById({{experienceSlot.id}}).init_date) title='{%trans "Apagar Data"%}' > <div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.init_date}}</div>            
+		</TD>
+	</TR>
+	<TR>
+		<TD class="sec_titles">{%trans "Data de Conclusão"%}</TD>
+		<TD class="field" > 
+			<input style="visibility:hidden; display:none " size=10 maxlength=10 name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="{{experienceSlot.final_date}}" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById({{experienceSlot.id}}).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById({{experienceSlot.id}}).final_date) title='{%trans "Apagar Data"%}' > <div class="view_field" style="visibility:visible; display:inline">{{experienceSlot.final_date}}</div>  
+		</TD>
+	</TR>
+	<TR >
+		<Td class="sec_titles">{%trans "Nome e Endereço da Entidade Empregadora"%}</Td>
+		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="company" maxlength="4000">{{experienceSlot.company}}</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.company_div|safe}}</div>
+		</Td>
+	</TR> 
+	<TR >
+		<Td class="sec_titles">{%trans "Tipo de Empresas ou Sector"%}</Td>
+	<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" style="visibility:hidden; display:none " name="business_area" >{{experienceSlot.business_area}}</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.business_area_div|safe}}</div>
+	</Td>
+	</TR>
+	<TR >
+		<Td class="sec_titles">{%trans "Função / Cargo Ocupado"%}</Td>
+		<Td class="field" >
+		<INPUT style="visibility:hidden; display:none" size=60 maxlength=256 value="{{experienceSlot.position}}" name="position" type="text"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.position}}</div>
+	</Td>
+	</TR> 
+	<TR >
+	<Td class="sec_titles" valign="top" >{%trans "Principais Actividades ou Responsabilidades"%}</Td>
+	<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="description" maxlength="4000" >{{experienceSlot.description}}</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.description_div|safe}}</div>
+	</Td
+	></TR> 
+</table>
+</FORM>
+</span>
+{%endfor%}

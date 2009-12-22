@@ -1,0 +1,21 @@
+This folder contains all templates and static files for jobGeras.
+
+***     ./facebook/ folder contains xd_receiver.htm, a file to allow cross domain communication between jobGears and Facebook
+
+***     ./formtemplates/ folder contains education, experience and language forms for post rendring.
+            - files with Init in the name are those who are rendered in the begining.
+            - files with template are rendered after client AJAX request. 
+
+***     ./images/ folder contains all the images needed for the Application
+
+***     ./css/ contains .css files
+
+***     ./js/ contains .js files.
+            - homeutils.js implements all the effects and function utilities in the application. 
+            - home.js is the main javascript file. save(), erase(), cancel(), edit() functions are in this file.
+            - homefb.js is the facebook API support file.
+            - homeform.js contains the newForm AJAX requests. Is this file that makes possible to add new forms to the CV.
+            - hometwitter.js is the twitter API support file. 
+
+
+
