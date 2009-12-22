@@ -11,8 +11,10 @@ from django.shortcuts import render_to_response
 from django.utils.translation import ugettext as _
 
 # simplejson import for error messages
-import simplejson, string
-from random import choice
+import simplejson
+
+
+
 
 #getPersonalInfo method returns a personalInfo dictionary
 def getPersonalInfo(request):
@@ -173,44 +175,37 @@ def getUserLanguage(request):
     except KeyError:
         return 'en-us,en;'
 
-
-def _generate_filename(request,length=10, chars=string.letters + string.digits):
-    file_name = '%s.htm' % (''.join([choice(chars) for i in range(length)]),)
-    try:
-        request.session['file_name'] = file_name
-    except KeyError:
-        request.session['file_name'] = {}
-        request.session['file_name'] = file_name        
-
-    return file_name
-
-
-
-# jobgearsHome View renders the main homepage home.html
 def generateHtml(request):
-    try:
-        request.session['init']
-        userLanguage = getUserLanguage(request)
-        personalInfo = getPersonalInfo(request)
-        personalSkills = getPersonalSkills(request)
-        experienceSlotList = getExperienceSlotList(request)
-        educationSlotList = getEducationSlotList(request)
-        languageSlotList = getLanguageSlotList(request)
-        
-        # Load template and render content
-        template = get_template('permlink/render.html')
-        output = template.render(Context(locals()))
-        
-        request.session['last_file_name'] = file_name = _generate_filename(request)
-        request.session['updated'] = False
+    # Deprecated
+    pass
 
-        file_path = '%s/%s' % (settings.STATIC_DOC_ROOT,file_name,) 
-        file = open(file_path, 'w')
-        file.write(output.encode('utf-8'))
-        file.close()
-        
-        return file_name
+# Cleaned code
 
-    except KeyError:
-        return None
-    
+from jobgears.helpers import get_random_string
+
+
+class ProfileHtml(object):
+    """
+    Class that generates a profile in the HTML format
+    """
+    TEMPLATE_PATH = 'permlink/render.html'
+
+    def __init__(self, profile):
+        self.profile = profile
+
+    def render(self):
+        template = get_tempate(TEMPLATE_PATH)
+        return template.render(Context(self.profile))
+
+    def save(self, filename=None):
+        try:
+            filename = filename if filename else get_random_string(template='%s.htm')
+            file_path = '%s/snapshots/%s' % (settings.STATIC_DOC_ROOT, filename,) 
+            file = open(file_path, 'w')
+            file.write(self.render().encode('utf-8'))
+            file.close()
+            return file_path
+        except:
+            return False
+
+
