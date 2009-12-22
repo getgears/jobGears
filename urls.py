@@ -7,14 +7,9 @@ from django.conf import settings
 from jobgears.apis.facebook import fb
 from jobgears.apis.twitter import twitter_connect
 
-from jobgears.cvtype import pdf,html
+from jobgears.publisher import pdf,html
 from jobgears.form import render,action
 from jobgears.views import *
-
-
-# imports for admin site
-from django.contrib import admin
-admin.autodiscover()
 
 
 urlpatterns = patterns('',
@@ -25,9 +20,6 @@ urlpatterns = patterns('',
     # root URL 
     (r'^$',jobgearsHome),
 
-
-    # URL config for administration portal
-    (r'^admin/(.*)',admin.site.root),
 
     ####################################################################
     # form API for form actions		
@@ -86,27 +78,7 @@ urlpatterns = patterns('',
     # twitter update request
     (r'^twittersendstatus/$',twitter_connect.send_status_to_twitter),
     # Twitter callback URL
-    (r'^twitterconnected/$',twitter_connect.connected),
-
-
-
-
-
-
 
     # static files serving line
     (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/andrefsp/jobgears/template'}),
-
-
-
-
-    # Example:
-    # (r'^jobgears/', include('jobgears.foo.urls')),
-
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/(.*)', admin.site.root),
 )

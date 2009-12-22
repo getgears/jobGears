@@ -13,7 +13,7 @@ from django.utils.translation import ugettext as _
 import simplejson
 
 # import for generation of static file URL
-from jobgears.cvtype.html import generateHtml
+from jobgears.publisher.html import generateHtml
 
 
 
