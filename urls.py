@@ -4,8 +4,8 @@ from django.conf import settings
 
 
 # app imports
-from jobgears.apis.facebook import fb
-from jobgears.apis.twitter import twitter_connect
+from jobgears.interfaces.facebook import fb
+from jobgears.interfaces.twitter import twitter_connect
 
 from jobgears.publisher import pdf,html
 from jobgears.form import render,action

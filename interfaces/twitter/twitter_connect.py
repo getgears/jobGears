@@ -20,7 +20,7 @@ from jobgears.publisher.html import generateHtml
 from django.utils.translation import gettext as _
 
 
-from jobgears.apis.twitter.twitter_settings import *
+from jobgears.interfaces.twitter.twitter_settings import *
 
 
 ##############################################################################################
