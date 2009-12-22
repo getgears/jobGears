@@ -1,4 +1,4 @@
-from jobgears.jobgearsdata.models import *
+from jobgears.profile.models import *
 
 
 def set_user(request)

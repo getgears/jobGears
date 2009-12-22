@@ -17,7 +17,7 @@ import datetime
 import urllib
 
 # import for static CV generation
-from jobgears.cvtype.html import generateHtml
+from jobgears.publisher.html import generateHtml
 
 
 # import for Django gettext translation API

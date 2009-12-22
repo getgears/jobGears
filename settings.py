@@ -109,7 +109,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     # app for jobgears models
-    'jobgears.jobgearsdata',
+    'jobgears.profile',
     # app for jobgears forms control
     'jobgears.form',
     # app for jobgears curriculum printing

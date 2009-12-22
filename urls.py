@@ -7,7 +7,7 @@ from django.conf import settings
 from jobgears.apis.facebook import fb
 from jobgears.apis.twitter import twitter_connect
 
-from jobgears.cvtype import pdf,html
+from jobgears.publisher import pdf,html
 from jobgears.form import render,action
 from jobgears.views import *
 
