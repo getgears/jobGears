@@ -114,34 +114,33 @@ function new_form(tipo_form)
 
 	if (tipo_form=="education")
     {
-		url="geteducationform/"
+		url = document.location + "geteducationform/"
         if (globalEducationForm==false)
-            url = url + "?sendform=1"
+            postString = "?&sendform=1"
         else
-            url = url + "?sendform=0"
+            postString = "?&sendform=0"
     }
 	if (tipo_form=="languages")
     {
-		url="getlanguageform/"
+		url = document.location + "getlanguageform/"
         if (globalLanguageForm==false)
-            url = url + "?sendform=1"
+            postString = "?&sendform=1"
         else
-            url = url + "?sendform=0"
+            postString = "?&sendform=0"
     }
 	if (tipo_form=="experience")
     {
-		url="getexperienceform/"
+		url = document.location + "getexperienceform/"
         if (globalExperienceForm==false)
-            url = url + "?sendform=1"
+            postString = "?&sendform=1"
         else
-            url = url + "?sendform=0"
+            postString = "?&sendform=0"
     }
 
-
-    
-
-
-    ajax.open("GET", encodeURI(url), true);
-    ajax.send(null);
-
+    ajax.open("POST", encodeURI(url), true);
+    //ajax.setRequestHeader("Connection", "close");
+    //ajax.setRequestHeader("Content-length", postString.length);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Referer", document.location);
+    ajax.send(encodeURI(postString));
 }

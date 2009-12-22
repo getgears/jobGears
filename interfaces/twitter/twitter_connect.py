@@ -110,15 +110,14 @@ def update_status(request):
         access_token = request.session['access_token']
         token = oauth.OAuthToken.from_string(access_token)
         json = is_authenticated(token)
-        #return HttpResponse(json)
         if json:
             creds = simplejson.loads(json)
             twitter_screen_name = creds.get('screen_name',creds['name'])
 
-            if request.session.get('updated',False):
+            if request.session.get('updated',True):
                 file_name = generateHtml(request)
             else:
-                file_name = request.session['last_file_name'] 
+                file_name = request.session['last_file_name']
 
 
             response = {}

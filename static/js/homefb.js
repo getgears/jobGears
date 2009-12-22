@@ -23,6 +23,7 @@ function fbInit()
         {   
             window.setTimeout(fbInit,500) 
         }
+
 }
             
 

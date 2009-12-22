@@ -91,8 +91,8 @@ def getLanguageSlotList(request):
             languageSlot['spoken_production'] = sessionAux['language'][str(c)]['spoken_production']
             languageSlot['writing'] = sessionAux['language'][str(c)]['writing']
             languageSlotList.append(languageSlot)
-            id = id + 1
-            c = c + 1
+            id += 1
+            c += 1
 
         return languageSlotList
 
@@ -124,8 +124,8 @@ def getEducationSlotList(request):
             educationSlot['main_subjects'] =sessionAux['education'][str(c)]['main_subjects']
             educationSlot['average'] =sessionAux['education'][str(c)]['average']
             educationSlotList.append(educationSlot)
-            id = id + 1
-            c = c + 1
+            id += 1
+            c += 1
 
         return educationSlotList
 
@@ -154,8 +154,8 @@ def getExperienceSlotList(request):
             experienceSlot['position'] = sessionAux['experience'][str(c)]['position']
             experienceSlot['description'] = sessionAux['experience'][str(c)]['description']
             experienceSlotList.append(experienceSlot)
-            id = id + 1
-            c = c + 1
+            id += 1
+            c += 1
 
         return experienceSlotList
 

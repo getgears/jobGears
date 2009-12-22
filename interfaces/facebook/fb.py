@@ -57,7 +57,7 @@ def fb_publish_cv(request):
     try:
         request.session['init']
 
-        if request.session.get('updated',False):
+        if request.session.get('updated',True):
             file_name = generateHtml(request)
         else:
             file_name = request.session['last_file_name']

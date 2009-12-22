@@ -115,16 +115,16 @@ function erase(id_form,tipo_form,ask)
 
 	var ajax = getAjax();
 	var form = document.getElementById(id_form)
-	var slot = form.getAttribute('slot')
+    var postString = "?&slot="+form.getAttribute('slot')
 
 	if (tipo_form=="education")
-		url = "deleteeducationform/?slot="+slot
+		url = document.location + "deleteeducationform/"
 
 	if (tipo_form=="experience")
-		url = "deleteexperienceform/?slot="+slot	
+		url = document.location + "deleteexperienceform/"
 		
 	if (tipo_form=="languages")             	
-		url = "deletelanguageform/?slot="+slot
+		url = document.location + "deletelanguageform/"
 
 
 	ajax.onreadystatechange = function ()
@@ -161,8 +161,10 @@ function erase(id_form,tipo_form,ask)
 	}
 
 
-	ajax.open("GET",encodeURI(url),true)
-	ajax.send(null)
+	ajax.open("POST",encodeURI(url),true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Referer", document.location);
+	ajax.send(encodeURI(postString));
 
 
 }
