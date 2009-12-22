@@ -114,4 +114,5 @@ SESSION_COOKIE_NAME = "sid"
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 CACHE_BACKEND = 'locmem://'
+CACHE_PREFIX = 'jobgears.'
 
