@@ -2,7 +2,6 @@
 # Organization: getGears
 #                   jobgears project -- http://jobgears.getgears.com 
 # Date: November 2009
-#
 # Developer:  André da Palma, IT Engineer
 
 
@@ -44,8 +43,9 @@ def deleteEducationForm(request):
         del sessionAux[str(len(sessionAux))]
 
         request.session['education']={}
-        request.session['education']=sessionAux
-	
+        request.session['education']=sessionAux	
+        request.session['updated'] = True
+
         response = {}
         response['Content'] = _("registo apagado")
         response['Report'] = 1
@@ -76,6 +76,7 @@ def deleteLanguageForm(request):
 
         request.session['language']={}
         request.session['language']=sessionAux
+        request.session['updated'] = True 
 
         response = {}
         response['Content'] = _("registo apagado")
@@ -108,6 +109,7 @@ def deleteExperienceForm(request):
 
         request.session['experience']={}
         request.session['experience']=sessionAux
+        request.session['updated'] = True 
 
         response = {}
         response['Content'] = _("registo apagado")
@@ -144,9 +146,10 @@ def saveEducationForm(request):
         sessionAux[slot]['studies_area'] = request.GET.get('studies_area','')
         sessionAux[slot]['main_subjects'] = request.GET.get('main_subjects','')
         sessionAux[slot]['average'] = request.GET.get('average','')
-        
+
         request.session['education']={}
         request.session['education']=sessionAux
+        request.session['updated'] = True        
             
         response = {}
         response['Content'] = _("registo guardado")
@@ -176,10 +179,11 @@ def saveLanguageForm(request):
         sessionAux[slot]['spoken_interaction']= request.GET.get('spoken_interaction','')
         sessionAux[slot]['spoken_production'] = request.GET.get('spoken_production','')
         sessionAux[slot]['writing'] = request.GET.get('writing','')
-	
+
         request.session['language']={}
         request.session['language']=sessionAux
-
+        request.session['updated'] = True
+ 
         response = {}
         response['Content'] = _("registo guardado")
         response['Report'] = 1
@@ -211,6 +215,7 @@ def saveExperienceForm(request):
 
         request.session['experience']={}
         request.session['experience']=sessionAux
+        request.session['updated'] = True
 
         response = {}
         response['Content'] = _("registo guardado")
@@ -240,10 +245,11 @@ def saveSkillsForm(request):
         sessionAux['skills']['artistic_skills']=request.GET.get('artistic_skills','')
         sessionAux['skills']['other_skills']=request.GET.get('other_skills','')
         sessionAux['skills']['driving_licence']=request.GET.get('driving_licence','')
-        sessionAux['skills']['aditionalinfo']=request.GET.get('aditionalinfo','')
+        sessionAux['skills']['aditionalinfo']=request.GET.get('aditionalinfo','')        
 
         request.session={}
         request.session=sessionAux
+        request.session['updated'] = True
 
         response = {}                                            
         response['Content'] = _("registo guardado")
@@ -280,9 +286,10 @@ def savePersonalForm(request):
         sessionAux['personal']['gender']=request.GET.get('gender','')
         sessionAux['personal']['home_language']=request.GET.get('home_language','')
         sessionAux['personal']['desired_employment']=request.GET.get('desired_employment','')
-    
+
         request.session={}
         request.session=sessionAux
+        request.session['updated'] = True
 
         response = {}
         response['Content'] = _("registo guardado")
@@ -319,6 +326,7 @@ def moveEducationForm(request):
 
             request.session['education'] = {}
             request.session['education'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")
@@ -333,6 +341,7 @@ def moveEducationForm(request):
 
             request.session['education'] = {}
             request.session['education'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")
@@ -369,6 +378,7 @@ def moveExperienceForm(request):
 
             request.session['experience'] = {}
             request.session['experience'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")
@@ -383,6 +393,7 @@ def moveExperienceForm(request):
 
             request.session['experience'] = {}
             request.session['experience'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")
@@ -418,6 +429,7 @@ def moveLanguageForm(request):
 
             request.session['language'] = {}
             request.session['language'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")
@@ -432,6 +444,7 @@ def moveLanguageForm(request):
 
             request.session['language'] = {}
             request.session['language'] = sessionAux           
+            request.session['updated'] = True
 
             response = {}                                                      
             response['Content'] = _("registo movido")

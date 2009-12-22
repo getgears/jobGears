@@ -18,15 +18,11 @@ from jobgears.publisher.html import generateHtml
 
 
 
-############################################################################
-#   ATTENTION. fb_language is an hardcoded method for translations::: 
-#               THIS IS A PROVISORY METHOD AND IT MUST BE REMOVED!!!!
-############################################################################
-
-
 # jobgears View for Facebook connect APP
 def fbConnect(request):
     return render_to_response("xd_receiver.htm")
+
+
 
 
 # jobgears view for Facebook UID session Storage
@@ -55,11 +51,17 @@ def fbSetUID(request):
 
 
 
+
 # jobGears view for Facebook Publish
 def fb_publish_cv(request):
     try:
         request.session['init']
-        file_name = generateHtml(request)
+
+        if request.session.get('updated',False):
+            file_name = generateHtml(request)
+        else:
+            file_name = request.session['last_file_name']
+
         response = {}
         response['message'] = _("actualizou o seu curriculo em")
         response['src'] = '%s/images/gears3.png' % (settings.ROOT_URL)
@@ -70,5 +72,4 @@ def fb_publish_cv(request):
 
     except KeyError:
         return None
-
 

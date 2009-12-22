@@ -49,6 +49,8 @@ def educationForm(request):
         request.session['education']={}
         request.session['education']=sessionAux   
 
+        request.session['updated'] = True
+
         response = {}
         if request.GET['sendform']=='1':                                 
             temp = get_template('formtemplates/educationtemplate.html')
@@ -96,6 +98,8 @@ def experienceForm(request):
 
         request.session['experience']={}
         request.session['experience']=sessionAux
+
+        request.session['updated'] = True
 
         response = {}
         if request.GET['sendform']=='1':                                 
@@ -146,7 +150,9 @@ def languageForm(request):
         
         request.session['language']={}
         request.session['language']=sessionAux
-      
+     
+        request.session['updated'] = True
+ 
         response = {}                 
         if request.GET['sendform']=='1':                                 
             temp = get_template('formtemplates/languagetemplate.html')

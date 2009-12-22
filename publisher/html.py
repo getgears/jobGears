@@ -201,10 +201,8 @@ def generateHtml(request):
         template = get_template('permlink/render.html')
         output = template.render(Context(locals()))
         
-        try:
-            file_name = request.session['file_name']
-        except KeyError:
-            file_name = _generate_filename(request)
+        request.session['last_file_name'] = file_name = _generate_filename(request)
+        request.session['updated'] = False
 
         file_path = '%s/%s' % (settings.STATIC_DOC_ROOT,file_name,) 
         file = open(file_path, 'w')
@@ -216,4 +214,3 @@ def generateHtml(request):
     except KeyError:
         return None
     
-

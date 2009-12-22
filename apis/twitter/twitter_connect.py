@@ -110,10 +110,17 @@ def update_status(request):
         access_token = request.session['access_token']
         token = oauth.OAuthToken.from_string(access_token)
         json = is_authenticated(token)
+        #return HttpResponse(json)
         if json:
             creds = simplejson.loads(json)
             twitter_screen_name = creds.get('screen_name',creds['name'])
-            file_name = generateHtml(request)
+
+            if request.session.get('updated',False):
+                file_name = generateHtml(request)
+            else:
+                file_name = request.session['last_file_name'] 
+
+
             response = {}
             response['auth'] = 1
             response['message'] = _("actualizou o seu curriculo em")
@@ -125,12 +132,14 @@ def update_status(request):
         else:
             response = {}
             response['auth'] = 0
+            response['report'] = 'not authorized'
             response['url'] = get_authorize(request)
             return HttpResponse(simplejson.dumps(response))
 
     except KeyError:
         response = {}                                         
         response['auth'] = 0
+        response['report'] =  'error'        
         response['url'] = get_authorize(request)
         return HttpResponse(simplejson.dumps(response))
 

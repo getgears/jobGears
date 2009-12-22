@@ -78,7 +78,9 @@ urlpatterns = patterns('',
     # twitter update request
     (r'^twittersendstatus/$',twitter_connect.send_status_to_twitter),
     # Twitter callback URL
+    (r'^twitterconnected/$',twitter_connect.connected),
+
 
     # static files serving line
-    (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/andrefsp/jobgears/template'}),
+    (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/andrefsp/jobgears/static'}),
 )
