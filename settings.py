@@ -18,12 +18,15 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+# ROOT folder where the application is residing, include trailing /
+APP_ROOT = '/home/ricardo/jobgears/'
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Europe/London'
+TIME_ZONE = 'UTC'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -35,8 +38,7 @@ LANGUAGE_COOKIE_NAME = 'locale'
 # gettext settings for translation
 ugettext = lambda s: s
 LOCALE_PATHS = (
-    #'/home/ricardo/jobgears/locale',
-    '/home/andrefsp/jobgears/locale',
+    '%slocale' % (APP_ROOT,),
 )
 
 LANGUAGES = (
@@ -52,19 +54,17 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# static files root directory
-#STATIC_DOC_ROOT = '/home/ricardo/jobgears/static/snapshots'
-STATIC_DOC_ROOT = '/home/andrefsp/jobgears/static/snapshots'
-
+# ROOT_URL CONFIG
+ROOT_URL = 'http://andrefsp.servehttp.com'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '%sstatic/' % (APP_ROOT,)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = ROOT_URL
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -78,13 +78,10 @@ SECRET_KEY = '75lv2y2w+c7b@99%!!w_q@5tqn7$^)^elbf*aeqg5i-#$n-9b%'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
-    'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
 )
@@ -94,16 +91,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
-
 
 ROOT_URLCONF = 'jobgears.urls'
 
-
 TEMPLATE_DIRS = (
-    #'/home/ricardo/jobgears/templates',
-    '/home/andrefsp/jobgears/templates',
+    '%stemplates' % (APP_ROOT,),
     # Don't forget to use absolute paths, not relative paths.
 )
 
@@ -116,21 +109,9 @@ INSTALLED_APPS = (
     'jobgears.publisher'
 )
 
-# ROOT_URL CONFIG
-#ROOT_URL = 'http://ricardo.servehttp.com'
-ROOT_URL = 'http://andrefsp.servehttp.com'
-# MEMCACHE 
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-
-
-##############################################################
-#       Session Settings
-##############################################################
-# SESSION_ENGINE for to keep sessions in MEMCACHE
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-
-# SESSION_COOKIE_NAME
+# Session settings
 SESSION_COOKIE_NAME = "sid"
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
+CACHE_BACKEND = 'locmem://'
 

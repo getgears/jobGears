@@ -15,16 +15,6 @@ import simplejson
 # import for generation of static file URL
 from jobgears.publisher.html import generateHtml
 
-
-
-
-# jobgears View for Facebook connect APP
-def fbConnect(request):
-    return render_to_response("xd_receiver.htm")
-
-
-
-
 # jobgears view for Facebook UID session Storage
 def fbSetUID(request): 
     try:
