@@ -17,8 +17,7 @@ urlpatterns = patterns('',
     (r'^twitter/',include('jobgears.interfaces.twitter.urls')),
     # url conf for facebook interface
     (r'^facebook/',include('jobgears.interfaces.facebook.urls')),
-    # static files serving line
-    (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/andrefsp/jobgears/static'}),
+    # url conf 
+    (r'^setuserlanguage/$',setUserLanguage),
+
 )
-
-

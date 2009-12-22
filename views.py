@@ -219,34 +219,7 @@ def setUserLanguage(request):
         return HttpResponse(0)
 
 
-# jobgearsHome View renders the main homepage home.html
-def jobgearsHome(request):
-
-    try:
-        request.session['init']
-        userLanguage = getUserLanguage(request)
-        personalInfo = getPersonalInfo(request)
-        personalSkills = getPersonalSkills(request)
-        experienceSlotList = getExperienceSlotList(request)
-        educationSlotList = getEducationSlotList(request)
-        languageSlotList = getLanguageSlotList(request)
-        fbLogged = fbLoginStatus(request)
-
-        url = settings.ROOT_URL
-
-        return render_to_response('home.html' , locals())
-
-    except KeyError:
-        request.session['init'] = True
-        request.session['user_language']=request.META.get('HTTP_ACCEPT_LANGUAGE','en-us,en;')
-        request.session['personal']={}
-        request.session['skills']={}
-        request.session['education']={}
-        request.session['language']={}
-        request.session['experience']={}
-        
-        url = settings.ROOT_URL
-        
-        return render_to_response('home.html',locals())
-
+def home(request):
+    # DEPRECATED
+    return render_to_response('home.html', {})
 
