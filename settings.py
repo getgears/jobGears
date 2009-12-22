@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 # Django settings for jobgears project.
 
-
-
-
 # This should never be set as True in production!
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -38,7 +35,7 @@ LANGUAGE_COOKIE_NAME = 'locale'
 # gettext settings for translation
 ugettext = lambda s: s
 LOCALE_PATHS = (
-    '/home/andrefsp/jobgears/locale',
+    '/home/ricardo/jobgears/locale',
 )
 
 LANGUAGES = (
@@ -55,7 +52,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # static files root directory
-STATIC_DOC_ROOT = '/home/andrefsp/jobgears/static/snapshots'
+STATIC_DOC_ROOT = '/home/ricardo/jobgears/static/snapshots'
 
 
 # Absolute path to the directory that holds media.
@@ -103,7 +100,7 @@ ROOT_URLCONF = 'jobgears.urls'
 
 
 TEMPLATE_DIRS = (
-    '/home/andrefsp/jobgears/templates',
+    '/home/ricardo/jobgears/templates',
     # Don't forget to use absolute paths, not relative paths.
 )
 
@@ -117,7 +114,7 @@ INSTALLED_APPS = (
 )
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://andrefsp.servehttp.com'
+ROOT_URL = 'http://ricardo.servehttp.com'
 
 # MEMCACHE 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'

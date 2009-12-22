@@ -35,7 +35,7 @@ urlpatterns = patterns('',
     (r'^deletelanguageform/$',action.deleteLanguageForm),
 
 
-	#Save Forms#
+    #Save Forms#
     (r'^saveeducationform/$',action.saveEducationForm),
     (r'^saveexperienceform/$',action.saveExperienceForm),
     (r'^savelanguageform/$',action.saveLanguageForm),
@@ -48,14 +48,9 @@ urlpatterns = patterns('',
     (r'^movelanguageform/$',action.moveLanguageForm),
 
 
-
-
-	
     ###################################################################
     #   printing types
     ###################################################################
-    #   generate pdf File
-    (r'^getmypdfcurriculum/$',pdf.getpdf),
     #   generate HTML File
     #(r'^generatepermlink/$',html.generateHtml),
 
@@ -82,5 +77,5 @@ urlpatterns = patterns('',
 
 
     # static files serving line
-    (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/andrefsp/jobgears/static'}),
+    (r'^(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/home/ricardo/jobgears/static'}),
 )
