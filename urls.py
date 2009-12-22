@@ -17,8 +17,8 @@ urlpatterns = patterns('',
     # set users language
     (r'^setuserlanguage/$',setUserLanguage),
 
-    # root URL 
-    (r'^$',jobgearsHome),
+    # root URL DEPRECATED
+    (r'^$', home),
 
 
     ####################################################################
