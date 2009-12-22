@@ -118,13 +118,13 @@ function erase(id_form,tipo_form,ask)
     var postString = "?&slot="+form.getAttribute('slot')
 
 	if (tipo_form=="education")
-		url = document.location + "deleteeducationform/"
+		url = document.location + "ajax/deleteeducationform/"
 
 	if (tipo_form=="experience")
-		url = document.location + "deleteexperienceform/"
+		url = document.location + "ajax/deleteexperienceform/"
 		
 	if (tipo_form=="languages")             	
-		url = document.location + "deletelanguageform/"
+		url = document.location + "ajax/deletelanguageform/"
 
 
 	ajax.onreadystatechange = function ()
@@ -249,26 +249,27 @@ function save(form_id,tipo_form)
 	openEffect();
 
 
-	var slot = form.getAttribute('slot')
+	var postString = "?&slot="+form.getAttribute('slot')
+    
 
 	if (tipo_form=="education")
-		url = "saveeducationform/?&slot="+slot
+		url = "ajax/saveeducationform/"
 
 	if (tipo_form=="experience")
-		url = "saveexperienceform/?&slot="+slot	
+		url = "ajax/saveexperienceform/"
 		
 	if (tipo_form=="languages")             	
-		url = "savelanguageform/?&slot="+slot
+		url = "ajax/savelanguageform/"
 
 	if (tipo_form=="skills")
-		url = "saveskillsform/?"
+		url = "ajax/saveskillsform/"
 
 	if (tipo_form=="personal")
-		url = "savepersonalform/?"
+		url = "ajax/savepersonalform/"
 
 	for (c=0; c < form.length ; c++)
 	{
-		url = url + "&"+ form[c].getAttribute('name')+"="+form[c].value
+		postString = postString + "&"+ form[c].getAttribute('name')+"="+form[c].value
 	}
 
 
@@ -302,8 +303,10 @@ function save(form_id,tipo_form)
 		}
 	}
 
-	ajax.open("GET",encodeURI(url),true)
-	ajax.send(null)
+	ajax.open("POST",encodeURI(url),true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Referer", document.location);
+	ajax.send(encodeURI(postString));
 }
 
 
@@ -461,13 +464,15 @@ function move(form_id,tipo_form,move)
 
     openEffect()    
     var ajax = getAjax()
+    var postString = "?&slot="+slot+"&move="+move
+
 
      if (tipo_form=="education")                                  
-         url = "moveeducationform/?&slot="+slot+"&move="+move
+         url = "ajax/moveeducationform/"
      if (tipo_form=="experience")
-         url = "moveexperienceform/?&slot="+slot+"&move="+move
+         url = "ajax/moveexperienceform/"
      if (tipo_form=="languages")
-         url = "movelanguageform/?&slot="+slot+"&move="+move
+         url = "ajax/movelanguageform/"
  
 
  
@@ -530,8 +535,10 @@ function move(form_id,tipo_form,move)
         }
     }
 
-    ajax.open("GET",url,true)
-    ajax.send(null)
+    ajax.open("POST",encodeURI(url),true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Referer", document.location);
+    ajax.send(encodeURI(postString))
 }
 
 

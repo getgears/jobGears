@@ -35,7 +35,8 @@ LANGUAGE_COOKIE_NAME = 'locale'
 # gettext settings for translation
 ugettext = lambda s: s
 LOCALE_PATHS = (
-    '/home/ricardo/jobgears/locale',
+    #'/home/ricardo/jobgears/locale',
+    '/home/andrefsp/jobgears/locale',
 )
 
 LANGUAGES = (
@@ -52,7 +53,8 @@ SITE_ID = 1
 USE_I18N = True
 
 # static files root directory
-STATIC_DOC_ROOT = '/home/ricardo/jobgears/static/snapshots'
+#STATIC_DOC_ROOT = '/home/ricardo/jobgears/static/snapshots'
+STATIC_DOC_ROOT = '/home/andrefsp/jobgears/static/snapshots'
 
 
 # Absolute path to the directory that holds media.
@@ -100,7 +102,8 @@ ROOT_URLCONF = 'jobgears.urls'
 
 
 TEMPLATE_DIRS = (
-    '/home/ricardo/jobgears/templates',
+    #'/home/ricardo/jobgears/templates',
+    '/home/andrefsp/jobgears/templates',
     # Don't forget to use absolute paths, not relative paths.
 )
 
@@ -114,8 +117,8 @@ INSTALLED_APPS = (
 )
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://ricardo.servehttp.com'
-
+#ROOT_URL = 'http://ricardo.servehttp.com'
+ROOT_URL = 'http://andrefsp.servehttp.com'
 # MEMCACHE 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 

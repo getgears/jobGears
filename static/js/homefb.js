@@ -30,10 +30,14 @@ function fbInit()
 function fbLoggedIn()
 {
     var ajax = getAjax()
-    var url = "setfbuid/?&fbuid="+ FB.Connect.get_loggedInUser()
+    var url = "facebook/setfbuid/"
+    var postString = "?&fbuid="+ FB.Connect.get_loggedInUser()
 
-    ajax.open("GET",encodeURI(url),true)
-    ajax.send(null)    
+
+    ajax.open("POST",encodeURI(url),true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Referer", document.location);
+    ajax.send(encodeURI(postString));
 
     FB.Connect.showPermissionDialog("offline_access, publish_stream",function(perms) {
             if (!perms)
@@ -53,7 +57,7 @@ function fbStreamPublish()
 {
     var ajax  = getAjax()
     //var url = "./generatepermlink/"
-    var url = "./publishfb/"
+    var url = "facebook/publishfb/"
 
     ajax.onreadystatechange = function ()
     {

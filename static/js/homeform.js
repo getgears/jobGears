@@ -114,7 +114,7 @@ function new_form(tipo_form)
 
 	if (tipo_form=="education")
     {
-		url = document.location + "geteducationform/"
+		url = document.location + "ajax/geteducationform/"
         if (globalEducationForm==false)
             postString = "?&sendform=1"
         else
@@ -122,7 +122,7 @@ function new_form(tipo_form)
     }
 	if (tipo_form=="languages")
     {
-		url = document.location + "getlanguageform/"
+		url = document.location + "ajax/getlanguageform/"
         if (globalLanguageForm==false)
             postString = "?&sendform=1"
         else
@@ -130,7 +130,7 @@ function new_form(tipo_form)
     }
 	if (tipo_form=="experience")
     {
-		url = document.location + "getexperienceform/"
+		url = document.location + "ajax/getexperienceform/"
         if (globalExperienceForm==false)
             postString = "?&sendform=1"
         else
@@ -138,8 +138,6 @@ function new_form(tipo_form)
     }
 
     ajax.open("POST", encodeURI(url), true);
-    //ajax.setRequestHeader("Connection", "close");
-    //ajax.setRequestHeader("Content-length", postString.length);
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.setRequestHeader("X-Referer", document.location);
     ajax.send(encodeURI(postString));

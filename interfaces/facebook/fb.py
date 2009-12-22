@@ -29,7 +29,7 @@ def fbConnect(request):
 def fbSetUID(request): 
     try:
         try:
-            request.session['facebook_id'] = request.GET['fbuid']        
+            request.session['facebook_id'] = request.POST['fbuid']        
             response = {}
             response['Content'] = None
             response['Report'] = 1
@@ -37,7 +37,7 @@ def fbSetUID(request):
             
         except KeyError:
             request.session['facebook_id'] = {}
-            request.session['facebook_id'] = request.GET['fbuid']
+            request.session['facebook_id'] = request.POST['fbuid']
             response = {}
             response['Content'] = None
             response['Report'] = 1

@@ -166,14 +166,6 @@ def getExperienceSlotList(request):
 
 
 
-# getUserLanguage returns the language ID stored on user's session
-def getUserLanguage(request):
-
-    try:
-        return request.session['user_language']
-
-    except KeyError:
-        return 'en-us,en;'
 
 def generateHtml(request):
     # Deprecated
@@ -181,7 +173,7 @@ def generateHtml(request):
 
 # Cleaned code
 
-from jobgears.helpers import get_random_string
+#from jobgears.helpers import get_random_string
 
 
 class ProfileHtml(object):
