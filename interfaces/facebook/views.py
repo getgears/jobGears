@@ -63,3 +63,14 @@ def fb_publish_cv(request):
     except KeyError:
         return None
 
+
+def get_id(request):
+    """
+    Return the facebook id based on a cookie
+    """
+    try:
+        id = int(request.COOKIES['facebook_id'])
+    except KeyError, ValueError:
+        id = None
+    return id
+

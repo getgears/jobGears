@@ -101,6 +101,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'django.contrib.sessions',
     # app for jobgears models
     'jobgears.profile',
     # app for jobgears forms control

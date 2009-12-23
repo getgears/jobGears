@@ -1,11 +1,4 @@
-#########################################################
-#       AJAX REQUESTS URL CONF
-#########################################################
-#
-#   project: jobGears by getGears
-#   date: Dec 2009
-#########################################################
-
+from jobgears.ajax.views import *
 
 # django conf import files
 from django.conf.urls.defaults import *
@@ -14,7 +7,10 @@ from django.conf import settings
 # jobgears import for form render and action
 from jobgears.form import render, action
 
-urlpatterns = patterns('',   
+
+urlpatterns = patterns('',
+    (r'^profile/$', get_profile),
+
     #   Form Generation
     (r'^geteducationform/$',render.educationForm),
     (r'^getexperienceform/$',render.experienceForm),
@@ -26,7 +22,7 @@ urlpatterns = patterns('',
     (r'^deletelanguageform/$',action.deleteLanguageForm),
 
 
-    #   Save actions
+    #   Save actions should be POSTs
     (r'^saveeducationform/$',action.saveEducationForm),
     (r'^saveexperienceform/$',action.saveExperienceForm),
     (r'^savelanguageform/$',action.saveLanguageForm),
