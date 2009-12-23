@@ -19,7 +19,10 @@ DATABASE_HOST = ''             # Set to empty string for localhost. Not used wit
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # ROOT folder where the application is residing, include trailing /
-APP_ROOT = '/home/ricardo/jobgears/'
+#APP_ROOT = '/home/ricardo/jobgears/'
+APP_ROOT = '/home/andrefsp/jobgears/'
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

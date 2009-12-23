@@ -1,0 +1,75 @@
+<span>
+<FORM id="##id##" slot="##slot##" >
+<table>
+	<TR >
+	<Td class="sec_titles">
+    </Td>
+	<Td><SPAN tipo=editar cod=form1 style="visibility: visible;" > <A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:edit(##id##,"languages")>editar</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility: visible" > <A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:erase(##id##,"languages")>apagar</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href=javascript:move(##id##,"languages","up")><img src="images/arrow_up.gif" title='mover para cima'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href=javascript:move(##id##,"languages","down")><img src="images/arrow_down.gif" title='mover para baixo'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none;" ><A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:save(##id##,"languages")>guardar</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style="visibility:hiden; display:none;"><A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:cancel(##id##,"languages")>cancelar</A></SPAN>
+	</Td>
+
+	</TR>
+	<TR >
+	<Td class="sec_titles">Línguas</Td>
+	<Td class="field" >
+		<INPUT style="visibility:hidden; display:none" size=20 maxlength=64 name="language" type="text" value="##language##" >
+	<div class="view_field" style="visibility:visible; display:inline " >##language##</div>
+	</Td>
+	</TR>
+	<TR >
+	<Td class="sec_titles">Compreensão Oral</Td>
+	<Td class="field" >
+		<SELECT style="visibility:hidden; display:none " name="listening" value="##listening##">
+			<OPTION value="3" >Bom</OPTION>
+			<OPTION value="2">Mediano</OPTION>
+			<OPTION value="1">Básico</OPTION>
+		</SELECT>
+		<div style="visibility:visible; display:inline " class="view_field">##listening##</div>
+	</Td>
+	</TR>
+	<TR >
+	<Td class="sec_titles">Compreensão Escrita</Td>
+	<Td class="field" >
+		<SELECT style="visibility:hidden; display:none " name="reading" value=##reading##>
+			<OPTION value="3" >Bom</OPTION>
+			<OPTION value="2">Mediano</OPTION>
+			<OPTION value="1">Básico</OPTION>
+		</SELECT>
+		<div style="visibility:visible; display:inline " class="view_field">##reading##</div>
+		</Td>
+	</TR>                 
+	<TR >
+	<Td class="sec_titles">Interacção Oral</Td>
+	<Td class="field" >
+		<SELECT style="visibility:hidden; display:none " name="spoken_interaction" value="##spoken_interaction##">
+			<OPTION value="3" >Bom</OPTION>
+			<OPTION value="2">Mediano</OPTION>
+			<OPTION value="1">Básico</OPTION>
+		</SELECT>
+		<div style="visibility:visible; display:inline " class="view_field">##spoken_interaction##</div>
+	</Td>
+	</TR>               
+	<TR >
+	<Td class="sec_titles">Produção Oral</Td>
+	<Td class="field">
+		<SELECT style="visibility:hidden; display:none " name="spoken_production" value="##spoken_production##">
+			<OPTION value="3" >Bom</OPTION>
+			<OPTION value="2">Mediano</OPTION>
+			<OPTION value="1">Básico</OPTION>
+		</SELECT>
+		<div style="visibility:visible; display:inline " class="view_field">##spoken_production##</div>
+	</Td>
+	</TR>
+	<TR >
+	<Td class="sec_titles">Produção Escrita</Td>
+	<Td class="field" >
+		<SELECT style="visibility:hidden; display:none " name="writing" value="##writing##">
+			<OPTION value="3" >Bom</OPTION>
+			<OPTION value="2">Mediano</OPTION>
+			<OPTION value="1">Básico</OPTION>
+		</SELECT>
+		<div style="visibility:visible; display:inline " class="view_field">##writing##</div>
+	</Td>
+	</TR>
+</table>
+</FORM>
+</span>

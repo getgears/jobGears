@@ -1,0 +1,332 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlnx:fb="http://www.facebook.com/2008/fbml?&nc=0&pl=1" > 
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<TITLE>jobGears - O meu curriculo</TITLE>
+<!-- <link rel="shortcut icon" href="images/favicon.gif" type="favicon.gif" /> -->
+
+<!-- INCLUDE GERAL -->
+<SCRIPT language="JavaScript" src="js/includeajax.js" ></SCRIPT>
+<SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
+
+<!-- INCLUDE DE PERFIL -->
+<SCRIPT language="JavaScript" src="js/home.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="js/homeform.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="js/homefb.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="js/hometwitter.js "></SCRIPT>
+<SCRIPT language="JavaScript" src="js/homeutils.js"></SCRIPT>
+
+<!-- INCLUDE CALENDARIO-->
+<SCRIPT type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
+<SCRIPT type="text/javascript" src="js/calendar/urchin.js" ></script> 
+
+
+
+<!-- CSS Calendario -->
+<LINK type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
+
+<!-- CSS home.html -->
+<link rel="stylesheet" type="text/css" href="css/home.css" />
+
+</HEAD>
+
+<BODY onLoad="init()">
+<!--Facebook Connect javascript / This block must be in the BODY section -->
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/" type="text/javascript"> </script> 
+<!-- END OF FB OBJECT INIT  -->
+
+<center>
+
+<table id="header">
+ <tr>
+  <td colspan="2" id="banner">
+<a href="{{url}}"><img src="images/banner.jpg" ></a>
+  </td>
+ </tr>
+ <tr>
+  <td id="navigation">
+
+
+  <nobr> 
+   <span id="fblogin" style="visibility:hidden; display:none"> <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button> | </span> 
+<!-- FB.init -->
+    <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./facebook/xd_receiver.htm"); </script>
+
+   <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:fbStreamPublish()"><img src="images/facebook.gif" style="position:relative; top:5px" title="Publicar no Facebook"></a> | </span> <a href=javascript:twitterAuthorize()  ><img src="images/twitter_icon.gif" style="position: relative; top:5px" title="Publicar no twitter" ></a> |
+    <span class="bold">O meu curriculo</span>
+
+
+  </nobr>
+
+
+
+
+
+
+
+
+  </td>
+  <td id="user">
+  <nobr> <a href="javascript:setLanguage('pt_PT')">pt</a> <a href="javascript:setLanguage('en_US')">en</a> <a href="javascript:setLanguage('fr_FR')">fr</a></nobr> 
+  </td>
+ </tr>
+</table>
+
+
+<DIV id="background" ></DIV>
+
+<DIV id="loading"><center> <IMG SRC="images/infinitum2.gif" style="display:block;"></center> </DIV>
+
+<DIV id="body" style="display:none" >
+
+
+<SPAN id="titulo">
+<div>
+ <TABLE>
+  <TR>
+   <Td id="curriculum_title"><p>Curriculum Vitae</p></Td>
+   <Td id="pdf"><a title='clique aqui para fazer download do curriculo' href="getmypdfcurriculum/"><img src="images/pdf.jpg"></a></Td>
+  </TR>
+ </TABLE>
+</div>
+</SPAN>
+
+
+<SPAN id="personal">
+<div>
+<FORM id=1>
+ <TABLE>
+ 
+  <tr>
+   <td class="prim_titles">Informação Pessoal</td>
+   <td class="new_item">&nbsp;</td>
+  </tr>
+  
+  <TR>
+   <TD class="sec_titles">&nbsp;</TD>
+   <TD>
+    <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" href=javascript:edit(1,"personal") >editar</A> </SPAN>
+    <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none " > <A class="azul" href=javascript:save(1,"personal")>guardar</A> | </SPAN>
+    <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none " > <A class="magenta" href=javascript:cancel(1,"personal")>cancelar</A> </SPAN>   </TD>
+  </TR>
+  
+  <TR>
+   <TD class="sec_titles">Nome</TD>
+   <TD class="field"><INPUT name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" >
+    <div class="view_field" style="visibility:visible; display:inline" ></div> </TD>
+  </TR>
+
+
+  <TR>
+   <TD class="sec_titles">Data de Nascimento</TD>
+   <TD class="field">
+    <span>
+     <input name="birthdate" type="text" onFocus="this.blur()" onClick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" >
+     <img src="images/calendar.gif" class="calendar" onClick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" > 
+     <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(1).birthdate) title='Apagar Data' style="visibility:hidden; display:none" >
+     <div class="view_field" style="visibility:visible; display:inline"></div>
+    </span>   </TD>	
+  </TR>
+  
+  <TR>
+   <TD class="sec_titles">Morada</TD>
+   <TD class="field">
+    <INPUT name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Código Postal</TD>
+   <TD class="field"><INPUT name="postal_code" type="text" size="10" maxlength="32" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Localidade</TD>
+   <TD class="field"><INPUT name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">País</TD>
+   <TD class="field"><INPUT name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Telefone</TD>
+   <TD class="field"><INPUT name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Telemóvel</TD>
+   <TD class="field"><INPUT name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Fax</TD>
+   <TD class="field"><INPUT name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+  
+  <TR>
+   <TD class="sec_titles">Email</TD>
+   <TD class="field"><INPUT name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Nacionalidade</TD>
+   <TD class="field"><INPUT name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="{{personalInfo.nationality}}">
+    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+
+  <TR> 
+   <TD class="sec_titles">Sexo</TD>
+   <TD class="field">
+        <SELECT name="gender" style="visibility:hidden; display:none" value="" > 
+                <OPTION value=""></OPTION>
+                <OPTION value="0" selected="selected">Feminino</OPTION>
+                <OPTION value="1">Masculino</OPTION>
+                </SELECT><div class="view_field" style="visibility:visible; display:inline">Feminino</div>
+    </TD>
+  </TR>
+
+  <TR>
+   <TD class="sec_titles">Língua Materna</TD>
+   <TD class="field"><INPUT name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
+   <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+  
+  <TR>
+   <TD class="sec_titles" id="desired_employment">Emprego Pretendido /<br> Área Funcional</TD>
+   <TD class="field"><input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value=""><div class="view_field" style="visibility:visible; display:inline"></div> </TD>
+  </TR>
+</TABLE>
+</FORM>
+</div>
+</SPAN>
+
+<SPAN id="experience">
+<DIV>
+ <TABLE>
+  <TR>
+   <TD class="prim_titles">Experiência Profissional</TD>
+   <Td class="new_item"><img src="images/new_item.png" class="new_item_img" onClick="new_form('experience')" title='novo item'></Td>
+  </TR>
+ </TABLE>
+</div>
+<!-- EXPERIENCE FORM TEMPLATES -->
+</SPAN>
+
+<SPAN id="education">
+<DIV>
+ <TABLE>
+  <TR>
+   <TD class="prim_titles">Educação e Formação</TD>
+   <Td class="new_item"><img src="images/new_item.png" class="new_item_img" onClick="new_form('education')" title='novo item'></Td>
+  </TR>
+ </TABLE>
+</div>
+<!-- EDUCATION FORM TEMPLATES -->
+</SPAN>
+
+<SPAN id="languages">
+<DIV>
+ <TABLE>
+  <TR>
+   <TD class="prim_titles">Outras Línguas</TD>
+   <Td class="new_item"><img src="images/new_item.png" name="new_item_img" class="new_item_img" onClick="new_form('languages')" title='novo item'></Td>
+  </TR>
+ </TABLE>
+</div>
+<!-- LANGUAGES FORM TEMPLATES-->
+</SPAN>
+
+<SPAN id="skills">
+<DIV>
+<FORM id=0 >
+<TABLE>
+
+ <tr>
+  <TD class="prim_titles">Aptidões e Competências Pessoais</TD>
+  <td class="new_item">&nbsp;</td>
+ </tr>
+ 
+ <TR>
+  <TD class="sec_titles">&nbsp;</TD>
+  <TD>
+   <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" href=javascript:edit(0,"skills")>editar</A> </SPAN>
+   <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"  ><A class="azul" href=javascript:save(0,"skills")>guardar</A> |</SPAN>
+   <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none" ><A class="magenta" href=javascript:cancel(0,"skills")>cancelar</A> </SPAN>
+  </TD>
+ </TR>
+
+ <TR>
+   <TD class="sec_titles">Aptidões e Competências Sociais</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Aptidões e Competências de Organização</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Aptidões e Competências Técnicas</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Aptidões e Competências Informáticas</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Aptidões Artísticas</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Outras Aptidões e Competências</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Cartas de Condução</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ <TR>
+  <TD class="sec_titles">Informação Adicional</TD>
+  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
+ </TR>
+
+ 
+ 
+</TABLE>
+</FORM>
+</div>
+</SPAN>
+
+</DIV>
+
+</center>
+<div id="powered_cont">
+    <div id="powered"><a href="mailto:we@getgears.com">we at getgears dot com</a></div>
+    <div id="request_report" style="visibility: hidden; display: none"> </div>
+
+</div>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-4413908-3");
+        pageTracker._setDomainName(".jobgears.net");
+        pageTracker._trackPageview();
+        } catch(err) {}</script>
+</BODY>
+</HTML>
