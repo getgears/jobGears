@@ -1,8 +1,10 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 
+from jobgears.views import *
 
 urlpatterns = patterns('',
+    (r'^$',home),
     # url conf for forms ajax requests
     (r'^ajax/', include('jobgears.ajax.urls')),        
     # url conf for twitter interface
