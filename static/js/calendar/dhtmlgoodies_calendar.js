@@ -50,8 +50,16 @@ var turnOffYearSpan = false;     // true = Only show This Year and Next, false =
 var weekStartsOnSunday = false;  // true = Start the week on Sunday, false = start the week on Monday
 var showWeekNumber = true;  // true = show week number,  false = do not show week number
 
-var languageCode = 'en';	// Possible values: 	en,ge,no,nl,es,pt-br,fr
+var languageCode = 'en_US';	// Possible values: 	en,ge,no,nl,es,pt-br,fr
 							// en = english, ge = german, no = norwegian,nl = dutch, es = spanish, pt-br = portuguese, fr = french, da = danish, hu = hungarian(Use UTF-8 doctype for hungarian)
+if (Get_Cookie('locale'))
+{
+    languageCode = Get_Cookie('locale')
+}
+
+
+
+
 
 var calendar_display_time = true;
 
@@ -79,82 +87,82 @@ if(navigator.userAgent.indexOf('Opera')>=0)Opera=true;
 
 
 switch(languageCode){
-	case "en":	/* English */
-		var monthArray = ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-		var monthArrayShort = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-		var dayArray = ['Seg','Ter','Qua','Qui','Sxt','Sab','Dom'];
+	case "en_US":	/* English */
+		var monthArray = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+		var monthArrayShort = ['Jan','Feb','Mar','Abr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		var dayArray = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 		var weekString = '';
 		var todayString = '';
 		break;
-	case "ge":	/* German */
+	case "de_DE":	/* German */
 		var monthArray = ['Januar','Februar','M�rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 		var monthArrayShort = ['Jan','Feb','Mar','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 		var dayArray = ['Mon','Die','Mit','Don','Fre','Sam','Son'];
-		var weekString = 'Woche';
-		var todayString = 'Heute';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "no":	/* Norwegian */
 		var monthArray = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
 		var monthArrayShort = ['Jan','Feb','Mar','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Des'];
 		var dayArray = ['Man','Tir','Ons','Tor','Fre','L&oslash;r','S&oslash;n'];
-		var weekString = 'Uke';
-		var todayString = 'Dagen i dag er';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "nl":	/* Dutch */
 		var monthArray = ['Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'];
 		var monthArrayShort = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
 		var dayArray = ['Ma','Di','Wo','Do','Vr','Za','Zo'];
-		var weekString = 'Week';
-		var todayString = 'Vandaag';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "es": /* Spanish */
 		var monthArray = ['Enero','Febrero','Marzo','April','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 		var monthArrayShort =['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 		var dayArray = ['Lun','Mar','Mie','Jue','Vie','Sab','Dom'];
-		var weekString = 'Semana';
-		var todayString = 'Hoy es';
+		var weekString = '';
+		var todayString = '';
 		break;
-	case "pt-br":  /* Brazilian portuguese (pt-br) */
+	case "pt_PT":  /* Portuguese (pt) */
 		var monthArray = ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 		var monthArrayShort = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 		var dayArray = ['Seg','Ter','Qua','Qui','Sex','S&aacute;b','Dom'];
-		var weekString = 'Sem.';
-		var todayString = 'Hoje &eacute;';
+		var weekString = '';
+		var todayString = '';
 		break;
-	case "fr":      /* French */
+	case "fr_FR":      /* French */
 		var monthArray = ['Janvier','F�vrier','Mars','Avril','Mai','Juin','Juillet','Ao�t','Septembre','Octobre','Novembre','D�cembre'];
 		var monthArrayShort = ['Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sep','Oct','Nov','Dec'];
 		var dayArray = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-		var weekString = 'Sem';
-		var todayString = "Aujourd'hui";
+		var weekString = '';
+		var todayString = "";
 		break;
 	case "da": /*Danish*/
 		var monthArray = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
 		var monthArrayShort = ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'];
 		var dayArray = ['man','tirs','ons','tors','fre','l&oslash;r','s&oslash;n'];
-		var weekString = 'Uge';
-		var todayString = 'I dag er den';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "hu":	/* Hungarian  - Remember to use UTF-8 encoding, i.e. the <meta> tag */
 		var monthArray = ['Január','Február','Március','�?prilis','Május','Június','Július','Augusztus','Szeptember','Október','November','December'];
 		var monthArrayShort = ['Jan','Feb','Márc','�?pr','Máj','Jún','Júl','Aug','Szep','Okt','Nov','Dec'];
 		var dayArray = ['Hé','Ke','Sze','Cs','Pé','Szo','Vas'];
-		var weekString = 'Hét';
-		var todayString = 'Mai nap';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "it":	/* Italian*/
 		var monthArray = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 		var monthArrayShort = ['Gen','Feb','Mar','Apr','Mag','Giu','Lugl','Ago','Set','Ott','Nov','Dic'];
 		var dayArray = ['Lun',';Mar','Mer','Gio','Ven','Sab','Dom'];
-		var weekString = 'Settimana';
-		var todayString = 'Oggi &egrave; il';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "sv":	/* Swedish */
 		var monthArray = ['Januari','Februari','Mars','April','Maj','Juni','Juli','Augusti','September','Oktober','November','December'];
 		var monthArrayShort = ['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
 		var dayArray = ['M&aring;n','Tis','Ons','Tor','Fre','L&ouml;r','S&ouml;n'];
-		var weekString = 'Vecka';
-		var todayString = 'Idag &auml;r det den';
+		var weekString = '';
+		var todayString = '';
 		break;
 	case "cz":	/* Czech */
 		var monthArray = ['leden','&#250;nor','b&#345;ezen','duben','kv&#283;ten','&#269;erven','&#269;ervenec','srpen','z&#225;&#345;&#237;','&#345;&#237;jen','listopad','prosinec'];

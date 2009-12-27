@@ -15,8 +15,8 @@ function fbInit()
                     document.getElementById('fblogin').style.display = "inline"
                 }
                 // ATTENTION REMOVE THIS LATTER!!!!!!!!!! 
-                document.getElementById("body").style.display="block"
-                closeEffect();
+                //document.getElementById("body").style.display="block"
+                //closeEffect();
             });     
     }
     catch(err)

@@ -107,13 +107,46 @@ function checkCookies()
 }
 
 
+function setLocale(object)
+{
+    var labels = object.getElementsByTagName('label')
+    for (c=0;c<labels.length;c++)
+    {
+       try{
+                if (locale[labels[c].innerHTML])
+                    labels[c].innerHTML=locale[labels[c].innerHTML]
+            }
+       catch(err)
+            {} 
+    }
+    var as = object.getElementsByTagName('A')
+    for (c=0;c<as.length;c++)
+    {                                       
+        try{
+                if (locale[as[c].innerHTML])
+                    as[c].innerHTML=locale[as[c].innerHTML]
+            }
+        catch(err)
+            {} 
+    }
+    var img = object.getElementsByTagName('img')
+    for (c=0;c<img.length;c++)
+    {         
+        //alert(img[c].getAttribute('title'))                              
+        try{
+                if (locale[img[c].getAttribute('title')])
+                    img[c].setAttribute('title',locale[img[c].getAttribute('title')])
+            }
+        catch(err)
+            {} 
+    }                                                       
+}
+
 function init()
 {
-    if (checkCookies() == true )
-    {
-        fbInit()
-        document.getElementById('body').style.display = "block"
-        closeEffect();
-    }
+    setLocale(document)
+    fbInit() 
+    document.getElementById('body').style.display = "block"
+    closeEffect();
 }
 

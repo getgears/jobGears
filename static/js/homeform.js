@@ -57,12 +57,14 @@ function new_form(tipo_form)
             if (ajax.responseText)
             {
                 //response = JSON.parse(ajax.responseText)
-                response = eval('('+ajax.responseText+')')
-                if (response.Report=='1')
-                {
-//================================================================================================================
+                //response = eval('('+ajax.responseText+')')
+                //if (response.Report=='1')
+                //{
                     var form = document.createElement('span')
-                    
+                    var response = new Object();
+
+                    response.Slot='1'
+
                     if ((tipo_form=="education") && (globalEducationForm!=false))
                     {
                         form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
@@ -76,18 +78,27 @@ function new_form(tipo_form)
                         form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
                     }
                     else{
-                            form.innerHTML = response.Html.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
-
+                            //form.innerHTML = response.Html.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
+                            form.innerHTML = ajax.responseText.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
                             if (tipo_form=="education")
-                                globalEducationForm = response.Html
+                            {
+                                globalEducationForm = ajax.responseText
+                                //globalEducationForm = response.Html
+                            }
                             if (tipo_form=="experience")
-                                globalExperienceForm = response.Html
+                            {
+                                globalExperienceForm = ajax.responseText
+                                //globalExperienceForm = response.Html
+                            }
                             if (tipo_form=="languages")
-                                globalLanguageForm = response.Html
+                            {
+                                globalLanguageForm = ajax.responseText
+                                //globalLanguageForm = response.Html
+                            }
                             
                         }
 
-//================================================================================================================
+                    setLocale(form)
 
         	        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])
                     {                     
@@ -100,13 +111,13 @@ function new_form(tipo_form)
                     showInfoDiv('green',response.Content)
 			        closeEffect()
                     return;
-                }
-                if (response.Report=='0')
-                {
-                    showInfoDiv('red',response.Content)
-                    closeEffect()
-                    return
-                }
+                //}
+                //if (response.Report=='0')
+                //{
+                //    showInfoDiv('red',response.Content)
+                //    closeEffect()
+                //    return
+                //}
             }
 		}
 	}
@@ -114,7 +125,8 @@ function new_form(tipo_form)
 
 	if (tipo_form=="education")
     {
-		url = document.location + "ajax/geteducationform/"
+		//url = document.location + "form/render/educationRender.html"
+        url = "http://andrefsp.servehttp.com/form/render/educationRender.html"
         if (globalEducationForm==false)
             postString = "?&sendform=1"
         else
@@ -122,7 +134,8 @@ function new_form(tipo_form)
     }
 	if (tipo_form=="languages")
     {
-		url = document.location + "ajax/getlanguageform/"
+		//url = document.location + "form/render/languageRender.html"
+        url = "http://andrefsp.servehttp.com/form/render/languageRender.html"
         if (globalLanguageForm==false)
             postString = "?&sendform=1"
         else
@@ -130,7 +143,8 @@ function new_form(tipo_form)
     }
 	if (tipo_form=="experience")
     {
-		url = document.location + "ajax/getexperienceform/"
+		//url = document.location + "form/render/experienceRender.html"
+        url = "http://andrefsp.servehttp.com/form/render/experienceRender.html"
         if (globalExperienceForm==false)
             postString = "?&sendform=1"
         else

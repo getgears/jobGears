@@ -1,1 +1,35 @@
-<script type="text/javascript"  src=""></script>
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlnx:fb="http://www.facebook.com/2008/fbml?&nc=0&pl=1" > 
+<HEAD>
+<SCRIPT language="JavaScript">
+    var language = new Object();
+    language['key1'] = "andre"
+    var key = 'key1'
+
+    alert(language[key])
+
+</SCRIPT>
+
+
+<SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
+
+</HEAD>
+<BODY>
+<SCRIPT type="text/javascript">
+lang = Get_Cookie('locale')
+document.write("<script src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+lang+"/' type='text/javascript'></scr"+"ipt>");
+</SCRIPT>
+
+
+<!--Facebook Connect javascript / This block must be in the BODY section -->
+<!-- <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/pt_PT/" type="text/javascript"> </script>-->
+<!-- FB.init -->
+<script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "fb/xd_receiver.htm"); </script>
+<!-- END OF FB OBJECT INIT  -->
+<!-- <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button> -->
+
+<a href="#" onclick="FB.Connect.requireSession(); return false;"><img id="fb_login_image" src="./images/share/facebook-logo.png" alt="Connect" /></a>
+
+<!-- BODY IS FILLED VIA AN AJAX REQUEST-->
+
+</BODY>
+</HTML>
