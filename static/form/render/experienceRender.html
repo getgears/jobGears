@@ -1,0 +1,45 @@
+<FORM id="##id##" slot="##slot##" >
+<table >
+	<TR >
+		<Td class="sec_titles"></Td>
+		<Td><SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:edit(##id##,"experience")>editar</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:erase(##id##,"experience")>apagar</A> | </SPAN> <!-- --><SPAN tipo=editar cod=form1 style="visibility:hidden; display:none"><a href=javascript:move(##id##,"experience","up")><img src="images/arrow_up.gif" title='mover para cima'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none"><a href=javascript:move(##id##,"experience","down")><img src="images/arrow_down.gif" title='mover para baixo'></a></SPAN> <!-- --> <SPAN tipo=guardar cod=form1 style="visibility:visible;" ><A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:save(##id##,"experience")>guardar</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style=visibility:visible;><A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:cancel(##id##,"experience")>cancelar</A></SPAN>
+		</Td>
+	</TR>	
+
+	<TR>
+		<TD class="sec_titles"><label>Data de Início</label></TD>
+		<TD class="field" > 
+			<input size=10 maxlength=10 name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) title='Apagar Data' ><div class="view_field"></div>
+		</TD>
+	</TR>
+
+	<TR>
+		<TD class="sec_titles"><label>Data de Conclusão</label></TD>
+		<TD class="field" > <input size=10 maxlength=10 name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) title='Apagar Data' ><div class="view_field"></div>  
+		</TD>
+	</TR>
+
+	<TR >
+		<Td class="sec_titles" ><label>Nome e Endereço da Entidade Empregadora</label></Td>
+		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="company"></TEXTAREA><div class="view_field"></div></Td>
+	</TR> 
+
+	<TR >
+		<Td class="sec_titles"><label>Tipo de Empresas ou Sector</label></Td>
+		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="business_area" ></TEXTAREA><div class="view_field"></div>
+		</Td>
+	</TR> 
+
+	<TR >
+		<Td class="sec_titles"><label>Função / Cargo Ocupado</label></Td>
+		<Td class="field" ><INPUT size=60 maxlength=256 name="position" type="text"><div class="view_field"></div>
+		</Td>
+	</TR> 
+
+	<TR >
+		<Td class="sec_titles" valign="top" ><label>Principais Actividades ou Responsabilidades</label></Td>
+		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="description" ></TEXTAREA><div class="view_field"></div>
+		</Td>
+	</TR> 
+</table>
+</FORM>

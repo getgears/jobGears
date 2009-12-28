@@ -1,0 +1,47 @@
+<FORM id="##id##" slot="##slot##" >
+<table >
+	<TR >
+		<Td class="sec_titles"></Td>
+		<Td>
+			<SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:edit(##id##,'education') >editar</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:erase(##id##,'education')>apagar</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibilityhidden; display:none"><a href=javascript:move(##id##,"education","up")><img src="images/arrow_up.gif" title='mover para cima'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none"><a href=javascript:move(##id##,"education","down")><img src="images/arrow_down.gif" title='mover para baixo'></a></SPAN> <!-- --> <SPAN tipo=guardar cod=form1 style="visibility:visible;" ><A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:save(##id##,'education')>guardar</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style="visibility:visible;"><A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href=javascript:cancel(##id##,'education')>cancelar</A></SPAN>
+		</Td>
+			
+	</TR> 
+	<TR>
+		<TD class="sec_titles"><label>Data de Início</label></TD>
+		<TD class="field"> <input name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" size=10 maxlength=10 > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) title='Apagar Data' > <div class="view_field"></div>  
+		</TD>	
+	</TR>
+	<TR>
+		<TD class="sec_titles"><label>Data de Conclusão</label></TD>
+		<TD class="field" > <input name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" size=10 maxlength=10 > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) title='Apagar Data' > <div class="view_field"></div>  
+		</TD> 
+	</TR>
+	<TR >
+		<Td class="sec_titles"><label>Nome e Tipo de Organização de Ensino ou Formação</label></Td>
+		<Td class="field" > <INPUT size=28 maxlength=128 tipo="Outro" name="organization" type="text"><div class="view_field"></div>
+		</Td>
+	
+	</TR> 
+	<TR >
+		<Td class="sec_titles"><label>Designação da Qualificação Obtida</label></Td>
+		<Td class="field" ><INPUT size=60 maxlength=128 tipo="Outro" name="degree" type="text"><div class="view_field"></div>
+		</Td>
+	</TR>
+	<TR >
+		<Td class="sec_titles"><label>Área de Estudos / Curso</label></Td>
+		<Td class="field" > <input tipo="Outro" name="studies_area" size="60" maxlength="128" > <div class="view_field"></div>
+		</Td>
+	</TR>
+	<TR >
+		<Td class="sec_titles" valign="top" ><label>Principais Disciplinas ou Competências Profissionais</label></Td>
+		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="main_subjects"></TEXTAREA><div class="view_field"></div>
+		</Td>
+	</TR>
+	<TR >
+		<Td class="sec_titles" valign="top" ><label>Classificação Final Obtida</label></Td>
+		<Td class="field" ><INPUT size="20"  name="average" maxlength="32" type="text"><div class="view_field"></div>
+		</Td>
+	</TR>
+</table>
+</FORM>
