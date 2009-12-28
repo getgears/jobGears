@@ -26,7 +26,7 @@ function checkEmptyForms(tipo_form)
 	{
 		if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
 		{
-			alert('O \372ltimo formul\341rio inserido na sec\347\343o est\341 totalmente em branco. Preencha este. ')
+			alert(locale['Existe um registo totalmente em branco na secção. Preencha este.'])
 			return false;
 		}
 	}
@@ -50,7 +50,7 @@ function new_form(tipo_form)
 		{ 
             if (!ajax.responseText)
             {
-                alert("Não foi possivel obter resposta do servidor, verifique a sua ligação.")
+                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect();
                 return;
             }
@@ -108,7 +108,7 @@ function new_form(tipo_form)
 			        {
 			            document.getElementById(tipo_form).appendChild(form)
 			        }
-                    showInfoDiv('green',response.Content)
+                    showInfoDiv('green',locale['item adicionado'])
 			        closeEffect()
                     return;
                 //}

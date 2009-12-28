@@ -57,7 +57,7 @@ function cutValue(txtarea)
 	if (txtarea.value.length>4000)
 	{
 		txtarea.value=txtarea.value.substring(0,4000)
-		alert("Foi atingido o limite de caracteres neste campo.")
+		alert(locale['Foi atingido o limite de caracteres neste campo'])
 	}
 }
 
@@ -107,7 +107,7 @@ function erase(id_form,tipo_form,ask)
 	}
 
 	if (ask != false)
-		if (confirm("Deseja mesmo apagar o registo?")==0)
+		if (confirm(locale['Deseja mesmo apagar o registo?'])==0)
 			return;
 	 
 	
@@ -134,7 +134,7 @@ function erase(id_form,tipo_form,ask)
 
             if (!ajax.responseText)
             {
-                alert("Não foi possivel obter resposta do servidor, verifique a sua ligação.")
+                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect()
                 return;
             }
@@ -146,13 +146,13 @@ function erase(id_form,tipo_form,ask)
                 {
 			        document.getElementById(tipo_form).removeChild(form.parentNode)
 			        reconfigure_slot(tipo_form)
-                    showInfoDiv('red',response.Content)
+                    showInfoDiv('red',locale['item apagado'])
 			        closeEffect()
                     return;
                 }
                 if (resonse.Report=='0')
                 {
-                    showInfoDiv('red',response.Content)
+                    showInfoDiv('red',locale['item apagado'])
                     closeEffect()
                     return;
                 }
@@ -279,7 +279,7 @@ function save(form_id,tipo_form)
 		{
             if (!ajax.responseText)
             {
-                alert("Não foi possivel obter resposta do servidor, verifique a sua ligação.")
+                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect();
                 return;
             }
@@ -289,13 +289,13 @@ function save(form_id,tipo_form)
                 response = eval('('+ajax.responseText+')')
                 if (response.Report == '1')
                 {
-                    showInfoDiv('green',response.Content)
+                    showInfoDiv('green',locale['item salvo'])
                     closeEffect()
                     return;
                 }
                 if (response.Report == '0')
                 {
-                    showInfoDiv('red',response.Content)
+                    showInfoDiv('red',locale['erro'])
                     closeEffect()
                     return;
                 }
@@ -483,7 +483,7 @@ function move(form_id,tipo_form,move)
         {
             if (!ajax.responseText)
             {
-                alert("Não foi possivel obter resposta do servidor, verifique a sua ligação.")
+                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect();
                 return;
             }
@@ -504,7 +504,7 @@ function move(form_id,tipo_form,move)
                         auxinnerHTML = span1.innerHTML
                         span1.innerHTML = span2.innerHTML
                         span2.innerHTML = auxinnerHTML
-                        showInfoDiv('green', response.Content)
+                        showInfoDiv('green', locale['item movido'])
                         closeEffect()
                         return ;
                     }
@@ -517,7 +517,7 @@ function move(form_id,tipo_form,move)
                         auxinnerHTML = span1.innerHTML
                         span1.innerHTML = span2.innerHTML
                         span2.innerHTML = auxinnerHTML
-                        showInfoDiv('green', response.Content)
+                        showInfoDiv('green', locale['item movido'])
                         closeEffect()
                         return ;
                     }      
@@ -526,7 +526,7 @@ function move(form_id,tipo_form,move)
 
                 if (response.Report == '0' )
                 {
-                    showInfoDiv('red',response.Content)
+                    showInfoDiv('red',locale['erro'])
                     closeEffect()
                     return;
                 }
@@ -546,18 +546,11 @@ function move(form_id,tipo_form,move)
 function validation(form_)
 {
 	var found_html=0;
-	
 	for (c=0;c<form_.length ; c++)
 	{
-
-
 		var strInputCode = form_[c].value;
-
-		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){
-			return (p1 == "lt")? "<" : ">";
-		});
+		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){return (p1 == "lt")? "<" : ">";});
 		var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
-		
 		for (k=0;k<strInputCode.length; k++)
 		{
 			if ((strInputCode.charAt(k)=='<') && (strInputCode.charAt(k+1)!='>'))
@@ -567,12 +560,11 @@ function validation(form_)
 					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
 					{
 						var found_html=1;
-						alert('Aten\347\343o Formata\347\343o HTML n\343o permitida foi removida. ');
+						alert(locale['Formatação HTML não permitida foi removida']);
 					}
 				}
 			}
 		}
-		
 		form_[c].value =	strTagStrippedText;	
 	}
 }

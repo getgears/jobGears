@@ -101,7 +101,7 @@ function checkCookies()
 	}
 	else
 	{
-        alert("Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir.")
+        alert(locale["Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir"])
         return false;
     } 
 }
@@ -113,12 +113,17 @@ function setLocale(object)
     for (c=0;c<labels.length;c++)
     {
        try{
-                if (locale[labels[c].innerHTML])
+                if (locale[labels[c].getAttribute('type')])
+                {
+                    labels[c].innerHTML = locale[labels[c].getAttribute('type')]
+                    labels[c].getElementsByTagName('select')[0].setAttribute('name',labels[c].getAttribute('name'))
+                }
+                else if (locale[labels[c].innerHTML])
                     labels[c].innerHTML=locale[labels[c].innerHTML]
             }
-       catch(err)
-            {} 
+       catch(err){} 
     }
+
     var as = object.getElementsByTagName('A')
     for (c=0;c<as.length;c++)
     {                                       
@@ -126,20 +131,18 @@ function setLocale(object)
                 if (locale[as[c].innerHTML])
                     as[c].innerHTML=locale[as[c].innerHTML]
             }
-        catch(err)
-            {} 
+        catch(err){} 
     }
+
     var img = object.getElementsByTagName('img')
     for (c=0;c<img.length;c++)
-    {         
-        //alert(img[c].getAttribute('title'))                              
+    {          
         try{
-                if (locale[img[c].getAttribute('title')])
-                    img[c].setAttribute('title',locale[img[c].getAttribute('title')])
+                if (locale[img[c].getAttribute('title')])   
+                        img[c].setAttribute('title',locale[img[c].getAttribute('title')])
             }
-        catch(err)
-            {} 
-    }                                                       
+        catch(err){} 
+    }     
 }
 
 function init()

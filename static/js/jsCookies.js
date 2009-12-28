@@ -65,36 +65,3 @@ function Delete_Cookie( name, path, domain )
 }
 
 
-
-function checkCookies()
-{
-	Set_Cookie( 'test', 'none', '', '/', '', '' );
-	if ( Get_Cookie( 'test' ) )
-	{
-		//alert( 'your cookies are enabled' );
-		cookie_set = true;
-		Delete_Cookie('test', '/', '');
-	}
-	else
-	{
-		var ajax = getAjax();
-		url = "./cookiesdisabled/"
-
-
-		ajax.onreadystatechange = function ()
-			{
-				if ((ajax.readyState == 4) || (ajax.readyState == "complete"))
-				{
-					alert(ajax.responseText)
-				}
-			
-			}
-		//alert( 'cookies are not currently enabled.' );
-
-		cookie_set = false;
-		ajax.open("GET",url,true)
-		ajax.send(null)
-
-	}
-
-}
