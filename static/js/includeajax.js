@@ -20,7 +20,7 @@ function getAjax()
       			}
      			catch (e)
      			{
-      				alert("Browser não suporta as funcionalidades.");
+      				warning("Browser não suporta as funcionalidades.");
       				return false;
       			}
 		}

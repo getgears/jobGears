@@ -6,6 +6,7 @@
 <!-- INCLUDE GERAL -->
 <SCRIPT language="JavaScript" src="js/includeajax.js" ></SCRIPT>
 <SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="js/globals.js"></SCRIPT> 
 <SCRIPT language="JavaScript" src="js/feedback.js"></SCRIPT>
 
 
@@ -18,7 +19,7 @@
 <!-- Language -->
 <SCRIPT type="text/javascript">
 var lang = Get_Cookie('locale')
-if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}
+if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"></script'+'>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}
 </SCRIPT>
 <!-- INCLUDE DE PERFIL -->
 <SCRIPT language="JavaScript" src="js/home.js"></SCRIPT>
@@ -43,13 +44,16 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
       tab_options.color = "#797979";
       GSFN.feedback('#', tab_options);
     </SCRIPT>
-    <A href="#" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
+    <A href="javascript:showPublishDiv()" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
     <DIV id="fdbk_overlay" style="display:none">
         <DIV id="fdbk_container">
-            <A href="#" onclick="GSFN.hide();return false" id="fdbk_close"></A>
+            <A href="#" onclick="return false" id="fdbk_close"></A>
         </DIV>
         <DIV id="fdbk_screen"></DIV>
-    </DIV> 
+    </DIV>
+
+
+ 
 <!-- =================================================================================================================== -->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
     <SCRIPT type="text/javascript">
@@ -87,17 +91,35 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 
 <DIV id="background"></DIV>
 
-<DIV id="publish_div">
-<center> 
-    <nobr>
-        <span id="fblogin" style="visibility:hidden; display:none"><!-- <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button>-->  <a href="#" onclick="FB.Connect.requireSession(); return false;"><img id="fb_login_image" src="./images/share/facebook-logo.png" alt="Connect" /></a></span> 
-<!-- FB.init -->
-        <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:fbStreamPublish()"><img src="images/share/facebook-logo.png" style="position:relative; top:5px" title="Publicar no Facebook"></a> </span> <a href=javascript:twitterAuthorize()  ><img src="images/share/twitter-logo.png" title="Publicar no Twitter" ></a> <a href=javascript:permaLink()><img src="images/share/share_arrow.jpg" title="crie um link permanente" ></a>
-    </nobr>
-</center> 
+<DIV id="warning">
+    <center> 
+            <span></span><br><br>
+            <a href="#false" class="azul">ok</a>
+    </center>
+</DIV>
+
+<DIV id="sure">
+    <center>
+            <span></span><br><br>
+            <a href="#false" class="azul">não</a> <a href="#true" class="azul">sim</a>
+    </center>
 </DIV>
 
 <DIV id="loading"><center> <IMG SRC="images/infinitum2.gif" style="display:block;"></center> </DIV>
+
+
+<DIV id="publish_div">
+    <center> 
+        <nobr>
+        <span id="fblogin" style="visibility:hidden; display:none"><!-- <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button>-->  <a href="#" onclick="FB.Connect.requireSession(); return false;"><img id="fb_login_image" src="./images/share/facebook-logo.png" alt="Connect" /></a></span> 
+<!-- FB.init -->
+        <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:fbStreamPublish()"><img src="images/share/facebook-logo.png" title="Publicar no Facebook"></a> </span> <a href=javascript:twitterAuthorize()  ><img src="images/share/twitter-logo.png" title="Publicar no Twitter" ></a> <a href=javascript:permaLink()><img src="images/share/share_arrow.jpg" title="crie um link permanente" ></a>
+        </nobr>
+        <a href="javascript:hidePublishDiv()" class="azul">fechar</a>
+    </center> 
+</DIV>
+
+
 
 <DIV id="body" style="display:none" >
 

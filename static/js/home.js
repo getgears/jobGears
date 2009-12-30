@@ -12,28 +12,26 @@ function resetDate(object)
 }
 
 
-
 function reconfigure_slot(tipo_form)
 {
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM")
-	var k= parseInt(forms.length)
-	k;
+	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+	var k = parseInt(forms.length);
+	//k;
 
 	var c=0;
 	
-	for (c=0;c<parseInt(forms.length) ; c++)
+	for ( c=0; c<parseInt(forms.length) ; c++ )
 	{
-		forms[c].setAttribute('slot',k)
-		k--
-	}	
-	
+		forms[c].setAttribute('slot',k);
+		k--;
+	}		
 }
 
 
 function slot_forms(tipo_form)
 {
 	
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM")
+	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
 
 
 	var slot=0 ;
@@ -43,7 +41,7 @@ function slot_forms(tipo_form)
 	{
 		if (parseInt(forms[c].getAttribute("slot")) > slot)
 		{
-			slot = parseInt(forms[c].getAttribute("slot"))
+			slot = parseInt(forms[c].getAttribute("slot"));
 		}
 	}
 
@@ -56,19 +54,16 @@ function cutValue(txtarea)
 {
 	if (txtarea.value.length>4000)
 	{
-		txtarea.value=txtarea.value.substring(0,4000)
-		alert(locale['Foi atingido o limite de caracteres neste campo'])
+		txtarea.value=txtarea.value.substring(0,4000);
+		warning(locale['Foi atingido o limite de caracteres neste campo']);
 	}
 }
 
 function check_blanck_fields(id,tipo_form)
 {
-
 	if (id== -1)
 		return 1;
-
 	var elements = document.getElementById(id)
-	
 	if (tipo_form=="languages")
 	{
 		if ((elements[0].value!="") && (elements[0].value!=" "))
@@ -76,9 +71,7 @@ function check_blanck_fields(id,tipo_form)
 		if ((elements[0].value=="") || (elements[0].value==" "))
 			{	return 0;	}
 	}
-	
 	var start_index=0;
-
 	for (c = start_index ; c<elements.length ; c++)
 	{
 		if ((elements[c].getAttribute('tipo')!="data") && (elements[c].value!="") && (elements[c].value!=" ") )
@@ -86,30 +79,27 @@ function check_blanck_fields(id,tipo_form)
 			return 1; 
 		}
 	}
-
 	return 0; 
 }
 
 
 
-function erase(id_form,tipo_form,ask)
+function erase(id_form,tipo_form)
 {
-
 /*ask is set to True if it was demanded by the user*/
 	if((document.getElementById('calendarDiv')) && (document.getElementById('calendarDiv').style.display=="block"))
-        {
+    {
 		document.getElementById('calendarDiv').style.display="none";
-	}
-	
-
-	if ((tipo_form=="personal") || (tipo_form=="skills"))                                                         {
+	}	
+	if ((tipo_form=="personal") || (tipo_form=="skills"))                                                         
+    {
 		return;
 	}
 
-	if (ask != false)
+	/*if (ask != false)
 		if (confirm(locale['Deseja mesmo apagar o registo?'])==0)
 			return;
-	 
+	*/ 
 	
 	openEffect();
 
@@ -134,7 +124,7 @@ function erase(id_form,tipo_form,ask)
 
             if (!ajax.responseText)
             {
-                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
+                warning(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect()
                 return;
             }
@@ -176,11 +166,12 @@ function save(form_id,tipo_form)
 	var divs = form.getElementsByTagName("div")
 	
 	
-
 	if ((document.getElementById('calendarDiv') ) && (document.getElementById('calendarDiv').style.display=="block"))
 	{
 		closeCalendar()
 	}
+
+	openEffect();
 
 	validation(form)
 
@@ -246,7 +237,7 @@ function save(form_id,tipo_form)
 
 	var ajax = getAjax();
 	
-	openEffect();
+
 
 
 	var postString = "?&slot="+form.getAttribute('slot')
@@ -279,7 +270,7 @@ function save(form_id,tipo_form)
 		{
             if (!ajax.responseText)
             {
-                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
+                warning(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect();
                 return;
             }
@@ -291,14 +282,21 @@ function save(form_id,tipo_form)
                 {
                     showInfoDiv('green',locale['item salvo'])
                     closeEffect()
-                    return;
                 }
                 if (response.Report == '0')
                 {
                     showInfoDiv('red',locale['erro'])
                     closeEffect()
-                    return;
                 }
+
+                if (tipo_form=="experience")
+                    globalEditingExperience = false;
+                else if (tipo_form=="languages")
+                    globalEditingLanguage = false;
+                else if (tipo_form=="education")
+                    globalEditingEducation = false;
+                
+                return;
             }
 		}
 	}
@@ -313,6 +311,23 @@ function save(form_id,tipo_form)
 
 function edit(form,tipo_form)
 {
+    if ((tipo_form=="experience") && (globalEditingExperience==true))
+    {
+        warning(locale['Já existe um registo de experiência a ser editado']);
+        return;
+    }
+    if ((tipo_form=="education") && (globalEditingEducation==true))
+    {
+        warning(locale['Já existe um registo de educação a ser editado']);
+        return;
+    }
+    if ((tipo_form=="languages") && (globalEditingLanguage==true))
+    {
+        warning(locale['Já existe um registo de línguas a ser editado']);
+        return;
+    }
+
+
 	var form =document.getElementById(form);
 	var spans=form.getElementsByTagName("SPAN");
 	var divs = form.getElementsByTagName("div")
@@ -347,8 +362,13 @@ function edit(form,tipo_form)
 			spans[c].style.display='none';
 		}
 	}
-	
-
+    
+    if (tipo_form=="experience")
+        globalEditingExperience = true;        
+    if (tipo_form=="education")
+        globalEditingEducation = true;
+    if (tipo_form=="languages")
+        globalEditingLanguage = true;
 }
 
 function checkDivInnerHTML(vector)
@@ -381,12 +401,18 @@ function cancel(form_id,tipo_form)
 	{
 		if (check_blanck_fields(form.getAttribute('id'),tipo_form)==0)  
 		{
+            
+            if (tipo_form=="experience")
+                globalEditingExperience = false;
+            if (tipo_form=="education")
+                globalEditingEducation = false;
+            if (tipo_form=="languages")
+                globalEditingLanguage = false;
 
-			erase(form_id,tipo_form,false)
+			erase(form_id,tipo_form)
 			return;
 		}
 	}               
-	
 		
 	openEffect()
 
@@ -483,7 +509,7 @@ function move(form_id,tipo_form,move)
         {
             if (!ajax.responseText)
             {
-                alert(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
+                warning(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'])
                 closeEffect();
                 return;
             }
@@ -560,7 +586,7 @@ function validation(form_)
 					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
 					{
 						var found_html=1;
-						alert(locale['Formatação HTML não permitida foi removida']);
+						warning(locale['Formatação HTML não permitida foi removida']);
 					}
 				}
 			}

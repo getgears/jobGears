@@ -11,12 +11,19 @@ locale['Formatação HTML não permitida foi removida'] = '';
 locale['Foi atingido o limite de caracteres neste campo'] = '';
 locale['Existe um registo totalmente em branco na secção. Preencha este.'] = '';
 locale['Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir']='';
+locale['Já existe um registo de experiência a ser editado']='';
+locale['Já existe um registo de educação a ser editado']='';
+locale['Já existe um registo de línguas a ser editado']='';
+
 
 // link translations
 locale['editar'] = 'editer';
 locale['cancelar'] = 'annuler';
 locale['guardar'] = 'enregistrer';
 locale['apagar'] = 'supprimer';
+locale['sim'] = 'oui';
+locale['não'] = 'non';
+locale['ok'] = 'ok';
 
 
 // image titles

@@ -223,15 +223,17 @@ a.azul:active
 /*----------------------- load popup style ----------------------*/
 #background
 {
+    visibility: visible;
+    display: block;
 	position: fixed;
-	_position:absolute;
+	_position: absolute;
 	width: 100%;
 	height: 100%;
 	_top:expression(document.body.scrollTop+document.body.clientHeight-this.clientHeight);
 	_left: 0px;
 	background-color: #FFFFFF;
-	opacity: 0.60;
-	filter: alpha(opacity=60);
+	opacity: 0.50;
+	filter: alpha(opacity=50);
 	z-index: 0;
 	top: 0px;
 }
@@ -258,7 +260,7 @@ a.azul:active
 	margin-top: -17px;
 	top: 50%;
 }
-
+/*------------ Publish DIV CSS tags --------------*/
 #publish_div
 {
 	width: 100%;
@@ -279,9 +281,26 @@ a.azul:active
 {
 	position: absolute;
 	margin-left: -35px;
-	left: 38%;
+	left: 45%;
 	margin-top: -17;
 	top: 35%;
+}
+/*------ warning and confirm css tags ---------------------------*/
+#warning, #sure
+{
+    visibility: hidden;
+    display: none; 
+
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	_position: absolute;
+	top: 35%;
+	_top:expression(document.body.scrollTop+document.body.clientHeight-this.clientHeight);
+	left: 0px;
+	z-index: 1;
+	opacity: 1;
+	filter:alpha(opacity=100);
 }
 
 /*---------------------------------------------------------------*/

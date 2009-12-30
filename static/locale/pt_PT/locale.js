@@ -11,12 +11,19 @@ locale['Formatação HTML não permitida foi removida'] = 'Formatação HTML nã
 locale['Foi atingido o limite de caracteres neste campo'] = 'Foi atingido o limite de caracteres neste campo';
 locale['Existe um registo totalmente em branco na secção. Preencha este.'] = 'Existe um registo totalmente em branco na secção. Preencha este.';
 locale['Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir']='Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir';
+locale['Já existe um registo de experiência a ser editado']='Já existe um registo de experiência a ser editado';
+locale['Já existe um registo de educação a ser editado']='Já existe um registo de educação a ser editado';
+locale['Já existe um registo de línguas a ser editado']='Já existe um registo de línguas a ser editado';
+
 
 // link translations
 locale['editar'] = 'editar';
 locale['cancelar'] = 'cancelar';
 locale['guardar'] = 'guardar';
 locale['apagar'] = 'apagar';
+locale['sim'] = 'sim';
+locale['não'] = 'não';
+locale['ok'] = 'ok';
 
 
 // image titles

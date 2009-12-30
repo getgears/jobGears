@@ -1,6 +1,67 @@
+/*
 var globalOpacity = parseFloat(1) 
 var lastSetTimeOut ;
+*/
 
+function warning(message)
+{
+    document.getElementById('warning').getElementsByTagName('span')[0].innerHTML = message;
+    document.getElementById('background').style.visibility = "visible";
+    document.getElementById('background').style.display = "block";
+    document.getElementById('warning').style.visibility = "visible";
+    document.getElementById('warning').style.display = "block"; 
+  
+    document.getElementById('warning').getElementsByTagName("a")[0].onclick = function(){
+                            document.getElementById('warning').style.display = "none";
+                            document.getElementById('warning').style.visibility = "hidden";
+                            document.getElementById('background').style.visibility = "hidden";
+                            document.getElementById('background').style.display = "none";
+                            return true;
+                         }
+}
+
+function sure(id_form,tipo_form)
+{
+    document.getElementById("sure").getElementsByTagName('span')[0].innerHTML = locale['Deseja mesmo apagar o registo?'];
+    document.getElementById("sure").getElementsByTagName('a')[0].setAttribute('href','#no');
+    document.getElementById("sure").getElementsByTagName('a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
+
+    document.getElementById("background").style.visibility = "visible";
+    document.getElementById("background").style.display = "block";
+    document.getElementById("sure").style.visibility = "visible";
+    document.getElementById("sure").style.display = "block";
+
+    document.getElementById("sure").getElementsByTagName('a')[0].onclick=function()
+    {
+        document.getElementById("background").style.visibility = "hidden";
+        document.getElementById("background").style.display = "none";
+        document.getElementById("sure").style.visibility = "hidden";
+        document.getElementById("sure").style.display = "none";             
+    }
+    document.getElementById("sure").getElementsByTagName('a')[1].onclick=function()
+    {
+        document.getElementById("sure").style.visibility = "hidden"               
+        document.getElementById("sure").style.display = "none"             
+    }  
+}
+
+//#################################################################################
+function showPublishDiv()
+{
+    document.getElementById('background').style.visibility = "visible"
+    document.getElementById('background').style.display = "block"
+    document.getElementById('publish_div').style.visibility = "visible"
+    document.getElementById('publish_div').style.display = "block"
+}
+
+function hidePublishDiv()
+{
+    document.getElementById('publish_div').style.visibility = "hidden"
+    document.getElementById('publish_div').style.display = "none"
+    document.getElementById('background').style.visibility = "hidden"
+    document.getElementById('background').style.display = "none"
+}
+//#################################################################################
 function hideInfoDiv()
 {     
     if (globalOpacity <= parseFloat(0.05) )
@@ -49,26 +110,23 @@ function showInfoDiv(color, message)
 
 function openEffect()
 {
-
-	document.getElementById("background").style.display="block"
-	document.getElementById("background").style.visibility="visible"
-
-	document.getElementById("loading").style.display="block"
-	document.getElementById("loading").style.visibility="visible"
+	document.getElementById("background").style.display="block";
+	document.getElementById("background").style.visibility="visible";
+	document.getElementById("loading").style.display="block";
+	document.getElementById("loading").style.visibility="visible";
 }
 
 
 
 function closeEffect()
 {
-	document.getElementById("loading").style.display="none"
-	document.getElementById("loading").style.visibility="hidden"
-
-	document.getElementById("background").style.display="none"
-	document.getElementById("background").style.visibility="hidden"
+	document.getElementById("loading").style.display="none";
+	document.getElementById("loading").style.visibility="hidden";
+	document.getElementById("background").style.display="none";
+	document.getElementById("background").style.visibility="hidden";
 }
 
-
+// ##############################################################################
 
 function setLanguage(language)
 {
@@ -101,7 +159,7 @@ function checkCookies()
 	}
 	else
 	{
-        alert(locale["Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir"])
+        warning(locale["Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir"])
         return false;
     } 
 }
