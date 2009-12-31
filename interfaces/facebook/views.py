@@ -21,7 +21,8 @@ import facebook.djangofb as facebook
 
 
 # jobgears view for Facebook UID session Storage
-def fbSetUID(request): 
+def fbSetUID(request):
+    """ 
     try:
         try:
             request.session['facebook_id'] = request.POST['fbuid']        
@@ -43,7 +44,9 @@ def fbSetUID(request):
         response['Content'] = _("não autorizado")
         response['Report'] = 0
         return HttpResponse(simplejson.dumps(response))
-
+    """
+    # DEPRECATED
+    return HttpResponse(0)
 
 
 
@@ -77,7 +80,9 @@ def set_id(request):
     """
     try:
         name = request.facebook.users.getInfo([request.facebook.uid],['first_name'])[0]['first_name']
-        return HttpResponse(name)
+        id = request.facebook.users.getInfo([request.facebook.uid],['uid'])[0]['uid']
+        html = "nome do nigga: %s <br> id do nigga: %s " % (name ,id,)
+        return HttpResponse(html)
     
     except KeyError:
         return HttpResponse("nothing to do")
