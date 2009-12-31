@@ -13,7 +13,12 @@ from django.utils.translation import ugettext as _
 import simplejson
 
 # import for generation of static file URL
-from jobgears.publisher.html import generateHtml
+from jobgears.publisher.html import ProfileHtml
+
+# import pyFacebook
+import facebook.djangofb as facebook
+
+
 
 # jobgears view for Facebook UID session Storage
 def fbSetUID(request): 
@@ -62,6 +67,20 @@ def fb_publish_cv(request):
 
     except KeyError:
         return None
+
+
+
+@facebook.require_login()
+def set_id(request):
+    """
+    Callback view that get a user Facebook Id
+    """
+    try:
+        name = request.facebook.users.getInfo([request.facebook.uid],['first_name'])[0]['first_name']
+        return HttpResponse(name)
+    
+    except KeyError:
+        return HttpResponse("nothing to do")
 
 
 def get_id(request):

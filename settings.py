@@ -94,7 +94,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'facebook.djangofb.FacebookMiddleware',
 )
+
 
 ROOT_URLCONF = 'jobgears.urls'
 
@@ -120,3 +122,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 CACHE_BACKEND = 'locmem://'
 CACHE_PREFIX = 'jobgears.'
 
+
+#Facebook Settings 
+FACEBOOK_API_KEY = ''
+FACEBOOK_SECRET_KEY = ''
