@@ -4,11 +4,15 @@
 <TITLE>jobGears</TITLE>
 
 <!-- INCLUDE GERAL -->
-<SCRIPT language="JavaScript" src="js/settings.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/includeajax.js" ></SCRIPT>
-<SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/globals.js"></SCRIPT> 
-<SCRIPT language="JavaScript" src="js/feedback.js"></SCRIPT>
+<!-- SETTINGS -->
+<SCRIPT type="text/javascript" src="js/settings.js"></SCRIPT>
+<!-- INCLUDE -->
+<SCRIPT type="text/javascript" src="js/include/includeajax.js" ></SCRIPT>
+<SCRIPT type="text/javascript" src="js/include/jsCookies.js"></SCRIPT>
+<!-- GLOBAL VARIABLES -->
+<SCRIPT type="text/javascript" src="js/globals/globals.js"></SCRIPT>
+ 
+<SCRIPT type="text/javascript" src="js/feedback.js"></SCRIPT>
 
 
 <!-- INCLUDE CALENDARIO-->
@@ -17,18 +21,20 @@
 <!-- CSS Calendario -->
 <LINK type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
 
-<!-- Language -->
+<!-- LANGUAGE -->
 <SCRIPT type="text/javascript">
 var lang = Get_Cookie('locale')
-if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"></script'+'>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}
+if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"></script'+'>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </script'+'>');}
 </SCRIPT>
-<!-- INCLUDE DE PERFIL -->
-<SCRIPT language="JavaScript" src="js/home.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homeform.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homefb.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/hometwitter.js "></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homeutils.js"></SCRIPT>
 
+<!-- INCLUDE DE PERFIL -->
+<SCRIPT type="text/javascript" src="js/home.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homerender.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homeutils.js"></SCRIPT>
+
+<!--INTERFACES -->
+<SCRIPT type="text/javascript" src="js/interface/facebook/homefb.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/interface/twitter/hometwitter.js "></SCRIPT>
 
 <!-- CSS home.html -->
 <link rel="stylesheet" type="text/css" href="css/home.css" />
@@ -55,14 +61,14 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 
 
  
-<!-- =================================================================================================================== -->
+<!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
     <SCRIPT type="text/javascript">
-        document.write('<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/'+Get_Cookie('locale')+'/" type="text/javascript"> </scr'+'ipt>');
+        document.write('<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/'+Get_Cookie('locale')+'/" type="text/javascript"> </script'+'>');
     </SCRIPT>
     <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm"); </script>
 <!-- END OF FB OBJECT INIT  -->
-<!-- =================================================================================================================== -->
+<!--===================================================================================================================-->
 
 <center>
 

@@ -1,11 +1,3 @@
-
-function hideStatus()
-{
-	window.status=" ";
-	return true;
-}
-
-
 function resetDate(object)
 {
 	object.value = "";
@@ -27,12 +19,10 @@ function reconfigure_slot(tipo_form)
 	}		
 }
 
-
 function slot_forms(tipo_form)
 {
 	
 	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-
 
 	var slot=0 ;
 	var c = 0 ;
@@ -366,10 +356,10 @@ function edit(form,tipo_form)
         globalEditingLanguage = true;
 }
 
+/*
 function checkDivInnerHTML(vector)
 {
 	var c=0;
-	
 	for (c = 0 ; c< vector.length ; c++ )
 	{
 		if ((vector[c]!="") && (vector[c]!=" "))
@@ -377,10 +367,9 @@ function checkDivInnerHTML(vector)
 			return 1;
 		}
 	}
-
 	return 0;
 }
-
+*/
 
 function cancel(form_id,tipo_form)
 {
@@ -391,23 +380,6 @@ function cancel(form_id,tipo_form)
 	}
 
 	var form = document.getElementById(form_id);
-
-	if ( (tipo_form!='personal')  && (tipo_form!='skills' ) )
-	{
-		if (check_blanck_fields(form.getAttribute('id'),tipo_form)==0)  
-		{
-            
-            if (tipo_form=="experience")
-                globalEditingExperience = false;
-            if (tipo_form=="education")
-                globalEditingEducation = false;
-            if (tipo_form=="languages")
-                globalEditingLanguage = false;
-
-			erase(form_id,tipo_form)
-			return;
-		}
-	}               
 		
 	openEffect()
 
@@ -467,9 +439,26 @@ function cancel(form_id,tipo_form)
 			spans[c].style.display='inline';
 		}
 	}
+
+
+	if ( (tipo_form!='personal')  && (tipo_form!='skills' ) )
+	{
+		if (check_blanck_fields(form.getAttribute('id'),tipo_form)==0)  
+		{
+            
+            if (tipo_form=="experience")
+                globalEditingExperience = false;
+            if (tipo_form=="education")
+                globalEditingEducation = false;
+            if (tipo_form=="languages")
+                globalEditingLanguage = false;
+
+			erase(form_id,tipo_form)
+			return;
+		}
+	}               
 	
 	closeEffect();
-
 }
 
 
@@ -497,7 +486,6 @@ function move(form_id,tipo_form,move)
  
 
  
-
     ajax.onreadystatechange = function()
     {
         if ((ajax.readyState==4) || (ajax.readyState=="complete"))

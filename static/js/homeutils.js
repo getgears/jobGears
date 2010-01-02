@@ -86,13 +86,13 @@ function showInfoDiv(color, message)
     
     if (color=='green')
     {
-         document.getElementById('request_report').style.backgroundColor = '#008705'
-         document.getElementById('request_report').style.backgroundcolor = '#008705'
+        document.getElementById('request_report').style.backgroundColor = settings.info_positive_color
+        document.getElementById('request_report').style.backgroundcolor = settings.info_positive_color
     }
     if (color=='red')
     {
-        document.getElementById('request_report').style.backgroundColor = '#B60008'
-        document.getElementById('request_report').style.backgroundcolor = '#B60008'
+        document.getElementById('request_report').style.backgroundColor = settings.info_negative_color
+        document.getElementById('request_report').style.backgroundcolor = settings.info_negative_color
     }
 
     document.getElementById('request_report').innerHTML = message
