@@ -1,7 +1,3 @@
-/*
-var globalOpacity = parseFloat(1) 
-var lastSetTimeOut ;
-*/
 
 function warning(message)
 {
@@ -130,21 +126,9 @@ function closeEffect()
 
 function setLanguage(language)
 {
-    var ajax = getAjax()
-
     openEffect()
-    ajax.onreadystatechange = function()
-    {
-        if (ajax.readyState==4)
-        {
-            Set_Cookie('locale',language,'','/','','');
-            location.reload(true);
-        }
-    }
-
-    var url = "setuserlanguage/?&lang="+language
-    ajax.open("GET",encodeURI(url),true)
-    ajax.send(null)
+    Set_Cookie(settings.locale_cookie_name,language,'','/','','');
+    location.reload(true);
 }
 
 

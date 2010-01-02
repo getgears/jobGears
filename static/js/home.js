@@ -108,13 +108,13 @@ function erase(id_form,tipo_form)
     var postString = "?&slot="+form.getAttribute('slot')
 
 	if (tipo_form=="education")
-		url = document.location + "ajax/deleteeducationform/"
+		url = settings.root_url + "ajax/deleteeducationform/"
 
 	if (tipo_form=="experience")
-		url = document.location + "ajax/deleteexperienceform/"
+		url = settings.root_url + "ajax/deleteexperienceform/"
 		
 	if (tipo_form=="languages")             	
-		url = document.location + "ajax/deletelanguageform/"
+		url = settings.root_url + "ajax/deletelanguageform/"
 
 
 	ajax.onreadystatechange = function ()
@@ -233,30 +233,25 @@ function save(form_id,tipo_form)
 	
 	reconfigure_slot(tipo_form)
 
-
-
 	var ajax = getAjax();
 	
-
-
-
 	var postString = "?&slot="+form.getAttribute('slot')
     
 
 	if (tipo_form=="education")
-		url = "ajax/saveeducationform/"
+		url = settings.root_url + "ajax/saveeducationform/"
 
 	if (tipo_form=="experience")
-		url = "ajax/saveexperienceform/"
+		url = settings.root_url + "ajax/saveexperienceform/"
 		
 	if (tipo_form=="languages")             	
-		url = "ajax/savelanguageform/"
+		url = settings.root_url + "ajax/savelanguageform/"
 
 	if (tipo_form=="skills")
-		url = "ajax/saveskillsform/"
+		url = settings.root_url + "ajax/saveskillsform/"
 
 	if (tipo_form=="personal")
-		url = "ajax/savepersonalform/"
+		url = settings.root_url + "ajax/savepersonalform/"
 
 	for (c=0; c < form.length ; c++)
 	{
@@ -473,7 +468,7 @@ function cancel(form_id,tipo_form)
 		}
 	}
 	
-	closeEffect()
+	closeEffect();
 
 }
 
@@ -494,11 +489,11 @@ function move(form_id,tipo_form,move)
 
 
      if (tipo_form=="education")                                  
-         url = "ajax/moveeducationform/"
+         url = settings.root_url + "ajax/moveeducationform/"
      if (tipo_form=="experience")
-         url = "ajax/moveexperienceform/"
+         url = settings.root_url + "ajax/moveexperienceform/"
      if (tipo_form=="languages")
-         url = "ajax/movelanguageform/"
+         url = settings.root_url + "ajax/movelanguageform/"
  
 
  

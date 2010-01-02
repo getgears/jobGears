@@ -4,6 +4,7 @@
 <TITLE>jobGears</TITLE>
 
 <!-- INCLUDE GERAL -->
+<SCRIPT language="JavaScript" src="js/settings.js"></SCRIPT>
 <SCRIPT language="JavaScript" src="js/includeajax.js" ></SCRIPT>
 <SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
 <SCRIPT language="JavaScript" src="js/globals.js"></SCRIPT> 
@@ -68,7 +69,7 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 <table id="header">
  <tr>
   <td colspan="2" id="banner">
-<a href="#"><img src="images/banner.jpg" ></a>
+    <a href="#"><img src="images/banner.jpg" ></a>
   </td>
  </tr>
  <tr>
@@ -89,25 +90,23 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 </table>
 
 
-<DIV id="background"></DIV>
 
+
+
+<DIV id="background"></DIV>
 <DIV id="warning">
     <center> 
             <span></span><br><br>
-            <a href="#false" class="azul">ok</a>
+            <a href="javascript:void(0);" class="azul">ok</a>
     </center>
 </DIV>
-
 <DIV id="sure">
     <center>
             <span></span><br><br>
-            <a href="#false" class="azul">não</a> <a href="#true" class="azul">sim</a>
+            <a href="javascript:void(0);" class="azul">não</a> <a href="javascript:void(0);" class="azul">sim</a>
     </center>
 </DIV>
-
 <DIV id="loading"><center> <IMG SRC="images/infinitum2.gif" style="display:block;"></center> </DIV>
-
-
 <DIV id="publish_div">
     <center> 
         <nobr>
@@ -118,6 +117,22 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
         <a href="javascript:hidePublishDiv()" class="azul">fechar</a>
     </center> 
 </DIV>
+<DIV id="twitter_publish">
+    <center>
+        <TEXTAREA name="twitter_status"></TEXTAREA>
+        <br>
+        <a href="javascript:void(0);" class="azul">cancelar</a> <a href="javascript:void(0);" class="azul">ok</a>
+    </center>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
