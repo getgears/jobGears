@@ -218,8 +218,3 @@ def setUserLanguage(request):
     except KeyError:
         return HttpResponse(0)
 
-
-def home(request):
-    # DEPRECATED
-    return render_to_response('home.html', {})
-
