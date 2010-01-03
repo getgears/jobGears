@@ -1,36 +1,4 @@
 
-function getNewId()
-{
-	var id=0;
-	var forms = document.getElementsByTagName("form")
-	for (c=0; c< forms.length ; c++ )
-	{
-		if (parseInt(forms[c].getAttribute('id'))>id  )
-			id = parseInt(forms[c].getAttribute('id'));
-	}
-	id++;
-
-	return id;
-}
-
-function checkEmptyForms(tipo_form)
-{
-
-    var formsaux=document.getElementById(tipo_form).getElementsByTagName('FORM');
-	var c=0;
-
-    for (c=0;c < formsaux.length ; c++)
-	{
-		if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
-		{
-			warning(locale['Existe um registo totalmente em branco na secção. Preencha este.']);
-			return false;
-		}
-	}
-	return true;
-}
-
-
 function new_form(tipo_form)  
 {
 	if (checkEmptyForms(tipo_form)== false)

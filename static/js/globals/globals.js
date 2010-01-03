@@ -3,6 +3,11 @@ var globalExperienceForm = false;
 var globalEducationForm = false;
 var globalLanguageForm = false;
 
+//## ready flags during initiation process
+var experienceReady = false;
+var educationReady = false;
+var languageReady = false;
+
 //## If user is editing a form set it to true
 var globalEditingExperience = false;
 var globalEditingEducation = false;

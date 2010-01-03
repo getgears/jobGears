@@ -5,14 +5,15 @@
 
 <!-- INCLUDE GERAL -->
 <!-- SETTINGS -->
-<SCRIPT type="text/javascript" src="js/settings.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/settings/settings.js"></SCRIPT>
 <!-- INCLUDE -->
 <SCRIPT type="text/javascript" src="js/include/includeajax.js" ></SCRIPT>
 <SCRIPT type="text/javascript" src="js/include/jsCookies.js"></SCRIPT>
 <!-- GLOBAL VARIABLES -->
 <SCRIPT type="text/javascript" src="js/globals/globals.js"></SCRIPT>
- 
-<SCRIPT type="text/javascript" src="js/feedback.js"></SCRIPT>
+
+<!-- FEEDBACK --> 
+<SCRIPT type="text/javascript" src="js/feedback/feedback.js"></SCRIPT>
 
 
 <!-- INCLUDE CALENDARIO-->
@@ -24,17 +25,22 @@
 <!-- LANGUAGE -->
 <SCRIPT type="text/javascript">
 var lang = Get_Cookie('locale')
-if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"></script'+'>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </script'+'>');}
+if (lang){document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');
+document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}
 </SCRIPT>
-
-<!-- INCLUDE DE PERFIL -->
-<SCRIPT type="text/javascript" src="js/home.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homerender.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homeutils.js"></SCRIPT>
 
 <!--INTERFACES -->
 <SCRIPT type="text/javascript" src="js/interface/facebook/homefb.js"></SCRIPT>
 <SCRIPT type="text/javascript" src="js/interface/twitter/hometwitter.js "></SCRIPT>
+
+
+<!-- INCLUDE DE PERFIL -->
+<SCRIPT type="text/javascript" src="js/homeactions.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homerender.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homeutils.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homeeffects.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/homeinit.js"></SCRIPT>
+
 
 <!-- CSS home.html -->
 <link rel="stylesheet" type="text/css" href="css/home.css" />
@@ -51,7 +57,7 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
       tab_options.color = "#797979";
       GSFN.feedback('#', tab_options);
     </SCRIPT>
-    <A href="javascript:showPublishDiv()" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
+    <A href="javascript:void(0);" onclick="showPublishDiv()" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
     <DIV id="fdbk_overlay" style="display:none">
         <DIV id="fdbk_container">
             <A href="#" onclick="return false" id="fdbk_close"></A>
@@ -64,9 +70,9 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 <!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
     <SCRIPT type="text/javascript">
-        document.write('<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/'+Get_Cookie('locale')+'/" type="text/javascript"> </script'+'>');
+       document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+Get_Cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
     </SCRIPT>
-    <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm"); </script>
+    <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm");</script>
 <!-- END OF FB OBJECT INIT  -->
 <!--===================================================================================================================-->
 
@@ -81,16 +87,16 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
  <tr>
   <td id="navigation">
 
-
+<!--
   <nobr> 
     <span class="bold"><label>O meu curriculo</label></span>
   </nobr>
-
+-->
 
 
   </td>
   <td id="user">
-  <nobr> <a href="javascript:setLanguage('pt_PT')">pt</a> <a href="javascript:setLanguage('en_US')">en</a> <a href="javascript:setLanguage('fr_FR')">fr</a></nobr> 
+  <nobr> <a href="javascript:void(0);" onclick="setLanguage('pt_PT')">pt</a> <a href="javascript:void(0);" onclick="setLanguage('en_US')">en</a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')">fr</a></nobr> 
   </td>
  </tr>
 </table>
@@ -109,7 +115,7 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
 <DIV id="sure">
     <center>
             <span></span><br><br>
-            <a href="javascript:void(0);" class="azul">não</a> <a href="javascript:void(0);" class="azul">sim</a>
+            <a href="javascript:void(0);" class="magenta">não</a> <a href="javascript:void(0);" class="azul">sim</a>
     </center>
 </DIV>
 <DIV id="loading"><center> <IMG SRC="images/infinitum2.gif" style="display:block;"></center> </DIV>
@@ -118,16 +124,16 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
         <nobr>
         <span id="fblogin" style="visibility:hidden; display:none"><!-- <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button>-->  <a href="#" onclick="FB.Connect.requireSession(); return false;"><img id="fb_login_image" src="./images/share/facebook-logo.png" alt="Connect" /></a></span> 
 <!-- FB.init -->
-        <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:fbStreamPublish()"><img src="images/share/facebook-logo.png" title="Publicar no Facebook"></a> </span> <a href=javascript:twitterAuthorize()  ><img src="images/share/twitter-logo.png" title="Publicar no Twitter" ></a> <a href=javascript:permaLink()><img src="images/share/share_arrow.jpg" title="crie um link permanente" ></a>
+        <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/share/facebook-logo.png" title="Publicar no Facebook"></a> </span> <a href="javascript:void(0);" onclick=twitterAuthorize()  ><img src="images/share/twitter-logo.png" title="Publicar no Twitter" ></a> <a href="javascript:void(0);" onclick="permaLink()"><img src="images/share/share_arrow.jpg" title="crie um link permanente" ></a>
         </nobr>
-        <a href="javascript:hidePublishDiv()" class="azul">fechar</a>
+        <a href="javascript:void(0);" onclick="hidePublishDiv()" class="azul">fechar</a>
     </center> 
 </DIV>
 <DIV id="twitter_publish">
     <center>
         <TEXTAREA name="twitter_status"></TEXTAREA>
         <br>
-        <a href="javascript:void(0);" class="azul">cancelar</a> <a href="javascript:void(0);" class="azul">ok</a>
+        <a href="javascript:void(0);" class="magenta">cancelar</a> <a href="javascript:void(0);" class="azul">ok</a>
     </center>
 </div>
 
@@ -170,9 +176,9 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
   <TR>
    <TD class="sec_titles">&nbsp;</TD>
    <TD>
-    <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><A class="azul" href=javascript:edit(1,"personal") >editar</A></SPAN>
-    <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"><A class="azul" href=javascript:save(1,"personal")>guardar</A> | </SPAN>
-    <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none"><A class="magenta" href=javascript:cancel(1,"personal")>cancelar</A> </SPAN>   </TD>
+    <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><A class="azul" href="javascript:void(0);" onclick=edit(1,"personal") >editar</A></SPAN>
+    <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"><A class="azul" href="javascript:void(0);" onclick=save(1,"personal")>guardar</A> | </SPAN>
+    <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none"><A class="magenta" href="javascript:void(0);" onclick=cancel(1,"personal")>cancelar</A> </SPAN>   </TD>
   </TR>
   
   <TR>
@@ -323,9 +329,9 @@ if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="te
  <TR>
   <TD class="sec_titles">&nbsp;</TD>
   <TD>
-   <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" href=javascript:edit(0,"skills")><label>editar</label></A> </SPAN>
-   <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"  ><A class="azul" href=javascript:save(0,"skills")><label>guardar</label></A> |</SPAN>
-   <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none" ><A class="magenta" href=javascript:cancel(0,"skills")><label>cancelar</label></A> </SPAN>
+   <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" href="javascript:void(0);" onclick=edit(0,"skills")>editar</A> </SPAN>
+   <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"  ><A class="azul" href="javascript:void(0);" onclick=save(0,"skills")>guardar</A> |</SPAN>
+   <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none" ><A class="magenta" href="javascript:void(0);" onclick=cancel(0,"skills")>cancelar</A> </SPAN>
   </TD>
  </TR>
 

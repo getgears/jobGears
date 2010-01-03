@@ -1,128 +1,145 @@
 
-function warning(message)
+function getNewId()
 {
-    document.getElementById('warning').getElementsByTagName('span')[0].innerHTML = message;
-    document.getElementById('background').style.visibility = "visible";
-    document.getElementById('background').style.display = "block";
-    document.getElementById('warning').style.visibility = "visible";
-    document.getElementById('warning').style.display = "block"; 
-  
-    document.getElementById('warning').getElementsByTagName("a")[0].onclick = function(){
-                            document.getElementById('warning').style.display = "none";
-                            document.getElementById('warning').style.visibility = "hidden";
-                            document.getElementById('background').style.visibility = "hidden";
-                            document.getElementById('background').style.display = "none";
-                            return true;
-                         }
+	var id=0;
+	var forms = document.getElementsByTagName("form")
+	for (c=0; c< forms.length ; c++ )
+	{
+		if (parseInt(forms[c].getAttribute('id'))>id  )
+			id = parseInt(forms[c].getAttribute('id'));
+	}
+	id++;
+
+	return id;
 }
 
-function sure(id_form,tipo_form)
+function checkEmptyForms(tipo_form)
 {
-    document.getElementById("sure").getElementsByTagName('span')[0].innerHTML = locale['Deseja mesmo apagar o registo?'];
-    document.getElementById("sure").getElementsByTagName('a')[0].setAttribute('href','#no');
-    document.getElementById("sure").getElementsByTagName('a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
 
-    document.getElementById("background").style.visibility = "visible";
-    document.getElementById("background").style.display = "block";
-    document.getElementById("sure").style.visibility = "visible";
-    document.getElementById("sure").style.display = "block";
+    var formsaux=document.getElementById(tipo_form).getElementsByTagName('FORM');
+	var c=0;
 
-    document.getElementById("sure").getElementsByTagName('a')[0].onclick=function()
-    {
-        document.getElementById("background").style.visibility = "hidden";
-        document.getElementById("background").style.display = "none";
-        document.getElementById("sure").style.visibility = "hidden";
-        document.getElementById("sure").style.display = "none";             
-    }
-    document.getElementById("sure").getElementsByTagName('a')[1].onclick=function()
-    {
-        document.getElementById("sure").style.visibility = "hidden"               
-        document.getElementById("sure").style.display = "none"             
-    }  
+    for (c=0;c < formsaux.length ; c++)
+	{
+		if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
+		{
+			warning(locale['Existe um registo totalmente em branco na secção. Preencha este.']);
+			return false;
+		}
+	}
+	return true;
 }
 
-//#################################################################################
-function showPublishDiv()
+
+function hideStatus()
 {
-    document.getElementById('background').style.visibility = "visible"
-    document.getElementById('background').style.display = "block"
-    document.getElementById('publish_div').style.visibility = "visible"
-    document.getElementById('publish_div').style.display = "block"
+    window.status = "";
+    return;
 }
 
-function hidePublishDiv()
+function validation(form_)
 {
-    document.getElementById('publish_div').style.visibility = "hidden"
-    document.getElementById('publish_div').style.display = "none"
-    document.getElementById('background').style.visibility = "hidden"
-    document.getElementById('background').style.display = "none"
-}
-//#################################################################################
-function hideInfoDiv()
-{     
-    if (globalOpacity <= parseFloat(0.05) )
-    {
-        globalOpacity = parseFloat(1) ; 
-        document.getElementById('request_report').style.visibility = "hidden"
-        document.getElementById('request_report').style.display = "none"
-        document.getElementById('request_report').style.opacity =  globalOpacity     
-        document.getElementById('request_report').style.filter = 'alpha(opacity='+globalOpacity*100+')' 
-        return;
-    }
-    if ( globalOpacity > parseFloat(0.05) )
-    { 
-        globalOpacity = globalOpacity - parseFloat(0.005)
-        document.getElementById('request_report').style.opacity = globalOpacity; 
-        document.getElementById('request_report').style.filter = 'alpha(opacity='+globalOpacity*100+')'
-        lastSetTimeOut = window.setTimeout(hideInfoDiv, 10)
-    }
+	var found_html=0;
+	for (c=0;c<form_.length ; c++)
+	{
+		var strInputCode = form_[c].value;
+		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){return (p1 == "lt")? "<" : ">";});
+		var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+		for (k=0;k<strInputCode.length; k++)
+		{
+			if ((strInputCode.charAt(k)=='<') && (strInputCode.charAt(k+1)!='>'))
+			{
+				for (x=k+1;x<strInputCode.length;x++)
+				{
+					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
+					{
+						var found_html=1;
+						warning(locale['Formatação HTML não permitida foi removida']);
+					}
+				}
+			}
+		}
+		form_[c].value =	strTagStrippedText;	
+	}
 }
 
 
-function showInfoDiv(color, message)
+
+function resetDate(object)
 {
-    globalOpacity = parseFloat(1) ; 
-    clearTimeout(lastSetTimeOut) ;
-    
-    if (color=='green')
-    {
-        document.getElementById('request_report').style.backgroundColor = settings.info_positive_color
-        document.getElementById('request_report').style.backgroundcolor = settings.info_positive_color
-    }
-    if (color=='red')
-    {
-        document.getElementById('request_report').style.backgroundColor = settings.info_negative_color
-        document.getElementById('request_report').style.backgroundcolor = settings.info_negative_color
-    }
-
-    document.getElementById('request_report').innerHTML = message
-    document.getElementById('request_report').style.visibility = "visible"
-    document.getElementById('request_report').style.display = "inline"
-
-    lastSetTimeOut = window.setTimeout(hideInfoDiv, 2000);
-
+	object.value = "";
 }
-// ######################################################################################################
 
-function openEffect()
+
+function reconfigure_slot(tipo_form)
 {
-	document.getElementById("background").style.display="block";
-	document.getElementById("background").style.visibility="visible";
-	document.getElementById("loading").style.display="block";
-	document.getElementById("loading").style.visibility="visible";
+	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+	var k = parseInt(forms.length);
+	//k;
+
+	var c=0;
+	
+	for ( c=0; c<parseInt(forms.length) ; c++ )
+	{
+		forms[c].setAttribute('slot',k);
+		k--;
+	}		
 }
 
-
-
-function closeEffect()
+function slot_forms(tipo_form)
 {
-	document.getElementById("loading").style.display="none";
-	document.getElementById("loading").style.visibility="hidden";
-	document.getElementById("background").style.display="none";
-	document.getElementById("background").style.visibility="hidden";
+	
+	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+
+	var slot=0 ;
+	var c = 0 ;
+
+	for (c=0 ; c < parseInt(forms.length) ; c++ )
+	{
+		if (parseInt(forms[c].getAttribute("slot")) > slot)
+		{
+			slot = parseInt(forms[c].getAttribute("slot"));
+		}
+	}
+
+	slot++;
+	return slot ;
+	
 }
 
-// ##############################################################################
+function cutValue(txtarea)
+{
+	if (txtarea.value.length>4000)
+	{
+		txtarea.value=txtarea.value.substring(0,4000);
+		warning(locale['Foi atingido o limite de caracteres neste campo']);
+	}
+}
+
+function check_blanck_fields(id,tipo_form)
+{
+	if (id== -1)
+		return 1;
+	var elements = document.getElementById(id)
+	if (tipo_form=="languages")
+	{
+		if ((elements[0].value!="") && (elements[0].value!=" "))
+			{	return 1;	}
+		if ((elements[0].value=="") || (elements[0].value==" "))
+			{	return 0;	}
+	}
+	var start_index=0;
+	for (c = start_index ; c<elements.length ; c++)
+	{
+		if ((elements[c].getAttribute('tipo')!="data") && (elements[c].value!="") && (elements[c].value!=" ") )
+		{
+			return 1; 
+		}
+	}
+	return 0; 
+}
+
+
 
 function setLanguage(language)
 {
@@ -186,7 +203,7 @@ function setLocale(object)
         catch(err){} 
     }     
 }
-
+/*
 function init()
 {
     setLocale(document)
@@ -194,4 +211,4 @@ function init()
     document.getElementById('body').style.display = "block"
     closeEffect();
 }
-
+*/

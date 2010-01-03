@@ -1,78 +1,3 @@
-function resetDate(object)
-{
-	object.value = "";
-}
-
-
-function reconfigure_slot(tipo_form)
-{
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-	var k = parseInt(forms.length);
-	//k;
-
-	var c=0;
-	
-	for ( c=0; c<parseInt(forms.length) ; c++ )
-	{
-		forms[c].setAttribute('slot',k);
-		k--;
-	}		
-}
-
-function slot_forms(tipo_form)
-{
-	
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-
-	var slot=0 ;
-	var c = 0 ;
-
-	for (c=0 ; c < parseInt(forms.length) ; c++ )
-	{
-		if (parseInt(forms[c].getAttribute("slot")) > slot)
-		{
-			slot = parseInt(forms[c].getAttribute("slot"));
-		}
-	}
-
-	slot++;
-	return slot ;
-	
-}
-
-function cutValue(txtarea)
-{
-	if (txtarea.value.length>4000)
-	{
-		txtarea.value=txtarea.value.substring(0,4000);
-		warning(locale['Foi atingido o limite de caracteres neste campo']);
-	}
-}
-
-function check_blanck_fields(id,tipo_form)
-{
-	if (id== -1)
-		return 1;
-	var elements = document.getElementById(id)
-	if (tipo_form=="languages")
-	{
-		if ((elements[0].value!="") && (elements[0].value!=" "))
-			{	return 1;	}
-		if ((elements[0].value=="") || (elements[0].value==" "))
-			{	return 0;	}
-	}
-	var start_index=0;
-	for (c = start_index ; c<elements.length ; c++)
-	{
-		if ((elements[c].getAttribute('tipo')!="data") && (elements[c].value!="") && (elements[c].value!=" ") )
-		{
-			return 1; 
-		}
-	}
-	return 0; 
-}
-
-
 
 function erase(id_form,tipo_form)
 {
@@ -356,21 +281,6 @@ function edit(form,tipo_form)
         globalEditingLanguage = true;
 }
 
-/*
-function checkDivInnerHTML(vector)
-{
-	var c=0;
-	for (c = 0 ; c< vector.length ; c++ )
-	{
-		if ((vector[c]!="") && (vector[c]!=" "))
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-*/
-
 function cancel(form_id,tipo_form)
 {
 
@@ -463,7 +373,6 @@ function cancel(form_id,tipo_form)
 
 
 
-
 function move(form_id,tipo_form,move)
 {
     var form = document.getElementById(form_id)
@@ -548,32 +457,4 @@ function move(form_id,tipo_form,move)
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.setRequestHeader("X-Referer", document.location);
     ajax.send(encodeURI(postString))
-}
-
-
-
-function validation(form_)
-{
-	var found_html=0;
-	for (c=0;c<form_.length ; c++)
-	{
-		var strInputCode = form_[c].value;
-		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){return (p1 == "lt")? "<" : ">";});
-		var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
-		for (k=0;k<strInputCode.length; k++)
-		{
-			if ((strInputCode.charAt(k)=='<') && (strInputCode.charAt(k+1)!='>'))
-			{
-				for (x=k+1;x<strInputCode.length;x++)
-				{
-					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
-					{
-						var found_html=1;
-						warning(locale['Formatação HTML não permitida foi removida']);
-					}
-				}
-			}
-		}
-		form_[c].value =	strTagStrippedText;	
-	}
 }
