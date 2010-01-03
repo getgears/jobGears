@@ -1,7 +1,7 @@
 var settings = new Object();
 
 // application settings
-settings.root_url = "http://andrefsp.servehttp.com/"
+settings.root_url = "http://jobgears.net/"
 settings.locale_cookie_name = 'locale'
 
 // settings for info div color
