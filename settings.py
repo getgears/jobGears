@@ -58,7 +58,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://andrefsp.servehttp.com'
+ROOT_URL = 'http://jobgears.net'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -124,5 +124,5 @@ CACHE_PREFIX = 'jobgears.'
 
 
 #Facebook Settings 
-FACEBOOK_API_KEY = ''
-FACEBOOK_SECRET_KEY = ''
+FACEBOOK_API_KEY = '3296be521467c6b0f73259c7b4cbfbd5'
+FACEBOOK_SECRET_KEY = '2caeb4991992b6f6f4789b1dce2c117e'
