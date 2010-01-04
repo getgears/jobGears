@@ -1,5 +1,44 @@
 from django.db import models
 from jobgears.users.models import User
+import re
+
+
+class ProfileSection(models.Model):
+    """
+    Base class for all profile sections
+    """
+    
+    def as_dict(self, require_active=False):
+        """
+        Return a dictonary version of the model
+        """
+        section_dict = dict()
+        for key in self.__dict__:
+            if re.match(r'^.*_active$', key):
+                # Skip this attribute
+                continue
+            if not require_active or getattr(self, '%s_active' % (key,)):
+                section_dict[key] = getattr(self, key)
+        return section_dict
+
+    def from_dict(self, data):
+        """
+        Overwrite the model attributes with the given data dictionary
+        """
+        pass
+
+    class Meta:
+        abstract = True
+
+
+class ProfileSlot(models.Model):
+    profile = models.ForeignKey('Profile')
+    active = models.BooleanField(default=True, null=False)
+    order = models.IntegerField()
+   
+    class Meta:
+        ordering = ('order',)
+        abstract = True
 
 
 class Profile(models.Model):
@@ -9,12 +48,41 @@ class Profile(models.Model):
     personal_data_active = models.BooleanField(default=True, null=False)
     personal_skills = models.OneToOneField('PersonalSkills')
     personal_skills_active = models.BooleanField(default=True, null=False)
-    language = models.ManyToManyField('Language', through='Profile_Language')
+    languages = models.ManyToManyField('Language', through='Profile_Language')
     education = models.ManyToManyField('Education', through='Profile_Education')
     professional_experience = models.ManyToManyField('ProfessionalExperience', through='Profile_ProfessionalExperience')
 
+    def as_dict(self, require_active=False):
+        """
+        Return a dictionary version of the profile
+        """
+        def slots_to_dict(slots, require_active=False):
+            slots_list = list()
+            for slot in self.slots:
+                if not require_active or slot.active:
+                    slots_list.append(slot.record.as_dict(require_active))
+            return slots_list
 
-class PersonalData(models.Model):
+        profile_dict = dict()
+        if not require_active or personal_data_active:
+            profile_dict['personal_data'] = self.personal_data.as_dict(require_active)
+        if not require_active or personal_skills_active:
+            profile_dict['personal_skills'] = self.personal_skills.as_dict(require_active)
+        profile_dict['languages'] = slots_to_dict(slot.languages, require_active)
+        profile_dict['education'] = slots_to_dict(slot.education, require_active)
+        profile_dict['professional_experience'] = slots_to_dict(slot.professional_experience, require_active)
+
+        return profile_dict
+        
+
+    def from_dict(self, data):
+        """
+        Overwrite the profile with the given data dictionary
+        """
+        pass
+
+
+class PersonalData(ProfileSection):
     birthdate = models.DateField()
     birthdate_active = models.BooleanField(default=True, null=False)
     name = models.CharField(max_length=128, blank=True)
@@ -45,7 +113,7 @@ class PersonalData(models.Model):
     desired_employment_active = models.BooleanField(default=True, null=False)
 
 
-class PersonalSkills(models.Model):
+class PersonalSkills(ProfileSection):
     social_skills = models.TextField(blank=True)
     social_skills_active = models.BooleanField(default=True, null=False)
     organization_skills = models.TextField(blank=True)
@@ -64,7 +132,7 @@ class PersonalSkills(models.Model):
     aditionalinfo_active = models.BooleanField(default=True, null=False)
 
 
-class Language(models.Model):
+class Language(ProfileSection):
     language = models.CharField(max_length=64)
     language_active = models.BooleanField(default=True, null=False)
     listening = models.CharField(max_length=32)
@@ -79,7 +147,7 @@ class Language(models.Model):
     writing_active = models.BooleanField(default=True, null=False)   
 
 
-class Education(models.Model):
+class Education(ProfileSection):
     init_date = models.DateField()
     init_date_active = models.BooleanField(default=True, null=False)
     final_date = models.DateField()
@@ -96,7 +164,7 @@ class Education(models.Model):
     average_active = models.BooleanField(default=True)
 
 
-class ProfessionalExperience(models.Model):
+class ProfessionalExperience(ProfileSection):
     init_date = models.DateField()
     init_date_active = models.BooleanField(default=True, null=False)
     final_date = models.DateField()
@@ -109,16 +177,6 @@ class ProfessionalExperience(models.Model):
     company_active = models.BooleanField(default=True, null=False)
     business_area = models.TextField(blank=True)
     business_area_active = models.BooleanField(default=True, null=False)
-
-
-class ProfileSlot(models.Model):
-    profile = models.ForeignKey('Profile')
-    active = models.BooleanField(default=True, null=False)
-    order = models.IntegerField()
-   
-    class Meta:
-        ordering = ('order',)
-        abstract = True
 
 
 class Profile_Language(ProfileSlot):

@@ -1,7 +1,7 @@
 # ajax views
 from jobgears.helpers import json_encode
 from jobgears.profile import load_profile
-from jobgears.users.views import get_id
+from jobgears.users import get_id
 
 
 @json_encode

@@ -9,3 +9,11 @@ def get_id(request):
     except AttributeError:
         return None
 
+
+def get_email(request):
+    """
+    Returns the email of the current facebook user
+    """
+    # TODO to be implemented
+    return 'ricardo@getgears.com'
+
