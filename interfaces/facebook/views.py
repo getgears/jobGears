@@ -2,8 +2,6 @@
 # django Framework Includes
 from django.conf import settings
 from django.http import HttpResponse
-from django import template
-from django.template.loader import get_template
 from django.shortcuts import render_to_response
 
 # import for gettext Internationalization Utils
@@ -12,12 +10,7 @@ from django.utils.translation import ugettext as _
 # implejson import for error messages
 import simplejson
 
-# import for generation of static file URL
-from jobgears.publisher.html import ProfileHtml
-
-# import pyFacebook
-import facebook.djangofb as facebook
-
+from jobgears.interfaces.facebook import get_id
 
 
 # jobgears view for Facebook UID session Storage
@@ -73,28 +66,15 @@ def fb_publish_cv(request):
 
 
 
-@facebook.require_login()
-def set_id(request):
-    """
-    Callback view that get a user Facebook Id
-    """
-    try:
-        name = request.facebook.users.getInfo([request.facebook.uid],['first_name'])[0]['first_name']
-        id = request.facebook.users.getInfo([request.facebook.uid],['uid'])[0]['uid']
+#@facebook.require_login()
+def info(request):
+    id = get_id(request)
+    print id
+    if id:
+        name = request.facebook.users.getInfo([id],['first_name'])[0]['first_name']
         html = "nome do nigga: %s <br> id do nigga: %s " % (name ,id,)
         return HttpResponse(html)
     
-    except KeyError:
+    else:
         return HttpResponse("nothing to do")
-
-
-def get_id(request):
-    """
-    Return the facebook id based on a cookie
-    """
-    try:
-        id = int(request.COOKIES['facebook_id'])
-    except KeyError, ValueError:
-        id = None
-    return id
 

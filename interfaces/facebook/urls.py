@@ -5,8 +5,8 @@ from jobgears.interfaces.facebook.views import *
 
 urlpatterns = patterns('',
     # facebook UID storage
-    (r'^fbid/$', set_id),
-    #(r'^setfbuid/$', fbSetUID),
+    (r'^info/$', info),
     # out of date function
     (r'^publishfb/$', fb_publish_cv),
 )
+

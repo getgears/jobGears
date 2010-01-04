@@ -104,39 +104,31 @@ class ProfessionalExperience(models.Model):
     position = models.CharField(max_length=256, blank=True)
     position_active = models.BooleanField(default=True, null=False)
     description = models.TextField(blank=True)
-    description_ctive = models.BooleanField(default=True, null=False)
+    description_active = models.BooleanField(default=True, null=False)
     company = models.TextField(blank=True)
     company_active = models.BooleanField(default=True, null=False)
     business_area = models.TextField(blank=True)
     business_area_active = models.BooleanField(default=True, null=False)
 
 
-class Profile_Language(models.Model):
+class ProfileSlot(models.Model):
     profile = models.ForeignKey('Profile')
+    active = models.BooleanField(default=True, null=False)
+    order = models.IntegerField()
+   
+    class Meta:
+        ordering = ('order',)
+        abstract = True
+
+
+class Profile_Language(ProfileSlot):
     record = models.ForeignKey('Language')
-    active = models.BooleanField(default=True, null=False)
-    order = models.IntegerField()
-   
-    class Meta:
-        ordering = ('order',)
 
 
-class Profile_Education(models.Model):
-    profile = models.ForeignKey('Profile')
+class Profile_Education(ProfileSlot):
     record = models.ForeignKey('Education')
-    active = models.BooleanField(default=True, null=False)
-    order = models.IntegerField()
-   
-    class Meta:
-        ordering = ('order',)
 
 
-class Profile_ProfessionalExperience(models.Model):
-    profile = models.ForeignKey('Profile')
+class Profile_ProfessionalExperience(ProfileSlot):
     record = models.ForeignKey('ProfessionalExperience')
-    active = models.BooleanField(default=True, null=False)
-    order = models.IntegerField()
-   
-    class Meta:
-        ordering = ('order',)
 
