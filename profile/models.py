@@ -29,9 +29,9 @@ class ProfileSection(models.Model):
         for key in self.__dict__:
             if key in data_dict:
                 data_type = type(getattr(self, key))
-                if data_type = int
+                if data_type == int:
                     cleaned_dict[key] = int(data_dict[key])
-                elif data_type = str:
+                elif data_type == str:
                     cleaned_dict[key] = str(data_dict[key])
                 # TODO Finish other types            
         return cleaned_dict
