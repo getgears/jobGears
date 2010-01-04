@@ -1,7 +1,7 @@
 # ajax views
 from jobgears.helpers import json_encode
-from jobgears.profile import load_profile
-from jobgears.users import get_id
+from jobgears.profile import get_profile
+from jobgears.users import get_id as get_user_id
 
 
 @json_encode
@@ -12,9 +12,9 @@ def get_profile(request):
     try:
         profile = request.session['profile']    
     except AttributeError, KeyError:
-        id = get_id(request) 
-        if id:
-            profile = load_profile(id)
+        profile_object = load_profile(request)
+        if profile_object:
+            profile = profile_object.as_dict()
             # Store profile on session to speed up process
             request.session['profile'] = profile
         else:
@@ -23,28 +23,11 @@ def get_profile(request):
     return profile
 
 
-def save_profile(request, section):
+def save_section(request, section):
     """
     For the passed section, 
     """
-    pass
-
-
-# This should probably be somewhere else
-from jobgears.profile.models import *
-
-def dict_to_object(dictionary, object_class):
-    """
-    This method's magic returns a processed validated object
-    for the dictonary and classes provided
-    """
-    try:
-        object_class.objects.get(pk=dictionary['id'])
-
-    except:
-        # Some error occured
+    if get_user_id(request):
+        # Write to database
         pass
-     
-    pass
-
 

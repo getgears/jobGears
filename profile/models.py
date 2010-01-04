@@ -20,6 +20,21 @@ class ProfileSection(models.Model):
             if not require_active or getattr(self, '%s_active' % (key,)):
                 section_dict[key] = getattr(self, key)
         return section_dict
+    
+    def validate(self, data_dict):
+        """
+        This method will return a cleaned compatible dictionary
+        """
+        cleaned_dict = dict()
+        for key in self.__dict__:
+            if key in data_dict:
+                data_type = type(getattr(self, key))
+                if data_type = int
+                    cleaned_dict[key] = int(data_dict[key])
+                elif data_type = str:
+                    cleaned_dict[key] = str(data_dict[key])
+                # TODO Finish other types            
+        return cleaned_dict
 
     def from_dict(self, data):
         """
@@ -44,9 +59,9 @@ class ProfileSlot(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User)
     language = models.CharField(max_length=5, default='en_US')
-    personal_data = models.OneToOneField('PersonalData')
+    personal_data = models.OneToOneField('PersonalData', null=True)
     personal_data_active = models.BooleanField(default=True, null=False)
-    personal_skills = models.OneToOneField('PersonalSkills')
+    personal_skills = models.OneToOneField('PersonalSkills', null=True)
     personal_skills_active = models.BooleanField(default=True, null=False)
     languages = models.ManyToManyField('Language', through='Profile_Language')
     education = models.ManyToManyField('Education', through='Profile_Education')
@@ -74,13 +89,6 @@ class Profile(models.Model):
 
         return profile_dict
         
-
-    def from_dict(self, data):
-        """
-        Overwrite the profile with the given data dictionary
-        """
-        pass
-
 
 class PersonalData(ProfileSection):
     birthdate = models.DateField()
@@ -189,4 +197,17 @@ class Profile_Education(ProfileSlot):
 
 class Profile_ProfessionalExperience(ProfileSlot):
     record = models.ForeignKey('ProfessionalExperience')
+
+
+# This maps sections to models
+mapping = {
+        'personal_data': PersonalData,
+        'personal_skills': PersonalSkills,
+        'languages': Language,
+        'education': Education,
+        'professional_experience': ProfessionalExperience,
+        }
+
+
+
 

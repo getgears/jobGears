@@ -2,10 +2,9 @@ from jobgears.profile.models import *
 from jobgears.users import get_user
 
 
-def get_profile(request):
+def load_profile(request):
     """
-    Returns the profile object associated with the request
-    If doesn't exists, tries to create one 
+    Loads the profile object associated with the request
     """
     user_object = get_user(request)
     if user_object:
@@ -21,14 +20,14 @@ def get_profile(request):
     return profile_object
 
 
+def get_profile(request):
+    """
+    Returns the profile object associated with the request
+    If doesn't exists, creates one
+    """
+    profile_object = load_profile(request)
+    if not profile_object:
+        # Create new profile
+        profile_object = Profile(user=get_user(request))
+    return profile_object
 
-def load_profile(request):
-    """
-    Will load and retrieve a profile dictionary
-    """
-    profile_dict = dict()
-    profile_object = get_profile(request)
-    if profile_object:
-        profile_dict = profile_object.to_dict()
-    return profile_dict
-   
