@@ -1,5 +1,6 @@
 from django.db import models
 from jobgears.users.models import User
+from jobgears.profile.utils import validate_field
 import re
 
 
@@ -7,18 +8,21 @@ class ProfileSection(models.Model):
     """
     Base class for all profile sections
     """
-    
-    def as_dict(self, require_active=False):
+    def as_dict(self, public=False):
         """
         Return a dictonary version of the model
         """
-        section_dict = dict()
-        for key in self.__dict__:
-            if re.match(r'^.*_active$', key):
-                # Skip this attribute
-                continue
-            if not require_active or getattr(self, '%s_active' % (key,)):
-                section_dict[key] = getattr(self, key)
+        if public:
+            section_dict = dict()
+            for key in self.__dict__:
+                try:
+                    if getattr(self, '%s_active' % (key,)):
+                        section_dict[key] = getattr(self, key)
+                except:
+                    # Skip this attribute
+                    continue
+        else:
+            section_dict = self.__dict__
         return section_dict
     
     def validate(self, data_dict):
@@ -28,19 +32,16 @@ class ProfileSection(models.Model):
         cleaned_dict = dict()
         for key in self.__dict__:
             if key in data_dict:
-                data_type = type(getattr(self, key))
-                if data_type == int:
-                    cleaned_dict[key] = int(data_dict[key])
-                elif data_type == str:
-                    cleaned_dict[key] = str(data_dict[key])
-                # TODO Finish other types            
+                cleaned_dict[key] = validate_field(getattr(self, key), data_dict[key])
         return cleaned_dict
 
     def from_dict(self, data):
         """
         Overwrite the model attributes with the given data dictionary
         """
-        pass
+        for key in self.__dict__:
+            if key in data_dict and not key == 'id':
+                setattr(self, key, validate_field(getattr(self, key), data_dict[key]))
 
     class Meta:
         abstract = True
