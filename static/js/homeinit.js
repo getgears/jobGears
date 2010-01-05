@@ -11,56 +11,29 @@
 
 function initExperience()
 {
-    var ajax = getAjax();
-    //var url = settings.root_url + "form/init/experienceInit.html" 
     var url = settings.root_url + settings.init_path + settings.init_experience_filename
-    ajax.onreadystatechange = function()
-    {
-        if (ajax.readyState==4)
-        {   
-            experienceReady = true;
-        }
-    }        
 
-    ajax.open("GET",encodeURI(url),true);
-    ajax.send(null);
-
-    return;
+    $.get(url,function(data){
+        experienceReady = true;
+    });
 }
 
 function initEducation()
 {
-    var ajax = getAjax();
-    //var url = settings.root_url + "form/init/educationInit.html"
     var url = settings.root_url + settings.init_path + settings.init_education_filename
 
-    ajax.onreadystatechange = function()
-    {
-        if (ajax.readyState==4)
-        {
-            educationReady = true;
-        }    
-    }        
-
-    ajax.open("GET",encodeURI(url),true);
-    ajax.send(null);
+    $.get(url,function(data){
+        educationReady = true;
+    });
 }
 
 function initLanguage()
 {
-    var ajax = getAjax();
-    //var url = settings.root_url + "form/init/languageInit.html"
     var url = settings.root_url + settings.init_path + settings.init_languages_filename
-    ajax.onreadystatechange = function()
-    {
-        if (ajax.readyState==4)
-        {
-            languageReady = true;
-        }
-    }        
 
-    ajax.open("GET",encodeURI(url),true);
-    ajax.send(null);
+    $.get(url,function(data){
+        languageReady = true;
+    });
 }
 
 function oldOnToReady()
@@ -69,7 +42,7 @@ function oldOnToReady()
     {
         setLocale(document);
         fbInit();
-        document.getElementById('body').style.display = "block";
+        $('#body').show();
         closeEffect();
     }
     else{ window.setTimeout(oldOnToReady, 50); }
@@ -78,21 +51,22 @@ function oldOnToReady()
 
 function init()
 {
-    var ajax = getAjax();
+
     var url = settings.root_url + settings.get_profile_url;
-    ajax.onreadystatechange = function()
+//    $('#body a')[0].innerHTML = "jkshfkjhsf"; 
+
+    $('#body').ajaxError(function()
     {
-        if (ajax.readyState == 4)
-        {
-//            educationReady = true;
-//            experienceReady = true;
-//            languageReady = true;
-            initExperience();
-            initEducation();
-            initLanguage();
-            oldOnToReady();
-        }
-    }
-    ajax.open("GET",encodeURI(url),true);
-    ajax.send(null);
+                    initExperience();
+                    initEducation();
+                    initLanguage();    
+                    oldOnToReady(); 
+    });               
+
+     $.get(url,function(data){
+                    initExperience();
+                    initEducation();
+                    initLanguage();
+                    oldOnToReady(); 
+    });    
 }

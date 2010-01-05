@@ -32,7 +32,7 @@ function new_form(tipo_form)
             if (!ajax.responseText)
             {
                 warning(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação']);
-                closeEffect();
+//                closeEffect();
                 return;
             }
             if (ajax.responseText)

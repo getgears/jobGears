@@ -14,15 +14,23 @@ function warning(message)
 
 function sure(id_form,tipo_form)
 {
-    
-    document.getElementById("sure").getElementsByTagName('span')[0].innerHTML = locale['Deseja mesmo apagar o registo?'];
-    document.getElementById("sure").getElementsByTagName('a')[0].setAttribute('href','javascript:void(0);');
-    document.getElementById("sure").getElementsByTagName('a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
+    $('span','#sure').attr('innerHTML',locale['Deseja mesmo apagar o registo?']);
+    $('#sure a')[0].setAttribute('href','javascript:void(0);');
+    $('#sure a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
 
+//    $('#background').css('visibility','visible');
+    $('#background').css('opacity','0.5');
+    $('#background').show();
+
+    $('#sure').css('visibility','visible');
+    $('#sure').show();
+
+/*
     document.getElementById("background").style.visibility = "visible";
     document.getElementById("background").style.display = "block";
     document.getElementById("sure").style.visibility = "visible";
     document.getElementById("sure").style.display = "block";
+*/
 
     document.getElementById("sure").getElementsByTagName('a')[0].onclick=function()
     {
