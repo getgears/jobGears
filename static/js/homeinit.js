@@ -12,8 +12,8 @@
 function initExperience()
 {
     var ajax = getAjax();
-    var url = settings.root_url + "form/init/experienceInit.html" 
-
+    //var url = settings.root_url + "form/init/experienceInit.html" 
+    var url = settings.root_url + settings.init_path + settings.init_experience_filename
     ajax.onreadystatechange = function()
     {
         if (ajax.readyState==4)
@@ -31,7 +31,8 @@ function initExperience()
 function initEducation()
 {
     var ajax = getAjax();
-    var url = settings.root_url + "form/init/educationInit.html"
+    //var url = settings.root_url + "form/init/educationInit.html"
+    var url = settings.root_url + settings.init_path + settings.init_education_filename
 
     ajax.onreadystatechange = function()
     {
@@ -48,8 +49,8 @@ function initEducation()
 function initLanguage()
 {
     var ajax = getAjax();
-    var url = settings.root_url + "form/init/languageInit.html"
-
+    //var url = settings.root_url + "form/init/languageInit.html"
+    var url = settings.root_url + settings.init_path + settings.init_languages_filename
     ajax.onreadystatechange = function()
     {
         if (ajax.readyState==4)
@@ -78,17 +79,20 @@ function oldOnToReady()
 function init()
 {
     var ajax = getAjax();
-    var url = settings.root_url + "ajax/getprofile/";
+    var url = settings.root_url + settings.get_profile_url;
     ajax.onreadystatechange = function()
     {
         if (ajax.readyState == 4)
         {
-            initExperience()
-            initEducation()
-            initLanguage()
-            oldOnToReady()
+//            educationReady = true;
+//            experienceReady = true;
+//            languageReady = true;
+            initExperience();
+            initEducation();
+            initLanguage();
+            oldOnToReady();
         }
     }
     ajax.open("GET",encodeURI(url),true);
-    ajax.send(null)
+    ajax.send(null);
 }

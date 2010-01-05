@@ -13,7 +13,3 @@ var globalEditingExperience = false;
 var globalEditingEducation = false;
 var globalEditingLanguage = false;
 
-//## Globals to effects control
-var globalOpacity = parseFloat(1); 
-var lastSetTimeOut ;
-

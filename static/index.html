@@ -12,8 +12,9 @@
 <!-- GLOBAL VARIABLES -->
 <SCRIPT type="text/javascript" src="js/globals/globals.js"></SCRIPT>
 
-<!-- FEEDBACK --> 
-<SCRIPT type="text/javascript" src="js/feedback/feedback.js"></SCRIPT>
+<!-- jQuery include -->
+<SCRIPT type="text/javascript" src="js/jQuery/jquery-v1.3.2.js"></SCRIPT>
+
 
 
 <!-- INCLUDE CALENDARIO-->
@@ -48,25 +49,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 </HEAD>
 
 <BODY onLoad="init()">
-<!-- =================================================================================================================== -->
-<!--feedback -->
-    <LINK type="text/css" rel="stylesheet" href="css/feedback.css" media="screen" />
-    <SCRIPT type="text/javascript" charset="utf-8">
-      var tab_options = {}
-      tab_options.placement = "left";
-      tab_options.color = "#797979";
-      GSFN.feedback('#', tab_options);
-    </SCRIPT>
-    <A href="javascript:void(0);" onclick="showPublishDiv()" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
-    <DIV id="fdbk_overlay" style="display:none">
-        <DIV id="fdbk_container">
-            <A href="#" onclick="return false" id="fdbk_close"></A>
-        </DIV>
-        <DIV id="fdbk_screen"></DIV>
-    </DIV>
 
-
- 
 <!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
     <SCRIPT type="text/javascript">
@@ -390,10 +373,6 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <div id="request_report" style="visibility: hidden; display: none"> </div>
 
 </div>
-
-
-
-
 
 
 <!-- Analytics Scripts-->
