@@ -23,13 +23,13 @@ function erase(id_form,tipo_form)
     var postString = "?&slot="+form.getAttribute('slot')
 
 	if (tipo_form=="education")
-		url = settings.root_url + "ajax/deleteeducationform/"
+		url = settings.root_url + settings.education_delete_url
 
 	if (tipo_form=="experience")
-		url = settings.root_url + "ajax/deleteexperienceform/"
+		url = settings.root_url + settings.professional_experience_delete_url
 		
 	if (tipo_form=="languages")             	
-		url = settings.root_url + "ajax/deletelanguageform/"
+		url = settings.root_url + settings.languages_delete_url
 
 
 	ajax.onreadystatechange = function ()
@@ -154,19 +154,19 @@ function save(form_id,tipo_form)
     
 
 	if (tipo_form=="education")
-		url = settings.root_url + "ajax/saveeducationform/"
+		url = settings.root_url + settings.education_save_url
 
 	if (tipo_form=="experience")
-		url = settings.root_url + "ajax/saveexperienceform/"
+		url = settings.root_url + settings.professional_experience_save_url
 		
 	if (tipo_form=="languages")             	
-		url = settings.root_url + "ajax/savelanguageform/"
+		url = settings.root_url + settings.languages_save_url
 
 	if (tipo_form=="skills")
-		url = settings.root_url + "ajax/saveskillsform/"
+		url = settings.root_url + settings.personal_skills_save_url
 
 	if (tipo_form=="personal")
-		url = settings.root_url + "ajax/savepersonalform/"
+		url = settings.root_url + settings.personal_data_save_url
 
 	for (c=0; c < form.length ; c++)
 	{
@@ -387,11 +387,11 @@ function move(form_id,tipo_form,move)
 
 
      if (tipo_form=="education")                                  
-         url = settings.root_url + "ajax/moveeducationform/"
+         url = settings.root_url + settings.education_move_url
      if (tipo_form=="experience")
-         url = settings.root_url + "ajax/moveexperienceform/"
+         url = settings.root_url + settings.professional_experience_move_url
      if (tipo_form=="languages")
-         url = settings.root_url + "ajax/movelanguageform/"
+         url = settings.root_url + settings.languages_move_url
  
 
  

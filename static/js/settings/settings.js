@@ -6,7 +6,6 @@ settings.root_url = "http://andrefsp.servehttp.com/";
 settings.locale_cookie_name = "locale";
 
 
-
 // ##################################    URL CONFIG      ########################################
 /* *********actions urls ***************/
 // ## save
@@ -37,6 +36,16 @@ settings.init_education_filename = "educationInit.html";
 settings.render_experience_filename = "experienceRender.html";
 settings.render_languages_filename = "languageRender.html";
 settings.render_education_filename = "educationRender.html";
+
+
+/*********** Facebook Interface ***************/
+settings.facebook_publish_url = "facebook/publishfb/";
+
+
+/** Twitter Interface ****************/
+settings.twitter_auth_url = "twitter/auth";
+settings.twitter_status = "twitter/sendstatus/";
+
 //###############################################################################################
 
 

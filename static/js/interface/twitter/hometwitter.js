@@ -1,7 +1,7 @@
 function twitterAuthorize()
 {
     var ajax  = getAjax()
-    var url = settings.root_url + "twitter/auth/"
+    var url = settings.root_url + settings.twitter_auth_url
 
     ajax.onreadystatechange = function ()
     {
@@ -17,7 +17,7 @@ function twitterAuthorize()
             {
                 /*********************this section must be removed when the twitter popup is ready***************************/
                 var auxAjax = getAjax()
-                var url = settings.root_url + "twitter/sendstatus/?status="
+                var url = settings.root_url + settings.twitter_status_url + "?status="
                 status = response.twitterScreenName+' '+response.message+' '+response.jobgearscv+' @jobgears'
                 url = url + status
                 warning(status)
@@ -38,7 +38,7 @@ function twitterAuthorize()
 function twitterSendStatus()
 {
                 var auxAjax = getAjax()
-                var url = settings.root_url + "twitter/sendstatus/?status="
+                var url = settings.root_url + settings.twitter_status_url +"?status="
                 status = response.twitterScreenName+' '+response.message+' '+response.jobgearscv+' @jobgears'
                 url = url + status
                 warning(status)

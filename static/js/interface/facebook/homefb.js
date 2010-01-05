@@ -57,7 +57,7 @@ function fbStreamPublish()
 {
     var ajax  = getAjax()
     //var url = "./generatepermlink/"
-    var url = settings.root_url + "facebook/publishfb/"
+    var url = settings.root_url + settings.facebook_publish_url
 
     ajax.onreadystatechange = function ()
     {
