@@ -110,8 +110,8 @@ function new_form(tipo_form)
 	if (tipo_form=="education")
     {
         globalEditingEducation = true;
-		url = settings.root_url + "form/render/educationRender.html";
-        //url = "http://andrefsp.servehttp.com/form/render/educationRender.html"
+		url = settings.render_path + settings.render_education_filename ;
+
         if (globalEducationForm==false)
             postString = "?&sendform=1";
         else
@@ -120,8 +120,8 @@ function new_form(tipo_form)
 	if (tipo_form=="languages")
     {
         globalEditingLanguage = true;
-		url = settings.root_url + "form/render/languageRender.html";
-        //url = "http://andrefsp.servehttp.com/form/render/languageRender.html"
+		url = settings.render_path + settings.render_languages_filename ;
+
         if (globalLanguageForm==false)
             postString = "?&sendform=1";
         else
@@ -130,8 +130,8 @@ function new_form(tipo_form)
 	if (tipo_form=="experience")
     {
         globalEditingExperience = true;
-		url = settings.root_url + "form/render/experienceRender.html";
-        //url = "http://andrefsp.servehttp.com/form/render/experienceRender.html"
+		url = settings.render_path + settings.render_experience_filename;
+
         if (globalExperienceForm==false)
             postString = "?&sendform=1"
         else

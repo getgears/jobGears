@@ -23,13 +23,13 @@ function erase(id_form,tipo_form)
     var postString = "?&slot="+form.getAttribute('slot')
 
 	if (tipo_form=="education")
-		url = settings.root_url + settings.education_delete_url
+		url = settings.education_delete_url
 
 	if (tipo_form=="experience")
-		url = settings.root_url + settings.professional_experience_delete_url
+		url =  settings.professional_experience_delete_url
 		
 	if (tipo_form=="languages")             	
-		url = settings.root_url + settings.languages_delete_url
+		url =  settings.languages_delete_url
 
 
 	ajax.onreadystatechange = function ()
@@ -154,23 +154,23 @@ function save(form_id,tipo_form)
     
 
 	if (tipo_form=="education")
-		url = settings.root_url + settings.education_save_url
+		url =  settings.education_save_url
 
 	if (tipo_form=="experience")
-		url = settings.root_url + settings.professional_experience_save_url
+		url =  settings.professional_experience_save_url
 		
 	if (tipo_form=="languages")             	
-		url = settings.root_url + settings.languages_save_url
+		url =  settings.languages_save_url
 
 	if (tipo_form=="skills")
-		url = settings.root_url + settings.personal_skills_save_url
+		url =  settings.personal_skills_save_url
 
 	if (tipo_form=="personal")
-		url = settings.root_url + settings.personal_data_save_url
+		url =  settings.personal_data_save_url
 
 	for (c=0; c < form.length ; c++)
 	{
-		postString = postString + "&"+ form[c].getAttribute('name')+"="+form[c].value
+		postString = postString + "&"+ form[c].getAttribute('name')+"="+form[c].value"&"+form[c].getAttribute('name')+"_active=1"
 	}
 
 
@@ -387,11 +387,11 @@ function move(form_id,tipo_form,move)
 
 
      if (tipo_form=="education")                                  
-         url = settings.root_url + settings.education_move_url
+         url =  settings.education_move_url
      if (tipo_form=="experience")
-         url = settings.root_url + settings.professional_experience_move_url
+         url =  settings.professional_experience_move_url
      if (tipo_form=="languages")
-         url = settings.root_url + settings.languages_move_url
+         url =  settings.languages_move_url
  
 
  

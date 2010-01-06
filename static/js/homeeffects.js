@@ -18,31 +18,19 @@ function sure(id_form,tipo_form)
     $('#sure a')[0].setAttribute('href','javascript:void(0);');
     $('#sure a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
 
-//    $('#background').css('visibility','visible');
     $('#background').css('opacity','0.5');
     $('#background').show();
-
     $('#sure').css('visibility','visible');
     $('#sure').show();
 
-/*
-    document.getElementById("background").style.visibility = "visible";
-    document.getElementById("background").style.display = "block";
-    document.getElementById("sure").style.visibility = "visible";
-    document.getElementById("sure").style.display = "block";
-*/
-
-    document.getElementById("sure").getElementsByTagName('a')[0].onclick=function()
+    $('#sure a')[0].onclick=function()
     {
-        document.getElementById("background").style.visibility = "hidden";
-        document.getElementById("background").style.display = "none";
-        document.getElementById("sure").style.visibility = "hidden";
-        document.getElementById("sure").style.display = "none";             
+        $('#sure').hide();
+        $('#background').fadeOut('fast');
     }
-    document.getElementById("sure").getElementsByTagName('a')[1].onclick=function()
+    $('#sure a')[1].onclick=function()
     {
-        document.getElementById("sure").style.visibility = "hidden"               
-        document.getElementById("sure").style.display = "none"             
+        $('#sure').hide();
     }  
 }
 

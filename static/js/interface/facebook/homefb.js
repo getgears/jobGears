@@ -44,10 +44,7 @@ function fbLoggedIn()
             {
                 // user didn't gave his premissions 
             }   
-            if (perms)
-            {
-                // user gave his permissions 
-            }
+            if (perms){ }
             location.reload(true);
     },true);
     
@@ -56,8 +53,7 @@ function fbLoggedIn()
 function fbStreamPublish()
 {
     var ajax  = getAjax()
-    //var url = "./generatepermlink/"
-    var url = settings.root_url + settings.facebook_publish_url
+    var url = settings.facebook_publish_url
 
     ajax.onreadystatechange = function ()
     {

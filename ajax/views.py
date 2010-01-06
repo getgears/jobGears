@@ -1,17 +1,18 @@
 # ajax views
-from jobgears.helpers import json_encode
-from jobgears.profile import get_profile
+from jobgears.helpers import json_response
+from jobgears.profile import load_profile
+from jobgears.profile.models import mapping
 from jobgears.users import get_id as get_user_id
 
 
-@json_encode
+@json_response
 def get_profile(request):
     """
     Returns the user profile from session or a empty one
     """
     try:
         profile = request.session['profile']    
-    except AttributeError, KeyError:
+    except KeyError:
         profile_object = load_profile(request)
         if profile_object:
             profile = profile_object.as_dict()
@@ -23,11 +24,21 @@ def get_profile(request):
     return profile
 
 
+@json_response
 def save_section(request, section):
     """
     For the passed section, 
     """
+    model = mapping[section]()
+    validated_dict = model.validate(request.POST)
+    
+    try:
+        request.session['profile'][section] = validated_dict
+    except KeyError:
+        request.session['profile'] = {section: validated_dict}
+
     if get_user_id(request):
         # Write to database
         pass
 
+    return True

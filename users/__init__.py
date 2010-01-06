@@ -1,4 +1,5 @@
 from jobgears.interfaces import facebook
+from jobgears.interfaces.facebook.models import FacebookUser
 from jobgears.users.models import User
 
 
@@ -16,12 +17,12 @@ def get_user(request):
             # We have a facebook id
             try:
                 # Try to retrieve the user object
-                user_object = facebook.models.User.objects.get(pk=facebook_id).user
+                user_object = FacebookUser.objects.get(pk=facebook_id).user
             except:
                 # If there is a error, create the objects
                 user_object = User(email=facebook.get_email(request))
                 user_object.save()
-                facebook_object = facebook.models.User(user=user_object)
+                facebook_object = FacebookUser(user=user_object)
                 facebook_object.save()
             # Set the user id on session 
             request.session['uid'] = user_object.id

@@ -1,7 +1,7 @@
 function twitterAuthorize()
 {
     var ajax  = getAjax()
-    var url = settings.root_url + settings.twitter_auth_url
+    var url = settings.twitter_auth_url
 
     ajax.onreadystatechange = function ()
     {

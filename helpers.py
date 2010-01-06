@@ -5,6 +5,7 @@ in the application
 import simplejson
 from random import choice
 import string
+from django.http import HttpResponse
 
 
 def get_random_string(request,length=10, chars=string.letters + string.digits, template='%s'):
@@ -14,12 +15,12 @@ def get_random_string(request,length=10, chars=string.letters + string.digits, t
     return template % (''.join([choice(chars) for i in range(length)]),)
 
 
-def json_encode(f):
+def json_response(f):
     """
     This decorator ensures that the result is a json string
     """
     def wrap(*args, **kwargs):
-        return simplejson.dumps(f(*args, **kwargs))
+        return HttpResponse(simplejson.dumps(f(*args, **kwargs)))
 
     return wrap
 

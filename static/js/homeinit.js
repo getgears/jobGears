@@ -11,28 +11,28 @@
 
 function initExperience()
 {
-    var url = settings.root_url + settings.init_path + settings.init_experience_filename
+    var url = settings.init_path + settings.init_experience_filename
 
     $.get(url,function(data){
-        experienceReady = true;
+      experienceReady = true;
     });
 }
 
 function initEducation()
 {
-    var url = settings.root_url + settings.init_path + settings.init_education_filename
+    var url = settings.init_path + settings.init_education_filename
 
     $.get(url,function(data){
-        educationReady = true;
+      educationReady = true;
     });
 }
 
 function initLanguage()
 {
-    var url = settings.root_url + settings.init_path + settings.init_languages_filename
+    var url = settings.init_path + settings.init_languages_filename
 
     $.get(url,function(data){
-        languageReady = true;
+      languageReady = true;
     });
 }
 
@@ -51,16 +51,14 @@ function oldOnToReady()
 
 function init()
 {
-
-    var url = settings.root_url + settings.get_profile_url;
-//    $('#body a')[0].innerHTML = "jkshfkjhsf"; 
+    var url = settings.get_profile_url;
 
     $('#body').ajaxError(function()
     {
-                    initExperience();
-                    initEducation();
-                    initLanguage();    
-                    oldOnToReady(); 
+        educationReady=true;
+        experienceReady=true;
+        languageReady=true;
+        oldOnToReady(); 
     });               
 
      $.get(url,function(data){
