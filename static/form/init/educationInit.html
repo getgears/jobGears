@@ -1,45 +1,45 @@
 <span>
-<FORM id="##id##" slot="##slot##" >
+<FORM id="##id##" slot="##slot##" isnew="0">
 <table >
 <TR >
 <Td class="sec_titles"></Td>
-<Td>
-	<SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"education")>editar</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'education')>apagar</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"education","up")><img src="images/arrow_up.gif" title='mover para cima '></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"education","down")><img src="images/arrow_down.gif" title='mover para baixo'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden; display: none" ><A class="azul" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"education")>guardar</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style="visibility:visible; display:none"><A class="magenta" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"education")>cancelar</A></SPAN>
+<Td class="edit">
+	<SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"education")>edit</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'education')>delete</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"education","up")><img src="images/arrow_up.gif" title="move up"></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"education","down")><img src="images/arrow_down.gif" title="move down"></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden; display: none" ><A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"education")>save</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style="visibility:visible; display:none"><A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"education")>cancel</A></SPAN>
 	</Td>
 	</TR> 
 	<TR>
-		<TD class="sec_titles"><label>Data de Início</label></TD>
+		<TD class="sec_titles"><label>Start Date</label></TD>
 		<TD class="field"> 
 			<input style="visibility:hidden; display:none" name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##init_date##" tipo="data" size=10 maxlength=10 > <div style="visibility:visible; display:inline" class="view_field">##init_date##</div> <img style="visibility:hidden; display:none" src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" title='Apagar Data' class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) > 
 		</TD>
 	</TR>
 	<TR>
-		<TD class="sec_titles"><label>Data de Conclusão</label></TD>
+		<TD class="sec_titles"><label>Conclusion Date</label></TD>
 		<TD class="field" > <input style="visibility:hidden; display:none"name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##final_date##" tipo="data" size=10 maxlength=10 > <div style="visibility:visible; display:inline"class="view_field">##final_date##</div> <img style="visibility:hidden; display:none"src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img style="visibility:hidden; display:none"src="images/erase.gif" style="visibility:hidden; display:none" title='Apagar Data' class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) > 
 		</TD> 
 	</TR>
 	<TR >
-		<Td class="sec_titles"><label>Nome e Tipo de Organização de Ensino ou Formação</label></Td>
+        <Td class="sec_titles"><label>School / Institution Name and Type</label></Td>
 		<Td class="field" >
 			<INPUT style="visibility:hidden; display:none" size=28 value="##organization##" maxlength=128 tipo="Outro" name="organization" type="text"><div style="visibility:visible; display:inline" class="view_field">##organization##</div>
 		</Td>
 	</TR> 
 	<TR >
-		<Td class="sec_titles"><label>Designação da Qualificação Obtida</label></Td><Td class="field" >
+		<Td class="sec_titles"><label>Qualification Description</label></Td><Td class="field" >
 		<INPUT style="visibility:hidden; display:none" size=60 maxlength=128 tipo="Outro" name="degree" value="##degree##" type="text"><div style="visibility:visible; display:inline" class="view_field">##degree##</div>
 		</Td>
 	</TR>
 	<TR >
-		<Td class="sec_titles"><label>Área de Estudos / Curso</label></Td>
+		<Td class="sec_titles"><label>Area of Studies / Carrer</label></Td>
 		<Td class="field" >
  			<input style="visibility:hidden; display:none" value="##studies_area##" tipo="Outro" name="studies_area" size="60" maxlength="128" ><div style="visibility:visible; display:inline" class="view_field">##studies_area##</div></Td>
 	</TR>
 	<TR >
-	<Td class="sec_titles" valign="top" ><label>Principais Disciplinas ou Competências Profissionais</label></Td><Td class="field" ><TEXTAREA style="visibility:hidden; display:none" onkeyup="cutValue(this)" name="main_subjects" maxlength="4000" >##main_subjects##</TEXTAREA><div style="visibility:visible; display:inline" class="view_field">##main_subjects_div##</div>
+	<Td class="sec_titles" valign="top" ><label>Main Professional Skills</label></Td><Td class="field" ><TEXTAREA style="visibility:hidden; display:none" onkeyup="cutValue(this)" name="main_subjects" maxlength="4000" >##main_subjects##</TEXTAREA><div style="visibility:visible; display:inline" class="view_field">##main_subjects_div##</div>
  	</Td>
 	</TR>    
 	<TR >
-		<Td class="sec_titles" valign="top" ><label>Classificação Final Obtida</label></Td><Td class="field" ><INPUT style="visibility:hidden; display:none" size="20" value="##average##" name="average" maxlength="32" type="text"><div style="visibility:visible; display:inline" class="view_field">##average##</div>
+		<Td class="sec_titles" valign="top" ><label>Final Obtained Classification</label></Td><Td class="field" ><INPUT style="visibility:hidden; display:none" size="20" value="##average##" name="average" maxlength="32" type="text"><div style="visibility:visible; display:inline" class="view_field">##average##</div>
 		</Td>
 	</TR> 
 </table>

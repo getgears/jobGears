@@ -7,8 +7,9 @@ SERVER = 'twitter.com'
 REQUEST_TOKEN_URL = 'https://twitter.com/oauth/request_token'
 ACCESS_TOKEN_URL = 'https://twitter.com/oauth/access_token'
 AUTHORIZATION_URL = 'https://twitter.com/oauth/authorize'
-CONSUMER_KEY = 'X4wUL2NArDq1ROfFcw'
-CONSUMER_SECRET = 'fqONOOjACwtqY9durtNF4BDPZsj7V3qitXAzMNEe0FA'
+
+CONSUMER_KEY = 'uRbkMR32kS7iJiG7NclQ'
+CONSUMER_SECRET = 'GsLC7SMWh0E38yt7gER4cNLq1RadNfwAJLoMn0nVY'
 
 TWITTER_CHECK_AUTH = 'https://twitter.com/account/verify_credentials.json'
 TWITTER_STATUS_UPDATE = 'https://twitter.com/statuses/update.json'

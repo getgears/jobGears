@@ -1,104 +1,104 @@
-var locale = new Object();
-// user warnings and messages
-locale['item salvo'] = 'saved';
-locale['item adicionado'] = 'item added';
-locale['item apagado'] = 'item deleted'
-locale['item movido'] = 'item moved';
-locale['Não foi possivel obter resposta do servidor, verifique a sua ligação'] = "Couldn't get any response from the server, check your internet connection";
-locale['Deseja mesmo apagar o registo?'] = 'Are you sure?';
-locale['erro'] = 'error';
-locale['Formatação HTML não permitida foi removida'] = 'Not allowed HTML tags removed';
-locale['Foi atingido o limite de caracteres neste campo'] = 'You reached the maximum character number in this field';
-locale['Existe um registo totalmente em branco na secção. Preencha este.'] = 'There is an empty record in the section.';
-locale['Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir']='Your cookies are disabled. Enable it in order to continue';
-locale['Já existe um registo de experiência a ser editado']='There is already an experience item being edited';
-locale['Já existe um registo de educação a ser editado']='There is already an education item being edited';
-locale['Já existe um registo de línguas a ser editado']='There is already an language item being edited';
+var locale = new Object
+// user warnings and sages
+locale['saved']             = 'saved';
+locale['item added']        = 'item added';
+locale['item deleted']      = 'item deleted'
+locale['item moved']        = 'item moved';
+locale["Couldn't get any response from the server, check your internet connection"] = "Couldn't get any response from the server, check your internet connection";
+locale['Are you sure?']                 = 'Are you sure?';
+locale['error']                         = 'error';
+locale['Not allowed HTML tags removed'] = 'Not allowed HTML tags removed';
+locale['You reached the maximum character number in this field'] = 'You reached the maximum character number in this field';
+locale['There is an empty record in the section'] = 'There is an empty record in the section';
+locale['Your cookies are disabled. Enable it in order to continue'] = 'Your cookies are disabled. Enable it in order to continue';
+locale['There is already an experience item being edited'] = 'There is already an experience item being edited';
+locale['There is already an education item being edited'] = 'There is already an education item being edited';
+locale['There is already an language item being edited'] = 'There is already an language item being edited';
 
 
 // link translations
-locale['editar'] = 'edit';
-locale['cancelar'] = 'cancel';
-locale['guardar'] = 'save';
-locale['apagar'] = 'delete';
-locale['sim'] = 'yes';
-locale['não'] = 'no';
-locale['ok'] = 'ok';
+locale['edit']      = 'edit';
+locale['cancel']    = 'cancel';
+locale['save']      = 'save';
+locale['delete']    = 'delete';
+locale['yes']       = 'yes';
+locale['no']        = 'no';
+locale['ok']        = 'ok';
 
 
 // image titles
-locale['adicionar item'] = 'add a new item';
-locale['Publicar no Facebook'] = 'Publish on Facebook';
-locale['Publicar no Twitter'] = 'Publish on Twitter';
-locale['clique para fazer download do curriculo'] = 'click here to download your CV';
-locale['crie um link permanente'] = 'create a permanent link';
-locale['Apagar Data'] = 'delete date'
-locale['mover para baixo'] = 'move down';
-locale['mover para cima'] = 'move up';
+locale['add a new item']                    = 'add a new item';
+locale['Publish on Facebook']               = 'Publish on Facebook';
+locale['Publish on Twitter']                = 'Publish on Twitter';
+locale['click here to download your CV']    = 'click here to download your CV';
+locale['create a permanent link']           = 'create a permanent link';
+locale['delete date']                       = 'delete date'
+locale['move down']                         = 'move down';
+locale['move up']                           = 'move up';
 
 
 // Personal Info Section
-locale['O meu curriculo'] = 'My CV';
-locale['Curriculum Vitae'] = 'Curriculum Vitae';
-locale['Informação Pessoal'] = 'Personal Information';
-locale['Nome'] = 'Name';
-locale['Data de Nascimento'] = 'Birthdate';
-locale['Morada'] = 'Address';
-locale['Código Postal'] = 'Zip Code';
-locale['Localidade'] = 'Location';
-locale['País'] = 'Country';
-locale['Telefone'] = 'Phone Number';
-locale['Telemóvel'] = 'Cell Phone';
-locale['Fax'] = 'Fax';
-locale['Email'] = 'Email';
-locale['Nacionalidade'] = 'Nationality';
-locale['Sexo'] = 'Gender';
-locale['Língua Materna'] = 'Mother Language';
-locale['Emprego Pretendido'] = 'Desired Job';
-locale['Área Funcional'] = 'Functional Area'; 
+locale['My CV']                 = 'My CV';
+locale['Curriculum Vitae']      = 'Curriculum Vitae';
+locale['Personal Information']  = 'Personal Information';
+locale['Name']                  = 'Name';
+locale['Birthdate']             = 'Birthdate';
+locale['Address']               = 'Address';
+locale['Zip Code']              = 'Zip Code';
+locale['Location']              = 'Location';
+locale['Country']               = 'Country';
+locale['Phone Number']          = 'Phone Number';
+locale['Cell Phone']            = 'Cell Phone';
+locale['Fax']                   = 'Fax';
+locale['Email']                 = 'Email';
+locale['Nationality']           = 'Nationality';
+locale['Gender']                = 'Gender';
+locale['Mother Language']       = 'Mother Language';
+locale['Desired Job']           = 'Desired Job';
+locale['Functional Area']       = 'Functional Area'; 
 
 // Date Labels
-locale['Data de Início']='Start Date';
-locale['Data de Conclusão']='Conclusion Date';
+locale['Start Date']        = 'Start Date';
+locale['Conclusion Date']   = 'Conclusion Date';
 
 
 // Professional Experience Section
-locale['Experiência Profissional'] = 'Professional Experience';
-locale['Nome e Endereço da Entidade Empregadora'] = 'Company Name and Address';
-locale['Tipo de Empresas ou Sector'] = 'Company Type or Business Sector';
-locale['Função / Cargo Ocupado'] = 'Job Function / Position';
-locale['Principais Actividades ou Responsabilidades'] = 'Main Activities or Responsabilities';
+locale['Professional Experience']               = 'Professional Experience';
+locale['Company Name and Address']              = 'Company Name and Address';
+locale['Company Type or Business Sector']       = 'Company Type or Business Sector';
+locale['Job Function / Position']               = 'Job Function / Position';
+locale['Main Activities or Responsabilities']   = 'Main Activities or Responsabilities';
 
 
 // Education Section
-locale['Educação e Formação'] = 'Education and Specialization';
-locale['Nome e Tipo de Organização de Ensino ou Formação'] = 'School / Institution Name and Type';
-locale['Designação da Qualificação Obtida'] = 'Qualification Description';
-locale['Área de Estudos / Curso'] = 'Area of Studies / Carrer';
-locale['Principais Disciplinas ou Competências Profissionais'] = 'Main Professional Skills';
-locale['Classificação Final Obtida'] = 'Final Obtained Classification';
+locale['Education and Specialization']          = 'Education and Specialization';
+locale['School / Institution Name and Type']    = 'School / Institution Name and Type';
+locale['Qualification Description']             = 'Qualification Description';
+locale['Area of Studies / Carrer']              = 'Area of Studies / Carrer';
+locale['Main Professional Skills']              = 'Main Professional Skills';
+locale['Final Obtained Classification']         = 'Final Obtained Classification';
 
 
 // Languages Section
-locale['Outras Línguas'] = 'Other Languages';
-locale['Língua'] = 'Language';
-locale['Compreensão Oral'] = 'Spoken Comprehension';
-locale['Compreensão Escrita'] = 'Written Comprehension';
-locale['Interacção Oral'] = 'Vocal Interaction';
-locale['Produção Oral'] = 'Vocal Production';
-locale['Produção Escrita'] = 'Written Production';
+locale['Other Languages']           = 'Other Languages';
+locale['Language']                  = 'Language';
+locale['Spoken Comprehension']      = 'Spoken Comprehension';
+locale['Written Comprehension']     = 'Written Comprehension';
+locale['Vocal Interaction']         = 'Vocal Interaction';
+locale['Vocal Production']          = 'Vocal Production';
+locale['Written Production']        = 'Written Production';
 
 
 // Skills section
-locale['Aptidões e Competências Pessoais'] = 'Personal Skills';
-locale['Aptidões e Competências Sociais'] = 'Social Skills';
-locale['Aptidões e Competências de Organização'] = 'Organization Skills';
-locale['Aptidões e Competências Técnicas'] = 'Technical Skills';
-locale['Aptidões e Competências Informáticas'] = 'Computing Skills';
-locale['Aptidões Artísticas'] = 'Artistic Skills';
-locale['Outras Aptidões e Competências'] = 'Other Skills';
-locale['Cartas de Condução'] = 'Driving Licence';
-locale['Informação Adicional'] = 'Additional Information';
+locale['Personal Skills']           = 'Personal Skills';
+locale['Social Skills']             = 'Social Skills';
+locale['Organization Skills']       = 'Organization Skills';
+locale['Technical Skills']          = 'Technical Skills';
+locale['Computing Skills']          = 'Computing Skills';
+locale['Artistic Skills']           = 'Artistic Skills';
+locale['Other Skills']              = 'Other Skills';
+locale['Driving Licence']           = 'Driving Licence';
+locale['Additional Information']    = 'Additional Information';
 
 
 // Select Box

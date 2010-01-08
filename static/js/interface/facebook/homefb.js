@@ -14,9 +14,6 @@ function fbInit()
                     document.getElementById('fblogin').style.visibility = "visible"
                     document.getElementById('fblogin').style.display = "inline"
                 }
-                // ATTENTION REMOVE THIS LATTER!!!!!!!!!! 
-                //document.getElementById("body").style.display="block"
-                //closeEffect();
             });     
     }
     catch(err)
@@ -52,27 +49,14 @@ function fbLoggedIn()
 
 function fbStreamPublish()
 {
-    var ajax  = getAjax()
+
     var url = settings.facebook_publish_url
 
-    ajax.onreadystatechange = function ()
-    {
-        if ((ajax.readyState==4) || (ajax.readyState=="complete"))
-        {
-            //var response = JSON.parse(ajax.responseText
-            var response = eval('('+ajax.responseText+')')
- 
-            var attachment = {'media': [{'type': response.type ,
-                             'src': response.src ,
-                             'href': response.href  }]}         
- 
-            FB.Connect.streamPublish(response.message+' '+response.jobgearscv , attachment)
-
-        }
-    }
-
-    ajax.open("GET",encodeURI(url),true)
-    ajax.send(null)
-
+    $.getJSON(encodeURI(url),function(response){
+        var attachment = {'media': [{'type': response.type ,
+                          'src': response.src ,
+                          'href': response.href  }]}         
+        FB.Connect.streamPublish(response.message+' '+response.jobgearscv , attachment)
+    });
 }
 

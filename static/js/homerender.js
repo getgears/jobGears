@@ -1,145 +1,97 @@
 
 function new_form(tipo_form)  
 {
-	if (checkEmptyForms(tipo_form)== false)
-		return;   
+    if (checkEmptyForms(tipo_form)== false)
+        return;   
     if ((tipo_form=="experience") && (globalEditingExperience==true))
     {
-        warning(locale['Já existe um registo de experiência a ser editado']);
+        warning(locale['There is already an experience item being edited']);
         return;
     }
     if ((tipo_form=="education") && (globalEditingEducation==true))
     {
-        warning(locale['Já existe um registo de educação a ser editado']);
+        warning(locale['There is already an education item being edited']);
         return;
     }
     if ((tipo_form=="languages") && (globalEditingLanguage==true))
     {
-        warning(locale['Já existe um registo de línguas a ser editado']);
+        warning(locale['There is already and language item being edited']);
         return;
     }
 
-	openEffect();
+    openEffect();
 
-	var id = getNewId();
-	var ajax = getAjax();
+    var id = getNewId();
     var slot = slot_forms(tipo_form);
-  
-	ajax.onreadystatechange = function ()
-	{
-		if ((ajax.readyState==4) || (ajax.readyState=="complete"))	
-		{ 
-            if (!ajax.responseText)
-            {
-                warning(locale['Não foi possivel obter resposta do servidor, verifique a sua ligação']);
-//                closeEffect();
-                return;
-            }
-            if (ajax.responseText)
-            {
-                //response = JSON.parse(ajax.responseText)
-                //response = eval('('+ajax.responseText+')')
-                //if (response.Report=='1')
-                //{
-                    var form = document.createElement('span');
-                    var response = new Object();
 
-                    //response.Slot='1'
+    if ( ((tipo_form=="education") && (globalEducationForm!=false)) || ((tipo_form=="experience") && (globalExperienceForm!=false)) || ((tipo_form=="languages") && (globalLanguageForm!=false)))
+    {
+        var form = document.createElement('span');
+        if (tipo_form=="education")
+            form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
+        else if (tipo_form=="experience")
+            form.innerHTML = globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
+        else if (tipo_form=="languages")
+            form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
 
-                    if ((tipo_form=="education") && (globalEducationForm!=false))
-                    {
-                        form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-                        //form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
-                    }
-                    else if ((tipo_form=="experience") && (globalExperienceForm!=false))
-                    {
-                        form.innerHTML =globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-//                        form.innerHTML =globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
-                    } 
-                    else if ((tipo_form=="languages") && (globalLanguageForm!=false))
-                    {
-                        form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-//                        form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
-                    }
-                    else{
-                            //form.innerHTML = response.Html.split('##id##').join(id.toString()).split('##slot##').join(response.Slot)
-                            form.innerHTML = ajax.responseText.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-                            if (tipo_form=="education")
-                            {
-                                globalEducationForm = ajax.responseText;
-                                //globalEducationForm = response.Html
-                            }
-                            if (tipo_form=="experience")
-                            {
-                                globalExperienceForm = ajax.responseText;
-                                //globalExperienceForm = response.Html
-                            }
-                            if (tipo_form=="languages")
-                            {
-                                globalLanguageForm = ajax.responseText;
-                                //globalLanguageForm = response.Html
-                            }
-                            
-                        }
+        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
+            document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);
+        if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
+            document.getElementById(tipo_form).appendChild(form);        
 
-                    setLocale(form);
+        showInfoDiv('green',locale['item added']);
+        closeEffect();
 
-        	        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])
-                    {                     
-		                document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);
-			        }
-			        if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
-			        {
-			            document.getElementById(tipo_form).appendChild(form);
-			        }
-                    showInfoDiv('green',locale['item adicionado']);
-			        closeEffect();
-                    return;
-                //}
-                //if (response.Report=='0')
-                //{
-                //    showInfoDiv('red',response.Content)
-                //    closeEffect()
-                //    return
-                //}
-            }
-		}
-	}
+        if (tipo_form=="education")                                                                                                                               
+             globalEditingEducation = true;                                          
+        
+        else if(tipo_form=="languages")                                                                                                                       
+            globalEditingLanguage = true;                                           
 
+        else if (tipo_form=="experience")                                                                                                                        
+            lobalEditingExperience = true;                                         
+                
+        return;
+    }
+     
 
-	if (tipo_form=="education")
+    if (tipo_form=="education")
     {
         globalEditingEducation = true;
-		url = settings.render_path + settings.render_education_filename ;
-
-        if (globalEducationForm==false)
-            postString = "?&sendform=1";
-        else
-            postString = "?&sendform=0";
+        url = settings.render_path + settings.render_education_filename ;
     }
-	if (tipo_form=="languages")
+    else if (tipo_form=="languages")
     {
         globalEditingLanguage = true;
-		url = settings.render_path + settings.render_languages_filename ;
-
-        if (globalLanguageForm==false)
-            postString = "?&sendform=1";
-        else
-            postString = "?&sendform=0";
+        url = settings.render_path + settings.render_languages_filename ;
     }
-	if (tipo_form=="experience")
+    else if (tipo_form=="experience")
     {
         globalEditingExperience = true;
-		url = settings.render_path + settings.render_experience_filename;
-
-        if (globalExperienceForm==false)
-            postString = "?&sendform=1"
-        else
-            postString = "?&sendform=0"
+        url = settings.render_path + settings.render_experience_filename;
     }
 
-    ajax.open("POST", encodeURI(url), true);
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.setRequestHeader("X-Referer", document.location);
-    ajax.send(encodeURI(postString));
+    $.get(encodeURI(url),function(requestData)
+    {
+        var form = document.createElement('span');
+        form.innerHTML = requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
+
+        if (tipo_form=="education")
+            globalEducationForm = requestData;                       
+        if (tipo_form=="experience")
+            globalExperienceForm = requestData;                      
+        if (tipo_form=="languages")
+            globalLanguageForm = requestData;
+
+        setLocale(form);
+
+        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
+            document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);                    
+        if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
+            document.getElementById(tipo_form).appendChild(form);                   
+
+        showInfoDiv('green',locale['item added']);
+        closeEffect();
+        return;
+    });
 }

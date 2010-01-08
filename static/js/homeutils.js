@@ -17,17 +17,17 @@ function checkEmptyForms(tipo_form)
 {
 
     var formsaux=document.getElementById(tipo_form).getElementsByTagName('FORM');
-	var c=0;
+    var c=0;
 
     for (c=0;c < formsaux.length ; c++)
-	{
-		if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
-		{
-			warning(locale['Existe um registo totalmente em branco na secção. Preencha este.']);
-			return false;
-		}
-	}
-	return true;
+    {
+        if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
+        {
+            warning(locale['There is an empty record in the section']);
+            return false;
+        }
+    }
+    return true;
 }
 
 
@@ -54,7 +54,7 @@ function validation(form_)
 					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
 					{
 						var found_html=1;
-						warning(locale['Formatação HTML não permitida foi removida']);
+						warning(locale['Not allowed HTML tags removed']);
 					}
 				}
 			}
@@ -73,38 +73,39 @@ function resetDate(object)
 
 function reconfigure_slot(tipo_form)
 {
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-	var k = parseInt(forms.length);
-	//k;
+    var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+    var k = parseInt(forms.length);
+    //k;
 
-	var c=0;
-	
-	for ( c=0; c<parseInt(forms.length) ; c++ )
-	{
-		forms[c].setAttribute('slot',k);
-		k--;
-	}		
+    var c=0;
+
+    for ( c=0; c<parseInt(forms.length) ; c++ )
+    {
+        forms[c].setAttribute('slot',k);
+        k--;
+    }
 }
 
 function slot_forms(tipo_form)
 {
-	
-	var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+    var slot = parseInt(document.getElementById(tipo_form).getElementsByTagName("FORM").length);
+    slot++;
+    return slot;
+/*  var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
+    var slot=0 ;
+    var c = 0 ;
 
-	var slot=0 ;
-	var c = 0 ;
+    for (c=0 ; c < parseInt(forms.length) ; c++ )
+    {
+        if (parseInt(forms[c].getAttribute("slot")) > slot)
+        {
+            slot = parseInt(forms[c].getAttribute("slot"));
+        }
+    }
 
-	for (c=0 ; c < parseInt(forms.length) ; c++ )
-	{
-		if (parseInt(forms[c].getAttribute("slot")) > slot)
-		{
-			slot = parseInt(forms[c].getAttribute("slot"));
-		}
-	}
-
-	slot++;
-	return slot ;
-	
+    slot++;
+    return slot ;
+    */
 }
 
 function cutValue(txtarea)
@@ -112,7 +113,7 @@ function cutValue(txtarea)
 	if (txtarea.value.length>4000)
 	{
 		txtarea.value=txtarea.value.substring(0,4000);
-		warning(locale['Foi atingido o limite de caracteres neste campo']);
+		warning(locale['You reached the maximum character number in this field']);
 	}
 }
 
@@ -151,16 +152,16 @@ function setLanguage(language)
 
 function checkCookies()
 {
-	Set_Cookie( 'test', 'none', '', '/', '', '' );
+    Set_Cookie( 'test', 'none', '', '/', '', '' );
     if ( Get_Cookie( 'test' ) )
-	{
-		cookie_set = true;
-		Delete_Cookie('test', '/', '');
+    {
+        cookie_set = true;
+        Delete_Cookie('test', '/', '');
         return true;
-	}
-	else
-	{
-        warning(locale["Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir"])
+    }
+    else
+    {
+        warning(locale["Your cookies are disabled. Enable it in order to continue"])
         return false;
     } 
 }
@@ -203,12 +204,4 @@ function setLocale(object)
         catch(err){} 
     }     
 }
-/*
-function init()
-{
-    setLocale(document)
-    fbInit() 
-    document.getElementById('body').style.display = "block"
-    closeEffect();
-}
-*/
+

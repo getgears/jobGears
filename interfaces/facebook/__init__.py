@@ -4,7 +4,8 @@ def get_id(request):
     Return the facebook id for the request
     """
     try:
-        return 1
+        from pprint import pprint
+        pprint(request.facebook.__dict__)
         return request.facebook.uid
     except AttributeError:
         return None

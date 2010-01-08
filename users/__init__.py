@@ -13,6 +13,7 @@ def get_user(request):
     except:
         # Some error, try to return from facebook
         facebook_id = facebook.get_id(request)
+        print facebook_id
         if facebook_id:
             # We have a facebook id
             try:

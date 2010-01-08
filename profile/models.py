@@ -35,7 +35,7 @@ class ProfileSection(models.Model):
                 cleaned_dict[key] = validate_field(getattr(self, key), data_dict[key])
         return cleaned_dict
 
-    def from_dict(self, data):
+    def from_dict(self, data_dict):
         """
         Overwrite the model attributes with the given data dictionary
         """
@@ -92,7 +92,7 @@ class Profile(models.Model):
         
 
 class PersonalData(ProfileSection):
-    birthdate = models.DateField()
+    birthdate = models.DateField(null=True)
     birthdate_active = models.BooleanField(default=True, null=False)
     name = models.CharField(max_length=128, blank=True)
     name_active = models.BooleanField(default=True, null=False)

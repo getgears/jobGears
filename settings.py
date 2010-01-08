@@ -14,13 +14,12 @@ MANAGERS = ADMINS
 DATABASE_ENGINE = 'mysql'      # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'jobgears'     # Or path to database file if using sqlite3.
 DATABASE_USER = 'jobgears'             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_PASSWORD = 'UT25W5j'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # ROOT folder where the application is residing, include trailing /
-#APP_ROOT = '/home/ricardo/jobgears/'
-APP_ROOT = '/home/andrefsp/jobgears/'
+APP_ROOT = '/var/www/jobgears/'
 
 
 
@@ -58,7 +57,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # ROOT_URL CONFIG
-ROOT_URL = 'http://jobgears.net'
+ROOT_URL = 'http://dev.jobgears.net'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -112,17 +111,22 @@ INSTALLED_APPS = (
     # app for jobgears forms control
     'jobgears.form',
     # app for jobgears curriculum printing
-    'jobgears.publisher'
+    'jobgears.publisher',
+    'jobgears.users',
+    'jobgears.interfaces.facebook',
+    'jobgears.interfaces.linkedin',
+    'jobgears.interfaces.twitter',
 )
 
 # Session settings
 SESSION_COOKIE_NAME = "sid"
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
-CACHE_BACKEND = 'locmem://'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_PREFIX = 'jobgears.'
 
 
 #Facebook Settings 
 FACEBOOK_API_KEY = '3296be521467c6b0f73259c7b4cbfbd5'
-FACEBOOK_SECRET_KEY = '2caeb4991992b6f6f4789b1dce2c117e'
+FACEBOOK_SECRET_KEY = '359171b9c62e811fb3575af3602ed6f7'
+

@@ -1,32 +1,50 @@
+function localeSelection()
+{
+    $('#cover').css('visibility','visible');
+    $('#cover').css('opacity','0.5');           
+    $('#cover').show();                         
+    $('#lang_div').css('visibility','visible');
+    $('#lang_div').show();
+}
+
+function hideLocaleSelection()
+{
+    $('#lang_div').hide();
+    $('#cover').fadeOut('fast');
+
+
+}
+// #########################################################################################
 function warning(message)
 {
     $('span','#warning').attr('innerHTML',message);
-    $('#background').css('opacity','0.5');
-    $('#background').show();
+    $('#cover').css('visibility','visible');
+    $('#cover').css('opacity','0.5');
+    $('#cover').show();
     $('#warning').css('visibility','visible');
     $('#warning').show();
     $('a','#warning').click(function () {
                             $('#warning').hide();
-                            $('#background').fadeOut();
+                            $('#cover').fadeOut('fast');
                             return true;
                     });
 }
 
 function sure(id_form,tipo_form)
 {
-    $('span','#sure').attr('innerHTML',locale['Deseja mesmo apagar o registo?']);
+    $('span','#sure').attr('innerHTML',locale['Are you sure?']);
     $('#sure a')[0].setAttribute('href','javascript:void(0);');
     $('#sure a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
 
-    $('#background').css('opacity','0.5');
-    $('#background').show();
+    $('#cover').css('opacity','0.5');
+    $('#cover').show();
     $('#sure').css('visibility','visible');
     $('#sure').show();
 
     $('#sure a')[0].onclick=function()
     {
         $('#sure').hide();
-        $('#background').fadeOut('fast');
+        $('#cover').fadeOut('fast');
     }
     $('#sure a')[1].onclick=function()
     {
@@ -38,8 +56,9 @@ function sure(id_form,tipo_form)
 function showPublishDiv()
 {
     $('#loading').hide();
-    $('#background').css('opacity','0.5');
-    $('#background').show();
+    $('#cover').css('opacity','0.5');
+    $('#cover').css('visibility','visible');
+    $('#cover').show();
     $('#publish_div').css('visibility','visible');
     $('#publish_div').show();
 }
@@ -48,7 +67,7 @@ function hidePublishDiv()
 {
     $('#loading').hide();
     $('#publish_div').hide();
-    $('#background').fadeOut();
+    $('#cover').fadeOut('fast');
 }
 //#################################################################################
 function showInfoDiv(color, message)
@@ -71,15 +90,15 @@ function showInfoDiv(color, message)
 
 function openEffect()
 {
-    $('#background').css('visibility','visible');
+    $('#cover').css('visibility','visible');
     $('#loading').css('visibility','visible');
-    $('#background').css('opacity','0.5');
-    $('#background').show();
+    $('#cover').css('opacity','0.5');
+    $('#cover').show();
     $('#loading').show();
 }
 
 function closeEffect()
 {
     $('#loading').hide();       
-    $('#background').fadeOut();
+    $('#cover').fadeOut();
 }

@@ -1,16 +1,15 @@
 var settings = new Object();
 
 // application settings
-//settings.root_url = "http://jobgears.net/";
-settings.root_url = "http://andrefsp.servehttp.com/";
+settings.root_url = "http://dev.jobgears.net:8000/";
 settings.locale_cookie_name = "locale";
 
 
-// ##################################    URL CONFIG      ########################################
-/* *********actions urls ***************/
+// ##################################    URL CONFIG      ########################
+/* ********* actions urls ***************/
 // ## save
-settings.personal_data_save_url = "ajax/personal_data/save/";
-settings.personal_skills_save_url = "ajax/personal_skills/save/";
+settings.personal_data_save_url = "ajax/personal_data/";
+settings.personal_skills_save_url = "ajax/personal_skills/";
 settings.languages_save_url = "ajax/languages/save/";
 settings.education_save_url = "ajax/education/save/";
 settings.professional_experience_save_url = "ajax/professional_experience/save/";
@@ -24,7 +23,7 @@ settings.languages_move_url = "ajax/languages/move/";
 settings.education_move_url = "ajax/education/move/";
 settings.professional_experience_move_url = "ajax/professional_experience/move/";
 /************ get profile info ***********/
-settings.get_profile_url = "ajax/getprofile/"
+settings.get_profile_url = "ajax/profile/"
 
 /******** form render/init filename and path ****/
 settings.init_path = "form/init/";
@@ -38,7 +37,7 @@ settings.render_languages_filename = "languageRender.html";
 settings.render_education_filename = "educationRender.html";
 
 
-/*********** Facebook Interface ***************/
+/*********** Facebook Interface ******/
 settings.facebook_publish_url = "facebook/publishfb/";
 
 

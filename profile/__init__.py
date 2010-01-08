@@ -27,7 +27,28 @@ def get_profile(request):
     """
     profile_object = load_profile(request)
     if not profile_object:
-        # Create new profile
-        profile_object = Profile(user=get_user(request))
+        user = get_user(request)
+        if user:
+            # Create new profile
+            profile_object = Profile(user=user)
+        else:
+            profile_object = None
     return profile_object
+
+
+def save_section(request, section, data):
+    """
+    Saves the section passed on the DB
+    """
+    profile_object = get_profile(request)
+    section_object = getattr(profile_object, section)
+    if not section_object:
+        section_object = mapping[section]()
+        section_object.from_dict(data)
+        section_object.save()
+        setattr(profile_object, section, section_object)
+        profile_object.save()
+    else:
+        section_object.from_dict(data)
+        section_object.save()
 

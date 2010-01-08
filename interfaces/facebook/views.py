@@ -12,6 +12,7 @@ import simplejson
 
 from jobgears.interfaces.facebook import get_id
 
+import facebook.djangofb as facebook
 
 # jobgears view for Facebook UID session Storage
 def fbSetUID(request):
@@ -66,8 +67,8 @@ def fb_publish_cv(request):
 
 
 
-#@facebook.require_login()
-def info(request):
+@facebook.require_login()
+def info(request):                                                          
     id = get_id(request)
     print id
     if id:
@@ -76,5 +77,4 @@ def info(request):
         return HttpResponse(html)
     
     else:
-        return HttpResponse("nothing to do")
-
+        return HttpResponse("nothing to do")    
