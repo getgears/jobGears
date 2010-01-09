@@ -15,10 +15,8 @@ function getNewId()
 
 function checkEmptyForms(tipo_form)
 {
-
     var formsaux=document.getElementById(tipo_form).getElementsByTagName('FORM');
     var c=0;
-
     for (c=0;c < formsaux.length ; c++)
     {
         if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
@@ -168,7 +166,7 @@ function checkCookies()
 
 
 function setLocale(object)
-{
+{ 
     var labels = object.getElementsByTagName('label')
     for (c=0;c<labels.length;c++)
     {

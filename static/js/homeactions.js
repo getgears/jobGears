@@ -125,18 +125,15 @@ function save(form_id,tipo_form)
         postString = postString + "&"+ form[c].getAttribute('name')+"="+form[c].value+"&"+form[c].getAttribute('name')+"_active=1"
     }
 
+
     $.post(url,postString,function(reportData)
     {
         if (reportData=='true')
-        {
             showInfoDiv('green',locale['saved'])
-            closeEffect();
-        }
+        
         if (reportData=='false')
-        {
             showInfoDiv('red',locale['error'])
-            closeEffect();
-        }
+        
 
         if (tipo_form=="experience")
             globalEditingExperience = false;
@@ -144,7 +141,9 @@ function save(form_id,tipo_form)
             globalEditingLanguage = false;
         else if (tipo_form=="education")
             globalEditingEducation = false;
-        
+
+        closeEffect();
+
         return;
     },'text');
 }

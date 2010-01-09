@@ -10,9 +10,8 @@ function localeSelection()
 function hideLocaleSelection()
 {
     $('#lang_div').hide();
-    $('#cover').fadeOut('fast');
-
-
+    //$('#cover').fadeOut('fast');
+    $('#cover').hide();
 }
 // #########################################################################################
 function warning(message)
@@ -25,7 +24,8 @@ function warning(message)
     $('#warning').show();
     $('a','#warning').click(function () {
                             $('#warning').hide();
-                            $('#cover').fadeOut('fast');
+                            //$('#cover').fadeOut('fast');
+                            $('#cover').hide();
                             return true;
                     });
 }
@@ -44,7 +44,9 @@ function sure(id_form,tipo_form)
     $('#sure a')[0].onclick=function()
     {
         $('#sure').hide();
-        $('#cover').fadeOut('fast');
+        //$('#cover').fadeOut('fast');
+        $('#cover').hide();
+
     }
     $('#sure a')[1].onclick=function()
     {
@@ -67,7 +69,8 @@ function hidePublishDiv()
 {
     $('#loading').hide();
     $('#publish_div').hide();
-    $('#cover').fadeOut('fast');
+    //$('#cover').fadeOut('fast');
+    $('#cover').hide();
 }
 //#################################################################################
 function showInfoDiv(color, message)
@@ -100,5 +103,5 @@ function openEffect()
 function closeEffect()
 {
     $('#loading').hide();       
-    $('#cover').fadeOut();
+    $('#cover').hide();
 }

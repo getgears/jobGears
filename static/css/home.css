@@ -143,6 +143,7 @@ left: 0px;
 .cancel, #logout{
 color: #333333;
 /*color: #FF0000;*/
+/*color: #B60008;*/
 }
 
 #wrapper{
@@ -181,7 +182,7 @@ height: 34px;
 position: relative;
 top: -45px;
 text-align: right;
-margin: 0px 0px 75px 0px;
+margin: 0px 0px 10px 0px;
 width: 855px;
 z-index: 3;
 }

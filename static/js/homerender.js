@@ -31,16 +31,13 @@ function new_form(tipo_form)
             form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
         else if (tipo_form=="experience")
             form.innerHTML = globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-        else if (tipo_form=="languages")
+        else if (tipo_form=="languages")            
             form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
 
         if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
             document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);
         if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
             document.getElementById(tipo_form).appendChild(form);        
-
-        showInfoDiv('green',locale['item added']);
-        closeEffect();
 
         if (tipo_form=="education")                                                                                                                               
              globalEditingEducation = true;                                          
@@ -50,45 +47,47 @@ function new_form(tipo_form)
 
         else if (tipo_form=="experience")                                                                                                                        
             lobalEditingExperience = true;                                         
-                
+        
+        showInfoDiv('green',locale['item added']);
+        closeEffect();
+
         return;
     }
      
 
     if (tipo_form=="education")
-    {
-        globalEditingEducation = true;
         url = settings.render_path + settings.render_education_filename ;
-    }
     else if (tipo_form=="languages")
-    {
-        globalEditingLanguage = true;
         url = settings.render_path + settings.render_languages_filename ;
-    }
     else if (tipo_form=="experience")
-    {
-        globalEditingExperience = true;
         url = settings.render_path + settings.render_experience_filename;
-    }
 
     $.get(encodeURI(url),function(requestData)
     {
         var form = document.createElement('span');
-        form.innerHTML = requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-
-        if (tipo_form=="education")
-            globalEducationForm = requestData;                       
-        if (tipo_form=="experience")
-            globalExperienceForm = requestData;                      
-        if (tipo_form=="languages")
-            globalLanguageForm = requestData;
-
+        form.innerHTML = requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());           
         setLocale(form);
-
+        
         if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
             document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);                    
         if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
             document.getElementById(tipo_form).appendChild(form);                   
+                 
+        if (tipo_form=="education")
+        {    
+            globalEducationForm = requestData;                       
+            globalEditingEducation = true;
+        }
+        else if (tipo_form=="experience")
+        {
+            globalExperienceForm = requestData;                      
+            globalEditingExperience = true;
+        }
+        else if (tipo_form=="languages")
+        {
+            globalLanguageForm = requestData;
+            globalEditingLanguage = true;
+        }
 
         showInfoDiv('green',locale['item added']);
         closeEffect();

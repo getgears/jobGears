@@ -192,8 +192,6 @@ function initLanguage(jsonLanguage)
     else { languageReady=true; return; }
 }
 
-
-
 function oldOnToReady()
 {
     if ((educationReady==true) && (experienceReady==true) && (languageReady==true))
@@ -211,16 +209,19 @@ function init()
     setLocale(document);
     var url = settings.get_profile_url;
     $('#cv').ajaxError(function()
-    {
+    {/*This function is just experimental, it should be recoded*/
+        globalEditingExperience = false;
+        globalEditingLanguage = false;
+        globalEditingEducation = false;
         educationReady=true;
         experienceReady=true;
         languageReady=true;
         oldOnToReady(); 
     });               
+
     $.getJSON(encodeURI(url),function(json)
     {            
         initPersonalData(json['personal_data']);
-        //initPersonalData(json);
         initPersonalSkills();
         initExperience();
         initEducation();
