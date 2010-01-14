@@ -20,7 +20,7 @@ def json_response(f):
     This decorator ensures that the result is a json string
     """
     def wrap(*args, **kwargs):
-        return HttpResponse(simplejson.dumps(f(*args, **kwargs)))
+        return HttpResponse(simplejson.dumps(f(*args, **kwargs), default=str))
 
     return wrap
 

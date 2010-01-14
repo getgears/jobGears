@@ -22,29 +22,28 @@ function new_form(tipo_form)
     openEffect();
 
     var id = getNewId();
-    var slot = slot_forms(tipo_form);
+    var slot = getNewSlot(tipo_form);
 
     if ( ((tipo_form=="education") && (globalEducationForm!=false)) || ((tipo_form=="experience") && (globalExperienceForm!=false)) || ((tipo_form=="languages") && (globalLanguageForm!=false)))
     {
-        var form = document.createElement('span');
-        if (tipo_form=="education")
-            form.innerHTML = globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-        else if (tipo_form=="experience")
-            form.innerHTML = globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
-        else if (tipo_form=="languages")            
-            form.innerHTML = globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());
+        var $form = $('<span></span>');
 
-        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
-            document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);
-        if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
-            document.getElementById(tipo_form).appendChild(form);        
+        if (tipo_form=="education")
+            $form.attr('innerHTML',globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+        else if (tipo_form=="experience")
+            $form.attr('innerHTML',globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+        else if (tipo_form=="languages")            
+            $form.attr('innerHTML',globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+
+        if ($('#'+tipo_form+' span').length==0)
+            $form.appendTo('#'+tipo_form);
+        else
+            $form.insertBefore('#'+tipo_form+' span:first');
 
         if (tipo_form=="education")                                                                                                                               
-             globalEditingEducation = true;                                          
-        
+             globalEditingEducation = true;                                                  
         else if(tipo_form=="languages")                                                                                                                       
             globalEditingLanguage = true;                                           
-
         else if (tipo_form=="experience")                                                                                                                        
             lobalEditingExperience = true;                                         
         
@@ -54,7 +53,6 @@ function new_form(tipo_form)
         return;
     }
      
-
     if (tipo_form=="education")
         url = settings.render_path + settings.render_education_filename ;
     else if (tipo_form=="languages")
@@ -64,15 +62,15 @@ function new_form(tipo_form)
 
     $.get(encodeURI(url),function(requestData)
     {
-        var form = document.createElement('span');
-        form.innerHTML = requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString());           
-        setLocale(form);
-        
-        if (document.getElementById(tipo_form).getElementsByTagName("span")[0])                     
-            document.getElementById(tipo_form).insertBefore(form , document.getElementById(tipo_form).getElementsByTagName("span")[0]);                    
-        if (!document.getElementById(tipo_form).getElementsByTagName("span")[0])
-            document.getElementById(tipo_form).appendChild(form);                   
-                 
+        var $form = $("<span></span>");
+        $form.attr('innerHTML',requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+        setLocale($form.get(0));
+
+        if ($('#'+tipo_form+' span').length==0)
+            $form.appendTo('#'+tipo_form);
+        else
+            $form.insertBefore('#'+tipo_form+' span:first');
+
         if (tipo_form=="education")
         {    
             globalEducationForm = requestData;                       
@@ -88,7 +86,6 @@ function new_form(tipo_form)
             globalLanguageForm = requestData;
             globalEditingLanguage = true;
         }
-
         showInfoDiv('green',locale['item added']);
         closeEffect();
         return;

@@ -3,8 +3,8 @@ from jobgears.helpers import json_response
 from jobgears import profile
 from jobgears.profile.models import mapping
 from jobgears.users import get_id as get_user_id
+from django.http import HttpResponse, HttpResponseBadRequest
 
-from pprint import pprint
 
 @json_response
 def get_profile(request):
@@ -25,21 +25,43 @@ def get_profile(request):
     return profile_dict
 
 
-@json_response
-def save_section(request, section):
+def section(request, *args, **kwargs):
     """
-    For the passed section, 
+    Decide view to call based on the request HTTP method
     """
-    model = mapping[section]()
-    validated_section = model.validate(request.POST)
+    if request.META['REQUEST_METHOD'] == 'POST':
+        # This is a save
+        view = section_save
 
+    return view(request, *args, **kwargs)
+
+
+def section_save(request, section, slot=None):
+    """
+    Save the section
+    """
     try:
-        profile_dict = request.session['profile']
-    except:
-        profile_dict = dict()
-    profile_dict[section] = model.validate(request.POST)
-    request.session['profile'] = validated_section
-    
-    if get_user_id(request):
-        profile.save_section(request, section, validated_section)
-    return True
+        model = mapping[section]()
+        validated_section = model.validate(request.POST)
+        
+        try:
+            profile_dict = request.session['profile']
+        except:
+            profile_dict = dict()
+        
+        if slot:
+            if not section in profile_dict:
+                profile_dict[section] = dict()
+            profile_dict[section][slot] = model.validate(request.POST)
+        else:
+            profile_dict[section] = model.validate(request.POST)
+        request.session['profile'] = profile_dict
+        
+        if get_user_id(request):
+            profile.section_save(request, section, validated_section, slot)
+
+        response = HttpResponse('1')
+    except IndexError:
+        response = HttpResponseBadRequest('0')
+    return response
+

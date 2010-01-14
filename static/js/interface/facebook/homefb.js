@@ -6,13 +6,17 @@ function fbInit()
             {           
                 if (status == FB.ConnectState.connected)
                 {
-                    document.getElementById('fbloggedin').style.visibility = "visible"
-                    document.getElementById('fbloggedin').style.display = "inline"
+                    $('#fbloggedin').css('visibility','visible');
+                    $('#fbloggedin').show();
+                    //document.getElementById('fbloggedin').style.visibility = "visible"
+                    //document.getElementById('fbloggedin').style.display = "inline"
                 }
                 if ((status == FB.ConnectState.userNotLoggedIn) || (status == FB.ConnectState.appNotAuthorized))
                 {
-                    document.getElementById('fblogin').style.visibility = "visible"
-                    document.getElementById('fblogin').style.display = "inline"
+                    $('#fblogin').css('visibility','visible');
+                    $('#fblogin').show();
+                    //document.getElementById('fblogin').style.visibility = "visible"
+                    //document.getElementById('fblogin').style.display = "inline"
                 }
             });     
     }
@@ -49,7 +53,6 @@ function fbLoggedIn()
 
 function fbStreamPublish()
 {
-
     var url = settings.facebook_publish_url
 
     $.getJSON(encodeURI(url),function(response){

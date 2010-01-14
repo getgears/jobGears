@@ -157,9 +157,9 @@ class Language(ProfileSection):
 
 
 class Education(ProfileSection):
-    init_date = models.DateField()
+    init_date = models.DateField(null=True)
     init_date_active = models.BooleanField(default=True, null=False)
-    final_date = models.DateField()
+    final_date = models.DateField(null=True)
     final_date_active = models.BooleanField(default=True, null=False)
     organization = models.CharField(max_length=128, blank=True)
     organization_active = models.BooleanField(default=True, null=False)
@@ -174,9 +174,9 @@ class Education(ProfileSection):
 
 
 class ProfessionalExperience(ProfileSection):
-    init_date = models.DateField()
+    init_date = models.DateField(null=True)
     init_date_active = models.BooleanField(default=True, null=False)
-    final_date = models.DateField()
+    final_date = models.DateField(null=True)
     final_date_active = models.BooleanField(default=True, null=False)
     position = models.CharField(max_length=256, blank=True)
     position_active = models.BooleanField(default=True, null=False)

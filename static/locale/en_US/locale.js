@@ -102,5 +102,12 @@ locale['Additional Information']    = 'Additional Information';
 
 
 // Select Box
-locale['genderBox'] = '<SELECT name="gender" style="visibility:hidden;display:none"><OPTION value=""></OPTION><OPTION value="0">Female</OPTION><OPTION value="1">Male</OPTION></SELECT>';
-locale['ratingBox'] = '<SELECT type="ratingBox"><OPTION value="3">Good</OPTION><OPTION value="2">Medium</OPTION><OPTION value="1">Basic</OPTION>';
+//locale['genderBox'] = '<SELECT name="gender" style="visibility:hidden;display:none"><OPTION value=""></OPTION><OPTION value="0">Female</OPTION><OPTION value="1">Male</OPTION></SELECT>';
+//locale['ratingBox'] = '<SELECT type="ratingBox"><OPTION value="3">Good</OPTION><OPTION value="2">Medium</OPTION><OPTION value="1">Basic</OPTION>';
+
+// Option Labels
+locale['Male']      = 'Male';
+locale['Female']    = 'Female';
+locale['Good']      = 'Good';
+locale['Medium']    = 'Madium';
+locale['Basic']     = 'Basic';

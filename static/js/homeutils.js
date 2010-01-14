@@ -1,31 +1,25 @@
 
 function getNewId()
 {
-	var id=0;
-	var forms = document.getElementsByTagName("form")
-	for (c=0; c< forms.length ; c++ )
-	{
-		if (parseInt(forms[c].getAttribute('id'))>id  )
-			id = parseInt(forms[c].getAttribute('id'));
-	}
-	id++;
-
-	return id;
+    var forms = $('#cv form');
+    var id = parseInt(0);
+    for (c=0;c<forms.length;c++)
+        if (parseInt(forms.get(c).getAttribute('id'))>id)
+            id = parseInt(forms.get(c).getAttribute('id'));
+    id++;
+    return id;
 }
 
-function checkEmptyForms(tipo_form)
+function checkEmptyForms(section)
 {
-    var formsaux=document.getElementById(tipo_form).getElementsByTagName('FORM');
-    var c=0;
-    for (c=0;c < formsaux.length ; c++)
-    {
-        if (check_blanck_fields(formsaux[c].id,tipo_form)==0)
+    var forms = $('#'+section+' form')
+    for (c=0;c<forms.length;c++)
+        if (check_blanck_fields(forms.get(c).getAttribute('id'),section)==0)
         {
             warning(locale['There is an empty record in the section']);
             return false;
         }
-    }
-    return true;
+   return true;
 }
 
 
@@ -61,83 +55,54 @@ function validation(form_)
 	}
 }
 
-
-
 function resetDate(object)
 {
-	object.value = "";
+    object.value = "";
 }
 
-
-function reconfigure_slot(tipo_form)
+function reconfigure_slot(section)
 {
-    var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-    var k = parseInt(forms.length);
-    //k;
-
-    var c=0;
-
-    for ( c=0; c<parseInt(forms.length) ; c++ )
-    {
-        forms[c].setAttribute('slot',k);
-        k--;
-    }
+    var forms = $('#'+section+' form');
+    for ( c=0 ; c<parseInt(forms.length) ; c++ )
+        forms.get(c).setAttribute('slot',forms.length-c);
+    
 }
 
-function slot_forms(tipo_form)
+function getNewSlot(section)
 {
-    var slot = parseInt(document.getElementById(tipo_form).getElementsByTagName("FORM").length);
+    var slot = parseInt($('#'+section+' form').length);
     slot++;
     return slot;
-/*  var forms = document.getElementById(tipo_form).getElementsByTagName("FORM");
-    var slot=0 ;
-    var c = 0 ;
-
-    for (c=0 ; c < parseInt(forms.length) ; c++ )
-    {
-        if (parseInt(forms[c].getAttribute("slot")) > slot)
-        {
-            slot = parseInt(forms[c].getAttribute("slot"));
-        }
-    }
-
-    slot++;
-    return slot ;
-    */
 }
 
 function cutValue(txtarea)
 {
-	if (txtarea.value.length>4000)
-	{
-		txtarea.value=txtarea.value.substring(0,4000);
-		warning(locale['You reached the maximum character number in this field']);
-	}
+    if (txtarea.value.length>4000)
+    {
+        txtarea.value=txtarea.value.substring(0,4000);
+        warning(locale['You reached the maximum character number in this field']);
+    }
 }
 
-function check_blanck_fields(id,tipo_form)
+function check_blanck_fields(form_id,section)
 {
-	if (id== -1)
-		return 1;
-	var elements = document.getElementById(id)
-	if (tipo_form=="languages")
-	{
-		if ((elements[0].value!="") && (elements[0].value!=" "))
-			{	return 1;	}
-		if ((elements[0].value=="") || (elements[0].value==" "))
-			{	return 0;	}
-	}
-	var start_index=0;
-	for (c = start_index ; c<elements.length ; c++)
-	{
-		if ((elements[c].getAttribute('tipo')!="data") && (elements[c].value!="") && (elements[c].value!=" ") )
-		{
-			return 1; 
-		}
-	}
-	return 0; 
-}
+    if (section=="languages")
+    {    
+        if (($('#'+form_id+' input:eq(1)').attr('value')!='') && ($('#'+form_id+' input:eq(1)').attr('value')!=' '))
+            return 1;
+        else if (($('#'+form_id+' input:eq(1)').attr('value')=='') || ($('#'+form_id+' input:eq(1)').attr('value')==' '))
+            return 0;
+    }
 
+    var ELEMENTS_LENGTH = $('#'+form_id+' :input').length
+    for (c=0;c<ELEMENTS_LENGTH;c++)
+    {
+        $element = $('#'+form_id+' :input:eq('+c+')');    
+        if (($element.attr('tipo')!='data') && ($element.attr('value')!='') && ($element.attr('value')!=' '))
+            return 1;
+    }
+    return 0;
+}
 
 
 function setLanguage(language)
@@ -200,6 +165,15 @@ function setLocale(object)
                         img[c].setAttribute('title',locale[img[c].getAttribute('title')])
             }
         catch(err){} 
-    }     
-}
+    }    
 
+    var option = object.getElementsByTagName('option')
+    for (c=0;c<option.length;c++)
+    {          
+        try{
+                if (locale[option[c].innerHTML])   
+                        option[c].innerHTML = locale[option[c].innerHTML]
+            }
+        catch(err){} 
+    }                                                                                    
+}

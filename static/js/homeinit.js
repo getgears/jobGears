@@ -12,47 +12,50 @@ function initPersonalData(jsonPersonalData)
 {
     if (jsonPersonalData)
     {
-        $('#personal form')[0][0].setAttribute('value',jsonPersonalData['name']);
-        $('#1 div')[0].innerHTML = jsonPersonalData['name'];
+        //alert(jsonPersonalData['birthdate'].replace(RegExp("\(\d+\):\(\d+\):\(\d+\)$","g"),''));
+        $('#personal :input:eq(0)').attr('value',jsonPersonalData['name']);
+        $('#1 div:eq(0)').html(jsonPersonalData['name']);
 
-        $('#personal form')[0][1].setAttribute('value',jsonPersonalData['birthdate']);
-        $('#1 div')[1].innerHTML = jsonPersonalData['birthdate'];
+        $('#personal :input:eq(2)').attr('value',jsonPersonalData['birthdate']);
+        $('#1 div:eq(2)').html(jsonPersonalData['birthdate']);
 
-        $('#personal form')[0][2].setAttribute('value',jsonPersonalData['address']);
-        $('#1 div')[2].innerHTML = jsonPersonalData['address'];
+        $('#personal :input:eq(4)').attr('value',jsonPersonalData['address']);
+        $('#1 div:eq(4)').html(jsonPersonalData['address']);
 
-        $('#personal form')[0][3].setAttribute('value',jsonPersonalData['postal_code']);
-        $('#1 div')[3].innerHTML = jsonPersonalData['postal_code'];
+        $('#personal :input:eq(6)').attr('value',jsonPersonalData['postal_code']);
+        $('#1 div:eq(6)').html(jsonPersonalData['postal_code']);
 
-        $('#personal form')[0][4].setAttribute('value',jsonPersonalData['city']);
-        $('#1 div')[4].innerHTML = jsonPersonalData['city'];
+        $('#personal :input:eq(8)').attr('value',jsonPersonalData['city']);
+        $('#1 div:eq(8)').html(jsonPersonalData['city']);
 
-        $('#personal form')[0][5].setAttribute('value',jsonPersonalData['country']);
-        $('#1 div')[5].innerHTML = jsonPersonalData['country'];
+        $('#personal :input:eq(10)').attr('value',jsonPersonalData['country']);
+        $('#1 div:eq(10)').html(jsonPersonalData['country']);
 
-        $('#personal form')[0][6].setAttribute('value',jsonPersonalData['phone']);
-        $('#1 div')[6].innerHTML = jsonPersonalData['phone'];
+        $('#personal :input:eq(12)').attr('value',jsonPersonalData['phone']);
+        $('#1 div:eq(12)').html(jsonPersonalData['phone']);
 
-        $('#personal form')[0][7].setAttribute('value',jsonPersonalData['cell_phone']);
-        $('#1 div')[7].innerHTML = jsonPersonalData['cell_phone'];
+        $('#personal :input:eq(14)').attr('value',jsonPersonalData['cell_phone']);
+        $('#1 div:eq(14)').html(jsonPersonalData['cell_phone']);
 
-        $('#personal form')[0][8].setAttribute('value',jsonPersonalData['fax']);
-        $('#1 div')[8].innerHTML = jsonPersonalData['fax'];
+        $('#personal :input:eq(16)').attr('value',jsonPersonalData['fax']);
+        $('#1 div:eq(16)').html(jsonPersonalData['fax']);
 
-        $('#personal form')[0][9].setAttribute('value',jsonPersonalData['email']);
-        $('#1 div')[9].innerHTML = jsonPersonalData['email'];
+        $('#personal :input:eq(18)').attr('value',jsonPersonalData['email']);
+        $('#1 div:eq(18)').html(jsonPersonalData['email']);
 
-        $('#personal form')[0][10].setAttribute('value',jsonPersonalData['nationality']);
-        $('#1 div')[10].innerHTML = jsonPersonalData['nationality'];
+        $('#personal :input:eq(20)').attr('value',jsonPersonalData['nationality']);
+        $('#1 div:eq(20)').html(jsonPersonalData['nationality']);
  
         $('#personal select').attr('value',jsonPersonalData['gender']);
-        $('#1 div')[11].innerHTML = $('#personal select').get(0).options[$('#personal select').get(0).selectedIndex].innerHTML
+        $('#1 div:eq(22)').html($('#personal select').get(0).options[$('#personal select').get(0).selectedIndex].innerHTML);
 
-        $('#personal form')[0][12].setAttribute('value',jsonPersonalData['home_language']);
-        $('#1 div')[12].innerHTML = jsonPersonalData['home_language'];
+        $('#personal :input:eq(24)').attr('value',jsonPersonalData['home_language']);
+        $('#1 div:eq(24)').html(jsonPersonalData['home_language']);
 
-        $('#personal form')[0][13].setAttribute('value',jsonPersonalData['desired_employment']);
-        $('#1 div')[13].innerHTML = jsonPersonalData['desired_employment'];
+        $('#personal :input:eq(26)').attr('value',jsonPersonalData['desired_employment']);
+        $('#1 div:eq(26)').html(jsonPersonalData['desired_employment']);
+
+        return;
     }
     else { return; }
 }
@@ -60,29 +63,31 @@ function initPersonalSkills(jsonPersonalSkills)
 {
     if (jsonPersonalSkills)
     {    
-        $('#skills form')[0][1].setAttribute('value',jsonPersonalData['social_skills']);
-        $('#0 div')[1].innerHTML = jsonPersonalData['social_skills'];
+        $('#skills textarea:eq(0)').attr('value',jsonPersonalSkills['social_skills']);
+        $('#0 div:eq(0)').html(jsonPersonalSkills['social_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][2].setAttribute('value',jsonPersonalData['organization_skills']);
-        $('#0 div')[2].innerHTML = jsonPersonalData['organization_skills'];
+        $('#skills textarea:eq(2)').attr('value',jsonPersonalSkills['organization_skills']);
+        $('#0 div:eq(2)').html(jsonPersonalSkills['organization_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][3].setAttribute('value',jsonPersonalData['technical_skills']);
-        $('#0 div')[3].innerHTML = jsonPersonalData['technical_skills'];
+        $('#skills textarea:eq(4)').attr('value',jsonPersonalSkills['technical_skills']);
+        $('#0 div:eq(4)').html(jsonPersonalSkills['technical_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][4].setAttribute('value',jsonPersonalData['informatic_skills']);
-        $('#0 div')[4].innerHTML = jsonPersonalData['informatic_skills'];
+        $('#skills textarea:eq(6)').attr('value',jsonPersonalSkills['informatic_skills']);
+        $('#0 div:eq(6)').html(jsonPersonalSkills['informatic_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][5].setAttribute('value',jsonPersonalData['artistic_skills']);
-        $('#0 div')[5].innerHTML = jsonPersonalData['artistic_skills'];
+        $('#skills textarea:eq(8)').attr('value',jsonPersonalSkills['artistic_skills']);
+        $('#0 div:eq(8)').html(jsonPersonalSkills['artistic_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][6].setAttribute('value',jsonPersonalData['other_skills']);
-        $('#0 div')[6].innerHTML = jsonPersonalData['other_skills'];
+        $('#skills textarea:eq(10)').attr('value',jsonPersonalSkills['other_skills']);
+        $('#0 div:eq(10)').html(jsonPersonalSkills['other_skills'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][7].setAttribute('value',jsonPersonalData['driving_licence']);
-        $('#0 div')[7].innerHTML = jsonPersonalData['driving_licence'];
+        $('#skills textarea:eq(12)').attr('value',jsonPersonalSkills['driving_licence']);
+        $('#0 div:eq(12)').html(jsonPersonalSkills['driving_licence'].split('\n').join('<br/>'));
 
-        $('#skills form')[0][8].setAttribute('value',jsonPersonalData['aditionalinfo']);
-        $('#0 div')[8].innerHTML = jsonPersonalData['aditionalinfo'];
+        $('#skills textarea:eq(14)').attr('value',jsonPersonalSkills['aditionalinfo']);
+        $('#0 div:eq(14)').html(jsonPersonalSkills['aditionalinfo'].split('\n').join('<br/>'));
+
+        return;
     }
     else { return; }
 }
@@ -97,9 +102,9 @@ function initExperience(jsonExperience)
 
         $.get(encodeURI(url),function(data)
         {
-            var form = document.createElement('span');
-            form.innerHTML = data;
-            setLocale(form);
+
+
+
 
             var c=0;
             for (c=0;c<len(jsonExperience);c++)
@@ -111,11 +116,11 @@ function initExperience(jsonExperience)
                 var business_area   = jsonExperience[c.toString()]['business_area'];
                 var position        = jsonExperience[c.toString()]['position'];
                 var description     = jsonExperience[c.toString()]['description'];
-                /*set form here*/
-                if (document.getElementById('experience').getElementsByTagName("span")[0])                     
-                    document.getElementById('experience').insertBefore(form , document.getElementById('experience').getElementsByTagName("span")[0]);                    
-                if (!document.getElementById('experience').getElementsByTagName("span")[0])
-                    document.getElementById('experience').appendChild(form);                   
+
+
+
+
+
 
             }
             experienceReady = true;
@@ -134,9 +139,9 @@ function initEducation(jsonEducation)
 
         $.get(encodeURI(url),function(data)
         {
-            var form = document.createElement('span');
-            form.innerHTML = data;
-            setLocale(form);
+   
+   
+   
 
             var c=0;
             for (c=0;c<len(jsonExperience);c++)
@@ -149,10 +154,10 @@ function initEducation(jsonEducation)
                 var studies_area    = jsonEducation[c.toString()]['studies_area'];
                 var main_subjects   = jsonEducation[c.toString()]['main_subjects'];
                 var average         = jsonEducation[c.toString()]['average'];
-                /*set form here*/
-                if (document.getElementById('education').getElementsByTagName("span")[0])                                                         
-                    document.getElementById('education').insertBefore(form , document.getElementById('education').getElementsByTagName("span")[0]);
-                if (!document.getElementById('education').getElementsByTagName("span")[0])                                                        
+    
+    
+    
+    
                     document.getElementById('education').appendChild(form);                                                                       
                                                                                                                                                   
             }   
@@ -210,19 +215,20 @@ function init()
     var url = settings.get_profile_url;
     $('#cv').ajaxError(function()
     {/*This function is just experimental, it should be recoded*/
-        globalEditingExperience = false;
-        globalEditingLanguage = false;
-        globalEditingEducation = false;
-        educationReady=true;
-        experienceReady=true;
-        languageReady=true;
-        oldOnToReady(); 
+        warning(locale['error']);
+        //globalEditingExperience = false;
+        //globalEditingLanguage = false;
+        //globalEditingEducation = false;
+        //educationReady=true;
+        //experienceReady=true;
+        //languageReady=true;
+        //oldOnToReady(); 
     });               
 
     $.getJSON(encodeURI(url),function(json)
     {            
         initPersonalData(json['personal_data']);
-        initPersonalSkills();
+        initPersonalSkills(json['personal_skills']);
         initExperience();
         initEducation();
         initLanguage();

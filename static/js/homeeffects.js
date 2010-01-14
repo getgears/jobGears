@@ -16,6 +16,7 @@ function hideLocaleSelection()
 // #########################################################################################
 function warning(message)
 {
+    $('#loading').hide();
     $('span','#warning').attr('innerHTML',message);
     $('#cover').css('visibility','visible');
     $('#cover').css('opacity','0.5');

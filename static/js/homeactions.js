@@ -1,35 +1,32 @@
-function erase(id_form,tipo_form)
+function erase(form_id,section)
 {
     if((document.getElementById('calendarDiv')) && (document.getElementById('calendarDiv').style.display=="block"))
         document.getElementById('calendarDiv').style.display="none";
     
-    if ((tipo_form=="personal") || (tipo_form=="skills"))                                                         
+    if ((section=="personal") || (section=="skills"))                                                         
         return;
     
     openEffect();
 
-    var form = document.getElementById(id_form)
-    var postString = "?&slot="+form.getAttribute('slot')
+    var postString = "?&slot="+$('#'+form_id).attr('slot');
 
-    if (tipo_form=="education")
-        url = settings.education_delete_url
-
-    if (tipo_form=="experience")
-        url =  settings.professional_experience_delete_url
-
-    if (tipo_form=="languages")             
-        url =  settings.languages_delete_url
+    if (section=="education")
+        url = settings.education_delete_url;
+    else if (section=="experience")
+        url =  settings.professional_experience_delete_url;
+    else if (section=="languages")             
+        url =  settings.languages_delete_url;
 
      $.post(url,postString,function(reportData){
-                if(reportData=='true')
+                if(reportData=='1')
                 {
-                    document.getElementById(tipo_form).removeChild(form.parentNode)
+                    $('#'+form_id+':parent').remove();
                     reconfigure_slot(tipo_form)
                     showInfoDiv('red',locale['item deleted'])
                     closeEffect()
                     return;
                 }
-                else if (reportData=='false')
+                else if (reportData!='1')
                 {
                     showInfoDiv('red',locale['error'])
                     closeEffect()
@@ -39,109 +36,85 @@ function erase(id_form,tipo_form)
 }
 
 
-function save(form_id,tipo_form) 
+function save(form_id,section) 
 {
-    var form = document.getElementById(form_id);
-    var divs = form.getElementsByTagName("div")
-
     if ((document.getElementById('calendarDiv') ) && (document.getElementById('calendarDiv').style.display=="block"))
         closeCalendar()
-    
+
     openEffect();
+    reconfigure_slot(section);
 
-    validation(form)
+    var $form = $('#'+form_id);
+    validation($form.get(0));
 
-    var imgs = form.getElementsByTagName("img")
-    if (tipo_form=="personal")
-        c=0
-    if (tipo_form!="personal")
-        c=2
-    for (c=c ; c < imgs.length ; c++)
-    {
-        imgs[c].style.display='none';
-        imgs[c].style.visibility='hidden';
-    }
+    var postString = $form.serialize();
 
-    for (c=0;c<form.length;c++)
-    {
-        if (form[c].type=="textarea")
-            divs[c].innerHTML = form[c].value.split('\n').join('<br>')
-        
-
-        if (form[c].type=="select-one")
-            divs[c].innerHTML = form[c].options[form[c].selectedIndex].innerHTML
-
-        if ((form[c].type!="textarea") && (form[c].type!="select-one"))
-            divs[c].innerHTML=form[c].value;
-
-        form[c].style.display='none';
-        form[c].style.visibility='hidden';
-
-        if (( divs[c].innerHTML!="" ) && ( divs[c].innerHTML!=" " ))
-        {
-            divs[c].style.display='inline'; 
-            divs[c].style.visibility='visible';
-        }
-    }
-
-    var spans=form.getElementsByTagName("SPAN");
-
-    for (c=0;c<spans.length;c++)
-    {
-        if ((spans[c].getAttribute('tipo')=='guardar') || (spans[c].getAttribute('tipo')=='cancelar'))
-        {
-            spans[c].style.visibility='hidden';
-            spans[c].style.display='none';
-        }
-        if (spans[c].getAttribute('tipo')=='editar')
-        {
-            spans[c].style.visibility='visible';
-            spans[c].style.display='inline';
-        }
-    }
-
-    reconfigure_slot(tipo_form)
-
-    var ajax = getAjax();
-    var postString = "?&slot="+form.getAttribute('slot')
-    
-    if (tipo_form=="education")
-        url =  settings.education_save_url
-
-    if (tipo_form=="experience")
-        url =  settings.professional_experience_save_url
-
-    if (tipo_form=="languages")
-        url =  settings.languages_save_url
-
-    if (tipo_form=="skills")
-        url =  settings.personal_skills_save_url
-
-    if (tipo_form=="personal")
-        url =  settings.personal_data_save_url
-
-    for (c=0; c < form.length ; c++)
-    {
-        postString = postString + "&"+ form[c].getAttribute('name')+"="+form[c].value+"&"+form[c].getAttribute('name')+"_active=1"
-    }
-
+    if (section=="education")
+        url =  settings.education_save_url + $form.attr('slot')+'/';
+    else if (section=="experience")
+        url =  settings.professional_experience_save_url + $form.attr('slot')+'/';
+    else if (section=="languages")
+        url =  settings.languages_save_url + $form.attr('slot')+'/';
+    else if (section=="skills")
+        url =  settings.personal_skills_save_url;
+    else if (section=="personal")
+        url =  settings.personal_data_save_url;
 
     $.post(url,postString,function(reportData)
     {
-        if (reportData=='true')
-            showInfoDiv('green',locale['saved'])
-        
-        if (reportData=='false')
-            showInfoDiv('red',locale['error'])
-        
+        if (reportData!='1')
+        {
+            showInfoDiv('red',locale['error']);
+            closeEffect();
+            return;
+        }
+               
+        if (section=='personal')
+            start_index = parseInt(0);
+        else if (section!='personal')
+            start_index = parseInt(2);
 
-        if (tipo_form=="experience")
+        for (c=start_index;c<$('#'+form_id+' img').length;c++)
+        {
+            var $img = $('#'+form_id+' img:eq('+c+')');           
+            $img.hide();                                
+        }
+
+        for (c=0;c<$('#'+form_id+' :input').length;c++)
+        {
+            var $element = $('#'+form_id+' :input:eq('+c+')');
+            var $div = $('#'+form_id+' div:eq('+c+')');
+            if ($element.attr('type')!='select-one')
+                $div.attr('innerHTML', $element.attr('value').split('\n').join('<br/>') );
+            else if ($element.attr('type')=='select-one')
+                $div.attr('innerHTML', $element.get(0).options[$element.attr('selectedIndex')].innerHTML); 
+            $element.hide();
+            $div.css('visibility','visible');
+            $div.css('display','inline');
+        }
+                     
+        for (c=0; c<$('#'+form_id+' span').length ;c++)
+        {
+            var $span = $('#'+form_id+' span:eq('+c+')');
+            if (($span.attr('tipo')=='guardar') || ($span.attr('tipo')=='cancelar'))
+                $span.hide();
+            if($span.attr('tipo')=='editar')
+            {
+                $span.css('visibility','visible');
+                $span.show();
+           }
+        } 
+       
+        if (section=="experience")
             globalEditingExperience = false;
-        else if (tipo_form=="languages")
+        else if (section=="languages")
             globalEditingLanguage = false;
-        else if (tipo_form=="education")
+        else if (section=="education")
             globalEditingEducation = false;
 
+        $form.attr('isnew','0');
+        
+        showInfoDiv('green',locale['saved']);
         closeEffect();
 
         return;
@@ -149,158 +122,135 @@ function save(form_id,tipo_form)
 }
 
 
-
-function edit(form,tipo_form)
+function edit(form_id,section)
 {
-    if ((tipo_form=="experience") && (globalEditingExperience==true))
+    if ((section=="experience") && (globalEditingExperience==true))
     {
         warning(locale['There is already an experience item being edited']);
         return;
     }
-    if ((tipo_form=="education") && (globalEditingEducation==true))
+    if ((section=="education") && (globalEditingEducation==true))
     {
         warning(locale['There is already an education item being edited']);
         return;
     }
-    if ((tipo_form=="languages") && (globalEditingLanguage==true))
+    if ((section=="languages") && (globalEditingLanguage==true))
     {
         warning(locale['There is already an language item being edited']);
         return;
     }
 
-
-    var form =document.getElementById(form);
-    var spans=form.getElementsByTagName("SPAN");
-    var divs = form.getElementsByTagName("div")
-
-    for (c=0;c<form.length;c++)
+    var ELEMENT_LENGTH = $('#'+form_id+' :input').length;
+    for (c=0;c<ELEMENT_LENGTH;c++)
     {
-        form[c].style.display='inline';
-        form[c].style.visibility = 'visible';
-        form[c].disabled = false ;
-
-        divs[c].style.display='none';
-        divs[c].style.visibility='hidden';
+        $element = $('#'+form_id+' :input:eq('+c+')');
+        $div = $('#'+form_id+' div:eq('+c+')');
+        $element.css('visibility','visible');
+        $element.show();
+        $div.hide();
     }
 
-    var imgs = form.getElementsByTagName("img")
-    for (c=0 ; c < imgs.length ; c++)
+    var IMG_LENGTH = $('#'+form_id+' img').length;
+    for (c=0 ; c<IMG_LENGTH  ; c++)
     {
-        imgs[c].style.display='inline';
-        imgs[c].style.visibility='visible';
+        var $img = $('#'+form_id+' img:eq('+c+')');
+        $img.css('visibility','visible');
+        $img.show();
     }
 
-    for (c=0;c<spans.length;c++)
+    var SPAN_LENGTH = $('#'+form_id+' span').length;
+    for (c=0; c < SPAN_LENGTH ; c++)
     {
-        if ((spans[c].getAttribute('tipo')=="guardar") || (spans[c].getAttribute('tipo')=="cancelar"))
-        {
-            spans[c].style.visibility='visible';
-            spans[c].style.display='inline';
-        }
-        if (spans[c].getAttribute('tipo')=='editar')
-        {
-            spans[c].style.visibility='hidden';
-            spans[c].style.display='none';
-        }
+        var $span = $('#'+form_id+' span:eq('+c+')');
+        if (($span.attr('tipo')=='guardar') || ($span.attr('tipo')=='cancelar'))
+            {
+                $span.css('visibility','visible');
+                $span.show();
+            }
+        if ($span.attr('tipo')=='editar')
+            $span.hide();
     }
-    
-    if (tipo_form=="experience")
+
+    if (section=="experience")
         globalEditingExperience = true;        
-    if (tipo_form=="education")
+    else if (section=="education")
         globalEditingEducation = true;
-    if (tipo_form=="languages")
+    else if (section=="languages")
         globalEditingLanguage = true;
 }
 
-function cancel(form_id,tipo_form)
+function cancel(form_id,section)
 {
     if ((document.getElementById('calendarDiv') ) && (document.getElementById('calendarDiv').style.display=="block"))
         closeCalendar()
 
-    var form = document.getElementById(form_id);
+    openEffect();
 
-    openEffect()
-
-    var divs = form.getElementsByTagName("div")
-
-    for (c=0;c<form.length;c++)
+    var FORM_LENGTH = $('#'+form_id+' :input').length
+    for (c=0;c<FORM_LENGTH;c++)
     {
-        form[c].style.display='none';
-        form[c].style.visibility='hidden';
+        $element = $('#'+form_id+' :input:eq('+c+')');
+        $div = $('#'+form_id+' div:eq('+c+')');
+        $element.hide();
+        $element.attr('value',$div.html().split('<br/>').join('\n'));
+        $div.css('visibility','visible');
+        $div.show();
+    }
 
-        if  (form[c].type=="textarea")
+    var IMG_LENGTH = $('#'+form_id+' img').length;
+    if (section=="personal")
+        start_index = 0 
+    if (section!="personal")
+        start_index = 2
+    for (c=start_index ; c<IMG_LENGTH ; c++)
+    {
+        $img = $('#'+form_id+' img:eq('+c+')');
+        $img.hide();
+    } 
+
+    var SPAN_LENGTH = $('#'+form_id+' span').length;
+    for (c=0; c < SPAN_LENGTH ; c++ )
+    {
+        $span = $('#'+form_id+' span:eq('+c+')');
+        if (($span.attr('tipo')=='guardar') || ($span.attr('tipo')=='cancelar'))
+            $span.hide();
+        if ($span.attr('tipo')=='editar')
         {
-            if ( (divs[c].innerHTML!="") && (divs[c].innerHTML!=" ") )
-                    form[c].value = divs[c].innerHTML.split('<br>').join('\n')
-                
-            if ( (divs[c].innerHTML=="") || (divs[c].innerHTML==" ") )
-                    form[c].value=divs[c].innerHTML                
-        }
-        if (form[c].type!="textarea")
-            form[c].value=divs[c].innerHTML;
-        
-        if ((divs[c].innerHTML!="") && (divs[c].innerHTML!=" "))
-        {
-            divs[c].style.display='inline';
-            divs[c].style.visibility='visible';
+            $span.css('visibility','visible');
+            $span.show();
         }
     }
 
-    var imgs = form.getElementsByTagName("img")
-    if (tipo_form=="personal")
-        c=0 
-    if (tipo_form!="personal")
-        c=2
-    for (c=c ; c < imgs.length ; c++)
+    if ( (section!='personal')  && (section!='skills' ) )
     {
-        imgs[c].style.display='none';
-        imgs[c].style.visibility='hidden';
-    }
-
-    var spans=form.getElementsByTagName("SPAN");
-
-    for (c=0;c<spans.length;c++)
-    {
-        if ((spans[c].getAttribute('tipo')=='guardar') || (spans[c].getAttribute('tipo')=='cancelar'))
-        {
-            spans[c].style.visibility='hidden';
-            spans[c].style.display='none';
-        }
-        if (spans[c].getAttribute('tipo')=='editar')
-        {
-            spans[c].style.visibility='visible';
-            spans[c].style.display='inline';
-        }
-    }
-
-    if ( (tipo_form!='personal')  && (tipo_form!='skills' ) )
-    {
-        if (check_blanck_fields(form.getAttribute('id'),tipo_form)==0)  
+        if (check_blanck_fields(form_id,section)==0)  
         {            
-            if (tipo_form=="experience")
+            $form = $('#'+form_id);
+            if (section=="experience")
                 globalEditingExperience = false;
-            if (tipo_form=="education")
+            else if (section=="education")
                 globalEditingEducation = false;
-            if (tipo_form=="languages")
+            else if (section=="languages")
                 globalEditingLanguage = false;
 
-            if (form.getAttribute('isnew')=='1')
+            if ($form.attr('isnew')=='1')
             {
                 openEffect();
-                document.getElementById(tipo_form).removeChild(form.parentNode);
-                reconfigure_slot(tipo_form);
-                showInfoDiv('red',locale['item deleted']);
-                closeEffect();
+                $('#'+form_id+':parent').slideUp(function(){
+                    $('#'+form_id+':parent').remove();
+                    reconfigure_slot(section);
+                    showInfoDiv('red',locale['item deleted']);
+                    closeEffect();
+                });
             }
-            else if (form.getAttribute('isnew')=='0')
-                erase(form_id,tipo_form);
+            else if ($form.attr('isnew')=='0')
+                erase(form_id,section);
 
             return;
         }
     }               
     closeEffect();
 }
-
 
 
 function move(form_id,tipo_form,move)
@@ -324,7 +274,7 @@ function move(form_id,tipo_form,move)
  
     $.post(encodeURI(url),postString,function(reportData)
     {
-        if (reportData='true')
+        if (reportData='1')
         {
             len = parseInt(document.getElementById(tipo_form).getElementsByTagName("form").length)
             if (move=="up")
@@ -356,7 +306,7 @@ function move(form_id,tipo_form,move)
             closeEffect()
         }
 
-        else if (reportData='false')
+        else if (reportData!='1')
         {
             showInfoDiv('red',locale['error'])
             closeEffect()

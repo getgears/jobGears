@@ -36,19 +36,44 @@ def get_profile(request):
     return profile_object
 
 
-def save_section(request, section, data):
+def section_save(request, section, data, slot=None):
     """
     Saves the section passed on the DB
     """
     profile_object = get_profile(request)
-    section_object = getattr(profile_object, section)
-    if not section_object:
+    if slot:
+        # This is a slot
+        slot = int(slot)
+        section_object = None
+        for item in getattr(profile_object, section).all():
+            if item.order == slot:
+                # Found the slot
+                section_object = slot.record
+                section_object.from_dict(data)
+                section_object.save()
+                return
+        
+        # If it got here, then the slot didn't exist
         section_object = mapping[section]()
         section_object.from_dict(data)
         section_object.save()
-        setattr(profile_object, section, section_object)
-        profile_object.save()
+        # Create the slot object
+        slot_object = eval('Profile_%s()' % (mapping[section].__name__,))
+        slot_object.order = slot
+        slot_object.record = section_object
+        slot_object.profile = profile_object
+        slot_object.save()
+
+
     else:
-        section_object.from_dict(data)
-        section_object.save()
+        profile_section = getattr(profile_object, section)
+        if not section_object:
+            section_object = mapping[section]()
+            section_object.from_dict(data)
+            section_object.save()
+            setattr(profile_object, section, section_object)
+            profile_object.save()
+        else:
+            section_object.from_dict(data)
+            section_object.save()
 

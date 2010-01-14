@@ -11,9 +11,9 @@ locale['Not allowed HTML tags removed'] ='Formatação HTML não permitida foi r
 locale['You reached the maximum character number in this field'] = 'Foi atingido o limite de caracteres neste campo';
 locale['There is an empty record in the section'] = 'Existe um registo totalmente em branco na secção. Preencha este.';
 locale['Your cookies are disabled. Enable it in order to continue'] ='Os seus cookies estão desactivados, estes necessitam de serem activados para poder proseguir';
-locale['There is already an experience item being edited'] ='Já existe um registo de experiência a ser editado';
-locale['There is already an education item being edited'] ='Já existe um registo de educação a ser editado';
-locale['There is already an language item being edited'] ='Já existe um registo de línguas a ser editado';
+locale['There is already an experience item being edited']  = 'Já existe um registo de experiência a ser editado';
+locale['There is already an education item being edited']   = 'Já existe um registo de educação a ser editado';
+locale['There is already an language item being edited']    = 'Já existe um registo de línguas a ser editado';
 
 
 // link translations
@@ -104,5 +104,12 @@ locale['Additional Information']    = 'Informação Adicional';
 
 
 // Select Box
-locale['genderBox'] = '<SELECT name="gender" style="visibility:hidden;display:none"><OPTION value=""></OPTION><OPTION value="0">Feminino</OPTION><OPTION value="1">Masculino</OPTION></SELECT>';
-locale['ratingBox'] = '<SELECT type="ratingBox"><OPTION value="3">Bom</OPTION><OPTION value="2">Mediano</OPTION><OPTION value="1">Básico</OPTION>';
+//locale['genderBox'] = '<SELECT name="gender" style="visibility:hidden;display:none"><OPTION value=""></OPTION><OPTION value="0">Feminino</OPTION><OPTION value="1">Masculino</OPTION></SELECT>';
+//locale['ratingBox'] = '<SELECT type="ratingBox"><OPTION value="3">Bom</OPTION><OPTION value="2">Mediano</OPTION><OPTION value="1">Básico</OPTION>';
+
+// Option Labels
+locale['Male']      = 'Masculino';
+locale['Female']    = 'Feminino';
+locale['Good']      = 'Bom';
+locale['Medium']    ='Médio';
+locale['Basic']     ='Básico';

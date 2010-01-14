@@ -9,11 +9,10 @@ def get_user(request):
     If doesn't exists, tries to create one 
     """
     try:
-        user_object = User.objects.get(pk=request.session['uid'])
+        user_object = User.objects.get(pk=1)#request.session['uid'])
     except:
         # Some error, try to return from facebook
         facebook_id = facebook.get_id(request)
-        print facebook_id
         if facebook_id:
             # We have a facebook id
             try:

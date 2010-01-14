@@ -10,9 +10,9 @@ settings.locale_cookie_name = "locale";
 // ## save
 settings.personal_data_save_url = "ajax/personal_data/";
 settings.personal_skills_save_url = "ajax/personal_skills/";
-settings.languages_save_url = "ajax/languages/save/";
-settings.education_save_url = "ajax/education/save/";
-settings.professional_experience_save_url = "ajax/professional_experience/save/";
+settings.languages_save_url = "ajax/languages/";
+settings.education_save_url = "ajax/education/";
+settings.professional_experience_save_url = "ajax/professional_experience/";
 // ## delete
 settings.languages_delete_url = "ajax/languages/delete/";
 settings.education_delete_url = "ajax/education/delete/";

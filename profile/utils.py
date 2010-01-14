@@ -18,7 +18,8 @@ def validate_field(field, value):
             cleaned_value = str(value)
         elif data_type == bool:
             cleaned_value = bool(value)
-        elif data_type == datetime:
+        else:
+            # Should be a datetime object
             time_format = "%Y-%m-%d"
             cleaned_value = datetime.fromtimestamp(time.mktime(time.strptime(value, time_format)))
     except:
