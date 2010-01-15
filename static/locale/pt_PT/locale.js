@@ -14,6 +14,9 @@ locale['Your cookies are disabled. Enable it in order to continue'] ='Os seus co
 locale['There is already an experience item being edited']  = 'Já existe um registo de experiência a ser editado';
 locale['There is already an education item being edited']   = 'Já existe um registo de educação a ser editado';
 locale['There is already an language item being edited']    = 'Já existe um registo de línguas a ser editado';
+locale['A internal error occurred, we apologize for any inconvenience']         = 'Ocurreu um erro interno, pedimos desculpa pelo inconveniente';
+locale['Service temporarily unavailable, please try again in a few seconds']    = 'O serviço está temporariamente indísponivel, tente novamente dentro de alguns segundos';
+locale['An error ocurred, our team is working to solve the problem']            = 'Ocurreu um erro, a nossa equipa está a resolver o problema';
 
 
 // link translations

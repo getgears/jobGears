@@ -14,9 +14,9 @@ settings.languages_save_url = "ajax/languages/";
 settings.education_save_url = "ajax/education/";
 settings.professional_experience_save_url = "ajax/professional_experience/";
 // ## delete
-settings.languages_delete_url = "ajax/languages/delete/";
-settings.education_delete_url = "ajax/education/delete/";
-settings.professional_experience_delete_url = "ajax/professional_experience/delete/";
+settings.languages_delete_url = "ajax/languages/";
+settings.education_delete_url = "ajax/education/";
+settings.professional_experience_delete_url = "ajax/professional_experience/";
 
 // ## move 
 settings.languages_move_url = "ajax/languages/move/";

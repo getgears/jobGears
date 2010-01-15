@@ -11,10 +11,12 @@ locale['Not allowed HTML tags removed'] = 'Not allowed HTML tags removed';
 locale['You reached the maximum character number in this field'] = 'You reached the maximum character number in this field';
 locale['There is an empty record in the section'] = 'There is an empty record in the section';
 locale['Your cookies are disabled. Enable it in order to continue'] = 'Your cookies are disabled. Enable it in order to continue';
-locale['There is already an experience item being edited'] = 'There is already an experience item being edited';
-locale['There is already an education item being edited'] = 'There is already an education item being edited';
-locale['There is already an language item being edited'] = 'There is already an language item being edited';
-
+locale['There is already an experience item being edited']  = 'There is already an experience item being edited';
+locale['There is already an education item being edited']   = 'There is already an education item being edited';
+locale['There is already an language item being edited']    = 'There is already an language item being edited';
+locale['A internal error occurred, we apologize for any inconvenience']         = 'A internal error occurred, we apologize for any inconvenience';
+locale['Service temporarily unavailable, please try again in a few seconds']    = 'Service temporarily unavailable, please try again in a few seconds';
+locale['An error ocurred, our team is working to solve the problem']            = 'An error ocurred, our team is working to solve the problem';
 
 // link translations
 locale['edit']      = 'edit';

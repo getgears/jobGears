@@ -7,16 +7,12 @@ function fbInit()
                 if (status == FB.ConnectState.connected)
                 {
                     $('#fbloggedin').css('visibility','visible');
-                    $('#fbloggedin').show();
-                    //document.getElementById('fbloggedin').style.visibility = "visible"
-                    //document.getElementById('fbloggedin').style.display = "inline"
+                    $('#fbloggedin').css('display','inline');
                 }
                 if ((status == FB.ConnectState.userNotLoggedIn) || (status == FB.ConnectState.appNotAuthorized))
                 {
                     $('#fblogin').css('visibility','visible');
-                    $('#fblogin').show();
-                    //document.getElementById('fblogin').style.visibility = "visible"
-                    //document.getElementById('fblogin').style.display = "inline"
+                    $('#fblogin').css('display','inline');
                 }
             });     
     }

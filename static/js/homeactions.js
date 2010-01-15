@@ -8,31 +8,23 @@ function erase(form_id,section)
     
     openEffect();
 
-    var postString = "?&slot="+$('#'+form_id).attr('slot');
-
     if (section=="education")
-        url = settings.education_delete_url;
+        url_ = settings.education_delete_url + $('#'+form_id).attr('slot') + '/';
     else if (section=="experience")
-        url =  settings.professional_experience_delete_url;
+        url_ =  settings.professional_experience_delete_url + $('#'+form_id).attr('slot') + '/';
     else if (section=="languages")             
-        url =  settings.languages_delete_url;
+        url_ =  settings.languages_delete_url + $('#'+form_id).attr('slot') + '/';
 
-     $.post(url,postString,function(reportData){
-                if(reportData=='1')
-                {
-                    $('#'+form_id+':parent').remove();
-                    reconfigure_slot(tipo_form)
-                    showInfoDiv('red',locale['item deleted'])
-                    closeEffect()
-                    return;
-                }
-                else if (reportData!='1')
-                {
-                    showInfoDiv('red',locale['error'])
-                    closeEffect()
-                    return;
-                }
-    },'text');
+    $.ajax({type: 'DELETE', url: url_ ,
+        sucess: function()
+        {
+            $('#'+form_id+':parent').remove();
+            reconfigure_slot(tipo_form)
+            showInfoDiv('red',locale['item deleted'])
+            closeEffect()
+            return;        
+        }            
+    });
 }
 
 
@@ -61,14 +53,7 @@ function save(form_id,section)
         url =  settings.personal_data_save_url;
 
     $.post(url,postString,function(reportData)
-    {
-        if (reportData!='1')
-        {
-            showInfoDiv('red',locale['error']);
-            closeEffect();
-            return;
-        }
-               
+    {              
         if (section=='personal')
             start_index = parseInt(0);
         else if (section!='personal')
@@ -221,33 +206,30 @@ function cancel(form_id,section)
         }
     }
 
-    if ( (section!='personal')  && (section!='skills' ) )
-    {
-        if (check_blanck_fields(form_id,section)==0)  
-        {            
-            $form = $('#'+form_id);
-            if (section=="experience")
-                globalEditingExperience = false;
-            else if (section=="education")
-                globalEditingEducation = false;
-            else if (section=="languages")
-                globalEditingLanguage = false;
+    if ((section!='personal')  && (section!='skills' ) && (check_blanck_fields(form_id,section)==0))
+    {            
+        $form = $('#'+form_id);
+        if (section=="experience")
+            globalEditingExperience = false;
+        else if (section=="education")
+            globalEditingEducation = false;
+        else if (section=="languages")
+            globalEditingLanguage = false;
 
-            if ($form.attr('isnew')=='1')
-            {
-                openEffect();
-                $('#'+form_id+':parent').slideUp(function(){
-                    $('#'+form_id+':parent').remove();
-                    reconfigure_slot(section);
-                    showInfoDiv('red',locale['item deleted']);
-                    closeEffect();
-                });
-            }
-            else if ($form.attr('isnew')=='0')
-                erase(form_id,section);
-
-            return;
+        if ($form.attr('isnew')=='1')
+        {
+            openEffect();
+            $('#'+form_id+':parent').slideUp(function(){
+                $('#'+form_id+':parent').remove();
+                reconfigure_slot(section);
+                showInfoDiv('red',locale['item deleted']);
+                closeEffect();
+            });
         }
+        else if ($form.attr('isnew')=='0')
+            erase(form_id,section);
+
+        return;   
     }               
     closeEffect();
 }
@@ -274,8 +256,6 @@ function move(form_id,tipo_form,move)
  
     $.post(encodeURI(url),postString,function(reportData)
     {
-        if (reportData='1')
-        {
             len = parseInt(document.getElementById(tipo_form).getElementsByTagName("form").length)
             if (move=="up")
             {
@@ -303,14 +283,6 @@ function move(form_id,tipo_form,move)
                 closeEffect()
                 return ;
             }      
-            closeEffect()
-        }
-
-        else if (reportData!='1')
-        {
-            showInfoDiv('red',locale['error'])
-            closeEffect()
-            return;
-        }
+            closeEffect()   
     },'text');
 }

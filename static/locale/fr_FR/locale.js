@@ -14,6 +14,9 @@ locale['Your cookies are disabled. Enable it in order to continue']='';
 locale['There is already an experience item being edited']  = '';
 locale['There is already an education item being edited']   = '';
 locale['There is already an language item being edited']    = '';
+locale['A internal error occurred, we apologize for any inconvenience']         = '';
+locale['Service temporarily unavailable, please try again in a few seconds']    = '';
+locale['An error ocurred, our team is working to solve the problem']            = '';
 
 
 // link translations

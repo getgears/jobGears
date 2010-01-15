@@ -213,16 +213,17 @@ function init()
 {
     setLocale(document);
     var url = settings.get_profile_url;
-    $('#cv').ajaxError(function()
-    {/*This function is just experimental, it should be recoded*/
-        warning(locale['error']);
-        //globalEditingExperience = false;
-        //globalEditingLanguage = false;
-        //globalEditingEducation = false;
-        //educationReady=true;
-        //experienceReady=true;
-        //languageReady=true;
-        //oldOnToReady(); 
+    $('#cv').ajaxError(function(event, request, settings)
+    {
+        fbInit();
+        if (!request.responseText)
+            warning(locale["Couldn't get any response from the server, check your internet connection"]);
+        else if (request.status==500)
+            warning(locale['A internal error occurred, we apologize for any inconvenience']);
+        else  if (request.status==503)
+            warning(locale['Service temporarily unavailable, please try again in a few seconds']);
+        else   
+            warning(locale['An error ocurred, our team is working to solve the problem']); 
     });               
 
     $.getJSON(encodeURI(url),function(json)
