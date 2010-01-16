@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -66,79 +66,79 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 <!--===================================================================================================================-->
 
 <!-- popup divs -->
-<div id="cover"></div>
+<DIV id="cover"></DIV>
 
-<div id="loading"><IMG SRC="images/infinitum2.gif"></div>
+<DIV id="loading"><IMG SRC="images/infinitum2.gif"></DIV>
 
-<div id="popup_wrapper">
-	<div id="warning"> 
+<DIV id="popup_wrapper">
+	<DIV id="warning"> 
             <span></span> 
             <br/><br/>
             <a href="javascript:void(0);" >ok</a>
-	</div>
+	</DIV>
 
-	<div id="sure">
+	<DIV id="sure">
             <span></span>
             <br/><br/>
             <a href="javascript:void(0);" class="cancel">no</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >yes</a>
-	</div>
+	</DIV>
 
-    <div id="lang_div"> 
+    <DIV id="lang_div"> 
         <span><a href="javascript:void(0);" onClick="setLanguage('pt_PT')"><img src="images/pt_PT.png"/></a> <a href="javascript:void(0);" onClick="setLanguage('en_US')"><img src="images/en_US.png"></a> <a href="javascript:void(0);" onClick="setLanguage('fr_FR')"><img src="images/fr_FR.png"></a></span>
         <br/><br/>
         <a href="javascript:void(0);" onClick="hideLocaleSelection()">close</a>
-    </div> 
+    </DIV> 
 
 
-	<div id="publish_div"> 
+	<DIV id="publish_div"> 
         <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onClick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook-logo.png" alt="Connect" /></a></span> 
         <!-- FB.init -->
         <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onClick="fbStreamPublish()"><img src="images/publish/facebook-logo.png" title="Publicar no Facebook"/></a> </span> <a href="javascript:void(0);" onclick=twitterAuthorize()  ><img src="images/publish/twitter-logo.png" title="Publicar no Twitter" ></a> <a href="javascript:void(0);" onClick="permaLink()"><img src="images/publish/share_arrow.jpg" title="Crie um link permanente" ></a><a href="#" title="click here to download your CV"><img src="images/pdf-icon.gif"></a>
         <br/><br/>
         <a href="javascript:void(0);" onClick="hidePublishDiv()">close</a>
-	</div>
+	</DIV>
 
 
-	<div id="twitter_publish">
+	<DIV id="twitter_publish">
         <TEXTAREA name="twitter_status"></TEXTAREA>
         <br/><br/>
         <a href="javascript:void(0);" class="cancel">cancel</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >ok</a>
-	</div>
-</div>
+	</DIV>
+</DIV>
     
     
     
-<div id="request_wrapper">
-	<div id="request_report"></div>
-</div>
+<DIV id="request_wrapper">
+	<DIV id="request_report"></DIV>
+</DIV>
 
 
-<div id="wrapper">
+<DIV id="wrapper">
 
-  <div class="menu" id="publish">
+  <DIV class="menu" id="publish">
   	<a href="javascript:void(0);" onClick="showPublishDiv()">
     	<img src="images/publish.jpg" />
     </a>
-  </div>
+  </DIV>
   
-  <div class="menu" id="lang">
+  <DIV class="menu" id="lang">
     <a href="javascript:void(0);" onClick="localeSelection()">
     	<img src="images/lang.jpg" />
     </a>
-  </div>
+  </DIV>
   
-  <div id="innerwrapper">
-    <div id="cut_case"></div>
-  	<div id="banner"></div>
-    <div id="login">
+  <DIV id="innerwrapper">
+    <DIV id="cut_case"></DIV>
+  	<DIV id="banner"></DIV>
+    <DIV id="login">
     	<a href="#">Login</a>
-    </div>   
+    </DIV>   
     
     
-    <div id="cv">   
+    <DIV id="cv">   
 	<!-- CV -->
     	<SPAN id="titulo">
-<div>
+<DIV>
  <TABLE>
   <TR>
    <Td id="curriculum_title"><p><label>Curriculum Vitae</label></p></Td>
@@ -147,12 +147,12 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   </td>
   </TR>
  </TABLE>
-</div>
+</DIV>
 </SPAN>
 
 
 <SPAN id="personal">
-<div>
+<DIV>
 <FORM id=1>
  <TABLE>
  
@@ -176,11 +176,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <TR>
    <TD class="sec_titles"><label>Name</label></TD>
    <TD class="field"><INPUT name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" >
-       <div class="view_field" style="visibility:visible; display:inline" ></div>
+       <DIV class="view_field" style="visibility:visible; display:inline" ></DIV>
     </TD>
     <TD>
-       <input type="checkbox" name="name_active" style="visibility:hidden; display:none">
-       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+       <INPUT type="checkbox" name="name_active" style="visibility:hidden; display:none">
+       <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
 
@@ -188,14 +188,14 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Birthdate</label></TD>
    <TD class="field">
     <span>
-        <input name="birthdate" type="text" onFocus="this.blur()" onClick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" >
+        <INPUT name="birthdate" type="text" onFocus="this.blur()" onClick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" >
         <img src="images/calendar.gif" class="calendar" title="insert date" onClick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" > 
         <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" >
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-     <input type="checkbox" name="birthdate_active" style="visibility:hidden; display:none">
-     <div class="view_field" style="visibility:visible; display:inline" ></div> 
+     <INPUT type="checkbox" name="birthdate_active" style="visibility:hidden; display:none">
+     <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </span>   
 
     </TD>
@@ -205,11 +205,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Address</label></TD>
    <TD class="field">
         <INPUT name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>         
-        <input type="checkbox" name="address_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div>    
+        <INPUT type="checkbox" name="address_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV>    
     </TD>
   </TR>
 
@@ -217,11 +217,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Zip Code</label></TD>
    <TD class="field">
         <INPUT name="postal_code" type="text" size="10" maxlength="32" style="visibility:visible; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="postal_code_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="postal_code_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
 
@@ -229,11 +229,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Location</label></TD>
    <TD class="field">
         <INPUT name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="city_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="city_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
 
@@ -241,11 +241,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Country</label></TD>
    <TD class="field">
         <INPUT name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="country_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="country_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
 
@@ -253,11 +253,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Phone Number</label></TD>
    <TD class="field">
         <INPUT name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="phone_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="phone_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
 
@@ -265,11 +265,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Cell Phone</label></TD>
    <TD class="field">
         <INPUT name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
 
@@ -277,11 +277,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Fax</label></TD>
    <TD class="field">
         <INPUT name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="fax_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="fax_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
   
@@ -289,11 +289,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Email</label></TD>
    <TD class="field">
         <INPUT name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="email_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="email_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
 
@@ -301,11 +301,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Nationality</label></TD>
    <TD class="field">
         <INPUT name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="name_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="name_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
 
@@ -316,11 +316,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
                 <OPTION value=""></OPTION>
                 <OPTION value="0">Female</OPTION>
                 <OPTION value="1">Male</OPTION>
-        </SELECT><div class="view_field" style="visibility:visible; display:inline"></div>
+        </SELECT><DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="gender_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="gender_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
 
@@ -328,28 +328,28 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD class="sec_titles"><label>Mother Language</label></TD>
    <TD class="field">
         <INPUT name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV> 
     </TD>
     <TD>
-        <input type="checkbox" name="home_language_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="home_language_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
   </TR>
   
   <TR>
    <TD class="sec_titles" id="desired_employment"><label>Desired Job</label> / <br><label>Functional Area</label></TD>
    <TD class="field">
-        <input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="">
-        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <INPUT name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="">
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
     </TD>
     <TD>
-        <input type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <INPUT type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
   </TR>
 </TABLE>
 </FORM>
-</div>
+</DIV>
 </SPAN>
 
 
@@ -362,7 +362,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD></TD>
   </TR>
  </TABLE>
-</div>
+</DIV>
 <!-- EXPERIENCE FORM TEMPLATES -->
 </SPAN>
 
@@ -376,7 +376,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD></TD>
   </TR>
  </TABLE>
-</div>
+</DIV>
 <!-- EDUCATION FORM TEMPLATES -->
 </SPAN>
 
@@ -390,7 +390,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <TD></TD>
   </TR>
  </TABLE>
-</div>
+</DIV>
 <!-- LANGUAGES FORM TEMPLATES-->
 </SPAN>
 
@@ -420,9 +420,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <TD class="sec_titles"><label>Social Skills</label></TD>
   <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></TEXTAREA> 
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
    </TD>
    <TD></TD>
  </TR>
@@ -431,9 +431,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <TD class="sec_titles"><label>Organization Skills</label></TD>
     <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></TEXTAREA>
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -442,9 +442,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <TD class="sec_titles"><label>Technical Skills</label></TD>
   <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></TEXTAREA> 
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -453,9 +453,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <TD class="sec_titles"><label>Computing Skills</label></TD>
   <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></TEXTAREA> 
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -464,9 +464,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <TD class="sec_titles"><label>Artistic Skills</label></TD>
     <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></TEXTAREA>
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -475,9 +475,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <TD class="sec_titles"><label>Other Skills</label></TD>
     <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></TEXTAREA>
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -486,9 +486,9 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <TD class="sec_titles"><label>Driving Licence</label></TD>
     <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></TEXTAREA> 
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
@@ -497,22 +497,22 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <TD class="sec_titles"><label>Additional Information</label></TD>
     <TD class="field">
         <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></TEXTAREA>
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
+        <INPUT type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
+        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
     </TD>
     <TD></TD>
  </TR>
 
 </TABLE>
 </FORM>
-</div>
+</DIV>
 </SPAN>
 
 
-	</div>
-  </div>
+	</DIV>
+  </DIV>
   
-</div>
-</body>
-</html>
+</DIV>
+</BODY>
+</HTML>

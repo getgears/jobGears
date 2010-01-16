@@ -70,7 +70,7 @@ function save(form_id,section)
             var $element = $('#'+form_id+' :input:eq('+c+')');
             var $div = $('#'+form_id+' div:eq('+c+')');
             if ($element.attr('type')!='select-one')
-                $div.attr('innerHTML', $element.attr('value').split('\n').join('<br/>') );
+                    $div.attr('innerHTML', $element.attr('value').split('\n').join('<br/>') );
             else if ($element.attr('type')=='select-one')
                 $div.attr('innerHTML', $element.get(0).options[$element.attr('selectedIndex')].innerHTML); 
             $element.hide();
@@ -177,7 +177,7 @@ function cancel(form_id,section)
         $element = $('#'+form_id+' :input:eq('+c+')');
         $div = $('#'+form_id+' div:eq('+c+')');
         $element.hide();
-        $element.attr('value',$div.html().split('<br/>').join('\n'));
+        $element.attr('value',$div.html().split('<br>').join('\n'));
         $div.css('visibility','visible');
         $div.show();
     }
@@ -206,9 +206,9 @@ function cancel(form_id,section)
         }
     }
 
-    if ((section!='personal')  && (section!='skills' ) && (check_blanck_fields(form_id,section)==0))
-    {            
-        $form = $('#'+form_id);
+
+    if ((section!='personal')  && (section!='skills' ))
+    {
         if (section=="experience")
             globalEditingExperience = false;
         else if (section=="education")
@@ -216,20 +216,22 @@ function cancel(form_id,section)
         else if (section=="languages")
             globalEditingLanguage = false;
 
-        if ($form.attr('isnew')=='1')
-        {
-            openEffect();
-            $('#'+form_id+':parent').slideUp(function(){
+
+        if  (check_blanck_fields(form_id,section)==0)
+        {    
+            $form = $('#'+form_id);
+            if ($form.attr('isnew')=='1')
+            {
+                openEffect();
                 $('#'+form_id+':parent').remove();
                 reconfigure_slot(section);
                 showInfoDiv('red',locale['item deleted']);
-                closeEffect();
-            });
+                closeEffect(); 
+            }
+            else if ($form.attr('isnew')=='0')
+                erase(form_id,section);
+            return;   
         }
-        else if ($form.attr('isnew')=='0')
-            erase(form_id,section);
-
-        return;   
     }               
     closeEffect();
 }
