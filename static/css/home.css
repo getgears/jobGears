@@ -240,7 +240,7 @@ height: 100%;
 text-align: center;
 position: fixed;
 z-index: 5;
-visibility: hidden;
+display: none;
 }
 
 #loading img{
@@ -259,7 +259,6 @@ z-index: 5;
 }
 
 #warning, #sure, #publish_div, #twitter_publish, #lang_div{
-visibility: hidden;
 display: none; 
 width: 500px;
 margin: 0 auto 5px;

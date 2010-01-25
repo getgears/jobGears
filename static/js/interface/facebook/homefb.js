@@ -26,16 +26,7 @@ function fbInit()
 
 function fbLoggedIn()
 {
-    var ajax = getAjax()
-/*    var url = settings.root_url + "facebook/setfbuid/"
-    var postString = "?&fbuid="+ FB.Connect.get_loggedInUser()
-
-
-    ajax.open("POST",encodeURI(url),true);
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ajax.setRequestHeader("X-Referer", document.location);
-    ajax.send(encodeURI(postString));
-*/
+    //var postString = "?&fbuid="+ FB.Connect.get_loggedInUser()
     FB.Connect.showPermissionDialog("offline_access, publish_stream",function(perms) {
             if (!perms)
             {

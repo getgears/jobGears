@@ -42,7 +42,7 @@ settings.facebook_publish_url = "facebook/publishfb/";
 
 
 /** Twitter Interface ****************/
-settings.twitter_auth_url = "twitter/auth";
+settings.twitter_auth_url = "twitter/auth/";
 settings.twitter_status = "twitter/sendstatus/";
 
 //###############################################################################################

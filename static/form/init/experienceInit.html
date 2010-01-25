@@ -1,45 +1,45 @@
 <span>
 <FORM id="##id##" slot="##slot##" isnew="0">
 <table >
-	<TR >
-		<Td class="sec_titles"></Td>
-		<Td class="edit">
-		<SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"experience")>edit</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'experience')>delete</A> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"experience","up")><img src="images/arrow_up.gif" title='move up'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"experience","down")><img src="images/arrow_down.gif" title='move down'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden;" ><A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"experience")>save</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style=visibility:hidden;><A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"experience")>cancel</A></SPAN>
-		</Td>
-	</TR>
-	<TR>
-		<TD class="sec_titles"><label>Start Date</label></TD>
-		<TD class="field" > 
-			<input style="visibility:hidden; display:none " size=10 maxlength=10 name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##init_date##" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) title='Apagar Data' > <div class="view_field" style="visibility:visible; display:inline ">##init_date##</div>            
-		</TD>
-	</TR>
-	<TR>
-		<TD class="sec_titles"><label>Conclusion Date</label></TD>
-		<TD class="field" > 
-			<input style="visibility:hidden; display:none " size=10 maxlength=10 name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##final_date##" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) title='Apagar Data' > <div class="view_field" style="visibility:visible; display:inline">##final_date##</div>  
-		</TD>
-	</TR>
-	<TR >
-		<Td class="sec_titles">Company Name and Address</Td>
-		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="company" maxlength="4000">##company##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##company_div##</div>
-		</Td>
-	</TR> 
-	<TR >
-		<Td class="sec_titles"><label>Company Type or Business Sector</label></Td>
-	<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" style="visibility:hidden; display:none " name="business_area" >##business_area##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##business_area_div##</div>
-	</Td>
-	</TR>
-	<TR >
-		<Td class="sec_titles"><label>Job Function / Position</label></Td>
-		<Td class="field" >
-		<INPUT style="visibility:hidden; display:none" size=60 maxlength=256 value="##position##" name="position" type="text"><div class="view_field" style="visibility:visible; display:inline ">##position##</div>
-	</Td>
-	</TR> 
-	<TR >
-	<Td class="sec_titles" valign="top" ><label>Main Activities or Responsabilities</label></Td>
-	<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="description" maxlength="4000" >##description##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##description_div##</div>
-	</Td
-	></TR> 
+    <TR >
+        <TD class="sec_titles"></TD>
+        <TD class="edit">
+        <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"experience")>edit</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'experience')>delete</A> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"experience","up")><img src="images/arrow_up.gif" title='move up'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"experience","down")><img src="images/arrow_down.gif" title='move down'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden;" ><A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"experience")>save</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style=visibility:hidden;><A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"experience")>cancel</A></SPAN>
+        </TD>
+    </TR>
+    <TR>
+        <TD class="sec_titles"><LABEL>Start Date</label></TD>
+        <TD class="field" > 
+            <input style="visibility:hidden; display:none " size=10 maxlength=10 name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##init_date##" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) title='Apagar Data' > <div class="view_field" style="visibility:visible; display:inline ">##init_date##</div>            
+        </TD>
+    </TR>
+    <TR>
+        <TD class="sec_titles"><LABEL>Conclusion Date</label></TD>
+        <TD class="field" > 
+            <input style="visibility:hidden; display:none " size=10 maxlength=10 name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="##final_date##" tipo="data" > <img style="visibility:hidden; display:none " src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" style="visibility:hidden; display:none" class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) title='Apagar Data' > <div class="view_field" style="visibility:visible; display:inline">##final_date##</div>  
+        </TD>
+    </TR>
+    <TR >
+        <TD class="sec_titles">Company Name and Address</TD>
+        <TD class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="company" maxlength="4000">##company##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##company_div##</div>
+        </TD>
+    </TR> 
+    <TR >
+        <TD class="sec_titles"><LABEL>Company Type or Business Sector</label></TD>
+    <TD class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" style="visibility:hidden; display:none " name="business_area" >##business_area##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##business_area_div##</div>
+    </TD>
+    </TR>
+    <TR >
+        <TD class="sec_titles"><LABEL>Job Function / Position</label></TD>
+        <TD class="field" >
+        <INPUT style="visibility:hidden; display:none" size=60 maxlength=256 value="##position##" name="position" type="text"><div class="view_field" style="visibility:visible; display:inline ">##position##</div>
+    </TD>
+    </TR> 
+    <TR >
+    <TD class="sec_titles" valign="top" ><LABEL>Main Activities or Responsabilities</label></TD>
+    <TD class="field" ><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none " name="description" maxlength="4000" >##description##</TEXTAREA><div class="view_field" style="visibility:visible; display:inline ">##description_div##</div>
+    </Td
+    ></TR> 
 </table>
 </FORM>
 </span>

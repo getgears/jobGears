@@ -1,43 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<HTML xmlns="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- INCLUDE GERAL -->
-<SCRIPT type="text/javascript" src="js/jQuery/jquery-v1.3.2.js"></SCRIPT>
+<!--<script type="text/javascript" src="js/jquery/jquery-v1.3.2.js"></script>-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+
 <!-- SETTINGS -->
-<SCRIPT type="text/javascript" src="js/settings/settings.js"></SCRIPT>
+<script type="text/javascript" src="js/settings/settings.js"></script>
 <!-- INCLUDE -->
-<SCRIPT type="text/javascript" src="js/include/includeajax.js" ></SCRIPT>
-<SCRIPT type="text/javascript" src="js/include/jsCookies.js"></SCRIPT>
+<script type="text/javascript" src="js/include/includeajax.js" ></script>
+<script type="text/javascript" src="js/include/jsCookies.js"></script>
 <!-- GLOBAL VARIABLES -->
-<SCRIPT type="text/javascript" src="js/globals/globals.js"></SCRIPT>
+<script type="text/javascript" src="js/globals/globals.js"></script>
 
 
 <!-- INCLUDE CALENDARIO-->
-<SCRIPT type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
-<SCRIPT type="text/javascript" src="js/calendar/urchin.js" ></script> 
+<script type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
+<script type="text/javascript" src="js/calendar/urchin.js" ></script> 
 <!-- CSS Calendario -->
-<LINK type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
+<link type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
 
 <!-- LANGUAGE -->
-<SCRIPT type="text/javascript">
+<script type="text/javascript">
 var lang = Get_Cookie('locale')
 if (lang){document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');
 document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}
-</SCRIPT>
+</script>
 
 <!--INTERFACES -->
-<SCRIPT type="text/javascript" src="js/interface/facebook/homefb.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/interface/twitter/hometwitter.js "></SCRIPT>
+<script type="text/javascript" src="js/interface/facebook/homefb.js"></script>
+<script type="text/javascript" src="js/interface/twitter/hometwitter.js "></script>
 
 
 <!-- INCLUDE DE PERFIL -->
-<SCRIPT type="text/javascript" src="js/homeactions.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homerender.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homeutils.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homeeffects.js"></SCRIPT>
-<SCRIPT type="text/javascript" src="js/homeinit.js"></SCRIPT>
+<script type="text/javascript" src="js/homeactions.js"></script>
+<script type="text/javascript" src="js/homerender.js"></script>
+<script type="text/javascript" src="js/homeutils.js"></script>
+<script type="text/javascript" src="js/homeeffects.js"></script>
+<script type="text/javascript" src="js/homeinit.js"></script>
 
 
 <!-- CSS home.html -->
@@ -46,115 +47,120 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
 <title>jobGears</title>
 
 
 
 </head>
 
-<BODY onLoad="init()">
+<body onload="init()">
 
  
 <!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
-    <SCRIPT type="text/javascript">
+    <script type="text/javascript">
        document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+Get_Cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
-    </SCRIPT>
+    </script>
     <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm");</script>
 <!-- END OF FB OBJECT INIT  -->
 <!--===================================================================================================================-->
 
 <!-- popup divs -->
-<DIV id="cover"></DIV>
+<div id="cover"></div>
 
-<DIV id="loading"><IMG SRC="images/infinitum2.gif"></DIV>
+<div id="loading"><img src="images/infinitum2.gif" alt="not found" /></div>
 
-<DIV id="popup_wrapper">
-	<DIV id="warning"> 
+<div id="popup_wrapper">
+    <div id="warning"> 
             <span></span> 
             <br/><br/>
             <a href="javascript:void(0);" >ok</a>
-	</DIV>
+    </div>
 
-	<DIV id="sure">
+    <div id="sure">
             <span></span>
             <br/><br/>
             <a href="javascript:void(0);" class="cancel">no</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >yes</a>
-	</DIV>
+    </div>
 
-    <DIV id="lang_div"> 
-        <span><a href="javascript:void(0);" onClick="setLanguage('pt_PT')"><img src="images/pt_PT.png"/></a> <a href="javascript:void(0);" onClick="setLanguage('en_US')"><img src="images/en_US.png"></a> <a href="javascript:void(0);" onClick="setLanguage('fr_FR')"><img src="images/fr_FR.png"></a></span>
+    <div id="lang_div"> 
+        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.png" alt="not found" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_US.png" alt="not found" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.png" alt="not found" /></a></span>
         <br/><br/>
-        <a href="javascript:void(0);" onClick="hideLocaleSelection()">close</a>
-    </DIV> 
+        <a href="javascript:void(0);" onclick="hideLocaleSelection()">close</a>
+    </div> 
 
 
-	<DIV id="publish_div"> 
-        <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onClick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook-logo.png" alt="Connect" /></a></span> 
+    <div id="publish_div"> 
+        <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook-logo.png" alt="Connect" /></a></span> 
         <!-- FB.init -->
-        <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onClick="fbStreamPublish()"><img src="images/publish/facebook-logo.png" title="Publicar no Facebook"/></a> </span> <a href="javascript:void(0);" onclick=twitterAuthorize()  ><img src="images/publish/twitter-logo.png" title="Publicar no Twitter" ></a> <a href="javascript:void(0);" onClick="permaLink()"><img src="images/publish/share_arrow.jpg" title="Crie um link permanente" ></a><a href="#" title="click here to download your CV"><img src="images/pdf-icon.gif"></a>
+        <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/publish/facebook-logo.png" alt="not found" title="Publish on Facebook" /></a> </span> 
+        <a href="#" onclick="twitterAuthorize(); return false;"  ><img src="images/publish/twitter-logo.png" alt="not found" title="Publish on Twitter" /></a> 
+        <a href="javascript:void(0);" onclick="permaLink()"><img src="images/publish/share_arrow.jpg" alt="not found" title="Create a permanent link" /></a>
+        <a href="#" title="click here to download your CV"><img src="images/pdf-icon.gif" alt="not found" title="pdf" /></a>
         <br/><br/>
-        <a href="javascript:void(0);" onClick="hidePublishDiv()">close</a>
-	</DIV>
+        <a href="javascript:void(0);" onclick="hidePublishDiv()">close</a>
+    </div>
 
 
-	<DIV id="twitter_publish">
-        <TEXTAREA name="twitter_status"></TEXTAREA>
+    <div id="twitter_publish">
+        <span></span><br/>
+        <span></span><label></label><br/>
+        <textarea name="twitter_status" onkeyup="tweetChange()"></textarea>
         <br/><br/>
-        <a href="javascript:void(0);" class="cancel">cancel</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >ok</a>
-	</DIV>
-</DIV>
+        <a href="javascript:void(0);" onclick="hideTwitterPublishBox()" class="cancel">close</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >share</a>
+    </div>
+</div>
     
     
     
-<DIV id="request_wrapper">
-	<DIV id="request_report"></DIV>
-</DIV>
+<div id="request_wrapper">
+	<div id="request_report"></div>
+</div>
 
 
-<DIV id="wrapper">
+<div id="wrapper">
 
-  <DIV class="menu" id="publish">
-  	<a href="javascript:void(0);" onClick="showPublishDiv()">
-    	<img src="images/publish.jpg" />
+  <div class="menu" id="publish">
+    <a href="javascript:void(0);" onclick="showPublishDiv()">
+        <img src="images/publish.jpg" alt="not found" />
     </a>
-  </DIV>
+  </div>
   
-  <DIV class="menu" id="lang">
-    <a href="javascript:void(0);" onClick="localeSelection()">
-    	<img src="images/lang.jpg" />
+  <div class="menu" id="lang">
+    <a href="javascript:void(0);" onclick="localeSelection()">
+    	<img src="images/lang.jpg" alt="not found" />
     </a>
-  </DIV>
+  </div>
   
-  <DIV id="innerwrapper">
-    <DIV id="cut_case"></DIV>
-  	<DIV id="banner"></DIV>
-    <DIV id="login">
+  <div id="innerwrapper">
+    <div id="cut_case"></div>
+  	<div id="banner"></div>
+    <div id="login">
     	<a href="#">Login</a>
-    </DIV>   
+    </div>   
     
     
-    <DIV id="cv">   
+    <div id="cv">   
 	<!-- CV -->
-    	<SPAN id="titulo">
-<DIV>
- <TABLE>
-  <TR>
-   <Td id="curriculum_title"><p><label>Curriculum Vitae</label></p></Td>
+    	<span id="titulo">
+<div>
+ <table>
+  <tr>
+   <td id="curriculum_title"><p><label>Curriculum Vitae</label></p></td>
    <td id="user">
 
   </td>
-  </TR>
- </TABLE>
-</DIV>
-</SPAN>
+  </tr>
+ </table>
+</div>
+</span>
 
 
-<SPAN id="personal">
-<DIV>
-<FORM id=1>
- <TABLE>
+<span id="personal">
+<div>
+<form id="1" >
+ <table>
  
   <tr>
    <td class="prim_titles"><label>Personal Information</label></td>
@@ -162,357 +168,356 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <td></td>
   </tr>
   
-  <TR>
-   <TD class="sec_titles">&nbsp;</TD>
-   <TD class="edit">
-    <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline;"><A  href="javascript:void(0);" onclick=edit(1,"personal") >edit</A></SPAN>
-    <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none;"><A  href="javascript:void(0);" onclick=save(1,"personal")>save</A> | </SPAN>
-    <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none;"><A class="cancel" href="javascript:void(0);" onclick=cancel(1,"personal")>cancel</A> </SPAN>   
-    </TD>
-    <TD>
-    </TD>   
-  </TR>
+  <tr>
+   <td class="sec_titles">&nbsp;</td>
+   <td class="edit">
+    <span tipo="editar" cod=form1" style="visibility:visible; display:inline;"><a href="javascript:void(0);" onclick="edit(1,'personal')" >edit</a></span>
+    <span tipo="guardar" cod=form1" style="visibility:hidden; display:none;"><a href="javascript:void(0);" onclick="save(1,'personal')" >save</a> | </span>
+    <span tipo="cancelar" cod="form1" style="visibility:hidden; display:none;"><a class="cancel" href="javascript:void(0);" onclick="cancel(1,'personal')" >cancel</a> </span>   
+    </td>
+    <td>
+    </td>   
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Name</label></TD>
-   <TD class="field"><INPUT name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" >
-       <DIV class="view_field" style="visibility:visible; display:inline" ></DIV>
-    </TD>
-    <TD>
-       <INPUT type="checkbox" name="name_active" style="visibility:hidden; display:none">
-       <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Name</label></td>
+   <td class="field"><input name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div>
+    </td>
+    <td>
+       <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Birthdate</label></TD>
-   <TD class="field">
+  <tr>
+   <td class="sec_titles"><label>Birthdate</label></td>
+   <td class="field">
     <span>
-        <INPUT name="birthdate" type="text" onFocus="this.blur()" onClick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" >
-        <img src="images/calendar.gif" class="calendar" title="insert date" onClick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" > 
-        <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" >
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-     <INPUT type="checkbox" name="birthdate_active" style="visibility:hidden; display:none">
-     <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
+        <input name="birthdate" type="text" onFocus="this.blur()" onclick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" />
+        <img src="images/calendar.gif" alt="not found" class="calendar" title="insert date" onclick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" /> 
+        <img src="images/erase.gif" alt="not found" class="calendar" onclick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" />
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+     <input type="checkbox" name="birthdate_active" style="visibility:hidden; display:none"/>
+     <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </span>   
-
-    </TD>
-  </TR>
+    </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Address</label></TD>
-   <TD class="field">
-        <INPUT name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>         
-        <INPUT type="checkbox" name="address_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV>    
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Address</label></td>
+   <td class="field">
+        <input name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>         
+        <input type="checkbox" name="address_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div>    
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Zip Code</label></TD>
-   <TD class="field">
-        <INPUT name="postal_code" type="text" size="10" maxlength="32" style="visibility:visible; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="postal_code_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Zip Code</label></td>
+   <td class="field">
+        <input name="postal_code" type="text" size="10" maxlength="32" style="visibility:visible; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="postal_code_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Location</label></TD>
-   <TD class="field">
-        <INPUT name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="city_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Location</label></td>
+   <td class="field">
+        <input name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="city_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Country</label></TD>
-   <TD class="field">
-        <INPUT name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="country_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Country</label></td>
+   <td class="field">
+        <input name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="country_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Phone Number</label></TD>
-   <TD class="field">
-        <INPUT name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="phone_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Phone Number</label></td>
+   <td class="field">
+        <input name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="phone_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Cell Phone</label></TD>
-   <TD class="field">
-        <INPUT name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Cell Phone</label></td>
+   <td class="field">
+        <input name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Fax</label></TD>
-   <TD class="field">
-        <INPUT name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="fax_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Fax</label></td>
+   <td class="field">
+        <input name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="fax_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Email</label></TD>
-   <TD class="field">
-        <INPUT name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="email_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Email</label></td>
+   <td class="field">
+        <input name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="email_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Nationality</label></TD>
-   <TD class="field">
-        <INPUT name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="name_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Nationality</label></td>
+   <td class="field">
+        <input name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR> 
-   <TD class="sec_titles"><label>Gender</label></TD>
-   <TD class="field">
-        <SELECT name="gender" style="visibility:hidden; display:none" value="">
-                <OPTION value=""></OPTION>
-                <OPTION value="0">Female</OPTION>
-                <OPTION value="1">Male</OPTION>
-        </SELECT><DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="gender_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr> 
+   <td class="sec_titles"><label>Gender</label></td>
+   <td class="field">
+        <select name="gender" style="visibility:hidden; display:none" value="">
+                <option value=""></option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+        </select><div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="gender_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Mother Language</label></TD>
-   <TD class="field">
-        <INPUT name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV> 
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="home_language_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Mother Language</label></td>
+   <td class="field">
+        <input name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div> 
+    </td>
+    <td>
+        <input type="checkbox" name="home_language_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles" id="desired_employment"><label>Desired Job</label> / <br><label>Functional Area</label></TD>
-   <TD class="field">
-        <INPUT name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="">
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-    </TD>
-    <TD>
-        <INPUT type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-  </TR>
-</TABLE>
-</FORM>
-</DIV>
-</SPAN>
+  <tr>
+   <td class="sec_titles" id="desired_employment"><label>Desired Job</label> / <br/><label>Functional Area</label></td>
+   <td class="field">
+        <input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td>
+        <input type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
+</table>
+</form>
+</div>
+</span>
 
 
-<SPAN id="experience">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Professional Experience</label></TD>
-   <TD class="new_item"><img src="images/new_item.gif" class="new_item_img" onClick="new_form('experience')" title='new item'></TD>
-   <TD></TD>
-  </TR>
- </TABLE>
-</DIV>
+<span id="experience">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Professional Experience</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('experience')" title='new item' /></td>
+   <td></td>
+  </tr>
+ </table>
+</div>
 <!-- EXPERIENCE FORM TEMPLATES -->
-</SPAN>
+</span>
 
 
-<SPAN id="education">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Education and Specialization</label></TD>
-   <TD class="new_item"><img src="images/new_item.gif" class="new_item_img" onClick="new_form('education')" title='new item'></TD>
-   <TD></TD>
-  </TR>
- </TABLE>
-</DIV>
+<span id="education">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Education and Specialization</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('education')" title='new item' /></td>
+   <td></td>
+  </tr>
+ </table>
+</div>
 <!-- EDUCATION FORM TEMPLATES -->
-</SPAN>
+</span>
 
 
-<SPAN id="languages">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Other Languages</label></TD>
-   <TD class="new_item"><img src="images/new_item.gif" class="new_item_img" onClick="new_form('languages')" title='new item'></TD>
-   <TD></TD>
-  </TR>
- </TABLE>
-</DIV>
+<span id="languages">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Other Languages</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('languages')" title='new item'></td>
+   <td></td>
+  </tr>
+ </table>
+</div>
 <!-- LANGUAGES FORM TEMPLATES-->
-</SPAN>
+</span>
 
 
-<SPAN id="skills">
-<DIV>
-<FORM id=0 >
-<TABLE>
+<span id="skills">
+<div>
+<form id=0 >
+<table>
 
  <tr>
-  <TD class="prim_titles"><label>Personal Skills</label></TD>
+  <td class="prim_titles"><label>Personal Skills</label></td>
   <td class="new_item">&nbsp;</td>
   <td></td>
  </tr>
  
- <TR>
-  <TD class="sec_titles">&nbsp;</TD>
-  <TD class="edit">
-   <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline;" > <A  href="javascript:void(0);" onclick=edit(0,"skills")>edit</A> </SPAN>
-   <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none;"  ><A  href="javascript:void(0);" onclick=save(0,"skills")>save</A> |</SPAN>
-   <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none;" ><A class="cancel" href="javascript:void(0);" onclick=cancel(0,"skills")>cancel</A> </SPAN>
-  </TD>
-   <TD></TD>
- </TR>
+ <tr>
+  <td class="sec_titles">&nbsp;</td>
+  <td class="edit">
+   <span tipo=editar cod=form1 style="visibility:visible; display:inline;"><a href="javascript:void(0);" onclick=edit(0,"skills")>edit</a> </span>
+   <span tipo=guardar cod=form1 style="visibility:hidden; display:none;"  ><a href="javascript:void(0);" onclick=save(0,"skills")>save</a> |</span>
+   <span tipo=cancelar cod=form1 style="visibility:hidden; display:none;" ><a class="cancel" href="javascript:void(0);" onclick=cancel(0,"skills")>cancel</a> </span>
+  </td>
+   <td></td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Social Skills</label></TD>
-  <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></TEXTAREA> 
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-   </TD>
-   <TD></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Social Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+   <td></td>
+ </tr>
 
- <TR>
-    <TD class="sec_titles"><label>Organization Skills</label></TD>
-    <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></TEXTAREA>
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Organization Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Technical Skills</label></TD>
-  <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></TEXTAREA> 
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Technical Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Computing Skills</label></TD>
-  <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></TEXTAREA> 
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Computing Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-    <TD class="sec_titles"><label>Artistic Skills</label></TD>
-    <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></TEXTAREA>
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Artistic Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-    <TD class="sec_titles"><label>Other Skills</label></TD>
-    <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></TEXTAREA>
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Other Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-    <TD class="sec_titles"><label>Driving Licence</label></TD>
-    <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></TEXTAREA> 
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Driving Licence</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
- <TR>
-    <TD class="sec_titles"><label>Additional Information</label></TD>
-    <TD class="field">
-        <TEXTAREA onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></TEXTAREA>
-        <DIV class="view_field" style="visibility:visible; display:inline"></DIV>
-        <INPUT type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
-        <DIV class="view_field" style="visibility:visible; display:inline" ></DIV> 
-    </TD>
-    <TD></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Additional Information</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+        <input type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+    <td></td>
+ </tr>
 
-</TABLE>
-</FORM>
-</DIV>
-</SPAN>
+</table>
+</form>
+</div>
+</span>
 
 
-	</DIV>
-  </DIV>
+    </div>
+  </div>
   
-</DIV>
-</BODY>
-</HTML>
+</div>
+</body>
+</html>

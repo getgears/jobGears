@@ -69,8 +69,8 @@ function save(form_id,section)
         {
             var $element = $('#'+form_id+' :input:eq('+c+')');
             var $div = $('#'+form_id+' div:eq('+c+')');
-            if ($element.attr('type')!='select-one')
-                    $div.attr('innerHTML', $element.attr('value').split('\n').join('<br/>') );
+            if ($element.attr('type')!='select-one')              
+                $div.attr('innerHTML', $element.attr('value').replace(new RegExp('\\n','g'),'<br>'));
             else if ($element.attr('type')=='select-one')
                 $div.attr('innerHTML', $element.get(0).options[$element.attr('selectedIndex')].innerHTML); 
             $element.hide();
@@ -87,7 +87,7 @@ function save(form_id,section)
             {
                 $span.css('visibility','visible');
                 $span.show();
-           }
+            }
         } 
        
         if (section=="experience")
@@ -177,7 +177,7 @@ function cancel(form_id,section)
         $element = $('#'+form_id+' :input:eq('+c+')');
         $div = $('#'+form_id+' div:eq('+c+')');
         $element.hide();
-        $element.attr('value',$div.html().split('<br>').join('\n'));
+        $element.attr('value',$div.html().replace(new RegExp('[<]{1}br[>]{1}','g'),'\n'));
         $div.css('visibility','visible');
         $div.show();
     }
@@ -239,52 +239,51 @@ function cancel(form_id,section)
 
 function move(form_id,tipo_form,move)
 {
-    var form = document.getElementById(form_id)
-    var slot = parseInt(form.getAttribute('slot'))
+    var form = document.getElementById(form_id);
+    var slot = parseInt(form.getAttribute('slot'));
 
     if (((slot>=document.getElementById(tipo_form).getElementsByTagName("form").length) && (move=="up")) || ( (slot<=1) && move=="down") )
         return ;
 
-    openEffect()    
-    var ajax = getAjax()
-    var postString = "?&slot="+slot+"&move="+move
+    openEffect();    
+    var postString = "?&slot="+slot+"&move="+move;
 
      if (tipo_form=="education")                                  
-         url =  settings.education_move_url
+         url =  settings.education_move_url;
      if (tipo_form=="experience")
-         url =  settings.professional_experience_move_url
+         url =  settings.professional_experience_move_url;
      if (tipo_form=="languages")
-         url =  settings.languages_move_url
+         url =  settings.languages_move_url;
  
     $.post(encodeURI(url),postString,function(reportData)
     {
-            len = parseInt(document.getElementById(tipo_form).getElementsByTagName("form").length)
+            len = parseInt(document.getElementById(tipo_form).getElementsByTagName("form").length);
             if (move=="up")
             {
-                form.setAttribute('slot',parseInt(slot)+1)
-                document.getElementById(tipo_form).getElementsByTagName("form")[len-slot-1].setAttribute('slot',parseInt(slot))
-                span1 = form.parentNode
-                span2 = document.getElementById(tipo_form).getElementsByTagName("form")[len-slot-1].parentNode
-                auxinnerHTML = span1.innerHTML
-                span1.innerHTML = span2.innerHTML
-                span2.innerHTML = auxinnerHTML
-                showInfoDiv('green', locale['item moved'])
-                closeEffect()
+                form.setAttribute('slot',parseInt(slot)+1);
+                document.getElementById(tipo_form).getElementsByTagName("form")[len-slot-1].setAttribute('slot',parseInt(slot));
+                span1 = form.parentNode;
+                span2 = document.getElementById(tipo_form).getElementsByTagName("form")[len-slot-1].parentNode;
+                auxinnerHTML = span1.innerHTML;
+                span1.innerHTML = span2.innerHTML;
+                span2.innerHTML = auxinnerHTML;
+                showInfoDiv('green', locale['item moved']);
+                closeEffect();
                 return ;
             }
             if (move=="down")
             {
-                form.setAttribute('slot',parseInt(slot)-1)
-                document.getElementById(tipo_form).getElementsByTagName("form")[len-slot+1].setAttribute('slot',parseInt(slot))
-                span1 = form.parentNode
-                span2 = document.getElementById(tipo_form).getElementsByTagName("form")[len-slot+1].parentNode
-                auxinnerHTML = span1.innerHTML
-                span1.innerHTML = span2.innerHTML
-                span2.innerHTML = auxinnerHTML
-                showInfoDiv('green', locale['item moved'])
-                closeEffect()
+                form.setAttribute('slot',parseInt(slot)-1);
+                document.getElementById(tipo_form).getElementsByTagName("form")[len-slot+1].setAttribute('slot',parseInt(slot));
+                span1 = form.parentNode;
+                span2 = document.getElementById(tipo_form).getElementsByTagName("form")[len-slot+1].parentNode;
+                auxinnerHTML = span1.innerHTML;
+                span1.innerHTML = span2.innerHTML;
+                span2.innerHTML = auxinnerHTML;
+                showInfoDiv('green', locale['item moved']);
+                closeEffect();
                 return ;
             }      
-            closeEffect()   
+            closeEffect();
     },'text');
 }

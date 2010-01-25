@@ -3,7 +3,7 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 
 # import for twitter interface
-from jobgears.interfaces.twitter import twitter_connect
+from jobgears.interfaces.twitter import views
 
 
 
@@ -12,9 +12,9 @@ urlpatterns = patterns('',
     #   API related Views
     ###################################################################
     # first request on an update
-    (r'^auth/$',twitter_connect.update_status),
+    (r'^auth/$',views.update_status),
     # twitter update request
-    (r'^sendstatus/$',twitter_connect.send_status_to_twitter),
+    (r'^sendstatus/$',views.send_status_to_twitter),
     # Twitter callback URL
-    (r'^connected/$',twitter_connect.connected),
+    (r'^connected/$',views.connected),
 )

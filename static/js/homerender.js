@@ -29,11 +29,11 @@ function new_form(tipo_form)
         var $form = $('<span></span>');
 
         if (tipo_form=="education")
-            $form.attr('innerHTML',globalEducationForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+            $form.attr('innerHTML',globalEducationForm.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString()).replace(new RegExp('[#]{2}slot[#]{2}','g'),slot.toString()));
         else if (tipo_form=="experience")
-            $form.attr('innerHTML',globalExperienceForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
-        else if (tipo_form=="languages")            
-            $form.attr('innerHTML',globalLanguageForm.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+            $form.attr('innerHTML',globalExperienceForm.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString()).replace(new RegExp('[#]{2}slot[#]{2}','g'),slot.toString()));
+        else if (tipo_form=="languages")
+            $form.attr('innerHTML',globalLanguageForm.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString()).replace(new RegExp('[#]{2}slot[#]{2}','g'),slot.toString()));
 
         if ($('#'+tipo_form+' span').length==0)
             $form.appendTo('#'+tipo_form);
@@ -63,7 +63,7 @@ function new_form(tipo_form)
     $.get(encodeURI(url),function(requestData)
     {
         var $form = $("<span></span>");
-        $form.attr('innerHTML',requestData.split('##id##').join(id.toString()).split('##slot##').join(slot.toString()));
+        $form.attr('innerHTML',requestData.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString()).replace(new RegExp('[#]{2}slot[#]{2}','g'),slot.toString()));
         setLocale($form.get(0));
 
         if ($('#'+tipo_form+' span').length==0)

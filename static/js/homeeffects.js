@@ -1,16 +1,13 @@
 function localeSelection()
 {
-    $('#cover').css('visibility','visible');
     $('#cover').css('opacity','0.5');           
     $('#cover').show();                         
-    $('#lang_div').css('visibility','visible');
     $('#lang_div').show();
 }
 
 function hideLocaleSelection()
 {
     $('#lang_div').hide();
-    //$('#cover').fadeOut('fast');
     $('#cover').hide();
 }
 // #########################################################################################
@@ -18,14 +15,11 @@ function warning(message)
 {
     $('#loading').hide();
     $('span','#warning').attr('innerHTML',message);
-    $('#cover').css('visibility','visible');
     $('#cover').css('opacity','0.5');
     $('#cover').show();
-    $('#warning').css('visibility','visible');
     $('#warning').show();
     $('a','#warning').click(function () {
                             $('#warning').hide();
-                            //$('#cover').fadeOut('fast');
                             $('#cover').hide();
                             return true;
                     });
@@ -39,15 +33,12 @@ function sure(id_form,tipo_form)
 
     $('#cover').css('opacity','0.5');
     $('#cover').show();
-    $('#sure').css('visibility','visible');
     $('#sure').show();
 
     $('#sure a')[0].onclick=function()
     {
         $('#sure').hide();
-        //$('#cover').fadeOut('fast');
         $('#cover').hide();
-
     }
     $('#sure a')[1].onclick=function()
     {
@@ -60,17 +51,15 @@ function showPublishDiv()
 {
     $('#loading').hide();
     $('#cover').css('opacity','0.5');
-    $('#cover').css('visibility','visible');
     $('#cover').show();
-    $('#publish_div').css('visibility','visible');
     $('#publish_div').show();
 }
 
 function hidePublishDiv()
 {
+    $('#twitter_publish').hide();
     $('#loading').hide();
     $('#publish_div').hide();
-    //$('#cover').fadeOut('fast');
     $('#cover').hide();
 }
 //#################################################################################
@@ -94,8 +83,6 @@ function showInfoDiv(color, message)
 
 function openEffect()
 {
-    $('#cover').css('visibility','visible');
-    $('#loading').css('visibility','visible');
     $('#cover').css('opacity','0.5');
     $('#cover').show();
     $('#loading').show();
@@ -106,3 +93,16 @@ function closeEffect()
     $('#loading').hide();       
     $('#cover').hide();
 }
+
+
+function showTwitterPublishBox()
+{
+    $('#loading').hide();
+    $('#twitter_publish').show();
+}
+
+function hideTwitterPublishBox()
+{
+    $('#twitter_publish').hide();
+}
+

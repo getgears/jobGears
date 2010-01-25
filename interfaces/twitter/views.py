@@ -14,14 +14,15 @@ import datetime
 import urllib
 
 # import for static CV generation
-from jobgears.publisher.html import generateHtml
+#from jobgears.publisher.html import generateHtml
 
 # import for Django gettext translation API
 from django.utils.translation import gettext as _
 
 
-from jobgears.interfaces.twitter.twitter_settings import *
+#from jobgears.interfaces.twitter.settings import *
 
+from jobgears.helpers import *
 
 ##############################################################################################
 #       Utils
@@ -105,7 +106,20 @@ def connected(request):
 #################################################################################
 
 # update_status method generate static html and sends back to the frontend the pre-update-message
+@json_response
 def update_status(request):
+    response = dict()
+    #response['auth'] = '0'
+    #response['url'] = 'http://www.twitter.com'
+    #return response
+
+    response['auth'] = 1
+    response['jobgearscv'] = 'http://dev.jobgears.net/p/kjdghkjsdhflkh.htm'
+    response['twitterScreenName'] = 'andrefsp'
+    return response
+
+
+    """
     try:
         access_token = request.session['access_token']
         token = oauth.OAuthToken.from_string(access_token)
@@ -141,6 +155,9 @@ def update_status(request):
         response['report'] =  'error'        
         response['url'] = get_authorize(request)
         return HttpResponse(simplejson.dumps(response))
+   """ 
+
+
 
 
 
