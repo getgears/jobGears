@@ -285,6 +285,8 @@ function init()
         else   
             warning(locale['An error ocurred, our team is working to solve the problem']);
 
+        publishMenuInit();
+        langMenuInit();
         $('#cv').show();
     });               
 

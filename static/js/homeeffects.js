@@ -1,6 +1,6 @@
 function localeSelection()
 {
-    $('#cover').css('opacity','0.5');           
+    $('#cover').css('opacity','0.7');           
     $('#cover').show();                         
     $('#lang_div').show();
 }
@@ -15,12 +15,13 @@ function warning(message)
 {
     $('#loading').hide();
     $('span','#warning').attr('innerHTML',message);
-    $('#cover').css('opacity','0.5');
+    $('#cover').css('opacity','0.7');
     $('#cover').show();
     $('#warning').show();
     $('a','#warning').click(function () {
                             $('#warning').hide();
                             $('#cover').hide();
+                            $('#publish_div').hide();
                             return true;
                     });
 }
@@ -31,7 +32,7 @@ function sure(id_form,tipo_form)
     $('#sure a')[0].setAttribute('href','javascript:void(0);');
     $('#sure a')[1].setAttribute('href','javascript:erase('+id_form+',"'+tipo_form+'")');
 
-    $('#cover').css('opacity','0.5');
+    $('#cover').css('opacity','0.7');
     $('#cover').show();
     $('#sure').show();
 
@@ -50,7 +51,7 @@ function sure(id_form,tipo_form)
 function showPublishDiv()
 {
     $('#loading').hide();
-    $('#cover').css('opacity','0.5');
+    $('#cover').css('opacity','0.7');
     $('#cover').show();
     $('#publish_div').show();
 }
@@ -83,7 +84,7 @@ function showInfoDiv(color, message)
 
 function openEffect()
 {
-    $('#cover').css('opacity','0.5');
+    $('#cover').css('opacity','0.7');
     $('#cover').show();
     $('#loading').show();
 }

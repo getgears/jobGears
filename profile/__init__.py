@@ -44,14 +44,20 @@ def section_save(request, section, data, slot=None):
     if slot:
         # This is a slot
         slot = int(slot)
-        section_object = None
-        for item in getattr(profile_object, section).all():
-            if item.order == slot:
-                # Found the slot
-                section_object = slot.record
-                section_object.from_dict(data)
-                section_object.save()
-                return
+        section_block_object = getattr(profile_object, section)
+        try:
+            if section == 'languages':
+                section_object = section_block_object.get(profileslot_language__order=slot)
+            elif section == 'education':
+                section_object = section_block_object.get(profile_education__order=slot)
+            elif section == 'professional_experience':
+                section_object = section_block_object.get(profile_professionalexperience__order=slot)
+        
+            section_object.from_dict(data)
+            section_object.save()
+            return
+        except:
+            pass
         
         # If it got here, then the slot didn't exist
         section_object = mapping[section]()
