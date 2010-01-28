@@ -41,6 +41,10 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 <script type="text/javascript" src="js/homeinit.js"></script>
 
 
+<!-- wrapper -->
+<script type="text/javascript" src="js/wrapper/publish.js"></script>
+<script type="text/javascript" src="js/wrapper/lang.js"></script>
+
 <!-- CSS home.html -->
 <link rel="stylesheet" type="text/css" href="css/home.css" /> 
 
@@ -69,7 +73,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 <!-- popup divs -->
 <div id="cover"></div>
 
-<div id="loading"><img src="images/infinitum2.gif" alt="not found" /></div>
+<div id="loading"><img src="images/infinitum2.gif" alt="loading" /></div>
 
 <div id="popup_wrapper">
     <div id="warning"> 
@@ -85,19 +89,19 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     </div>
 
     <div id="lang_div"> 
-        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.png" alt="not found" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_US.png" alt="not found" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.png" alt="not found" /></a></span>
+        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.png" alt="PT" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_US.png" alt="EN" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.png" alt="FR" /></a></span>
         <br/><br/>
         <a href="javascript:void(0);" onclick="hideLocaleSelection()">close</a>
     </div> 
 
 
     <div id="publish_div"> 
-        <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook-logo.png" alt="Connect" /></a></span> 
+        <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook-logo.png" alt="Facebook" /></a></span> 
         <!-- FB.init -->
-        <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/publish/facebook-logo.png" alt="not found" title="Publish on Facebook" /></a> </span> 
-        <a href="#" onclick="twitterAuthorize(); return false;"  ><img src="images/publish/twitter-logo.png" alt="not found" title="Publish on Twitter" /></a> 
-        <a href="javascript:void(0);" onclick="permaLink()"><img src="images/publish/share_arrow.jpg" alt="not found" title="Create a permanent link" /></a>
-        <a href="#" title="click here to download your CV"><img src="images/pdf-icon.gif" alt="not found" title="pdf" /></a>
+        <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/publish/facebook-logo.png" alt="Facebook" title="Publish on Facebook" /></a> </span> 
+        <a href="#" onclick="twitterAuthorize(); return false;"  ><img src="images/publish/twitter-logo.png" alt="Twitter" title="Publish on Twitter" /></a> 
+        <a href="javascript:void(0);" onclick="permaLink()"><img src="images/publish/permalink.jpg" alt="Permalink" title="Create a permanent link" /></a>
+        <a href="#" title="click here to download your CV"><img src="images/publish/pdf-icon.gif" alt="PDF" title="pdf" /></a>
         <br/><br/>
         <a href="javascript:void(0);" onclick="hidePublishDiv()">close</a>
     </div>
@@ -120,26 +124,13 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 
 
 <div id="wrapper">
-
-  <div class="menu" id="publish">
-    <a href="javascript:void(0);" onclick="showPublishDiv()">
-        <img src="images/publish.jpg" alt="not found" />
-    </a>
-  </div>
-  
-  <div class="menu" id="lang">
-    <a href="javascript:void(0);" onclick="localeSelection()">
-    	<img src="images/lang.jpg" alt="not found" />
-    </a>
-  </div>
-  
+    
   <div id="innerwrapper">
-    <div id="cut_case"></div>
   	<div id="banner"></div>
     <div id="login">
     	<a href="#">Login</a>
     </div>   
-    
+    <div id="top"></div>
     
     <div id="cv">   
 	<!-- CV -->
@@ -164,8 +155,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
  
   <tr>
    <td class="prim_titles"><label>Personal Information</label></td>
-   <td class="new_item">&nbsp;</td>
-   <td></td>
+   <td class="new_item" colspan="2">&nbsp;</td>
   </tr>
   
   <tr>
@@ -175,8 +165,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <span tipo="guardar" cod=form1" style="visibility:hidden; display:none;"><a href="javascript:void(0);" onclick="save(1,'personal')" >save</a> | </span>
     <span tipo="cancelar" cod="form1" style="visibility:hidden; display:none;"><a class="cancel" href="javascript:void(0);" onclick="cancel(1,'personal')" >cancel</a> </span>   
     </td>
-    <td>
-    </td>   
+    <td class="check"><span tipo="cancelar" style="display:none;"><label>Visible:</label></span></td>   
   </tr>
   
   <tr>
@@ -184,7 +173,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <td class="field"><input name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" />
        <div class="view_field" style="visibility:visible; display:inline" ></div>
     </td>
-    <td>
+    <td class="check">
        <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
        <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -195,11 +184,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <td class="field">
     <span>
         <input name="birthdate" type="text" onFocus="this.blur()" onclick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" />
-        <img src="images/calendar.gif" alt="not found" class="calendar" title="insert date" onclick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" /> 
-        <img src="images/erase.gif" alt="not found" class="calendar" onclick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" />
+        <img src="images/calendar.gif" alt="Canlendar" class="calendar" title="insert date" onclick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" /> 
+        <img src="images/erase.gif" alt="Erase" class="calendar" onclick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" />
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
      <input type="checkbox" name="birthdate_active" style="visibility:hidden; display:none"/>
      <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </span>   
@@ -212,7 +201,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>         
+    <td class="check">         
         <input type="checkbox" name="address_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div>    
     </td>
@@ -224,7 +213,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="postal_code" type="text" size="10" maxlength="32" style="visibility:visible; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="postal_code_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -236,7 +225,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="city_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -248,7 +237,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td  class="check">
         <input type="checkbox" name="country_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -260,7 +249,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="phone_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -272,7 +261,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -284,7 +273,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="fax_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -296,7 +285,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="email_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -308,7 +297,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -323,7 +312,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
                 <option value="1">Male</option>
         </select><div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="gender_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -335,7 +324,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div> 
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="home_language_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
@@ -347,7 +336,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value=""/>
         <div class="view_field" style="visibility:visible; display:inline"></div>
     </td>
-    <td>
+    <td class="check">
         <input type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none"/>
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
@@ -363,9 +352,8 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
  <table>
   <tr>
    <td class="prim_titles"><label>Professional Experience</label></td>
-   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('experience')" title='new item' /></td>
-   <td></td>
-  </tr>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('experience')" title='new item' /></td>
+   </tr>
  </table>
 </div>
 <!-- EXPERIENCE FORM TEMPLATES -->
@@ -377,8 +365,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
  <table>
   <tr>
    <td class="prim_titles"><label>Education and Specialization</label></td>
-   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('education')" title='new item' /></td>
-   <td></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('education')" title='new item' /></td>
   </tr>
  </table>
 </div>
@@ -391,8 +378,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
  <table>
   <tr>
    <td class="prim_titles"><label>Other Languages</label></td>
-   <td class="new_item"><img src="images/new_item.gif" alt="not found" class="new_item_img" onclick="new_form('languages')" title='new item'></td>
-   <td></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('languages')" title='new item'></td>
   </tr>
  </table>
 </div>
@@ -407,8 +393,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 
  <tr>
   <td class="prim_titles"><label>Personal Skills</label></td>
-  <td class="new_item">&nbsp;</td>
-  <td></td>
+  <td class="new_item" colspan="2">&nbsp;</td>
  </tr>
  
  <tr>
@@ -418,7 +403,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
    <span tipo=guardar cod=form1 style="visibility:hidden; display:none;"  ><a href="javascript:void(0);" onclick=save(0,"skills")>save</a> |</span>
    <span tipo=cancelar cod=form1 style="visibility:hidden; display:none;" ><a class="cancel" href="javascript:void(0);" onclick=cancel(0,"skills")>cancel</a> </span>
   </td>
-   <td></td>
+   <td class="check"><span tipo="cancelar" style="display:none;"><label>Visible:</label></span></td>
  </tr>
 
  <tr>
@@ -426,10 +411,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></textarea> 
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
+   </td>
+   <td class="check">
+   		<input type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
    </td>
-   <td></td>
  </tr>
 
  <tr>
@@ -437,10 +423,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></textarea>
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
+    <td class="check">
+        <input type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div>    
+    </td>
  </tr>
 
  <tr>
@@ -448,10 +435,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></textarea> 
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
  </tr>
 
  <tr>
@@ -459,10 +447,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
   <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></textarea> 
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
-        <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
+    <td class="check">
+        <input type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div>     
+    </td>
  </tr>
 
  <tr>
@@ -470,10 +459,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></textarea>
         <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
         <input type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
  </tr>
 
  <tr>
@@ -481,21 +471,23 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></textarea>
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
+    </td>
+    <td class="check">
+         <input type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
  </tr>
 
  <tr>
     <td class="sec_titles"><label>Driving Licence</label></td>
     <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></textarea> 
-        <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline"></div> 
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
  </tr>
 
  <tr>
@@ -503,10 +495,11 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     <td class="field">
         <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></textarea>
         <div class="view_field" style="visibility:visible; display:inline"></div>
-        <input type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
         <div class="view_field" style="visibility:visible; display:inline" ></div> 
     </td>
-    <td></td>
  </tr>
 
 </table>
@@ -517,7 +510,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 
     </div>
   </div>
-  
+<div id="bottom"></div>  
 </div>
 </body>
 </html>

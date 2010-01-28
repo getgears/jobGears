@@ -260,6 +260,8 @@ function oldOnToReady()
     if ((educationReady==true) && (experienceReady==true) && (languageReady==true))
     {
         fbInit();
+        publishMenuInit();
+        langMenuInit();
         $('#cv').show();
         closeEffect();
     }
@@ -281,7 +283,9 @@ function init()
         else  if (request.status==503)
             warning(locale['Service temporarily unavailable, please try again in a few seconds']);
         else   
-            warning(locale['An error ocurred, our team is working to solve the problem']); 
+            warning(locale['An error ocurred, our team is working to solve the problem']);
+
+        $('#cv').show();
     });               
 
     $.getJSON(encodeURI(url),function(json)

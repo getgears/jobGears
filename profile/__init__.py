@@ -66,7 +66,7 @@ def section_save(request, section, data, slot=None):
 
 
     else:
-        profile_section = getattr(profile_object, section)
+        section_object = getattr(profile_object, section)
         if not section_object:
             section_object = mapping[section]()
             section_object.from_dict(data)

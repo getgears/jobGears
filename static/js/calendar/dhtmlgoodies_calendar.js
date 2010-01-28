@@ -226,7 +226,7 @@ var inputHour;
 var inputMinute;
 var calendarDisplayTime = false;
 
-var selectBoxHighlightColor = '#EA0D8C'; // Highlight color of select boxes
+var selectBoxHighlightColor = '#FFCC00'; // Highlight color of select boxes
 var selectBoxRolloverBgColor = '#CCCCCC'; // Background color on drop down lists(rollover)
 
 var selectBoxMovementInProgress = false;

@@ -4,6 +4,7 @@
 		<Td class="sec_titles"></Td>
 		<Td class="edit"><SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"experience")>edit</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none " > <A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'experience')>delete</A> | </SPAN> <!-- --><SPAN tipo=editar cod=form1 style="visibility:hidden; display:none"><a href="javascript:void(0);" onclick=move(##id##,"experience","up")><img src="images/arrow_up.gif" title='move up'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:hidden; display:none"><a href="javascript:void(0);" onclick=move(##id##,"experience","down")><img src="images/arrow_down.gif" title='move down'></a></SPAN> <!-- --> <SPAN tipo=guardar cod=form1 style="visibility:visible;" ><A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"experience")>save</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style=visibility:visible;><A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"experience")>cancel</A></SPAN>
 		</Td>
+        <td class="check"><span tipo="cancelar" style="display:inline;"><label>Visible:</label></span></td>  
 	</TR>	
 
 	<TR>
@@ -11,35 +12,59 @@
 		<TD class="field" > 
 			<input size=10 maxlength=10 name="init_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).init_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).init_date) title='Apagar Data' ><div class="view_field"></div>
 		</TD>
+        <td class="check">
+       <input type="checkbox" name="init_date_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR>
 
 	<TR>
 		<TD class="sec_titles"><label>Conclusion Date</label></TD>
 		<TD class="field" > <input size=10 maxlength=10 name="final_date" type="text" onFocus="this.blur()" onClick=displayCalendar(this,"yyyy-mm-dd",this) value="" tipo="data" > <img src="images/calendar.gif" class="calendar" onClick=displayCalendar(document.getElementById(##id##).final_date,"yyyy-mm-dd",this) > <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(##id##).final_date) title='Apagar Data' ><div class="view_field"></div>  
 		</TD>
+        <td class="check">
+       <input type="checkbox" name="final_date_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR>
 
 	<TR >
 		<Td class="sec_titles" ><label>Company Name and Address</label></Td>
 		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="company"></TEXTAREA><div class="view_field"></div></Td>
+        <td class="check">
+       <input type="checkbox" name="company_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR> 
 
 	<TR >
 		<Td class="sec_titles"><label>Company Type or Business Sector</label></Td>
 		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="business_area" ></TEXTAREA><div class="view_field"></div>
 		</Td>
+        <td class="check">
+       <input type="checkbox" name="business_area_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR> 
 
 	<TR >
 		<Td class="sec_titles"><label>Job Function / Position</label></Td>
 		<Td class="field" ><INPUT size=60 maxlength=256 name="position" type="text"><div class="view_field"></div>
 		</Td>
+        <td class="check">
+       <input type="checkbox" name="position_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR> 
 
 	<TR >
 		<Td class="sec_titles" valign="top" ><label>Main Activities or Responsabilities</label></Td>
 		<Td class="field" ><TEXTAREA onkeyup="cutValue(this)" maxlength="4000" name="description" ></TEXTAREA><div class="view_field"></div>
 		</Td>
+        <td class="check">
+       <input type="checkbox" name="description_active" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
 	</TR> 
 </table>
 </FORM>

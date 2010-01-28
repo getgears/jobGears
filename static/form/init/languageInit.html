@@ -6,7 +6,7 @@
     </TD>
     <TD class="edit"><SPAN tipo=editar cod=form1 style="visibility: visible;" > <A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=edit(##id##,"languages")>edit</A> |</SPAN>  <SPAN tipo=editar cod=form1 style="visibility: visible" > <A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=sure(##id##,'languages')>delete</A> | </SPAN> <!-- --> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"languages","up")><img src="images/arrow_up.gif" title='move up'></a> | </SPAN> <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><a href="javascript:void(0);" onclick=move(##id##,"languages","down")><img src="images/arrow_down.gif" title='move down'></a></SPAN> <!-- -->  <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none;" ><A onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=save(##id##,"languages")>save</A> |</SPAN> <SPAN tipo=cancelar cod=form1 style="visibility:hiden; display:none;"><A class="cancel" onMouseOut="hideStatus()" onMouseOver="hideStatus()" href="javascript:void(0);" onclick=cancel(##id##,"languages")>cancel</A></SPAN>
     </TD>
-
+	<td class="check"><span tipo="cancelar" style="display:none;"><label>Visible:</label></span></td>
     </TR>
     <TR >
     <TD class="sec_titles"><LABEL>Language</label></TD>
@@ -14,6 +14,10 @@
         <INPUT style="visibility:hidden; display:none" size=20 maxlength=64 name="language" type="text" value="##language##" >
     <div class="view_field" style="visibility:visible; display:inline " >##language##</div>
     </TD>
+    <td class="check">
+       <input type="checkbox" name="language_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>
     <TR >
     <TD class="sec_titles"><LABEL>Spoken Comprehension</label></TD>
@@ -25,6 +29,10 @@
         </SELECT>
         <div style="visibility:visible; display:inline " class="view_field">##listening##</div>
     </TD>
+    <td class="check">
+       <input type="checkbox" name="listening_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>
     <TR >
     <TD class="sec_titles"><LABEL>Written Comprehension</label></TD>
@@ -35,7 +43,11 @@
             <OPTION value="1">Basic</OPTION>
         </SELECT>
         <div style="visibility:visible; display:inline " class="view_field">##reading##</div>
-        </TD>
+    </TD>
+    <td class="check">
+       <input type="checkbox" name="reading_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>                 
     <TR >
     <TD class="sec_titles"><LABEL>Vocal Interaction</label></TD>
@@ -47,6 +59,10 @@
         </SELECT>
         <div style="visibility:visible; display:inline " class="view_field">##spoken_interaction##</div>
     </TD>
+    <td class="check">
+       <input type="checkbox" name="spoken_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>               
     <TR >
     <TD class="sec_titles"><LABEL>Vocal Production</label></TD>
@@ -58,6 +74,10 @@
         </SELECT>
         <div style="visibility:visible; display:inline " class="view_field">##spoken_production##</div>
     </TD>
+    <td class="check">
+       <input type="checkbox" name="spoken_production_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>
     <TR >
     <TD class="sec_titles"><LABEL>Written Production</label></TD>
@@ -69,6 +89,10 @@
         </SELECT>
         <div style="visibility:visible; display:inline " class="view_field">##writing##</div>
     </TD>
+    <td class="check">
+       <input type="checkbox" name="writing_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
     </TR>
 </table>
 </FORM>

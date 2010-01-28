@@ -14,7 +14,7 @@ def validate_field(field, value):
     try:
         if data_type == int:
             cleaned_value = int(value)
-        elif data_type == str:
+        elif data_type == str or data_type == unicode:
             cleaned_value = str(value)
         elif data_type == bool:
             cleaned_value = bool(value)

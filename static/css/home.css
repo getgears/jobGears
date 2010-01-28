@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 body{
-background-color: #F8F8F8;
+/*background-color: #FFFFFF;*/
+background-color: #AAAAFF;
 }
 
 body, div, img{
@@ -110,6 +111,11 @@ td.field, td.edit{
 vertical-align: top;
 text-align: left;
 }
+
+td.check{
+width: 50px;
+vertical-align: top;
+}
 	
 img.new_item_img:hover{
 cursor: pointer;
@@ -131,7 +137,7 @@ display: none;
 div.menu{
 position: fixed;
 left: -5px;
-width: 38px;
+width: 40px;
 height: 165px;
 z-index: 3;
 }
@@ -141,15 +147,14 @@ left: 0px;
 }
 
 .cancel, #logout{
-color: #333333;
-/*color: #FF0000;*/
-/*color: #B60008;*/
+color: #EE0000;
 }
 
 #wrapper{
 width: 100%;
 height: 100%;
-background: #F8F8F8 url(../images/cases.jpg) fixed bottom center repeat-x;
+/*background: #FFFFFF;*/
+background: #AAAAFF;
 z-index: 1;
 }
 
@@ -157,32 +162,21 @@ z-index: 1;
 margin: 0 auto;
 position: relative;
 width: 885px;
-background: url(../images/innerbk.png) center repeat-y;
+
 z-index: 2;
 }
 
 #banner{
-background: url(../images/banner.jpg) no-repeat center;
-height: 165px;
+background: url(../images/banner.jpg) no-repeat top;
+height: 145px;
 width: 885px;
 z-index: 2;
 }
 
-#cut_case{
-position: absolute;
-left: 870px;
-top: 8px;
-z-index: 2;
-background-image: url(../images/cut_case.png);
-width: 18px;
-height: 34px;
-}
-
 #login{
 position: relative;
-top: -45px;
+top: -40px;
 text-align: right;
-margin: 0px 0px 10px 0px;
 width: 855px;
 z-index: 3;
 }
@@ -191,14 +185,26 @@ z-index: 3;
 font-size: 16px;
 }
 
+#top{
+background: url(../images/round_top.jpg) center no-repeat;
+height: 12px;
+}
+
+#bottom{
+background: url(../images/round_bottom.jpg) center no-repeat;
+height: 7px;
+}
+
 #cv{
+display: none;
 text-align: center;
-width: 735px;
-padding: 0px 80px 50px 70px;
+width: 755px;
+padding: 20px 80px 50px 50px;
+background: url(../images/innerbk.jpg) center repeat-y;
 }
 
 #publish{
-top: 60px;
+top: 80px;
 text-align: right;
 }
 
@@ -222,7 +228,6 @@ font-weight: bold;
 
 /*popup divs*/
 #cover{
-/*visibility: hidden;*/
 display: block;
 position: fixed;
 width: 100%;
@@ -240,7 +245,7 @@ height: 100%;
 text-align: center;
 position: fixed;
 z-index: 5;
-display: none;
+display: block;
 }
 
 #loading img{
@@ -264,7 +269,7 @@ width: 500px;
 margin: 0 auto 5px;
 position: relative;
 background-color: #FFFFFF;
-border: #999999 solid 2px;
+border: #AAAAFF solid 5px;
 font-size: 14px;
 padding: 10px;
 text-align: center;
