@@ -1,6 +1,6 @@
 function publishMenuInit()
 {   
-    var locale = Get_Cookie('locale');
+    var locale = get_cookie('locale');
     $div = $('<div></div>');
     $div.attr('class','menu');
     $div.attr('id','publish');

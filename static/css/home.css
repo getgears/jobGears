@@ -154,6 +154,7 @@ color: #EE0000;
 }
 
 #wrapper{
+display:none;
 width: 100%;
 height: 100%;
 background: #7498D3;
@@ -198,10 +199,9 @@ height: 7px;
 }
 
 #cv{
-display: none;
 text-align: center;
 width: 755px;
-padding: 20px 80px 50px 50px;
+padding: 50px 70px 50px 60px;
 background: url(../images/innerbk.jpg) center repeat-y;
 }
 
@@ -227,6 +227,19 @@ padding-bottom: 20px;
 font-weight: bold;
 }
 
+/*advise bar*/
+#advise{
+display: none;
+color: #000000;
+font-size: 12px;
+text-align: center;
+width: 100%;
+height: 15px;
+position: fixed;
+background-color: #FFF5C3;
+z-index: 5;
+border-bottom: #000000 solid 1px;
+}
 
 /*popup divs*/
 #cover{
@@ -243,25 +256,21 @@ top: 0px;
 
 #loading{
 width: 100%;
-height: 100%;
 text-align: center;
 position: fixed;
+top: 100px;
 z-index: 5;
 display: block;
 }
 
 #loading img{
-position: absolute;
-margin-left: -35px;
-left: 50%;
-margin-top: -17px;
-top: 50%;
+margin: 0 auto;
 }
 
 #popup_wrapper{
 width: 100%;
 position: fixed;
-top: 25%;
+top: 150px;
 z-index: 5;
 }
 
@@ -281,6 +290,9 @@ text-align: center;
 margin: 0px 10px 0px 10px;
 }
 
+#twitter_publish textarea{
+height: 72px;
+}
 
 /*report*/
 #request_wrapper{

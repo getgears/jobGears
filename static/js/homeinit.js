@@ -1,13 +1,4 @@
-/*    
- *      THIS MODULE IS UNDER DEVELOPMENT
- *
- *    -  This file is ment to be the one who loads a user profile, 
- *  it must be carefully done. 
- *    -  Only one request is need and it must be in JSON format. After object is received
- *  the templates must be rendered from 'form/render' folder. These one contains all the 
- *  templates needed for initiation. 
- *    -  Forms must be set to user's locale. 
-*/
+
 function initPersonalData(jsonPersonalData)
 {
     if (jsonPersonalData)
@@ -104,13 +95,12 @@ function initExperience(jsonExperience)
         $.get(encodeURI(url),function(data)
         { 
             var $aux_span = $('<span></span>');
-            $aux_span.attr('innerHTML',data);
-            setLocale($aux_span.get(0));
 
             k = parseInt(1);
+            
             while (jsonExperience[k])
             {
-                var innerHTML = $aux_span.attr('innerHTML');
+                var innerHTML = data.toString();
                 var id = getNewId();
                 var slot = k.toString();
 
@@ -119,14 +109,20 @@ function initExperience(jsonExperience)
                 var company         = jsonExperience[slot]['company'];
                 var business_area   = jsonExperience[slot]['business_area'];
                 var position        = jsonExperience[slot]['position'];
-                var description     = jsonExperience[slot]['description'];
-                                
+                var description     = jsonExperience[slot]['description']; 
+                
+
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString())
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}slot[#]{2}','g'),slot);
+
                 if (init_date)
                     innerHTML = innerHTML.replace(new RegExp('[#]{2}init_date[#]{2}','g'),init_date.toString().match(new RegExp('(\\d{4})-(\\d{2})-(\\d{2})*','g')))
+                else
+                    innerHTML = innerHTML.replace(new RegExp('[#]{2}init_date[#]{2}','g'),'');
                 if (final_date)    
                     innerHTML = innerHTML.replace(new RegExp('[#]{2}final_date[#]{2}','g'),final_date.toString().match(new RegExp('(\\d{4})-(\\d{2})-(\\d{2})*','g')))
+                else
+                    innerHTML = innerHTML.replace(new RegExp('[#]{2}final_date[#]{2}','g'),'');
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}company[#]{2}','g'),company.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}company_div[#]{2}','g'),company.toString().replace(new RegExp('\\n','g'),'<br>'));
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}business_area[#]{2}','g'),business_area.toString());
@@ -134,15 +130,17 @@ function initExperience(jsonExperience)
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}position[#]{2}','g'),position.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}description[#]{2}'),description.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}description_div[#]{2}','g'),description.toString().replace(new RegExp('\\n','g'),'<br>'));
-
+                                
                 $form = $('<span></span>');
                 $form.attr('innerHTML',innerHTML);                       
+                setLocale($form.get(0));
+
                 if ($('#experience span').length==0)
                     $form.appendTo('#experience');
                 else
                     $form.insertBefore('#experience span:first');
-                k++;
-
+                
+                k++;                
             }
             experienceReady = true;
         });
@@ -159,14 +157,10 @@ function initEducation(jsonEducation)
         var url = settings.init_path + settings.init_education_filename
         $.get(encodeURI(url),function(data)
         {
-            var $aux_span = $('<span></span>');
-            $aux_span.attr('innerHTML',data);
-            setLocale($aux_span.get(0));
-
             var j=parseInt(1);
             while (jsonEducation[j])
             {
-                var innerHTML = $aux_span.attr('innerHTML');
+                var innerHTML = data.toString();
                 var id=getNewId();
                 var slot = j.toString();
 
@@ -180,19 +174,26 @@ function initEducation(jsonEducation)
 
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString())
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}slot[#]{2}','g'),slot);
+                
                 if (init_date)
                     innerHTML = innerHTML.replace(new RegExp('[#]{2}init_date[#]{2}','g'),init_date.toString().match(new RegExp('(\\d{4})-(\\d{2})-(\\d{2})*','g')));
+                else
+                    innerHTML = innerHTML.replace(new RegExp('[#]{2}init_date[#]{2}','g'),'');
                 if (final_date)    
                     innerHTML = innerHTML.replace(new RegExp('[#]{2}final_date[#]{2}','g'),final_date.toString().match(new RegExp('(\\d{4})-(\\d{2})-(\\d{2})*','g')));    
+                else
+                    innerHTML = innerHTML.replace(new RegExp('[#]{2}final_date[#]{2}','g'),'');
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}organization[#]{2}','g'),organization.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}degree[#]{2}','g'),degree.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}studies_area[#]{2}','g'),studies_area.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}main_subjects[#]{2}'),main_subjects.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}main_subjects_div[#]{2}','g'),main_subjects.toString().replace(new RegExp('\\n','g'),'<br>'));
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}average[#]{2}','g'),average.toString());               
-
+                
                 $form = $('<span></span>');                                 
-                $form.attr('innerHTML',innerHTML);                       
+                $form.attr('innerHTML',innerHTML);
+                setLocale($form.get(0));
+
                 if ($('#education span').length==0)
                     $form.appendTo('#education');
                 else
@@ -214,14 +215,10 @@ function initLanguage(jsonLanguage)
         var url = settings.init_path + settings.init_languages_filename
         $.get(encodeURI(url),function(data){
 
-            var $aux_span = $('<span></span>');
-            $aux_span.attr('innerHTML',data);
-            setLocale($aux_span.get(0));
-
             var i=parseInt(1); 
             while (jsonLanguage[i])
             {
-                var innerHTML = $aux_span.attr('innerHTML'); 
+                var innerHTML = data.toString();
                 var id = getNewId();
                 var slot = i.toString();
 
@@ -233,16 +230,21 @@ function initLanguage(jsonLanguage)
                 var listening = jsonLanguage[i.toString()]['listening'];
 
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}id[#]{2}','g'),id.toString());
-                innerHTML = innerHTML.replace(new RegExp('[#]{2}slot[#]{2}','g'),slot);                
+                innerHTML = innerHTML.replace(new RegExp('[#]{2}slot[#]{2}','g'),slot);               
+
+                
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}language[#]{2}','g'),language.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}spoken_production[#]{2}','g'),spoken_production.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}spoken_interaction[#]{2}','g'),spoken_interaction.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}writing[#]{2}','g'),writing.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}reading[#]{2}','g'),reading.toString());
                 innerHTML = innerHTML.replace(new RegExp('[#]{2}listening[#]{2}','g'),listening.toString());
+                
 
                 $form = $('<span></span>');                                 
-                $form.attr('innerHTML',innerHTML);                       
+                $form.attr('innerHTML',innerHTML);
+                setLocale($form.get(0));
+ 
                 if ($('#languages span').length==0)
                     $form.appendTo('#languages');
                 else
@@ -262,16 +264,20 @@ function oldOnToReady()
         fbInit();
         publishMenuInit();
         langMenuInit();
-        $('#cv').show();
+        $('#wrapper').show();
         closeEffect();
     }
     else{ window.setTimeout(oldOnToReady, 50); }
 }
 
 
-function init()
-{
+$(document).ready(function(){
     setLocale(document);
+
+    if (browserCheck()==false)
+    {
+        return;
+    }
     var url = settings.get_profile_url;
     $('#cv').ajaxError(function(event, request, settings)
     {
@@ -287,11 +293,12 @@ function init()
 
         publishMenuInit();
         langMenuInit();
-        $('#cv').show();
+        $('#wrapper').show();
     });               
 
     $.getJSON(encodeURI(url),function(json)
-    {            
+    {   
+
         initPersonalData(json['personal_data']);
         initPersonalSkills(json['personal_skills']);
         initExperience(json['professional_experience']);
@@ -299,4 +306,4 @@ function init()
         initLanguage(json['languages']);
         oldOnToReady(); 
     });
-}
+});

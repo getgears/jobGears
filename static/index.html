@@ -1,16 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <!-- INCLUDE GERAL -->
-<!--<script type="text/javascript" src="js/jquery/jquery-v1.3.2.js"></script>-->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-v1.3.2.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>-->
 
 <!-- SETTINGS -->
 <script type="text/javascript" src="js/settings/settings.js"></script>
 <!-- INCLUDE -->
-<script type="text/javascript" src="js/include/includeajax.js" ></script>
-<script type="text/javascript" src="js/include/jsCookies.js"></script>
+<script type="text/javascript" src="js/include/includeajax.js"></script>
+<script type="text/javascript" src="js/include/cookies.js"></script>
 <!-- GLOBAL VARIABLES -->
 <script type="text/javascript" src="js/globals/globals.js"></script>
 
@@ -19,19 +20,18 @@
 <script type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
 <script type="text/javascript" src="js/calendar/urchin.js" ></script> 
 <!-- CSS Calendario -->
-<link type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
+<link type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css" media="screen" />
 
 <!-- LANGUAGE -->
-<script type="text/javascript">
-var lang = Get_Cookie('locale')
-if (lang){document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');
+<script type="text/javascript" >
+var lang = get_cookie('locale');
+if (lang){document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}else{var lang = 'en_US';set_cookie('locale',lang,'','/','','');
 document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}
 </script>
 
 <!--INTERFACES -->
 <script type="text/javascript" src="js/interface/facebook/homefb.js"></script>
-<script type="text/javascript" src="js/interface/twitter/hometwitter.js "></script>
-
+<script type="text/javascript" src="js/interface/twitter/hometwitter.js"></script>
 
 <!-- INCLUDE DE PERFIL -->
 <script type="text/javascript" src="js/homeactions.js"></script>
@@ -48,29 +48,24 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
 <!-- CSS home.html -->
 <link rel="stylesheet" type="text/css" href="css/home.css" /> 
 
-
-
-
-
 <title>jobGears</title>
-
-
 
 </head>
 
-<body onload="init()">
+<body>
 
- 
 <!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
     <script type="text/javascript">
-       document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+Get_Cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
+       document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+get_cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm");</script>
 <!-- END OF FB OBJECT INIT  -->
 <!--===================================================================================================================-->
 
 <!-- popup divs -->
+<div id="advise"></div>
+
 <div id="cover"></div>
 
 <div id="loading"><img src="images/infinitum2.gif" alt="loading" /></div>
@@ -89,7 +84,7 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
     </div>
 
     <div id="lang_div"> 
-        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.png" alt="PT" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_US.png" alt="EN" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.png" alt="FR" /></a></span>
+        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.jpg" alt="PT" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_UK.jpg" alt="EN" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.jpg" alt="FR" /></a></span>
         <br/><br/>
         <a href="javascript:void(0);" onclick="hideLocaleSelection()">close</a>
     </div> 
@@ -100,8 +95,8 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
         <!-- FB.init -->
         <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/publish/facebook.jpg" alt="Facebook" title="Publish on Facebook" /></a> </span> 
         <a href="#" onclick="twitterAuthorize(); return false;"  ><img src="images/publish/twitter.jpg" alt="Twitter" title="Publish on Twitter" /></a> 
-        <a href="javascript:void(0);" onclick="permaLink()"><img src="images/publish/permalink.jpg" alt="Permalink" title="Create a permanent link" /></a>
-        <a href="#" title="click here to download your CV"><img src="images/publish/pdf.jpg" alt="PDF" title="pdf" /></a>
+        <a href="javascript:void(0);" onclick="permaLink()"><img src="./images/publish/permalink.jpg" alt="Permalink" title="Create a permanent link" /></a>
+        <a href="#" title="click here to download your CV"><img src="./images/publish/pdf.jpg" alt="PDF" title="pdf" /></a>
         <br/><br/>
         <a href="javascript:void(0);" onclick="hidePublishDiv()">close</a>
     </div>

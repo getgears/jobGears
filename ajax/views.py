@@ -32,6 +32,10 @@ def section(request, *args, **kwargs):
     if request.META['REQUEST_METHOD'] == 'POST':
         # This is a save
         view = section_save
+    
+    if request.META['REQUEST_METHOD'] == 'DELETE':
+        # Obvious.
+        view = section_delete
 
     return view(request, *args, **kwargs)
 
@@ -62,6 +66,19 @@ def section_save(request, section, slot=None):
 
         response = HttpResponse('1')
     except IndexError:
+        response = HttpResponseBadRequest('0')
+    return response
+
+
+def section_delete(request, section, slot=None):
+    """
+    Will delete a section associated with the profile.
+    Aimed at Slots
+    """
+    try:
+        # TODO
+        response = HttpResponse('1')
+    except:
         response = HttpResponseBadRequest('0')
     return response
 

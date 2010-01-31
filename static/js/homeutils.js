@@ -1,3 +1,17 @@
+function browserCheck()
+{
+    //if ($.browser.msie)
+    //{
+       // if ($.browser.version<='8.0')
+        //{   
+            //warning('Your browser is not supported by jobGears, please update it\'s FREE! ');
+            //return false;
+            advise('your browser is becoming out of date, we strongly recommend you to update it learn more <a href="http://www.whatbrowser.org" target="_blank">here</a>'); 
+        //}
+    //}
+
+   return true;
+}
 
 function getNewId()
 {
@@ -88,17 +102,17 @@ function check_blanck_fields(form_id,section)
 {
     if (section=="languages")
     {    
-        if (($('#'+form_id+' input:eq(1)').attr('value')!='') && ($('#'+form_id+' input:eq(1)').attr('value')!=' '))
+        if (($('#'+form_id+' input:eq(0)').attr('value')!='') && ($('#'+form_id+' input:eq(0)').attr('value')!=' '))
             return 1;
-        else if (($('#'+form_id+' input:eq(1)').attr('value')=='') || ($('#'+form_id+' input:eq(1)').attr('value')==' '))
+        else if (($('#'+form_id+' input:eq(0)').attr('value')=='') || ($('#'+form_id+' input:eq(0)').attr('value')==' '))
             return 0;
     }
 
     var ELEMENTS_LENGTH = $('#'+form_id+' :input').length
     for (c=0;c<ELEMENTS_LENGTH;c++)
-    {
-        $element = $('#'+form_id+' :input:eq('+c+')');    
-        if (($element.attr('tipo')!='data') && ($element.attr('value')!='') && ($element.attr('value')!=' '))
+    {        
+        $element = $('#'+form_id+' :input:eq('+c+')');     
+        if (($element.attr('type')!='checkbox') && ($element.attr('tipo')!='data') && ($element.attr('value')!='') && ($element.attr('value')!=' '))
             return 1;
     }
     return 0;
@@ -108,18 +122,18 @@ function check_blanck_fields(form_id,section)
 function setLanguage(language)
 {
     openEffect()
-    Set_Cookie(settings.locale_cookie_name,language,'','/','','');
+    set_cookie(settings.locale_cookie_name,language,'','/','','');
     location.reload(true);
 }
 
 
 function checkCookies()
 {
-    Set_Cookie( 'test', 'none', '', '/', '', '' );
-    if ( Get_Cookie( 'test' ) )
+    set_cookie( 'test', 'none', '', '/', '', '' );
+    if ( get_cookie( 'test' ) )
     {
         cookie_set = true;
-        Delete_Cookie('test', '/', '');
+        delete_cookie('test', '/', '');
         return true;
     }
     else

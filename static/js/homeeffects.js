@@ -107,3 +107,13 @@ function hideTwitterPublishBox()
     $('#twitter_publish').hide();
 }
 
+function advise()
+{
+    $('#advise').slideDown('slow');
+}
+
+function closeAdvise()
+{
+    $('#advise').hide();
+}
+

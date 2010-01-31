@@ -52,9 +52,9 @@ var showWeekNumber = true;  // true = show week number,  false = do not show wee
 
 var languageCode = 'en_US';	// Possible values: 	en,ge,no,nl,es,pt-br,fr
 							// en = english, ge = german, no = norwegian,nl = dutch, es = spanish, pt-br = portuguese, fr = french, da = danish, hu = hungarian(Use UTF-8 doctype for hungarian)
-if (Get_Cookie('locale'))
+if (get_cookie('locale'))
 {
-    languageCode = Get_Cookie('locale')
+    languageCode = get_cookie('locale')
 }
 
 
@@ -1312,7 +1312,7 @@ function initCalendar()
 
 	calendarDiv = document.createElement('DIV');
 	calendarDiv.id = 'calendarDiv';
-	calendarDiv.style.zIndex = 1000;
+	calendarDiv.style.zIndex = 3;
 	slideCalendarSelectBox();
 
 	document.body.appendChild(calendarDiv);

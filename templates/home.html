@@ -1,364 +1,516 @@
-<HTML xmlns="http://www.w3.org/1999/xhtml" xmlnx:fb="http://www.facebook.com/2008/fbml?&nc=0&pl=1" > 
-<HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<TITLE>jobGears</TITLE>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- INCLUDE GERAL -->
-<SCRIPT language="JavaScript" src="js/includeajax.js" ></SCRIPT>
-<SCRIPT language="JavaScript" src="js/jsCookies.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/feedback.js"></SCRIPT>
+<!--<script type="text/javascript" src="js/jquery/jquery-v1.3.2.js"></script>-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+
+<!-- SETTINGS -->
+<script type="text/javascript" src="js/settings/settings.js"></script>
+<!-- INCLUDE -->
+<script type="text/javascript" src="js/include/includeajax.js" ></script>
+<script type="text/javascript" src="js/include/jsCookies.js"></script>
+<!-- GLOBAL VARIABLES -->
+<script type="text/javascript" src="js/globals/globals.js"></script>
 
 
 <!-- INCLUDE CALENDARIO-->
-<SCRIPT type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
-<SCRIPT type="text/javascript" src="js/calendar/urchin.js" ></script> 
+<script type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
+<script type="text/javascript" src="js/calendar/urchin.js" ></script> 
 <!-- CSS Calendario -->
-<LINK type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
+<link type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css " media="screen" />
 
-<!-- Language -->
-<SCRIPT type="text/javascript">
+<!-- LANGUAGE -->
+<script type="text/javascript">
 var lang = Get_Cookie('locale')
-if (lang){try{document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}catch(err){}}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');document.write('<script src="./locale/'+lang+'/locale.js" type="text/javascript"> </scr'+'ipt>');}
-</SCRIPT>
-<!-- INCLUDE DE PERFIL -->
-<SCRIPT language="JavaScript" src="js/home.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homeform.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homefb.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="js/hometwitter.js "></SCRIPT>
-<SCRIPT language="JavaScript" src="js/homeutils.js"></SCRIPT>
+if (lang){document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}else{var lang = 'en_US';Set_Cookie('locale',lang,'','/','','');
+document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/javascript'%3E%3C/script%3E"));}
+</script>
 
+<!--INTERFACES -->
+<script type="text/javascript" src="js/interface/facebook/homefb.js"></script>
+<script type="text/javascript" src="js/interface/twitter/hometwitter.js "></script>
+
+
+<!-- INCLUDE DE PERFIL -->
+<script type="text/javascript" src="js/homeactions.js"></script>
+<script type="text/javascript" src="js/homerender.js"></script>
+<script type="text/javascript" src="js/homeutils.js"></script>
+<script type="text/javascript" src="js/homeeffects.js"></script>
+<script type="text/javascript" src="js/homeinit.js"></script>
+
+
+<!-- wrapper -->
+<script type="text/javascript" src="js/wrapper/publish.js"></script>
+<script type="text/javascript" src="js/wrapper/lang.js"></script>
 
 <!-- CSS home.html -->
-<link rel="stylesheet" type="text/css" href="css/home.css" />
+<link rel="stylesheet" type="text/css" href="css/home.css" /> 
 
-</HEAD>
 
-<BODY onLoad="init()">
-<!-- =================================================================================================================== -->
-<!--feedback -->
-    <LINK type="text/css" rel="stylesheet" href="css/feedback.css" media="screen" />
-    <SCRIPT type="text/javascript" charset="utf-8">
-      var tab_options = {}
-      tab_options.placement = "left";
-      tab_options.color = "#797979";
-      GSFN.feedback('#', tab_options);
-    </SCRIPT>
-    <A href="#" id="fdbk_tab" class="fdbk_tab_left" style="background-color:#797979">FEEDBACK</A>
-    <DIV id="fdbk_overlay" style="display:none">
-        <DIV id="fdbk_container">
-            <A href="#" onclick="GSFN.hide();return false" id="fdbk_close"></A>
-        </DIV>
-        <DIV id="fdbk_screen"></DIV>
-    </DIV> 
-<!-- =================================================================================================================== -->
+
+
+
+<title>jobGears</title>
+
+
+
+</head>
+
+<body onload="init()">
+
+ 
+<!--===================================================================================================================-->
 <!--Facebook Connect javascript / This block must be in the BODY section -->
-    <SCRIPT type="text/javascript">
-        document.write('<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/'+Get_Cookie('locale')+'/" type="text/javascript"> </scr'+'ipt>');
-    </SCRIPT>
-    <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm"); </script>
+    <script type="text/javascript">
+       document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+Get_Cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm");</script>
 <!-- END OF FB OBJECT INIT  -->
-<!-- =================================================================================================================== -->
+<!--===================================================================================================================-->
 
-<center>
+<!-- popup divs -->
+<div id="cover"></div>
 
-<table id="header">
- <tr>
-  <td colspan="2" id="banner">
-<a href="#"><img src="images/banner.jpg" ></a>
-  </td>
- </tr>
- <tr>
-  <td id="navigation">
+<div id="loading"><img src="images/infinitum2.gif" alt="loading" /></div>
 
+<div id="popup_wrapper">
+    <div id="warning"> 
+            <span></span> 
+            <br/><br/>
+            <a href="javascript:void(0);" >ok</a>
+    </div>
 
-  <nobr> 
-    <span class="bold"><label>O meu curriculo</label></span>
-  </nobr>
+    <div id="sure">
+            <span></span>
+            <br/><br/>
+            <a href="javascript:void(0);" class="cancel">no</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >yes</a>
+    </div>
 
-
-
-  </td>
-  <td id="user">
-  <nobr> <a href="javascript:setLanguage('pt_PT')">pt</a> <a href="javascript:setLanguage('en_US')">en</a> <a href="javascript:setLanguage('fr_FR')">fr</a></nobr> 
-  </td>
- </tr>
-</table>
-
-
-<DIV id="background"></DIV>
-
-<DIV id="publish_div">
-<center> 
-    <nobr>
-        <span id="fblogin" style="visibility:hidden; display:none"><!-- <fb:login-button v="2" onlogin="fbLoggedIn()"><fb:intl>Associar ao Facebook</fb:intl> </fb:login-button>-->  <a href="#" onclick="FB.Connect.requireSession(); return false;"><img id="fb_login_image" src="./images/share/facebook-logo.png" alt="Connect" /></a></span> 
-<!-- FB.init -->
-        <span id="fbloggedin" style="visibility:visible; display:none"> <a href="javascript:fbStreamPublish()"><img src="images/share/facebook-logo.png" style="position:relative; top:5px" title="Publicar no Facebook"></a> </span> <a href=javascript:twitterAuthorize()  ><img src="images/share/twitter-logo.png" title="Publicar no Twitter" ></a> <a href=javascript:permaLink()><img src="images/share/share_arrow.jpg" title="crie um link permanente" ></a>
-    </nobr>
-</center> 
-</DIV>
-
-<DIV id="loading"><center> <IMG SRC="images/infinitum2.gif" style="display:block;"></center> </DIV>
-
-<DIV id="body" style="display:none" >
+    <div id="lang_div"> 
+        <span><a href="javascript:void(0);" onclick="setLanguage('pt_PT')"><img src="images/pt_PT.png" alt="PT" /></a> <a href="javascript:void(0);" onclick="setLanguage('en_US')"><img src="images/en_US.png" alt="EN" /></a> <a href="javascript:void(0);" onclick="setLanguage('fr_FR')"><img src="images/fr_FR.png" alt="FR" /></a></span>
+        <br/><br/>
+        <a href="javascript:void(0);" onclick="hideLocaleSelection()">close</a>
+    </div> 
 
 
-<SPAN id="titulo">
-<div>
- <TABLE>
-  <TR>
-   <Td id="curriculum_title"><p><label>Curriculum Vitae</label></p></Td>
-   <Td id="pdf"><a href="getmypdfcurriculum/"><img title="clique para fazer download do curriculo" src="images/pdf.jpg"/></a></Td>
-  </TR>
- </TABLE>
+    <div id="publish_div"> 
+        <span id="fblogin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="FB.Connect.requireSession(function(){fbLoggedIn();}); return false;"><img id="fb_login_image" src="./images/publish/facebook.jpg" alt="Facebook" /></a></span> 
+        <!-- FB.init -->
+        <span id="fbloggedin" style="visibility:hidden; display:none"> <a href="javascript:void(0);" onclick="fbStreamPublish()"><img src="images/publish/facebook.jpg" alt="Facebook" title="Publish on Facebook" /></a> </span> 
+        <a href="#" onclick="twitterAuthorize(); return false;"  ><img src="images/publish/twitter.jpg" alt="Twitter" title="Publish on Twitter" /></a> 
+        <a href="javascript:void(0);" onclick="permaLink()"><img src="images/publish/permalink.jpg" alt="Permalink" title="Create a permanent link" /></a>
+        <a href="#" title="click here to download your CV"><img src="images/publish/pdf.jpg" alt="PDF" title="pdf" /></a>
+        <br/><br/>
+        <a href="javascript:void(0);" onclick="hidePublishDiv()">close</a>
+    </div>
+
+
+    <div id="twitter_publish">
+        <span></span><br/>
+        <span></span><label></label><br/>
+        <textarea name="twitter_status" onkeyup="tweetChange()"></textarea>
+        <br/><br/>
+        <a href="javascript:void(0);" onclick="hideTwitterPublishBox()" class="cancel">close</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" >share</a>
+    </div>
 </div>
-</SPAN>
+    
+    
+    
+<div id="request_wrapper">
+	<div id="request_report"></div>
+</div>
 
 
-<SPAN id="personal">
+<div id="wrapper">
+    
+  <div id="innerwrapper">
+  	<div id="banner"></div>
+    <div id="login">
+    	<a href="#">Login</a>
+    </div>   
+    <div id="top"></div>
+    
+    <div id="cv">   
+	<!-- CV -->
+    	<span id="titulo">
 <div>
-<FORM id=1>
- <TABLE>
+ <table>
+  <tr>
+   <td id="curriculum_title"><p><label>Curriculum Vitae</label></p></td>
+   <td id="user">
+
+  </td>
+  </tr>
+ </table>
+</div>
+</span>
+
+
+<span id="personal">
+<div>
+<form id="1" >
+ <table>
  
   <tr>
-   <td class="prim_titles"><label>Informação Pessoal</label></td>
-   <td class="new_item">&nbsp;</td>
+   <td class="prim_titles"><label>Personal Information</label></td>
+   <td class="new_item" colspan="2">&nbsp;</td>
   </tr>
   
-  <TR>
-   <TD class="sec_titles">&nbsp;</TD>
-   <TD>
-    <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline"><A class="azul" href=javascript:edit(1,"personal") >editar</A></SPAN>
-    <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"><A class="azul" href=javascript:save(1,"personal")>guardar</A> | </SPAN>
-    <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none"><A class="magenta" href=javascript:cancel(1,"personal")>cancelar</A> </SPAN>   </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles">&nbsp;</td>
+   <td class="edit">
+    <span tipo="editar" cod=form1" style="visibility:visible; display:inline;"><a href="javascript:void(0);" onclick="edit(1,'personal')" >edit</a></span>
+    <span tipo="guardar" cod=form1" style="visibility:hidden; display:none;"><a href="javascript:void(0);" onclick="save(1,'personal')" >save</a> | </span>
+    <span tipo="cancelar" cod="form1" style="visibility:hidden; display:none;"><a class="cancel" href="javascript:void(0);" onclick="cancel(1,'personal')" >cancel</a> </span>   
+    </td>
+    <td class="check"><span tipo="cancelar" style="display:none;"><label>Visible:</label></span></td>   
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Nome</label></TD>
-   <TD class="field"><INPUT name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" >
-    <div class="view_field" style="visibility:visible; display:inline" ></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Name</label></td>
+   <td class="field"><input name="name" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value="" />
+       <div class="view_field" style="visibility:visible; display:inline" ></div>
+    </td>
+    <td class="check">
+       <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
+       <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-
-  <TR>
-   <TD class="sec_titles"><label>Data de Nascimento</label></TD>
-   <TD class="field">
+  <tr>
+   <td class="sec_titles"><label>Birthdate</label></td>
+   <td class="field">
     <span>
-     <input name="birthdate" type="text" onFocus="this.blur()" onClick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" >
-     <img src="images/calendar.gif" class="calendar" onClick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" > 
-     <img src="images/erase.gif" class="calendar" onClick=resetDate(document.getElementById(1).birthdate) title='Apagar Data' style="visibility:hidden; display:none" >
-     <div class="view_field" style="visibility:visible; display:inline"></div>
-    </span>   </TD>	
-  </TR>
+        <input name="birthdate" type="text" onFocus="this.blur()" onclick="displayCalendar(this,'yyyy-mm-dd',this)" size="10" value="" tipo="data" style="visibility:hidden; display:none" />
+        <img src="images/calendar.gif" alt="Canlendar" class="calendar" title="insert date" onclick="displayCalendar(document.getElementById(1).birthdate,'yyyy-mm-dd',this)" style="visibility:hidden; display:none" /> 
+        <img src="images/erase.gif" alt="Erase" class="calendar" onclick=resetDate(document.getElementById(1).birthdate) title='delete date' style="visibility:hidden; display:none" />
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+     <input type="checkbox" name="birthdate_active" style="visibility:hidden; display:none"/>
+     <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </span>   
+    </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Morada</label></TD>
-   <TD class="field">
-    <INPUT name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Address</label></td>
+   <td class="field">
+        <input name="address" type="text" size="60" maxlength="256" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">         
+        <input type="checkbox" name="address_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div>    
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Código Postal</label></TD>
-   <TD class="field"><INPUT name="postal_code" type="text" size="10" maxlength="32" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Zip Code</label></td>
+   <td class="field">
+        <input name="postal_code" type="text" size="10" maxlength="32" style="visibility:visible; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="postal_code_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Localidade</label></TD>
-   <TD class="field"><INPUT name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Location</label></td>
+   <td class="field">
+        <input name="city" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="city_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>País</label></TD>
-   <TD class="field"><INPUT name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Country</label></td>
+   <td class="field">
+        <input name="country" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td  class="check">
+        <input type="checkbox" name="country_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Telefone</label></TD>
-   <TD class="field"><INPUT name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Phone Number</label></td>
+   <td class="field">
+        <input name="phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="phone_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Telemóvel</label></TD>
-   <TD class="field"><INPUT name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Cell Phone</label></td>
+   <td class="field">
+        <input name="cell_phone" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="cell_phone_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Fax</label></TD>
-   <TD class="field"><INPUT name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Fax</label></td>
+   <td class="field">
+        <input name="fax" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="fax_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles"><label>Email</label></TD>
-   <TD class="field"><INPUT name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Email</label></td>
+   <td class="field">
+        <input name="email" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="email_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Nacionalidade</label></TD>
-   <TD class="field"><INPUT name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-    <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Nationality</label></td>
+   <td class="field">
+        <input name="nationality" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="name_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR> 
-   <TD class="sec_titles"><label>Sexo</label></TD>
-   <TD class="field">
-       <label type="genderBox" name="gender"><SELECT type="genderBox" name="gender" style="visibility:hidden; display:none" value="">
-                <OPTION value=""></OPTION>
-                <OPTION value="0">Feminino</OPTION>
-                <OPTION value="1">Masculino</OPTION>
-                </SELECT></label><div class="view_field" style="visibility:visible; display:inline"></div>
-    </TD>
-  </TR>
+  <tr> 
+   <td class="sec_titles"><label>Gender</label></td>
+   <td class="field">
+        <select name="gender" style="visibility:hidden; display:none" value="">
+                <option value=""></option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+        </select><div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="gender_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
 
-  <TR>
-   <TD class="sec_titles"><label>Língua Materna</label></TD>
-   <TD class="field"><INPUT name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value="">
-   <div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
+  <tr>
+   <td class="sec_titles"><label>Mother Language</label></td>
+   <td class="field">
+        <input name="home_language" type="text" size="20" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div> 
+    </td>
+    <td class="check">
+        <input type="checkbox" name="home_language_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+  </tr>
   
-  <TR>
-   <TD class="sec_titles" id="desired_employment"><label>Emprego Pretendido</label> / <br><label>Área Funcional</label></TD>
-   <TD class="field"><input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value=""><div class="view_field" style="visibility:visible; display:inline"></div> </TD>
-  </TR>
-</TABLE>
-</FORM>
+  <tr>
+   <td class="sec_titles" id="desired_employment"><label>Desired Job</label> / <br/><label>Functional Area</label></td>
+   <td class="field">
+        <input name="desired_employment" type="text" size="60" maxlength="128" style="visibility:hidden; display:none" value=""/>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="desired_employment_active" style="visibility:hidden; display:none"/>
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+  </tr>
+</table>
+</form>
 </div>
-</SPAN>
+</span>
 
-<SPAN id="experience">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Experiência Profissional</label></TD>
-   <Td class="new_item"><img src="images/new_item.png" class="new_item_img" onClick="new_form('experience')" title='adicionar item'></Td>
-  </TR>
- </TABLE>
+
+<span id="experience">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Professional Experience</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('experience')" title='new item' /></td>
+   </tr>
+ </table>
 </div>
 <!-- EXPERIENCE FORM TEMPLATES -->
-</SPAN>
+</span>
 
-<SPAN id="education">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Educação e Formação</label></TD>
-   <Td class="new_item"><img src="images/new_item.png" class="new_item_img" onClick="new_form('education')" title='adicionar item'></Td>
-  </TR>
- </TABLE>
+
+<span id="education">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Education and Specialization</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('education')" title='new item' /></td>
+  </tr>
+ </table>
 </div>
 <!-- EDUCATION FORM TEMPLATES -->
-</SPAN>
+</span>
 
-<SPAN id="languages">
-<DIV>
- <TABLE>
-  <TR>
-   <TD class="prim_titles"><label>Outras Línguas</label></TD>
-   <Td class="new_item"><img src="images/new_item.png" name="new_item_img" class="new_item_img" onClick="new_form('languages')" title='adicionar item'></Td>
-  </TR>
- </TABLE>
+
+<span id="languages">
+<div>
+ <table>
+  <tr>
+   <td class="prim_titles"><label>Other Languages</label></td>
+   <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('languages')" title='new item'></td>
+  </tr>
+ </table>
 </div>
 <!-- LANGUAGES FORM TEMPLATES-->
-</SPAN>
+</span>
 
-<SPAN id="skills">
-<DIV>
-<FORM id=0 >
-<TABLE>
+
+<span id="skills">
+<div>
+<form id=0 >
+<table>
 
  <tr>
-  <TD class="prim_titles"><label>Aptidões e Competências Pessoais</label></TD>
-  <td class="new_item">&nbsp;</td>
+  <td class="prim_titles"><label>Personal Skills</label></td>
+  <td class="new_item" colspan="2">&nbsp;</td>
  </tr>
  
- <TR>
-  <TD class="sec_titles">&nbsp;</TD>
-  <TD>
-   <SPAN tipo=editar cod=form1 style="visibility:visible; display:inline " > <A class="azul" href=javascript:edit(0,"skills")><label>editar</label></A> </SPAN>
-   <SPAN tipo=guardar cod=form1 style="visibility:hidden; display:none"  ><A class="azul" href=javascript:save(0,"skills")><label>guardar</label></A> |</SPAN>
-   <SPAN tipo=cancelar cod=form1 style="visibility:hidden; display:none" ><A class="magenta" href=javascript:cancel(0,"skills")><label>cancelar</label></A> </SPAN>
-  </TD>
- </TR>
+ <tr>
+  <td class="sec_titles">&nbsp;</td>
+  <td class="edit">
+   <span tipo=editar cod=form1 style="visibility:visible; display:inline;"><a href="javascript:void(0);" onclick=edit(0,"skills")>edit</a> </span>
+   <span tipo=guardar cod=form1 style="visibility:hidden; display:none;"  ><a href="javascript:void(0);" onclick=save(0,"skills")>save</a> |</span>
+   <span tipo=cancelar cod=form1 style="visibility:hidden; display:none;" ><a class="cancel" href="javascript:void(0);" onclick=cancel(0,"skills")>cancel</a> </span>
+  </td>
+   <td class="check"><span tipo="cancelar" style="display:none;"><label>Visible:</label></span></td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Aptidões e Competências Sociais</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Social Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="social_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+   </td>
+   <td class="check">
+   		<input type="checkbox" name="social_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+   </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Aptidões e Competências de Organização</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Organization Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="organization_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="organization_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div>    
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Aptidões e Competências Técnicas</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Technical Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="technical_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="technical_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Aptidões e Competências Informáticas</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+  <td class="sec_titles"><label>Computing Skills</label></td>
+  <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="informatic_skills"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="computing_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div>     
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Aptidões Artísticas</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Artistic Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="artistic_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+        <input type="checkbox" name="artistic_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Outras Aptidões e Competências</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Other Skills</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="other_skills"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+         <input type="checkbox" name="other_skills_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Cartas de Condução</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></TEXTAREA> <div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Driving Licence</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="driving_licence"></textarea> 
+        <div class="view_field" style="visibility:visible; display:inline"></div> 
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="driving_licence_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+ </tr>
 
- <TR>
-  <TD class="sec_titles"><label>Informação Adicional</label></TD>
-  <TD class="field"><TEXTAREA onkeyup="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></TEXTAREA>	<div class="view_field" style="visibility:visible; display:inline"></div></TD>
- </TR>
+ <tr>
+    <td class="sec_titles"><label>Additional Information</label></td>
+    <td class="field">
+        <textarea onKeyUp="cutValue(this)" style="visibility:hidden; display:none" name="aditionalinfo"></textarea>
+        <div class="view_field" style="visibility:visible; display:inline"></div>
+    </td>
+    <td class="check">
+    	<input type="checkbox" name="aditionalinfo_active" style="visibility:hidden; display:none">
+        <div class="view_field" style="visibility:visible; display:inline" ></div> 
+    </td>
+ </tr>
 
- 
- 
-</TABLE>
-</FORM>
+</table>
+</form>
 </div>
-</SPAN>
+</span>
 
-</DIV>
 
-</center>
-<div id="powered_cont">
-    <div id="powered"><a href="mailto:we@getgears.com">we at getgears dot com</a></div>
-    <div id="request_report" style="visibility: hidden; display: none"> </div>
-
+    </div>
+  </div>
+<div id="bottom"></div>  
 </div>
-
-
-
-
-
-
-<!-- Analytics Scripts-->
-<script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-4413908-3");
-        pageTracker._setDomainName(".jobgears.net");
-        pageTracker._trackPageview();
-        } catch(err) {}
-</script>
-
-</BODY>
-</HTML>
+</body>
+</html>

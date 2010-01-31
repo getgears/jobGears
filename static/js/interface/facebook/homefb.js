@@ -1,11 +1,13 @@
+
 function fbInit()
 {          
     try
-    {    
+    {  
         FB.Connect.get_status().waitUntilReady(function(status) 
-            {           
+            {      
                 if (status == FB.ConnectState.connected)
                 {
+                    fbConnected=true;
                     $('#fbloggedin').css('visibility','visible');
                     $('#fbloggedin').css('display','inline');
                 }
@@ -17,10 +19,9 @@ function fbInit()
             });     
     }
     catch(err)
-        {   
-            window.setTimeout(fbInit,500) 
+        {    
+                window.setTimeout(fbInit,1000);
         }
-
 }
             
 

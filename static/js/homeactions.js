@@ -19,9 +19,9 @@ function erase(form_id,section)
         sucess: function()
         {
             $('#'+form_id+':parent').remove();
-            reconfigure_slot(tipo_form)
-            showInfoDiv('red',locale['item deleted'])
-            closeEffect()
+            reconfigure_slot(tipo_form);
+            showInfoDiv('red',locale['item deleted']);
+            closeEffect();
             return;        
         }            
     });
@@ -31,7 +31,7 @@ function erase(form_id,section)
 function save(form_id,section) 
 {
     if ((document.getElementById('calendarDiv') ) && (document.getElementById('calendarDiv').style.display=="block"))
-        closeCalendar()
+        closeCalendar();
 
     openEffect();
     reconfigure_slot(section);
@@ -167,11 +167,11 @@ function edit(form_id,section)
 function cancel(form_id,section)
 {
     if ((document.getElementById('calendarDiv') ) && (document.getElementById('calendarDiv').style.display=="block"))
-        closeCalendar()
+        closeCalendar();
 
     openEffect();
 
-    var FORM_LENGTH = $('#'+form_id+' :input').length
+    var FORM_LENGTH = $('#'+form_id+' :input').length;
     for (c=0;c<FORM_LENGTH;c++)
     {
         $element = $('#'+form_id+' :input:eq('+c+')');
@@ -184,9 +184,9 @@ function cancel(form_id,section)
 
     var IMG_LENGTH = $('#'+form_id+' img').length;
     if (section=="personal")
-        start_index = 0 
+        start_index = 0;
     if (section!="personal")
-        start_index = 2
+        start_index = 2;
     for (c=start_index ; c<IMG_LENGTH ; c++)
     {
         $img = $('#'+form_id+' img:eq('+c+')');
