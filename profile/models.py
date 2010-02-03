@@ -73,20 +73,28 @@ class Profile(models.Model):
         Return a dictionary version of the profile
         """
         def slots_to_dict(slots, require_active=False):
-            slots_list = list()
-            for slot in self.slots:
+            slots_dict = dict()
+            for slot in slots:
                 if not require_active or slot.active:
-                    slots_list.append(slot.record.as_dict(require_active))
-            return slots_list
+                    slots_dict[str(slot.order)] = slot.record.as_dict(require_active)
+            return slots_dict
 
         profile_dict = dict()
         if not require_active or personal_data_active:
-            profile_dict['personal_data'] = self.personal_data.as_dict(require_active)
+            try:
+                profile_dict['personal_data'] = self.personal_data.as_dict(require_active)
+            except:
+                # maybe this doesn't exist yet
+                pass
         if not require_active or personal_skills_active:
-            profile_dict['personal_skills'] = self.personal_skills.as_dict(require_active)
-        profile_dict['languages'] = slots_to_dict(slot.languages, require_active)
-        profile_dict['education'] = slots_to_dict(slot.education, require_active)
-        profile_dict['professional_experience'] = slots_to_dict(slot.professional_experience, require_active)
+            try:
+                profile_dict['personal_skills'] = self.personal_skills.as_dict(require_active)
+            except:
+                # maybe this doesn't exist yet
+                pass
+        profile_dict['languages'] = slots_to_dict(self.profile_language_set.all(), require_active)
+        profile_dict['education'] = slots_to_dict(self.profile_education_set.all(), require_active)
+        profile_dict['professional_experience'] = slots_to_dict(self.profile_professionalexperience_set.all(), require_active)
 
         return profile_dict
         

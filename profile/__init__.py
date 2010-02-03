@@ -47,7 +47,7 @@ def section_save(request, section, data, slot=None):
         section_block_object = getattr(profile_object, section)
         try:
             if section == 'languages':
-                section_object = section_block_object.get(profileslot_language__order=slot)
+                section_object = section_block_object.get(profile_language__order=slot)
             elif section == 'education':
                 section_object = section_block_object.get(profile_education__order=slot)
             elif section == 'professional_experience':

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # django Framework Includes
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 # import for gettext Internationalization Utils
@@ -13,34 +13,6 @@ import simplejson
 from jobgears.interfaces.facebook import get_id
 
 import facebook.djangofb as facebook
-
-# jobgears view for Facebook UID session Storage
-def fbSetUID(request):
-    """ 
-    try:
-        try:
-            request.session['facebook_id'] = request.POST['fbuid']        
-            response = {}
-            response['Content'] = None
-            response['Report'] = 1
-            return HttpResponse(simplejson.dumps(response))
-            
-        except KeyError:
-            request.session['facebook_id'] = {}
-            request.session['facebook_id'] = request.POST['fbuid']
-            response = {}
-            response['Content'] = None
-            response['Report'] = 1
-            return HttpResponse(simplejson.dumps(response))
-
-    except KeyError:
-        response = {}
-        response['Content'] = _("não autorizado")
-        response['Report'] = 0
-        return HttpResponse(simplejson.dumps(response))
-    """
-    # DEPRECATED
-    return HttpResponse(0)
 
 
 
@@ -67,14 +39,28 @@ def fb_publish_cv(request):
 
 
 
-@facebook.require_login()
-def info(request):                                                          
-    id = get_id(request)
-    print id
-    if id:
-        name = request.facebook.users.getInfo([id],['first_name'])[0]['first_name']
-        html = "nome do nigga: %s <br> id do nigga: %s " % (name ,id,)
-        return HttpResponse(html)
-    
-    else:
-        return HttpResponse("nothing to do")    
+def info(request):
+    """ info view it's just a simple test view for Facebook Integration"""
+    try:
+        try:
+            request.COOKIES['sid']
+            id = get_id(request)
+            html = "id: %s" % (id,)
+            return HttpResponse(html)
+        except KeyError,ValueError:
+            return HttpResponseRedirect(settings.ROOT_URL)
+    except:
+        return HttpResponseRedirect(settings.ROOT_URL)
+
+
+def fb_auth_callback(request):
+    """ View for Facebook Authentication Callback URL"""
+    # NOT NEEDED RIGHT NOW
+    return HttpResponse("FB CALLBACK")
+
+def fb_remove_callback(request):
+    """ If a user deletes jobGears from their application this view is triggered"""
+    # need to be developed
+    return HttpResponse("FB DELETE")
+
+

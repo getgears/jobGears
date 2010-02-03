@@ -1,13 +1,16 @@
+import facebook.djangofb as facebook
+from django.conf import settings
 
+
+@facebook.require_login(next=settings.ROOT_URL)
 def get_id(request):
     """
     Return the facebook id for the request
     """
     try:
-        id = request.facebook.uid
+        id = request.facebook.users.getLoggedInUser()
     except:
         id = None
-    #id = id if id else 1
     return id
 
 

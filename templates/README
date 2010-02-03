@@ -2,7 +2,5 @@
 # This list of folders and files should be erased.
 #
 
-* models        (folder) deleted: 28 Dec 2009
-* formtemplates (folder) deleted: 28 Dec 2009
-- home.html     (file)   overwritted by index.html in static folder 28 Dec 2009
+    - home.html should be adapted to work with JS static translation, avoid all i18n gettext translation API
 

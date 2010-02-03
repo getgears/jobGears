@@ -1,0 +1,14 @@
+./html folder contains all templates needed to create static curriculums.
+
+The file must be rendered with the following variables:
+
+- personalInfo Object , personal information Dictionary
+- personalSkills Object , personal skills information Dictionary
+- languageSlotList , a LIST of language slot Dictionaries
+- educationSlotList , a LIST of education slot Dictionaries
+- experienceSlotList , a LIST of experience slot Dictionaries
+
+**** render_to_response('templates/html/home.html',context)
+
+
+

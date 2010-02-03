@@ -109,11 +109,13 @@ function hideTwitterPublishBox()
 
 function advise()
 {
-    $('#advise').slideDown('slow');
+    $('#wrapper').css('padding-top','20px');;
+    $('#top_bar').slideDown('slow');
 }
 
 function closeAdvise()
 {
-    $('#advise').hide();
+    $('#top_bar').slideUp('slow');
+    $('#wrapper').css('padding-top','0px');
 }
 

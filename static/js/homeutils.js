@@ -1,16 +1,30 @@
+function trueFalseToOneZero(val)
+{
+    if (val==true)
+        return 1;
+    else if (val==false)
+        return 0;
+}
+
 function browserCheck()
 {
-    //if ($.browser.msie)
-    //{
-       // if ($.browser.version<='8.0')
-        //{   
-            //warning('Your browser is not supported by jobGears, please update it\'s FREE! ');
-            //return false;
-            advise('your browser is becoming out of date, we strongly recommend you to update it learn more <a href="http://www.whatbrowser.org" target="_blank">here</a>'); 
-        //}
-    //}
+    if (($.browser.chrome) || ( $.browser.mozilla)  || ( $.browser.opera) || ($.browser.safari))
+        return true;
+    
+    else if ($.browser.msie)
+    {
+        if ($.browser.version in browserList['msie'])
+            return true;
+        else
+        {
+            warning('jobGears does not support your browser ');
+            return false;
+        }
+    }
+    else if ((!$.browser.chrome) && (!$.browser.mozilla) && (!$.browser.opera) && (!$.browser.msie))
+        return false;
 
-   return true;
+    return false;
 }
 
 function getNewId()
@@ -45,28 +59,28 @@ function hideStatus()
 
 function validation(form_)
 {
-	var found_html=0;
-	for (c=0;c<form_.length ; c++)
-	{
-		var strInputCode = form_[c].value;
-		strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){return (p1 == "lt")? "<" : ">";});
-		var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
-		for (k=0;k<strInputCode.length; k++)
-		{
-			if ((strInputCode.charAt(k)=='<') && (strInputCode.charAt(k+1)!='>'))
-			{
-				for (x=k+1;x<strInputCode.length;x++)
-				{
-					if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
-					{
-						var found_html=1;
-						warning(locale['Not allowed HTML tags removed']);
-					}
-				}
-			}
-		}
-		form_[c].value =	strTagStrippedText;	
-	}
+    var found_html=0;
+    for (c=0;c<form_.length ; c++)
+    {
+        var strInputCode = form_[c].value;
+        strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1){return (p1 == "lt")? "<" : ">";});
+        var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+        for (k=0;k<strInputCode.length; k++)
+        {
+            if ((strInputCode.charAt(k)=='<') && (strInputCode.charAt(k+1)!='>'))
+            {
+                for (x=k+1;x<strInputCode.length;x++)
+                {
+                    if ( (strInputCode.charAt(x)=='>') && (found_html!=1) )
+                    {
+                        var found_html=1;
+                        //warning(locale['Not allowed HTML tags removed']);
+                    }
+                }
+            }
+        }
+        form_[c].value = strTagStrippedText;    
+    }
 }
 
 function resetDate(object)

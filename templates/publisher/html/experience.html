@@ -1,37 +1,42 @@
-{%load i18n%}
-{%for experienceSlot in experienceSlotList reversed %}
+{%for experienceSlot in experienceSlotList reversed%}
 <span>
-<table >
-	<TR>
-		<TD class="sec_titles">{%trans "Data de Início"%}</TD>
-		<TD class="field" > <div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.init_date}}</div>            
-		</TD>
-	</TR>
-	<TR>
-		<TD class="sec_titles">{%trans "Data de Conclusão"%}</TD>
-		<TD class="field" > <div class="view_field" style="visibility:visible; display:inline">{{experienceSlot.final_date}}</div>  
-		</TD>
-	</TR>
-	<TR >
-		<Td class="sec_titles">{%trans "Nome e Endereço da Entidade Empregadora"%}</Td>
-		<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.company}}</div>
-		</Td>
-	</TR> 
-	<TR >
-		<Td class="sec_titles">{%trans "Tipo de Empresas ou Sector"%}</Td>
-	<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.business_area}}</div>
-	</Td>
-	</TR>
-	<TR >
-		<Td class="sec_titles">{%trans "Função / Cargo Ocupado"%}</Td>
-		<Td class="field" >	<div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.position}}</div>
-	</Td>
-	</TR> 
-	<TR >
-	<Td class="sec_titles" valign="top" >{%trans "Principais Actividades ou Responsabilidades"%}</Td>
-	<Td class="field" ><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.description}}</div>
-	</Td
-	></TR> 
+    <table>
+    {%if experienceSlot.init_date_active%}
+    <tr>
+        <td class="sec_titles"><label>Start Date</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.init_date}}</div></td>
+    </tr>
+    {%endif%}
+    {%if experienceSlot.final_date_active%}
+    <tr>
+        <td class="sec_titles"><label>Conclusion Date</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline">{{experienceSlot.final_date}}</div></td>
+    </tr>
+    {%endif%}
+    {%if experienceSlot.company_active%}
+    <tr>
+        <td class="sec_titles"><label>Company Name and Address</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.company}}</div></td>
+    </tr> 
+    {%endif%}
+    {%if experienceSlot.business_area_active%}
+    <tr>
+        <td class="sec_titles"><label>Company Type or Business Sector</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.business_area}}</div></td>
+    </tr>
+    {%endif%}
+    {%if experienceSlot.position_active%}
+    <tr>
+        <td class="sec_titles"><label>Position / Job Function</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.position}}</div></td>
+    </tr>
+    {%endif%}
+    {%if experienceSlot.description_active%}
+    <tr>
+        <td class="sec_titles" valign="top"><label>Main Activities or Responsabilities</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline ">{{experienceSlot.description}}</div></td>
+    </tr> 
+    {%endif%}
 </table>
 </span>
 {%endfor%}

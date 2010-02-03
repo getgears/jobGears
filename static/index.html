@@ -1,5 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -14,6 +16,7 @@
 <script type="text/javascript" src="js/include/cookies.js"></script>
 <!-- GLOBAL VARIABLES -->
 <script type="text/javascript" src="js/globals/globals.js"></script>
+<script type="text/javascript" src="js/globals/browserlist.js"></script>
 
 
 <!-- INCLUDE CALENDARIO-->
@@ -60,11 +63,15 @@ document.write(unescape("%3Cscript src='./locale/"+lang+"/locale.js' type='text/
        document.write(unescape("%3Cscript src='http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/"+get_cookie('locale')+"/' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">FB.init("3296be521467c6b0f73259c7b4cbfbd5", "./fb/xd_receiver.htm");</script>
+    
 <!-- END OF FB OBJECT INIT  -->
 <!--===================================================================================================================-->
 
 <!-- popup divs -->
-<div id="advise"></div>
+<div id="top_bar" >
+	<a href="#">Lorem ipsum dolor sit amet.</a>
+	<a href="javascript:void(0);" onclick="closeAdvise();" ><img src="images/close_bar.gif" alt="close" /></a>
+</div>
 
 <div id="cover"></div>
 

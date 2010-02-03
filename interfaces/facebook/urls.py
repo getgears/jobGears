@@ -8,5 +8,9 @@ urlpatterns = patterns('',
     (r'^info/$', info),
     # out of date function
     (r'^publishfb/$', fb_publish_cv),
+    # facebook callback after authentication
+    (r'^auth/$',fb_auth_callback),
+    # facebook callback a user deletes his application
+    (r'^remove/$',fb_remove_callback),
 )
 

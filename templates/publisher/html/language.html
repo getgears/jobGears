@@ -1,41 +1,43 @@
-{%load i18n%}
 
 {%for languageSlot in languageSlotList reversed %}
 <span>
-<table>
-	<TR >
-	<Td class="sec_titles">{%trans "Línguas"%}</Td>
-	<Td class="field" >
-	<div class="view_field" style="visibility:visible; display:inline " >{{languageSlot.language}}</div>
-	</Td>
-	</TR>
-	<TR >
-	<Td class="sec_titles">{%trans "Compreensão Oral"%}</Td>
-	<Td class="field" ><div style="visibility:visible; display:inline " class="view_field">{{languageSlot.listening}}</div>
-		</Td>
-	</TR>
-	<TR >
-	<Td class="sec_titles">{%trans "Compreensão Escrita"%}</Td>
-	<Td class="field" >	<div  class="view_field" style="visibility:visible; display:inline " >{{languageSlot.reading}}</div>
-		</Td>
-	</TR>                 
-	<TR >
-	<Td class="sec_titles">{%trans "Interacção Oral"%}</Td>
-	<Td class="field" > <div style="visibility:visible; display:inline " class="view_field">{{languageSlot.spoken_interaction}}</div>
-	</Td>
-	</TR>               
-	<TR >
-	<Td class="sec_titles">{%trans "Produção Oral"%}</Td>
-	<Td class="field">	<div style="visibility:visible; display:inline " class="view_field">{{languageSlot.spoken_production}}</div>
-	</Td>
-	</TR>
-	<TR >
-	<Td class="sec_titles">{%trans "Produção Escrita"%}</Td>
-	<Td class="field" ><div style="visibility:visible; display:inline "  class="view_field">{{languageSlot.writing}}</div>
-	</Td>
-	</TR>
-
+    <table>
+    {%if languageSlot.language_active%}
+    <tr>
+        <td class="sec_titles"><label>Language</label></td>
+        <td class="field"><div class="view_field" style="visibility:visible; display:inline " >{{languageSlot.language}}</div></td>
+    </tr>
+    {%endif%}
+    {%if languageSlot.listening_active%}
+    <tr>
+        <td class="sec_titles"><label>Spoken Comprehension</label></td>
+        <td class="field"><div style="visibility:visible; display:inline " class="view_field">{{languageSlot.listening}}</div></td>
+    </tr>
+    {%endif%}   
+    {%if languageSlot.reading_active%}
+    <tr>
+        <td class="sec_titles"><label>Written Comprehension</label></td>
+        <td class="field"><div  class="view_field" style="visibility:visible; display:inline " >{{languageSlot.reading}}</div></td>
+    </tr>                 
+    {%endif%}
+    {%if languageSlot.spoken_interaction_active%}
+    <tr>
+        <td class="sec_titles"><label>Vocal Interaction</label></td>
+        <td class="field"><div style="visibility:visible; display:inline " class="view_field">{{languageSlot.spoken_interaction}}</div></td>
+    </tr>               
+    {%endif%}
+    {%if languageSlot.spoken_production_active%}
+    <tr>
+        <td class="sec_titles"><label>Vocal Production</label></td>
+        <td class="field"><div style="visibility:visible; display:inline " class="view_field">{{languageSlot.spoken_production}}</div></td>
+    </tr>
+    {%endif%}
+    {%if languageSlot.writing_active%}
+    <tr>
+        <td class="sec_titles"><label>Written Production</label></td>
+        <td class="field" ><div style="visibility:visible; display:inline "  class="view_field">{{languageSlot.writing}}</div></td>
+    </tr>
+    {%endif%}
 </table>
-
 </span>
 {%endfor%}

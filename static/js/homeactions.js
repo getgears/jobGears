@@ -40,6 +40,9 @@ function save(form_id,section)
     validation($form.get(0));
 
     var postString = $form.serialize();
+    $.each($('#'+form_id+' input[type="checkbox"]'),function(index,element,val) {
+        postString=postString + "&" + $(element).attr('name') + '=' + trueFalseToOneZero($(element).attr('checked')); 
+    });
 
     if (section=="education")
         url =  settings.education_save_url + $form.attr('slot')+'/';
@@ -72,10 +75,13 @@ function save(form_id,section)
             if ($element.attr('type')!='select-one')              
                 $div.attr('innerHTML', $element.attr('value').replace(new RegExp('\\n','g'),'<br>'));
             else if ($element.attr('type')=='select-one')
-                $div.attr('innerHTML', $element.get(0).options[$element.attr('selectedIndex')].innerHTML); 
+                $div.attr('innerHTML', $element.get(0).options[$element.attr('selectedIndex')].innerHTML);
             $element.hide();
-            $div.css('visibility','visible');
-            $div.css('display','inline');
+            if ($element.attr('type') != 'checkbox')
+            {
+                $div.css('visibility','visible');
+                $div.css('display','inline');
+            }
         }
                      
         for (c=0; c<$('#'+form_id+' span').length ;c++)

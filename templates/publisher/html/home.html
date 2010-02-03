@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- INCLUDE GERAL -->
+<script type="text/javascript" src="js/jquery/jquery-v1.3.2.js"></script>
+
+<!-- SETTINGS -->
+<script type="text/javascript" src="js/settings/settings.js"></script>
+<!-- INCLUDE -->
+<script type="text/javascript" src="js/include/includeajax.js"></script>
+<script type="text/javascript" src="js/include/cookies.js"></script>
+<!-- GLOBAL VARIABLES -->
+<script type="text/javascript" src="js/globals/globals.js"></script>
+<script type="text/javascript" src="js/globals/browserlist.js"></script>
+
+
+<!-- INCLUDE CALENDARIO-->
+<script type="text/javascript" src="js/calendar/dhtmlgoodies_calendar.js" ></script>
+<script type="text/javascript" src="js/calendar/urchin.js" ></script> 
+<!-- CSS Calendario -->
+<link type="text/css" rel="stylesheet" href="js/calendar/dhtmlgoodies_calendar.css" media="screen" />
+
+<!-- LANGUAGE -->
+<script type="text/javascript" >
+
+
+
+</script>
+
+<!-- INCLUDE DE PERFIL -->
+<script type="text/javascript" src="js/homeutils.js"></script>
+<script type="text/javascript" src="js/homeeffects.js"></script>
+
+
+<!-- CSS home.html -->
+<link rel="stylesheet" type="text/css" href="css/home.css" /> 
+
+<title>jobGears</title>
+
+</head>
+
+<body>
+
+
+<div id="top_bar" >
+	<a href="#">Lorem ipsum dolor sit amet.</a>
+	<a href="javascript:void(0);" onclick="closeAdvise();" ><img src="images/close_bar.gif" alt="close" /></a>
+</div>
+
+
+<div id="wrapper">
+    
+  <div id="innerwrapper">
+  	<div id="banner"></div>
+    <div id="login">
+    	<a href="#">Login</a>
+    </div>   
+    <div id="top"></div>
+    
+
+    <div id="cv">   
+	<!-- CV -->
+    	<span id="titulo">
+            <div>
+                <table>
+                    <tr>
+                        <td id="curriculum_title"><p><label>Curriculum Vitae</label></p></td>
+                        <td id="user"></td>
+                    </tr>
+                </table>
+            </div>
+        </span>
+
+
+        <span id="personal">
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td class="prim_titles"><label>Personal Information</label></td>
+                            <td class="new_item" colspan="2">&nbsp;</td>
+                        </tr>
+                        {%if personalInfo.name_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Name</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.name}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.birthdate_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Birthdate</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.birthdate}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.address_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Address</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.address}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.postal_code_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Zip Code</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.postal_code}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.city_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Location</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.city}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.country_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Country</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.country}}</div></td>
+                            <td  class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.phone_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Phone Number</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.phone}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.cell_phone_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Cell Phone</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.cell_phone}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.fax_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Fax</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.fax}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.email_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Email</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.email}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.nationality_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Nationality</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.nationality}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.gender_active%}
+                        <tr> 
+                            <td class="sec_titles"><label>Gender</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.gender}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.home_language_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Mother Language</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.home_language}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalInfo.desired_employment_active%}
+                        <tr>
+                            <td class="sec_titles" id="desired_employment"><label>Desired Job</label> / <br/><label>Functional Area</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalInfo.desired_employment}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                    </table>
+                </form>    
+            </div>
+        </span>
+
+
+        <span id="experience">
+            <div>
+                <table>
+                    <tr>
+                        <td class="prim_titles"><label>Professional Experience</label></td>
+                        <td class="new_item"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- EXPERIENCE FORM TEMPLATES -->
+            {%include "publisher/html/experience.html"%}
+        </span>
+
+        <span id="education">
+            <div>
+                <table>
+                    <tr>
+                        <td class="prim_titles"><label>Education and Specialization</label></td>
+                        <td class="new_item"><img src="images/new_item.gif" alt="New item" class="new_item_img" onclick="new_form('education')" title='new item' /></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- EDUCATION FORM TEMPLATES -->
+            {%include "publisher/html/education.html"%}
+        </span>
+
+        <span id="languages">
+            <div>
+                <table>
+                    <tr>
+                        <td class="prim_titles"><label>Other Languages</label></td>
+                        <td class="new_item"></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- LANGUAGES FORM TEMPLATES-->
+            {%include "publisher/html/language.html"%}
+        </span>
+
+        <span id="skills">
+            <div>
+                <form>
+                    <table>
+                        
+                        <tr>
+                            <td class="prim_titles"><label>Personal Skills</label></td>
+                            <td class="new_item" colspan="2">&nbsp;</td>
+                        </tr>
+                        {%if personalSkills.social_skills_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Social Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.social_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.organization_skills_active%}
+                        <tr>
+                           <td class="sec_titles"><label>Organization Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.organization_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.technical_skills_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Technical Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.technical_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.informatic_skills_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Computing Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.informatic_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.artistic_skills_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Artistic Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.artistic_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.other_skills_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Other Skills</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.other_skills}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.driving_licence_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Driving Licence</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.driving_licence}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                        {%if personalSkills.aditionalinfo_active%}
+                        <tr>
+                            <td class="sec_titles"><label>Additional Information</label></td>
+                            <td class="field"><div class="view_field" style="display:inline">{{personalSkills.aditionalinfo}}</div></td>
+                            <td class="check"></td>
+                        </tr>
+                        {%endif%}
+                    </table>
+                </form>
+            </div>
+        </span>
+    </div>
+</div>
+<div id="bottom"></div>  
+</div>
+</body>
+</html>
