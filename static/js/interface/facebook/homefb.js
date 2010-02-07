@@ -9,11 +9,13 @@ function fbInit()
                     fbConnected=true;
                     $('#fbloggedin').css('visibility','visible');
                     $('#fbloggedin').css('display','inline');
+                    $('#fblogin').hide();
                 }
                 if ((status == FB.ConnectState.userNotLoggedIn) || (status == FB.ConnectState.appNotAuthorized))
                 {
                     $('#fblogin').css('visibility','visible');
                     $('#fblogin').css('display','inline');
+                    $('#fbloggedin').hide();
                 }
             });     
     }

@@ -12,5 +12,7 @@ urlpatterns = patterns('',
     (r'^auth/$',fb_auth_callback),
     # facebook callback a user deletes his application
     (r'^remove/$',fb_remove_callback),
+    # profile tab
+    (r'^canvas/jobGears',canvas),
 )
 

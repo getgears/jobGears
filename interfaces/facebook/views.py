@@ -40,17 +40,26 @@ def fb_publish_cv(request):
 
 
 def info(request):
-    """ info view it's just a simple test view for Facebook Integration"""
+    """info view it's just a simple test view for Facebook Integration"""
     try:
-        try:
-            request.COOKIES['sid']
-            id = get_id(request)
-            html = "id: %s" % (id,)
-            return HttpResponse(html)
-        except KeyError,ValueError:
-            return HttpResponseRedirect(settings.ROOT_URL)
-    except:
+        request.COOKIES['sid']
+        id = get_id(request)
+        html = "id: %s" % (id,)
+        return HttpResponse(html)
+    except KeyError,ValueError:
         return HttpResponseRedirect(settings.ROOT_URL)
+
+
+def canvas(request):
+    """view for a profile tab display"""
+    try:
+        id = request.POST['fb_sig_profile_user']
+        html = "You tried to see  <fb:name uid=%s linked='true' size='normal' useyou='false' firstnameonly='false'/>'s CV but for now " % (id,)
+        html = html , "jobGears does not support tabbed Curriculums, our team is working hard to make this feature available in next version."
+        return HttpResponse(html)
+    except:
+        return HttpResponse('unauthorized abuse')
+
 
 
 def fb_auth_callback(request):
@@ -58,9 +67,11 @@ def fb_auth_callback(request):
     # NOT NEEDED RIGHT NOW
     return HttpResponse("FB CALLBACK")
 
+
 def fb_remove_callback(request):
     """ If a user deletes jobGears from their application this view is triggered"""
     # need to be developed
     return HttpResponse("FB DELETE")
+
 
 
